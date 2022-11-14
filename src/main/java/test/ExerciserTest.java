@@ -8,6 +8,7 @@ public class ExerciserTest {
 		// TODO Auto-generated method stub
 		ExerciserDao dao = new ExerciserDao();
 		dao.findExerciser(1);
+		dao.deleteExerciser("0000");
 	}
 
 }

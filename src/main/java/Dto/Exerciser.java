@@ -22,5 +22,5 @@ public class Exerciser {
 	private String gender;		// 성별
 	private int point;			// 포인트
 	private int ranking;		// 랭킹
-	private int userMatchSvc;	// 매칭 시스템 허용 유무
+	private int useMatchSvc;	// 매칭 시스템 허용 유무
 }
