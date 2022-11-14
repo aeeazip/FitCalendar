@@ -1,26 +1,133 @@
 package main.java.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter							// getter
-@Setter							// setter
-@AllArgsConstructor				// 모든 필드를 파라미터 값으로 쓰는 생성자
-@NoArgsConstructor				// default 생성자 
-@ToString						// toString
 public class Exerciser {
-	private int exerciserId;	// primary key
-	private String id;			// 사용자 계정 아이디
-	private String nickname;	// 사용자 계정 이름
-	private String password;	// 사용자 계정 비밀번호
-	private String explanation;	// 한 줄 소개
-	private String speciality;	// 운동 주종목
-	private String personality;	// 성격
-	private String gender;		// 성별
-	private int point;			// 포인트
-	private int ranking;		// 랭킹
-	private int useMatchSvc;	// 매칭 시스템 허용 유무
+	private int exerciserId; // primary key
+	private String id; // 사용자 계정 아이디
+	private String nickname; // 사용자 계정 이름
+	private String password; // 사용자 계정 비밀번호
+	private String explanation; // 한 줄 소개
+	private String speciality; // 운동 주종목
+	private String personality; // 성격
+	private String gender; // 성별
+	private int point; // 포인트
+	private int ranking; // 랭킹
+	private int useMatchSvc; // 매칭 시스템 허용 유무
+
+	public int getExerciserId() {
+		return exerciserId;
+	}
+
+	public void setExerciserId(int exerciserId) {
+		this.exerciserId = exerciserId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getExplanation() {
+		return explanation;
+	}
+
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
+	}
+
+	public String getSpeciality() {
+		return speciality;
+	}
+
+	public void setSpeciality(String speciality) {
+		this.speciality = speciality;
+	}
+
+	public String getPersonality() {
+		return personality;
+	}
+
+	public void setPersonality(String personality) {
+		this.personality = personality;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
+
+	public int getUseMatchSvc() {
+		return useMatchSvc;
+	}
+
+	public void setUseMatchSvc(int useMatchSvc) {
+		this.useMatchSvc = useMatchSvc;
+	}
+
+	public Exerciser(int exerciserId, String id, String nickname, String password, String explanation,
+			String speciality, String personality, String gender, int point, int ranking, int useMatchSvc) {
+		super();
+		this.exerciserId = exerciserId;
+		this.id = id;
+		this.nickname = nickname;
+		this.password = password;
+		this.explanation = explanation;
+		this.speciality = speciality;
+		this.personality = personality;
+		this.gender = gender;
+		this.point = point;
+		this.ranking = ranking;
+		this.useMatchSvc = useMatchSvc;
+	}
+
+	public Exerciser() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Exerciser [exerciserId=" + exerciserId + ", id=" + id + ", nickname=" + nickname + ", password="
+				+ password + ", explanation=" + explanation + ", speciality=" + speciality + ", personality="
+				+ personality + ", gender=" + gender + ", point=" + point + ", ranking=" + ranking + ", useMatchSvc="
+				+ useMatchSvc + "]";
+	}
+
 }

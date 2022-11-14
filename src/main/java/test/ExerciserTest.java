@@ -9,6 +9,8 @@ public class ExerciserTest {
 		ExerciserDao dao = new ExerciserDao();
 		dao.findExerciser(1);
 		dao.deleteExerciser("0000");
+//		int r = dao.insertExerciser(3, "1234", "hjhj", "hi", "헬스", "estp", "F", "hj00");
+//		System.out.println(r);
 	}
 
 }
