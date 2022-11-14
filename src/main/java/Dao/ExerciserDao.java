@@ -2,6 +2,7 @@ package main.java.Dao;
 
 import java.sql.ResultSet;
 
+
 import main.java.Dto.Exerciser;
 import main.java.Utils.JDBCUtil;
 
@@ -120,4 +121,24 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
+	
+	public int updateExerciser(int exerciserId, String id, String nickname, String password, String explanation, String speciality, String personality, String gender, int useMatchSvc) {
+		String query = " UPDATE exerciser "
+				+ "SET id = ?, nickname = ?, password = ?, explanation = ?, speciality = ?, personality = ?, gender = ?, useMatchSvc = ? "
+				+ " WHERE exerciserId = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { id, nickname, password, explanation, speciality, personality, gender, useMatchSvc, exerciserId };
+		jdbcUtil.setSqlAndParameters(query, param);
+			
+		try {
+			int result = jdbcUtil.executeUpdate();		// delete 문 실행
+			return result;							// delete 에 의해 반영된 레코드 수 반환
+		} catch(Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}	
 }

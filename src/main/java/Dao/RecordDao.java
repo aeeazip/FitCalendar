@@ -130,6 +130,26 @@ public class RecordDao {
 		}
 		return 0;
 	}
+	
+	public int updateRecord(int recordId, String title, String creationDate, int totalTime, int category, String routine, String diet, String photo, int shareOption, int exerciserId) {
+		String query = "UPDATE record "
+				+ "SET title = ?, creationDate = ?, totalTime = ?, category = ?, routine = ?, diet = ?, photo = ?, shareOption = ? "
+				+ " WHERE recordId = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { title, creationDate, totalTime, category, routine, diet, photo, shareOption, recordId };
+		jdbcUtil.setSqlAndParameters(query, param);
+			
+		try {
+			int result = jdbcUtil.executeUpdate();		// delete 문 실행
+			return result;							// delete 에 의해 반영된 레코드 수 반환
+		} catch(Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}	
 }
 
 
