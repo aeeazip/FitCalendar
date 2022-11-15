@@ -4,11 +4,11 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>recordForm</title>
-	<link href="recordForm.css" rel="stylesheet" type="text/css">
+	<title>updateProfileForm</title>
+    <link rel="stylesheet" href="updateProfileForm.css">
 </head>
 <body>
-	 <div class="flex-container">
+	<div class="flex-container">
         <div id="wrapper">
             <!-- header -->
             <div class="header">
@@ -55,56 +55,53 @@
                 </div>
                 
             </div>
-
             <!-- container -->
-            <!-- recordForm 부분 -->
             <div class="container">
-           		<div class="recordForm">
-					<h1 style="font-size: 21px;">_________님의 운동 일지</h1>
-				</div>
-				<div class="name">
-					<input type="text" name="title" placeholder="제목을 입력해 주세요.">
-				</div>
-				<div class="name">
-					<input type="date" name="creationdate">
-				</div>
-				<div class="name">
-					<input type="text" name="totaltime" placeholder="총 운동시간을 입력해 주세요. (예: 3)">
-				</div>	
-				<div class="line">
-					<hr>
-				</div>
-				<div class="area">
-					<select id="category" name="category">
-						<option selected>종목을 선택하세요.</option>
-						<option>헬스</option>
-						<option>필라테스</option>
-						<option>요가</option>
-						<option>러닝</option>
-						<option>기타</option>
-					</select>
-				</div>
-				<div class="name">
-					<textarea rows="5" cols="115" name="routine" aria-label="With textarea"
-						placeholder="운동 루틴을 입력하세요."></textarea>
-				</div>
-				<div class="name">
-					<textarea rows="5" cols="115" name="diet" aria-label="With textarea"
-						placeholder="식단을 입력하세요."></textarea>
-				</div>
-		        <div class="name">
-					<input type="file" name="photo">
-				</div>
-				<div class="name">
-					<select name="shareOption">
-						<option selected>기록 공유를 하시겠습니까?</option>
-						<option>예</option>
-						<option>아니오</option>
-					</select>
-				</div>
-				<div class="button">
-					<button type="button" onclick="signUpCheck()">등록하기</button>
-				</div>
+             	<div id="main">
+                 <form>
+                     <div class="flex-container2">
+                         <div id="subTitle">
+                             <p class="subTitle">____님 정보 수정</p>
+                         </div>
+                         <div id="loginBox">
+                             <div class="box">
+                                 <input type="text" class="inputId" id="id" maxlength="30" name="id"
+                                 placeholder="아이디"
+                                 onfocus="this.placeholder = ''" 
+                                 onblur="this.placeholder = '아이디'">
+                                 <p class="alert validId1"></p>
+                             </div>
+                             <div class="box">
+                                 <input type="password" class="inputPW" id="pswd1" maxlength="30" name="password"
+                                 placeholder="비밀번호"
+                                 onfocus="this.placeholder = ''" 
+                                 onblur="this.placeholder = '비밀번호'">
+                                 <p class="alert validpwd2"></p>
+                             </div>
+                             <div class="box">
+                                 <input type="text" class="inputPW" maxlength="30" name="nickname"
+                                 placeholder="닉네임"
+                                 onfocus="this.placeholder = ''" 
+                                 onblur="this.placeholder = '닉네임'">
+                             </div>
+                             <div class="box">
+                                 <input type="text" class="inputPW" maxlength="30" name="explanation"
+                                 placeholder="한줄소개"
+                                 onfocus="this.placeholder = ''" 
+                                 onblur="this.placeholder = '한줄소개'">
+                             </div>
+                             <div class="box">
+                                 <input type="text" class="inputPW" maxlength="30" name="personality"
+                                 placeholder="성격"
+                                 onfocus="this.placeholder = ''" 
+                                 onblur="this.placeholder = '성격'">
+                             </div>
+                             
+                         </div>
+                         <div><button type="button" id="update_btn" onclick="update_check();">정보 수정</button></div>
+                     </div>
+                 </form>
+             </div>
             </div>
         </div>
         

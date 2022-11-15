@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>회원가입</title>
+	<title>registerForm</title>
     <link rel="stylesheet" href="registerForm.css">
 </head>
 <body>
