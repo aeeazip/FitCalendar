@@ -115,6 +115,27 @@ public class RecordDao {
 		return null;
 	}
 
+	public int insertRecord(int recordId, String title, String creationDate, int totalTime, int category,
+			String routine, String diet, String photo, int shareOption, int exerciserId) {
+		String query = "insert into record (recordid, title, creationdate, totaltime, category, routine, diet, photo, shareoption, exerciserid)\r\n"
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { recordId, title, creationDate, totalTime, category, routine, diet, photo,
+				shareOption, exerciserId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			return result; // insert 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+
 	// 게시물의 primaryKey인 recordId 전달받아 해당 recordId의 게시물을 삭제하는 메소드
 	public int deleteRecord(int recordId) {
 		String query = "DELETE FROM record WHERE recordId = ?"; // JDBCUtil 에 query 문 설정
