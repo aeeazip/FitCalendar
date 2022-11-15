@@ -15,6 +15,5 @@
 		<input type="button" onclick="location='.jsp'" value = "">
 	</form>
 </div>
-
 </body>
 </html>
