@@ -18,6 +18,9 @@ public class RequestMapping {
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
      
         mappings.put("/mypage/profile/update", new UpdateProfileController());
+        
+        mappings.put("/mypage/delete/form", new ForwardController("/mypage/deleteForm.jsp"));
+        mappings.put("/mypage/delete", new DeleteExerciserController());
 
         logger.info("Initialized Request Mapping!");
     }
