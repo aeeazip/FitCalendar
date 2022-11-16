@@ -1,6 +1,7 @@
 package controller.exerciser;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -37,13 +38,14 @@ public class UpdateProfileController implements Controller{
 	    		request.setAttribute("point", exerciser.getPoint());
 	    		request.setAttribute("ranking", exerciser.getRanking());
 	    		request.setAttribute("useMatchSvc", exerciser.getUseMatchSvc());
+	    		request.setAttribute("maxMate", exerciser.getMaxMate());
 	    		return "/mypage/updateProfileForm.jsp";
 		    }	
 	    	// POST request (커뮤니티 정보가 parameter로 전송됨)
 			int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
 			int point = Integer.parseInt(request.getParameter("point"));
 			int ranking = Integer.parseInt("ranking");
-			int useMatchSvc = Integer.parseInt("useMatchSvc");
+			int maxMate = Integer.parseInt("maxMate");
 		
 			Exerciser exerciser = new Exerciser(exerciserId,
 					request.getParameter("id"),
@@ -53,7 +55,7 @@ public class UpdateProfileController implements Controller{
 					request.getParameter("speciality"),
 					request.getParameter("personality"),
 					request.getParameter("gender"),
-					point, ranking, useMatchSvc);
+					point, ranking, request.getParameter("useMatchSvc"), maxMate);
 
 	    	log.debug("Update Profile : {}", exerciser);
 

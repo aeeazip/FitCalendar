@@ -68,7 +68,7 @@ public class ExerciserDao {
 				int ranking = rs.getInt("ranking");
 				String useMatchSvc = rs.getString("useMatchSvc");
 				int maxMate = rs.getInt("maxMate");
-				
+
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
 						gender, point, ranking, useMatchSvc, maxMate);
 			}
@@ -164,7 +164,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	//profile 조회(exerciserID가 아닌 사용자 id로 조회할 예정)
 	public Exerciser findExerciserProfile(String id) {
 		Exerciser exerciser = null;
@@ -185,10 +185,11 @@ public class ExerciserDao {
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
 				int ranking = rs.getInt("ranking");
-				int useMatchSvc = rs.getInt("useMatchSvc");
+				String useMatchSvc = rs.getString("useMatchSvc");
+				int maxMate = rs.getInt("maxMate");
 
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc);
+						gender, point, ranking, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
@@ -198,7 +199,7 @@ public class ExerciserDao {
 		}
 		return null;
 	}
-	
+
 	//profile update 수행
 	public Exerciser updateExerciserProfile(Exerciser exerciser) {
 		Exerciser updateResult = new Exerciser();
@@ -210,10 +211,10 @@ public class ExerciserDao {
 		String speciality;
 		String personality;
 		String gender;
-		int useMatchSvc;
-		
+		String useMatchSvc;
+
 		exerciserId = exerciser.getExerciserId();
-		
+
 		id = exerciser.getId();
 		nickname = exerciser.getNickname();
 		password = exerciser.getPassword();
@@ -222,20 +223,20 @@ public class ExerciserDao {
 		personality = exerciser.getPersonality();
 		gender = exerciser.getGender();
 		useMatchSvc = exerciser.getUseMatchSvc();
-		
+
 		String query = " UPDATE exerciser "
 				+ "SET id = ?, nickname = ?, password = ?, explanation = ?, speciality = ?, personality = ?, gender = ?, useMatchSvc = ? "
 				+ " WHERE exerciserId = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { id, nickname, password, explanation, speciality, personality, gender,
 				useMatchSvc, exerciserId };
-		
+
 		jdbcUtil.setSqlAndParameters(query, param);
-		
+
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행
-			
+
 			if(result == 1)
-			return exerciser; // delete 에 의해 반영된 레코드 수 반환
+				return exerciser; // delete 에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();
@@ -243,7 +244,7 @@ public class ExerciserDao {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
-		
+
 		return null;
 	}
 }
