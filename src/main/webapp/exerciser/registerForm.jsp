@@ -6,11 +6,11 @@
 	<meta charset="EUC-KR">
 	<title>registerForm</title>
     <link rel="stylesheet" href="registerForm.css">
-    <link rel="stylesheet" href="frame.css">
+    <link rel="stylesheet" href="../frame.css">
 </head>
 
 
-<%@ include file="frameHeader.jsp" %>
+<%@ include file="../frameHeader.jsp" %>
 
    	<div id="main">
        <form>
@@ -104,4 +104,4 @@
    </div>
             
 
-<%@ include file="frameFooter.jsp" %>
+<%@ include file="../frameFooter.jsp" %>
