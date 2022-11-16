@@ -1,0 +1,185 @@
+@charset "EUC-KR";
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'NanumSquare', san-serif;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: white;
+   /* background-image: linear-gradient(rgb(89,208,255), rgb(255,255,255)); */
+}
+
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+
+/* 헤더 */
+.header {    
+    width: 100%;
+    height: 230px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* 로그인, 회원가입, 마이페이지 */
+#userMenu {
+    width: 100%;
+    margin: 0 auto;
+}
+#userMenu .list_menu {
+    float: right;
+}
+#userMenu * {
+    font-weight: 300;
+    font-size: 12px;
+    color: black;
+}
+ul {
+    display: block;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+}
+
+#userMenu .menu {
+    position: relative;
+    float: left;
+    z-index: 400;
+    margin-right: 15px;
+}
+#userMenu .link:hover{
+    color: #556B2F;
+    font-weight: 600;
+}
+#userMenu:after{
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 15px;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+/* gnb */
+.gnb_main {
+    width: 100%;
+    margin: 40px auto; 
+    margin-bottom: 0;
+    border-right: none;
+    border-left: none;
+    box-shadow: 0 1px 5px 0 #D3D3D3;
+}
+.gnb{
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+}
+.gnb li {
+    display: inline;
+    margin: 0 10px;
+}
+.gnb a {
+    display: inline-block;
+
+    width: 140px;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0;
+}
+.link:hover {
+    color: #556B2F;
+    font-weight: 800;
+}
+
+/* container */
+#wrapper .container {
+    width: 430px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+footer .container {
+    width: 970px;
+    margin: 30px auto;
+    padding: 0 65px;
+}
+
+.logo{
+    display: block;
+    width: 200px;
+    font-weight: 700;
+    margin: 0px auto;
+    margin-bottom: 0;
+    color: 	#556B2F; 
+}
+
+.subMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.subTitle{
+    position: relative;
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    color: black;
+}
+
+/*footer*/
+footer {
+    background-color: white;
+    color: #909090;
+
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+#wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+table {
+    width: 100%;
+}
+footer a {
+    color: #909090;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+#fit_footer {
+    font-size: 25px;
+    margin: 0;
+    font-weight: 600;
+}
+#from {
+    font-size: 12px;
+    font-weight: 500;
+}
+footer ul {
+    padding-inline-start: 100px;
+}
+footer td:nth-child(2) {
+    text-align: right;
+    font-size: 10px;
+}
+footer td p {
+    font-size: 10px;
+}
+#info {
+    padding: 20px 0;
+}
