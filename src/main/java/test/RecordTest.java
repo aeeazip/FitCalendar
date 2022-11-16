@@ -11,10 +11,10 @@ public class RecordTest {
 		// TODO Auto-generated method stub
 		RecordDao recordDao = new RecordDao();
 
-		Record r = recordDao.findRecord(2);
+		Record r = recordDao.findRecordDetails(2);
 		System.out.println(r.toString());
 
-		List<Record> list1 = recordDao.findMyRecords(1);
+		List<Record> list1 = recordDao.findRecordList(1);
 		List<Record> list2 = recordDao.findAllRecords();
 
 		System.out.println(list1.toString());
