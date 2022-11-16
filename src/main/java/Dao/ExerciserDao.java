@@ -32,10 +32,10 @@ public class ExerciserDao {
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
 				int ranking = rs.getInt("ranking");
-				int useMatchSvc = rs.getInt("useMatchSvc");
-
+				String useMatchSvc = rs.getString("useMatchSvc");
+				int maxMate = rs.getInt("maxMate");
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc);
+						gender, point, ranking, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
@@ -66,10 +66,11 @@ public class ExerciserDao {
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
 				int ranking = rs.getInt("ranking");
-				int useMatchSvc = rs.getInt("useMatchSvc");
-
+				String useMatchSvc = rs.getString("useMatchSvc");
+				int maxMate = rs.getInt("maxMate");
+				
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc);
+						gender, point, ranking, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
@@ -143,12 +144,12 @@ public class ExerciserDao {
 	}
 
 	public int updateExerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String speciality, String personality, String gender, int useMatchSvc) {
+			String speciality, String personality, String gender, String useMatchSvc, int maxMate) {
 		String query = " UPDATE exerciser "
-				+ "SET id = ?, nickname = ?, password = ?, explanation = ?, speciality = ?, personality = ?, gender = ?, useMatchSvc = ? "
+				+ "SET id = ?, nickname = ?, password = ?, explanation = ?, speciality = ?, personality = ?, gender = ?, useMatchSvc = ? , maxMate = ? "
 				+ " WHERE exerciserId = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { id, nickname, password, explanation, speciality, personality, gender,
-				useMatchSvc, exerciserId };
+				useMatchSvc, maxMate, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {

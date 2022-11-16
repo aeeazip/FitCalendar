@@ -11,7 +11,9 @@ public class Exerciser {
 	private String gender; // 성별
 	private int point; // 포인트
 	private int ranking; // 랭킹
-	private int useMatchSvc; // 매칭 시스템 허용 유무
+	private String useMatchSvc; // 매칭 시스템 허용 유무
+	private int maxMate; //최대 fitmate 수 설정
+	
 
 	public int getExerciserId() {
 		return exerciserId;
@@ -93,16 +95,24 @@ public class Exerciser {
 		this.ranking = ranking;
 	}
 
-	public int getUseMatchSvc() {
+	public String getUseMatchSvc() {
 		return useMatchSvc;
 	}
 
-	public void setUseMatchSvc(int useMatchSvc) {
+	public void setUseMatchSvc(String useMatchSvc) {
 		this.useMatchSvc = useMatchSvc;
 	}
 
+	public int getMaxMate() {
+		return maxMate;
+	}
+
+	public void setMaxMate(int maxMate) {
+		this.maxMate = maxMate;
+	}
+	
 	public Exerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String speciality, String personality, String gender, int point, int ranking, int useMatchSvc) {
+			String speciality, String personality, String gender, int point, int ranking, String useMatchSvc, int maxMate) {
 		super();
 		this.exerciserId = exerciserId;
 		this.id = id;
@@ -115,6 +125,13 @@ public class Exerciser {
 		this.point = point;
 		this.ranking = ranking;
 		this.useMatchSvc = useMatchSvc;
+		this.maxMate = maxMate;
+	}
+	public Exerciser(int exerciserId, String useMatchSvc, int maxMate) {
+		super();
+		this.exerciserId = exerciserId;
+		this.useMatchSvc = useMatchSvc;
+		this.maxMate = maxMate;
 	}
 
 	public Exerciser() {
@@ -127,7 +144,7 @@ public class Exerciser {
 		return "Exerciser [exerciserId=" + exerciserId + ", id=" + id + ", nickname=" + nickname + ", password="
 				+ password + ", explanation=" + explanation + ", speciality=" + speciality + ", personality="
 				+ personality + ", gender=" + gender + ", point=" + point + ", ranking=" + ranking + ", useMatchSvc="
-				+ useMatchSvc + "]";
+				+ useMatchSvc + ", maxMate=" + maxMate + "]";
 	}
 
 }

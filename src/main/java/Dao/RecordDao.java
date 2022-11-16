@@ -16,7 +16,7 @@ public class RecordDao {
 	}
 
 	// recordId로 Record 1개 조회
-	public Record findRecord(int recordId) {
+	public Record findRecordDetails(int recordId) {
 		Record record = null;
 		String query = "select * from record where recordId=?";
 		Object[] param = new Object[] { recordId };
@@ -48,7 +48,7 @@ public class RecordDao {
 	}
 
 	// exerciser가 작성한 모든 Record 조회
-	public List<Record> findMyRecords(int exerciserId) {
+	public List<Record> findRecordList(int exerciserId) {
 		String query = "select * from record where exerciserId=?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -176,4 +176,40 @@ public class RecordDao {
 		}
 		return 0;
 	}
+	
+	// 카테고리에 따라 전체 사용자의 전체 기록 조회 메소드
+	public List<Record> findRecordListByCategory(int category){
+		String query = "select * from record where category=?";
+		Object[] param = new Object[] { category };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+
+			List<Record> list = new ArrayList<Record>();
+			while (rs.next()) {
+				int recordId = rs.getInt("recordId");
+				String title = rs.getString("title");
+				String creationDate = rs.getString("creationDate");
+				int totalTime = rs.getInt("totalTime");
+				String routine = rs.getString("routine");
+				String diet = rs.getString("diet");
+				String photo = rs.getString("photo");
+				int shareOption = rs.getInt("shareOption");
+				int exerciserId = rs.getInt("exerciserId");
+
+				Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo,
+						shareOption, exerciserId);
+				list.add(record);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return null;
+	}
+	
+	
 }
