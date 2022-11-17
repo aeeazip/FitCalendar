@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.exerciser.*;
+import controller.Static.ViewAttendanceController;
+import controller.Static.ViewStaticController;
+import controller.ToExercise.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -23,6 +26,15 @@ public class RequestMapping {
         mappings.put("/mypage/delete", new DeleteExerciserController());
 
         mappings.put("/mypage/Attendance", new ForwardController("/mypage/checkAttendance.jsp"));
+        mappings.put("/mypage/checkAttendance", new ViewAttendanceController());
+        
+        mappings.put("/mypage/ToExercise", new ViewToExerciseController());
+        mappings.put("/mypage/ToExercise/add", new AddToExerciseController());
+        mappings.put("/mypage/ToExercise/check", new CheckToExerciseController());
+        mappings.put("/mypage/ToExercise/delete ", new DeleteToExerciseController());
+        
+        mappings.put("/mypage/Statics", new ViewStaticController());
+        mappings.put("/mypage/Statics", new ForwardController("/mypage/viewRoutineStatics.jsp"));
         
         logger.info("Initialized Request Mapping!");
     }
