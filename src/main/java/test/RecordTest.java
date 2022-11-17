@@ -2,8 +2,9 @@ package main.java.test;
 
 import java.util.List;
 
-import main.java.Dao.RecordDao;
-import main.java.Dto.Record;
+
+import main.java.Record.Dto.Record;
+import main.java.Record.Dao.RecordDao;
 
 public class RecordTest {
 
@@ -22,7 +23,7 @@ public class RecordTest {
 
 //		recordDao.deleteRecord(3);
 
-		int rslt = recordDao.insertRecord(4, "오운완", "2022-11-15", 2, 3, "등,어깨", "샌드위치", "사진", 1, 2);
+		int rslt = recordDao.insertRecord("오운완", "2022-11-15", 2, 3, "등,어깨", "샌드위치", "사진", 1, 2);
 		System.out.println(rslt);
 	}
 
