@@ -107,28 +107,32 @@ public class MatchingDao {
 	
 	/**
 	 * 매칭 거절 시, recommendList에서 상대 id 없애기 
+	 * @return 
 	 */
-	public void refuseRecommend(int myExerciserId, int yourExerciserId) {
+	public int refuseRecommend(int myExerciserId, int yourExerciserId) {
 		
 		String query = "DELETE FROM RecommendList WHERE exerciserId = ? AND (recomId1 = ? OR recomId2 = ? OR recomId3 = ?)";
 		Object[] param = new Object[] {myExerciserId, yourExerciserId, yourExerciserId, yourExerciserId};
 		jdbcUtil.setSqlAndParameters(query, param);
 		
 		try {
-			jdbcUtil.executeUpdate();
+			int result1 = jdbcUtil.executeUpdate();
 			jdbcUtil.close();
 			
 			Object[] param2 = new Object[] {yourExerciserId, myExerciserId, myExerciserId, myExerciserId};
 			
 			jdbcUtil.setSqlAndParameters(query, param2);
-			jdbcUtil.executeUpdate();
+			int result2 = jdbcUtil.executeUpdate();
+			
+			return result1 + result2;
 		} catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
-		}	
+		}
+		return 0;	
 	}
 	
 	/**
@@ -166,6 +170,7 @@ public class MatchingDao {
 	public int notifyMatching(int myExerciserId, int yourExerciserId) {
 		return 0;
 	}
+	
 	/**
 	 * 매칭 수락 시, matchingStatus의 status 1(accept)로 수정.  matchingComplete(myExerciserId, yourExerciserId)
 	 */
