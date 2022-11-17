@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.Matching.Dto.RecommendList;
+import main.java.Record.Dto.Record;
 import main.java.Utils.JDBCUtil;
 
 
@@ -125,6 +126,6 @@ public class RecommendDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return 0;	
-	}	
+	}
 		
 }
