@@ -133,6 +133,10 @@ public class Exerciser {
 		this.useMatchSvc = useMatchSvc;
 		this.maxMate = maxMate;
 	}
+	public Exerciser(String useMatchSvc) {
+		super();
+		this.useMatchSvc = useMatchSvc;
+	}
 
 	public Exerciser() {
 		super();

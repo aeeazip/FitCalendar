@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: inwoo
 Build-Jdk: 16.0.2
+=======
+Built-By: yhj06
+Build-Jdk: 1.8.0_301
+>>>>>>> bb446c57c9aa8c0cf53d8fca60ffcbcb15ec93bd
 Created-By: Maven Integration for Eclipse
 
