@@ -1,71 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
-	<title>updateProfileForm</title>
-	<link rel="stylesheet" href="updateProfileForm.css">
-	<link rel="stylesheet" href="../frame.css">
+<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>updateProfileForm</title>
+<link rel="stylesheet" href="updateProfileForm.css">
 </head>
+<body>
+	<form name="updateProfileForm" method="POST"
+		action="<c:url value='/mypage/profile/update' />">
+		<!-- 2. í•„ë“œ -->
+		<div class="field">
+			<b>ì•„ì´ë””</b> <span class="placehold-text"><input type="text"
+				value="${exerciser.id}"></span>
+		</div>
+		<div class="field">
+			<b>ë¹„ë°€ë²ˆí˜¸</b> <input class="userpw" type="password"
+				value="${exerciser.password}">
+		</div>
+		<div class="field">
+			<b>ë¹„ë°€ë²ˆí˜¸ ì¬í™•ì¸</b> <input class="userpw-confirm" type="password">
+		</div>
+		<div class="field">
+			<b>ë‹‰ë„¤ì„</b> <input type="text" value="${exerciser.nickname}">
+		</div>
 
-<%@ include file="../frameHeader.jsp" %>
+		<div class="field">
+			<b>í•œì¤„ ì†Œê°œ</b> <input type="text" value="${exerciser.explanation}">
+		</div>
 
-				<div id="main">
-					<form>
-						<div class="flex-container2">
-							<div id="subTitle">
-								<p class="subTitle">____´Ô Á¤º¸ ¼öÁ¤</p>
-							</div>
-							<div id="loginBox">
-								<div class="box">
-									<input type="text" class="inputId" id="id" maxlength="30"
-										name="id" placeholder="¾ÆÀÌµğ" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '¾ÆÀÌµğ'">
-									<p class="alert validId1"></p>
-								</div>
-								<div class="box">
-									<input type="password" class="inputPW" id="pswd1"
-										maxlength="30" name="password" placeholder="ºñ¹Ğ¹øÈ£"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'ºñ¹Ğ¹øÈ£'">
-									<p class="alert validpwd2"></p>
-								</div>
-								<div class="box">
-									<input type="text" class="inputPW" maxlength="30"
-										name="nickname" placeholder="´Ğ³×ÀÓ"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '´Ğ³×ÀÓ'">
-								</div>
-								<div class="box">
-									<input type="text" class="inputPW" maxlength="30"
-										name="explanation" placeholder="ÇÑÁÙ¼Ò°³"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'ÇÑÁÙ¼Ò°³'">
-								</div>
-								<div class="box">
-									<input type="text" class="inputPW" maxlength="30"
-										name="personality" placeholder="¼º°İ"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = '¼º°İ'">
-								</div>
+		<div class="field">
+			<b>ìš´ë™ ì£¼ì¢…ëª©</b> <input type="text" value="${exerciser.speciality}">
+		</div>
 
-								<div class="box">
-									<p>Do you want to use Matching Service?</p>
-									<input type="radio" id="t" name="t" value="1" checked> 
-									yes<br>
-									<input type="radio" id="f" name="f" value="0"> 
-									no<br>
-								</div>
+		<div class="field">
+			<b>ì„±ê²©</b> <input type="text" value="${exerciser.personality}">
+		</div>
 
-							</div>
-							<div>
-								<button type="button" id="update_btn" onclick="update_check();">Á¤º¸
-									¼öÁ¤</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				
-				
-<%@ include file="../frameFooter.jsp" %>
+		<div class="field gender">
+			<b>ì„±ë³„</b>
+			<div>
+				<label><input type="radio" name="gender">ë‚¨ì</label> <label><input
+					type="radio" name="gender">ì—¬ì</label>
+			</div>
+		</div>
+
+		<div class="field gender">
+			<b>Do you want to use Matching Service?</b>
+			<div>
+				<label><input type="radio" name="userMatchSvc">Yes</label> <label><input
+					type="radio" name="useMatchSvc">No</label>
+			</div>
+		</div>
+		<!-- 6. ê°€ì…í•˜ê¸° ë²„íŠ¼ -->
+		<input type="submit" value="ê°€ì…í•˜ê¸°">
+	</form>
+</body>
+</html>
