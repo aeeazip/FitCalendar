@@ -12,8 +12,7 @@ public class Exerciser {
 	private int point; // 포인트
 	private int ranking; // 랭킹
 	private String useMatchSvc; // 매칭 시스템 허용 유무
-	private int maxMate; //최대 fitmate 수 설정
-	
+	private int maxMate; // 최대 fitmate 수 설정
 
 	public int getExerciserId() {
 		return exerciserId;
@@ -110,9 +109,10 @@ public class Exerciser {
 	public void setMaxMate(int maxMate) {
 		this.maxMate = maxMate;
 	}
-	
+
 	public Exerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String speciality, String personality, String gender, int point, int ranking, String useMatchSvc, int maxMate) {
+			String speciality, String personality, String gender, int point, int ranking, String useMatchSvc,
+			int maxMate) {
 		super();
 		this.exerciserId = exerciserId;
 		this.id = id;
@@ -127,12 +127,27 @@ public class Exerciser {
 		this.useMatchSvc = useMatchSvc;
 		this.maxMate = maxMate;
 	}
+
+// register 시 사용할 생성자
+	public Exerciser(String id, String password, String nickname, String explanation, String personality,
+			String speciality, String gender) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.nickname = nickname;
+		this.explanation = explanation;
+		this.personality = personality;
+		this.speciality = speciality;
+		this.gender = gender;
+	}
+
 	public Exerciser(int exerciserId, String useMatchSvc, int maxMate) {
 		super();
 		this.exerciserId = exerciserId;
 		this.useMatchSvc = useMatchSvc;
 		this.maxMate = maxMate;
 	}
+
 	public Exerciser(String useMatchSvc) {
 		super();
 		this.useMatchSvc = useMatchSvc;
