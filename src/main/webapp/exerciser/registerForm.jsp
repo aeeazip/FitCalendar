@@ -13,7 +13,7 @@
 <%@ include file="../frameHeader.jsp" %>
 
    	<div id="main">
-       <form >
+       <form>
            <div class="flex-container2">
                <div id="subTitle">
                    <p class="subTitle">회원가입</p>

@@ -115,8 +115,6 @@ public class RecordDao {
 		}
 		return null;
 	}
-	
-	
 	 
 	public int insertRecord(String title, String creationDate, int totalTime, int category,
 			String routine, String diet, String photo, int shareOption, int exerciserId) {
