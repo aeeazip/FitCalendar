@@ -62,7 +62,7 @@ public class UpdateProfileController implements Controller{
 			exerciserManager manager = exerciserManager.getInstance();
 			manager.updateExerciserProfile(exerciser);
 			
-	        return "redirect:/mypage/profile";			
+	        return "redirect:/mypage/profile/update";			
 	    }
 
 }
