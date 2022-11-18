@@ -1,4 +1,4 @@
-package main.java.Dto;
+package main.java.Record.Dto;
 
 public class Record {
 	int recordId;
@@ -16,6 +16,20 @@ public class Record {
 			String diet, String photo, int shareOption, int exerciserId) {
 		super();
 		this.recordId = recordId;
+		this.title = title;
+		this.creationDate = creationDate;
+		this.totalTime = totalTime;
+		this.category = category;
+		this.routine = routine;
+		this.diet = diet;
+		this.photo = photo;
+		this.shareOption = shareOption;
+		this.exerciserId = exerciserId;
+	}
+	
+	public Record(String title, String creationDate, int totalTime, int category, String routine,
+			String diet, String photo, int shareOption, int exerciserId) {
+		super();
 		this.title = title;
 		this.creationDate = creationDate;
 		this.totalTime = totalTime;

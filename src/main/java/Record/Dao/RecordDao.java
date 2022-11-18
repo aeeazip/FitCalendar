@@ -1,10 +1,11 @@
-package main.java.Dao;
+package main.java.Record.Dao;
 
 import java.sql.ResultSet;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.Dto.Record;
+import main.java.Record.Dto.Record;
 import main.java.Utils.JDBCUtil;
 
 public class RecordDao {
@@ -114,17 +115,22 @@ public class RecordDao {
 		}
 		return null;
 	}
-
-	public int insertRecord(int recordId, String title, String creationDate, int totalTime, int category,
+	
+	
+	 
+	public int insertRecord(String title, String creationDate, int totalTime, int category,
 			String routine, String diet, String photo, int shareOption, int exerciserId) {
 		String query = "insert into record (recordid, title, creationdate, totaltime, category, routine, diet, photo, shareoption, exerciserid)\r\n"
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { recordId, title, creationDate, totalTime, category, routine, diet, photo,
+				+ "values (RECORDIDSEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { title, creationDate, totalTime, category, routine, diet, photo,
 				shareOption, exerciserId };
+		String key[] = {"recordid"};
+		
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
-			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			int result = jdbcUtil.executeUpdate(key);     // insert 문 실행
+			ResultSet rs = jdbcUtil.getGeneratedKeys();    // 생성된 PK 값을 포함한 result set 객체 반환
 			return result; // insert 에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();

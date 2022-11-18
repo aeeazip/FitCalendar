@@ -1,11 +1,13 @@
 package main.java.Utils;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.util.Properties;
 import javax.sql.DataSource;
 import java.sql.*;
 import org.apache.commons.dbcp2.BasicDataSource;
+
 
 public class JDBCUtil {
 	private String sql = null; // 실행할 query
@@ -41,9 +43,9 @@ public class JDBCUtil {
 			if (ds == null) { // DBCP 설정
 				BasicDataSource bds = new BasicDataSource();
 				bds.setDriverClassName(prop.getProperty("db.driver"));
-		        bds.setUrl(prop.getProperty("db.url"));
-		        bds.setUsername(prop.getProperty("db.username"));
-		        bds.setPassword(prop.getProperty("db.password"));     
+				bds.setUrl(prop.getProperty("db.url"));
+				bds.setUsername(prop.getProperty("db.username"));
+				bds.setPassword(prop.getProperty("db.password"));     
 				ds = bds;
 			}
 		} catch (Exception ex) {
@@ -233,5 +235,40 @@ public class JDBCUtil {
 		System.out.println("NumIdle: " + bds.getNumIdle());
 	}
 
-	
+	// PK 컬럼의 값(들)을 포함하는 ResultSet 객체 구하기
+	public ResultSet getGeneratedKeys() {
+		try {
+			return pstmt.getGeneratedKeys();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	// PK 컬럼 이름 배열을 이용하여 PreparedStatement를 생성 
+	 private PreparedStatement getPreparedStatement(String[] columnNames) throws SQLException {
+	   if (conn == null) {
+	      conn = ds.getConnection();
+	      conn.setAutoCommit(false);
+	   }
+	   if (pstmt != null) pstmt.close();
+	   pstmt = conn.prepareStatement(sql, columnNames);
+	   return pstmt;
+	 }
+	 
+	// 위 메소드를 이용하여 PreparedStatement 를 생성한 후 executeUpdate 실행
+	 public int executeUpdate(String[] columnNames) throws SQLException, Exception {
+	  pstmt = getPreparedStatement(columnNames);    // 위 메소드를 호출
+	  int parameterSize = getParameterSize();
+	  for (int i = 0; i < parameterSize; i++) {
+	   if (getParameter(i) == null) { // 매개변수 값이 널이 부분이 있을 경우
+	     pstmt.setString(i + 1, null);
+	   } else {
+	     pstmt.setObject(i + 1, getParameter(i));
+	   }
+	  }
+	  return pstmt.executeUpdate();
+	 }
+
+
 }
