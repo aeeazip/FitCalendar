@@ -6,6 +6,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.Record.AllRecordController;
+import controller.Record.DeleteRecordController;
+import controller.Record.ListRecordController;
+import controller.Record.RecordDetailController;
+import controller.Record.UpdateRecordController;
+import controller.Record.WriteRecordController;
 import controller.Static.ViewAttendanceController;
 import controller.Static.ViewStaticController;
 import controller.ToExercise.AddToExerciseController;
@@ -42,6 +48,15 @@ public class RequestMapping {
 		mappings.put("/mypage/Statics", new ViewStaticController());
 		mappings.put("/mypage/Statics", new ForwardController("/mypage/viewRoutineStatics.jsp"));
 
+		// Record 관련 요청
+		mappings.put("/myRecord/write", new WriteRecordController());
+		mappings.put("/myRecord/list", new ListRecordController());
+		mappings.put("/myRecord/list/detail", new RecordDetailController());
+		mappings.put("/myRecord/list/detail/update", new UpdateRecordController());
+		mappings.put("/myRecord/list/detail/delete", new DeleteRecordController());
+		mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
+		mappings.put("/allRecord/list", new AllRecordController());
+		mappings.put("/allRecord/list/detail", new RecordDetailController());
 		logger.info("Initialized Request Mapping!");
 	}
 
