@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: cheaw
 Build-Jdk: 17.0.3
+=======
+Built-By: 82104
+Build-Jdk: 14
+>>>>>>> c31505c84f3d001dec6055bfcca7a7e9e91078ab
 Created-By: Maven Integration for Eclipse
 
