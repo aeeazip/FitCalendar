@@ -33,6 +33,7 @@ public class UpdateRecordController implements Controller{
     		request.setAttribute("record", record);
 					
 			exerciserManager exMgr = exerciserManager.getInstance();
+			// record의 int형 exerciserId로 String id값을 가져와야 함.
 			Exerciser exerciser = exMgr.findExerciser(record.getExerciserId());
 			
 			HttpSession session = request.getSession();	
