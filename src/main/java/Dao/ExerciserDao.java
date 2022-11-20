@@ -104,12 +104,11 @@ public class ExerciserDao {
 	}
 
 	// exerciser 계정 생성 -> DB에 exerciser 정보 생성
-	public int insertExerciser(int exerciserId, String password, String nickname, String explanation, String speciality,
+	public int insertExerciser(String password, String nickname, String explanation, String speciality,
 			String personality, String gender, String id) {
 		String query = "insert into exerciser (exerciserid, password, nickname, explanation, speciality, personality, gender, id) \r\n"
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { exerciserId, password, nickname, explanation, speciality, personality, gender,
-				id };
+				+ "values (EXERCISERIDSEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { password, nickname, explanation, speciality, personality, gender, id };
 		jdbcUtil.setSqlAndParameters(query, param);
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
@@ -123,7 +122,6 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-
 
 	public int updateExerciser(int exerciserId, String id, String nickname, String password, String explanation,
 			String speciality, String personality, String gender, String useMatchSvc, int maxMate) {
@@ -147,7 +145,7 @@ public class ExerciserDao {
 		return 0;
 	}
 
-	//profile 조회(exerciserID가 아닌 사용자 id로 조회할 예정)
+	// profile 조회(exerciserID가 아닌 사용자 id로 조회할 예정)
 	public Exerciser findExerciserProfile(String id) {
 		Exerciser exerciser = null;
 		String query = "select * from exerciser where id=?";
@@ -182,13 +180,13 @@ public class ExerciserDao {
 		return null;
 	}
 
-	//profile update 수행
+	// profile update 수행
 	public Exerciser updateExerciserProfile(Exerciser exerciser) {
 		Exerciser updateResult = new Exerciser();
 		int exerciserId;
 		String id;
 		String nickname;
-		String password; 
+		String password;
 		String explanation;
 		String speciality;
 		String personality;
@@ -217,7 +215,7 @@ public class ExerciserDao {
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행
 
-			if(result == 1)
+			if (result == 1)
 				return exerciser; // delete 에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();
@@ -230,12 +228,12 @@ public class ExerciserDao {
 		return null;
 	}
 
-	//계정 삭제(id로 삭제)
+	// 계정 삭제(id로 삭제)
 	public int deleteExerciser(String deleteId) {
 		String query = "DELETE FROM exerciser WHERE id = ?"; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId };
 		jdbcUtil.setSqlAndParameters(query, param);
-		
+
 		try {
 			int result = jdbcUtil.executeUpdate(); // delete 문 실행
 			return result; // delete 에 의해 반영된 레코드 수 반환
