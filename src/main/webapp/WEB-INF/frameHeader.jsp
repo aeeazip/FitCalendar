@@ -22,7 +22,7 @@
                 <!-- ·Î°í -->
                 <div id="headerLogo" class="layout-wrapper">
                     <h1 class="logo">
-                        <a class="link_main" href="../main.jsp">
+                        <a class="link_main" href="../html/main.html">
                             <p class="logo">Fit Calendar</p>
                         </a>
                     </h1>
