@@ -22,7 +22,8 @@ public class RegisterController implements Controller {
 				request.getParameter("speciality"), request.getParameter("personality"),
 				request.getParameter("gender"));
 
-		return null;
+		return "main/main.jsp";
+//		login 만들고 로그인 페이지로 가도록 수정하기
 	}
 
 }
