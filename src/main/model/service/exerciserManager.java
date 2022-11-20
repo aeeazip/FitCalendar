@@ -42,5 +42,9 @@ public class exerciserManager {
 
 		return 0;
 	}
+	
+	public Exerciser findExerciserById(int exerciserId) {
+		return exerciserDao.findExerciser(exerciserId);
+	}
 
 }

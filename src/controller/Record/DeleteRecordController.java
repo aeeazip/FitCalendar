@@ -29,7 +29,7 @@ public class DeleteRecordController implements Controller{
 		Record record = manager.findRecordDetails(recordId); // recordId로 사용자가 작성한 Record 정보를 가져온다
 		
 		exerciserManager exMgr = exerciserManager.getInstance();
-		Exerciser exerciser = exMgr.findExerciser(record.getExerciserId());
+		Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
 		
 		HttpSession session = request.getSession();	
 		if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getId())) {

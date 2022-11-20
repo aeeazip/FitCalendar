@@ -34,7 +34,7 @@ public class UpdateRecordController implements Controller{
 					
 			exerciserManager exMgr = exerciserManager.getInstance();
 			// record의 int형 exerciserId로 String id값을 가져와야 함.
-			Exerciser exerciser = exMgr.findExerciser(record.getExerciserId());
+			Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
 			
 			HttpSession session = request.getSession();	
 			if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getId())) {
