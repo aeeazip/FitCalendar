@@ -87,6 +87,19 @@ public class Inbody {
 		this.exerciserId = exerciserId;
 	}
 
+	// register 시 사용할 생성자
+	public Inbody(int height, int weight, int percentBodyFat, int skeletalMM, int visceralFat, String measureDate,
+			int exerciserId) {
+		super();
+		this.height = height;
+		this.weight = weight;
+		this.percentBodyFat = percentBodyFat;
+		this.skeletalMM = skeletalMM;
+		this.visceralFat = visceralFat;
+		this.measureDate = measureDate;
+		this.exerciserId = exerciserId;
+	}
+
 	public Inbody() {
 		super();
 		// TODO Auto-generated constructor stub

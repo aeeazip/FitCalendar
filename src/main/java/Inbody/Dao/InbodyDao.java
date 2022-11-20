@@ -9,11 +9,11 @@ public class InbodyDao {
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 	}
 
-	// Inbody 정보 추가
-	public int insertInbody(int inbodyId, int height, int weight, int percentBodyFat, int skeletalMM, int visceralFat,
+	// 인바디 정보 추가
+	public int insertInbody(int height, int weight, int percentBodyFat, int skeletalMM, int visceralFat,
 			String measureDate, int exerciserId) {
-		String query = "insert into inbody values(?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { inbodyId, height, weight, percentBodyFat, skeletalMM, visceralFat, measureDate,
+		String query = "insert into inbody values(INBODYIDSEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { height, weight, percentBodyFat, skeletalMM, visceralFat, measureDate,
 				exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 		try {
