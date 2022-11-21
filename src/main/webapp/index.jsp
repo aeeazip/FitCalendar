@@ -1,10 +1,5 @@
 <html>
 <body>
-<h2>
-Hello World!
-git test test
-hi hello
-hojeong
-</h2>
+<h2>Hello World! 호정 하이</h2>
 </body>
 </html>

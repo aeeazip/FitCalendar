@@ -1,5 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+ <%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
  </div>
         </div>
         
@@ -11,15 +11,15 @@
                         <div class="col-sm-4 col-md-3 item">
                             <td>
                                 <p id="fit_footer">Fit Calendar</p>
-                                <a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a>&nbsp;<a href="#">ÀÌ¿ë¾à°ü</a>&nbsp;<a href="#">Á¦ÈÞ¹®ÀÇ</a>
-                                <p id="from">µ¿´ö¿©´ë&nbsp;&nbsp;µ¥ÀÌÅÍº£ÀÌ½ºÇÁ·Î±×·¡¹Ö</p></td>
+                                <a href="#">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</a>&nbsp;<a href="#">ì´ìš©ì•½ê´€</a>&nbsp;<a href="#">ì œíœ´ë¬¸ì˜</a>
+                                <p id="from">ë™ë•ì—¬ëŒ€&nbsp;&nbsp;ë°ì´í„°ë² ì´ìŠ¤í”„ë¡œê·¸ëž˜ë°</p></td>
                         </div>
                         <div class="col-sm-4 col-md-3 item">
                             <td>
                                 <ul>
                                     <p id="info">
-                                    ¼­ºñ½º¸í: Fit Calendar / ¾çÇýÁö ¿ÀÀÎ¿ì Á¤Ã¤¿ø ÇÑÈ£Á¤ / 8»öÁ¶
-                                    <br>°³ÀÎÁ¤º¸ º¸È£ Ã¥ÀÓÀÚ: ÇÑÈ£Á¤ / Email: hojeong2747@gmail.com</p>
+                                    ì„œë¹„ìŠ¤ëª…: Fit Calendar / ì–‘í˜œì§€ ì˜¤ì¸ìš° ì •ì±„ì› í•œí˜¸ì • / 8ìƒ‰ì¡°
+                                    <br>ê°œì¸ì •ë³´ ë³´í˜¸ ì±…ìž„ìž: í•œí˜¸ì • / Email: hojeong2747@gmail.com</p>
                                     <p>COPYRIGHT (C) ALL RIGHTS RESERVED</p>
                                 </ul>
                             </td>

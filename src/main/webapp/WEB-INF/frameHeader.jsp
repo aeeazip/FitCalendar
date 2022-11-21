@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <body>
 	<div class="flex-container">
@@ -7,43 +7,43 @@
             <!-- header -->
             <div class="header">
                 
-                <!-- ∑Œ±◊¿Œ, »∏ø¯∞°¿‘ -->
+                <!-- Î°úÍ∑∏Ïù∏, ÌöåÏõêÍ∞ÄÏûÖ -->
                 <div id="userMenu">
                     <ul class="list_menu">
                         <li class="menu menu_login">
-                            <a class="link link_login" href="../html/login.html">∑Œ±◊¿Œ</a>
+                            <a class="link link_login" href="../html/login.html">Î°úÍ∑∏Ïù∏</a>
                         </li>
                         <li class="menu menu_join">
-                            <a class="link link_join" href="#">»∏ø¯∞°¿‘</a>
+                            <a class="link link_join" href="#">ÌöåÏõêÍ∞ÄÏûÖ</a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- ∑Œ∞Ì -->
+                <!-- Î°úÍ≥† -->
                 <div id="headerLogo" class="layout-wrapper">
                     <h1 class="logo">
-                        <a class="link_main" href="../html/main.html">
+                        <a class="link_main" href="../main.jsp">
                             <p class="logo">Fit Calendar</p>
                         </a>
                     </h1>
                 </div>
 
-                <!-- ∏ﬁ¥∫πŸ -->
+                <!-- Î©îÎâ¥Î∞î -->
                 <div class="gnb_main">
                     <ul class="gnb">
                         <li class="menu1">
-                            <a href="" class="link all" >≥™¿« ±‚∑œ</a>
+                            <a href="" class="link all" >ÎÇòÏùò Í∏∞Î°ù</a>
                         <li class="menu2">
-                            <a href="#" class="link new">øÓµø ±‚∑œ</a>
+                            <a href="#" class="link new">Ïö¥Îèô Í∏∞Î°ù</a>
                         </li>
                         <li class="menu3">
                             <a href="#" class="link best">Fit Mate</a>
                         </li>
                         <li class="menu4">
-                            <a href="#" class="link bargain">√ﬂ√µ/∏≈ƒ™</a>
+                            <a href="#" class="link bargain">Ï∂îÏ≤ú/Îß§Ïπ≠</a>
                         </li>
                         <li class="menu5">
-                            <a href="#" class="link event">∏∂¿Ã∆‰¿Ã¡ˆ</a>
+                            <a href="#" class="link event">ÎßàÏù¥ÌéòÏù¥ÏßÄ</a>
                         </li>
                     </ul>
                 </div>
