@@ -1,10 +1,8 @@
-package main.java.test;
+package test;
 
 import java.util.List;
 
-
-import main.java.Record.Dto.Record;
-import main.java.Record.Dao.RecordDao;
+import model.dao.RecordDao;
 
 public class RecordTest {
 

@@ -1,6 +1,6 @@
-package main.java.test;
+package test;
 
-import main.java.Dao.ExerciserDao;
+import model.dao.ExerciserDao;
 
 public class ExerciserTest {
 
