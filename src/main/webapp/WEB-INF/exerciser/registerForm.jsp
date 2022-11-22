@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>registerForm</title>
     <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
-    <link rel="stylesheet" href="<c:url value='/css/frame.css/css/registerForm.css' />" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/css/registerForm.css' />" type="text/css">
         <script type="text/javascript">
     	function userCreate() {
     		if(form.id.value == "") {
