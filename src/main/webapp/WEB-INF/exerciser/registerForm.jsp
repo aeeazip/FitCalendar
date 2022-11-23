@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head> 
@@ -66,7 +67,7 @@
 <%@ include file="../frameHeader.jsp" %>
 
    	<div id="main">
-       <form name="form" method="POST" action="/exerciser/register">
+       <form name="form" method="POST" action="<c:url value='/exerciser/register' />">
            <div class="flex-container2">
                <div id="subTitle">
                    <p class="subTitle">회원가입</p>
@@ -107,10 +108,10 @@
                    <div class="box">
                    	<div class="inputS">주로 하는 운동 종목</div>
                    	<select name="speciality" class="Stype">
-                   		<option selected value="1">헬스</option>
-                   		<option value="2">요가/필라테스</option>
-                   		<option value="3">러닝</option>
-                   		<option value="4">기타</option>
+                   		<option selected value="헬스">헬스</option>
+                   		<option value="요가/필라테스">요가/필라테스</option>
+                   		<option value="러닝">러닝</option>
+                   		<option value="기타">기타</option>
                    	</select>
                    </div>
                    <div class="box">

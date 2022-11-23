@@ -1,10 +1,8 @@
 package model.dao;
 
-
 import java.sql.ResultSet;
 
 import model.Exerciser;
-
 
 public class ExerciserDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
@@ -105,11 +103,11 @@ public class ExerciserDao {
 	}
 
 	// exerciser 계정 생성 -> DB에 exerciser 정보 생성
-	public int insertExerciser(String password, String nickname, String explanation, String speciality,
-			String personality, String gender, String id) {
-		String query = "insert into exerciser (exerciserid, password, nickname, explanation, speciality, personality, gender, id) \r\n"
+	public int insertExerciser(String password, String nickname, String explanation, String personality,
+			String speciality, String gender, String id) {
+		String query = "insert into exerciser (exerciserid, password, nickname, explanation, personality, speciality, gender, id) \r\n"
 				+ "values (EXERCISERIDSEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { password, nickname, explanation, speciality, personality, gender, id };
+		Object[] param = new Object[] { password, nickname, explanation, personality, speciality, gender, id };
 		jdbcUtil.setSqlAndParameters(query, param);
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행

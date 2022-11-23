@@ -3,6 +3,8 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import controller.exerciser.RegisterController;
+
 public class RequestMapping {
 //	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
 
@@ -12,6 +14,7 @@ public class RequestMapping {
 	public void initMapping() {
 		mappings.put("/", new ForwardController("/index.jsp"));
 		mappings.put("/test", new ForwardController("/j.jsp"));
+		mappings.put("/main", new ForwardController("/main.jsp"));
 
 		mappings.put("/exerciser/register", new RegisterController());
 		/*
