@@ -111,7 +111,7 @@ public class Exerciser {
 	}
 
 	public Exerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String speciality, String personality, String gender, int point, int ranking, String useMatchSvc,
+			String personality, String speciality, String gender, int point, int ranking, String useMatchSvc,
 			int maxMate) {
 		super();
 		this.exerciserId = exerciserId;
@@ -119,8 +119,8 @@ public class Exerciser {
 		this.nickname = nickname;
 		this.password = password;
 		this.explanation = explanation;
-		this.speciality = speciality;
 		this.personality = personality;
+		this.speciality = speciality;
 		this.gender = gender;
 		this.point = point;
 		this.ranking = ranking;
