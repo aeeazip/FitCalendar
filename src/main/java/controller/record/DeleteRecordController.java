@@ -13,7 +13,7 @@ import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
 import model.Record;
 import model.service.RecordManager;
-import model.service.exerciserManager;
+import model.service.ExerciserManager;
 
 public class DeleteRecordController implements Controller {
 
@@ -28,7 +28,7 @@ public class DeleteRecordController implements Controller {
 		RecordManager manager = RecordManager.getInstance();
 		Record record = manager.findRecordDetails(recordId); // recordId로 사용자가 작성한 Record 정보를 가져온다
 
-		exerciserManager exMgr = exerciserManager.getInstance();
+		ExerciserManager exMgr = ExerciserManager.getInstance();
 		Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
 
 		HttpSession session = request.getSession();

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Exerciser;
-import model.service.exerciserManager;
+import model.service.ExerciserManager;
 
 public class UpdateProfileController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(UpdateProfileController.class);
@@ -20,7 +20,7 @@ public class UpdateProfileController implements Controller {
 
 		if (request.getMethod().equals("GET")) {
 			// GET request: 커뮤니티 수정 form 요청
-			exerciserManager manager = exerciserManager.getInstance();
+			ExerciserManager manager = ExerciserManager.getInstance();
 			Exerciser exerciser = manager.findExerciserProfile(id);
 
 			request.setAttribute("exerciserId", exerciser.getExerciserId());
@@ -50,7 +50,7 @@ public class UpdateProfileController implements Controller {
 
 		log.debug("Update Profile : {}", exerciser);
 
-		exerciserManager manager = exerciserManager.getInstance();
+		ExerciserManager manager = ExerciserManager.getInstance();
 		manager.updateExerciserProfile(exerciser);
 
 		return "redirect:/mypage/profile/update";

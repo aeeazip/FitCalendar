@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Exerciser;
-import model.service.exerciserManager;
+import model.service.ExerciserManager;
 
 public class DeleteExerciserController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(DeleteExerciserController.class);
@@ -20,7 +20,7 @@ public class DeleteExerciserController implements Controller {
 		String deletePwd = request.getParameter("exerciserPwd");
 		log.debug("Delete User : {}", deleteId);
 
-		exerciserManager manager = exerciserManager.getInstance();
+		ExerciserManager manager = ExerciserManager.getInstance();
 		HttpSession session = request.getSession();
 
 		if ((ExerciserSessionUtils.isLoginUser("admin", session) && // 로그인한 사용자가 관리자이고

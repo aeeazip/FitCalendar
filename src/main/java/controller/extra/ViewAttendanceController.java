@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import model.CompareStatic;
 import model.Exerciser;
-import model.service.exerciserManager;
-import model.service.staticManager;
+import model.service.ExerciserManager;
+import model.service.StaticManager;
 
 public class ViewAttendanceController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(ViewAttendanceController.class);
@@ -23,8 +23,8 @@ public class ViewAttendanceController implements Controller {
 		String checkId = request.getParameter("exerciserId");
 		CompareStatic c_static;
 
-		staticManager s_manager = staticManager.getInstance();
-		exerciserManager e_manager = exerciserManager.getInstance();
+		StaticManager s_manager = StaticManager.getInstance();
+		ExerciserManager e_manager = ExerciserManager.getInstance();
 
 		Exerciser exerciser = e_manager.findExerciser(checkId);
 

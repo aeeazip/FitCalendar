@@ -4,9 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.Matching.Dto.RecommendList;
-import main.java.Record.Dto.Record;
-import main.java.Utils.JDBCUtil;
+import model.RecommendList;
 
 
 public class RecommendDao {

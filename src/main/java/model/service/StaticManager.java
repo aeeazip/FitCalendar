@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 import model.CompareStatic;
 import model.ToExercise;
-import model.dao.staticDao;
+import model.dao.StaticDao;
 
-public class staticManager {
-	private static staticManager manager = new staticManager();
-	private staticDao staticDao;
+public class StaticManager {
+	private static StaticManager manager = new StaticManager();
+	private StaticDao staticDao;
 
-	private staticManager() {
+	private StaticManager() {
 		try {
-			staticDao = new staticDao();
+			staticDao = new StaticDao();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static staticManager getInstance() {
+	public static StaticManager getInstance() {
 		return manager;
 	}
 

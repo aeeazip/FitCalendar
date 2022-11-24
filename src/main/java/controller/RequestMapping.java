@@ -5,6 +5,8 @@ import java.util.Map;
 
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
+import controller.matching.MatchingStartController;
+import controller.matching.UpdateMaxMateController;
 
 public class RequestMapping {
 //	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -18,6 +20,11 @@ public class RequestMapping {
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
+		
+
+		mappings.put("/matching/startMatching", new MatchingStartController());
+		mappings.put("/matching/setMate", new UpdateMaxMateController());
+		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 

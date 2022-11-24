@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.Dto.Exerciser;
+import model.Exerciser;
+import model.MatchingStatus;
 
-import main.java.Matching.Dto.MatchingStatus;
-import main.java.Utils.JDBCUtil;
+
 
 public class MatchingDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언

@@ -1,7 +1,7 @@
 package test;
 
-import main.java.Matching.Dao.MatchingDao;
-import main.java.Matching.Dao.RecommendDao;
+import model.dao.MatchingDao;
+import model.dao.RecommendDao;
 
 public class MatchingTest {
 

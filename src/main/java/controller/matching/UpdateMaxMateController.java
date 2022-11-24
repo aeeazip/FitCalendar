@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import main.model.service.MatchingManager;
+import model.service.MatchingManager;
+
+
 public class UpdateMaxMateController implements Controller{
 
 	@Override
