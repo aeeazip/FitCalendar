@@ -1,6 +1,7 @@
-package controller.extra;
+package controller.record;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.service.RecordManager;
+import model.Record;
 
 // 각각의 기록에 대한 상세 기록 조회
 public class RecordDetailController implements Controller {

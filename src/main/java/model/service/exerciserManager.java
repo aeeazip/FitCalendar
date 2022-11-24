@@ -47,4 +47,7 @@ public class exerciserManager {
 		return exerciserDao.findExerciser(exerciserId);
 	}
 
+	public int updatePoint(int exerciserId) {
+		return exerciserDao.updatePoint(exerciserId);
+	}
 }

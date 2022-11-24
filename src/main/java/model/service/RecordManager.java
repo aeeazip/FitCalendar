@@ -1,8 +1,8 @@
 package model.service;
 
 import java.util.List;
-
 import model.dao.RecordDao;
+import model.Record;
 
 public class RecordManager {
 	private static RecordManager recordMgr = new RecordManager();
@@ -11,7 +11,6 @@ public class RecordManager {
 
 	private RecordManager() {
 		try {
-			// exerciserDao = new ExerciserDao();
 			recordDao = new RecordDao();
 		} catch (Exception e) {
 			e.printStackTrace();

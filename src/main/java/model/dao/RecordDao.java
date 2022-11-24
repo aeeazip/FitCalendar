@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.ResultSet;
+import model.Record;
 import java.util.ArrayList;
 import java.util.List;
 

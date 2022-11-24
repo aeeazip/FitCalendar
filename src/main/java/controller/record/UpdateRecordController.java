@@ -1,6 +1,7 @@
-package controller.extra;
+package controller.record;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
+import model.Record;
 import model.service.RecordManager;
 import model.service.exerciserManager;
 
