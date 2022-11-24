@@ -31,8 +31,8 @@ public class WriteRecordController implements Controller {
 		String diet = request.getParameter("diet");
 		String photo = request.getParameter("photo");
 		int shareOption = Integer.parseInt(request.getParameter("shareOption"));
-		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
-
+		int exerciserId = 21; // Integer.parseInt(request.getParameter("exerciserId"));
+		
 		try {
 			RecordManager recordManager = RecordManager.getInstance();
 			ExerciserManager userManager = ExerciserManager.getInstance();
@@ -40,9 +40,11 @@ public class WriteRecordController implements Controller {
 			// 1. DB에 Record 정보 등록하기
 			recordManager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
 			// 2. 10 포인트 적립하기
-			userManager.updatePoint(exerciserId);
+			int result = userManager.updatePoint(exerciserId);
+			System.out.println(result);
 			
-			return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
+			return "/myRecord/recordForm.jsp";
+			// return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
 
 		} catch (Exception e) { // 예외 발생 시 회원가입 form으로 forwarding
 			request.setAttribute("createFailed", true);
