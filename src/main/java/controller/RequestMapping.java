@@ -3,6 +3,7 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
 
 public class RequestMapping {
@@ -13,10 +14,10 @@ public class RequestMapping {
 
 	public void initMapping() {
 		mappings.put("/", new ForwardController("/index.jsp"));
-		mappings.put("/test", new ForwardController("/j.jsp"));
 		mappings.put("/main", new ForwardController("/main.jsp"));
 
 		mappings.put("/exerciser/register", new RegisterController());
+		mappings.put("/exerciser/login", new LoginController());
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 
