@@ -10,7 +10,7 @@ import controller.Controller;
 import model.Exerciser;
 import model.Inbody;
 import model.service.InbodyManager;
-import model.service.exerciserManager;
+import model.service.ExerciserManager;
 
 public class RegisterController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(RegisterController.class);
@@ -41,7 +41,7 @@ public class RegisterController implements Controller {
 		log.debug("Create exerciser : {}", exerciser);
 
 		try {
-			exerciserManager manager = exerciserManager.getInstance();
+			ExerciserManager manager = ExerciserManager.getInstance();
 			manager.insertExerciser(password, nickname, explanation, personality, speciality, gender, id);
 			exerciserid = manager.findExerciser(id).getExerciserId();
 			System.out.println(exerciserid);

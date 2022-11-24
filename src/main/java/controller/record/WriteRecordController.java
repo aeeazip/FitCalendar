@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.service.RecordManager;
-import model.service.exerciserManager;
+import model.service.ExerciserManager;
 
 public class WriteRecordController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(WriteRecordController.class);
@@ -35,7 +35,7 @@ public class WriteRecordController implements Controller {
 
 		try {
 			RecordManager recordManager = RecordManager.getInstance();
-			exerciserManager userManager = exerciserManager.getInstance();
+			ExerciserManager userManager = ExerciserManager.getInstance();
 			
 			// 1. DB에 Record 정보 등록하기
 			recordManager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);

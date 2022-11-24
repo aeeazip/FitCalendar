@@ -3,11 +3,11 @@ package model.service;
 import model.Exerciser;
 import model.dao.ExerciserDao;
 
-public class exerciserManager {
-	private static exerciserManager manager = new exerciserManager();
+public class ExerciserManager {
+	private static ExerciserManager manager = new ExerciserManager();
 	private ExerciserDao exerciserDao;
 
-	private exerciserManager() {
+	private ExerciserManager() {
 		try {
 			exerciserDao = new ExerciserDao();
 		} catch (Exception e) {
@@ -15,7 +15,7 @@ public class exerciserManager {
 		}
 	}
 
-	public static exerciserManager getInstance() {
+	public static ExerciserManager getInstance() {
 		return manager;
 	}
 

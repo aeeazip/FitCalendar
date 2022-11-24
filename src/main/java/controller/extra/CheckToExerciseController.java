@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.ToExercise;
-import model.service.staticManager;
+import model.service.StaticManager;
 
 public class CheckToExerciseController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(CheckToExerciseController.class);
@@ -20,7 +20,7 @@ public class CheckToExerciseController implements Controller {
 		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
-		staticManager manager = staticManager.getInstance();
+		StaticManager manager = StaticManager.getInstance();
 
 		ArrayList<ToExercise> list = manager.checkToExercise(exerciserId, itemId);
 

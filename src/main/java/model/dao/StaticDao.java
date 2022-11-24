@@ -8,10 +8,10 @@ import model.CompareInbody;
 import model.CompareStatic;
 import model.ToExercise;
 
-public class staticDao {
+public class StaticDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
 
-	public staticDao() { // 생성자
+	public StaticDao() { // 생성자
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 
 	}
