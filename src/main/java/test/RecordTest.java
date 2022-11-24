@@ -2,7 +2,9 @@ package test;
 
 import java.util.List;
 
+
 import model.dao.RecordDao;
+import model.Record;
 
 public class RecordTest {
 

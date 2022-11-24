@@ -1,6 +1,7 @@
-package controller.extra;
+package controller.record;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.service.RecordManager;
+import model.service.exerciserManager;
 
 public class WriteRecordController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(WriteRecordController.class);
@@ -32,9 +34,14 @@ public class WriteRecordController implements Controller {
 		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
 
 		try {
-			RecordManager manager = RecordManager.getInstance();
-			manager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption,
-					exerciserId);
+			RecordManager recordManager = RecordManager.getInstance();
+			exerciserManager userManager = exerciserManager.getInstance();
+			
+			// 1. DB에 Record 정보 등록하기
+			recordManager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
+			// 2. 10 포인트 적립하기
+			userManager.updatePoint(exerciserId);
+			
 			return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
 
 		} catch (Exception e) { // 예외 발생 시 회원가입 form으로 forwarding
