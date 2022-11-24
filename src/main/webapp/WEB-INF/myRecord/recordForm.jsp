@@ -1,29 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>recordForm</title>
-<link href="recordForm.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/recordForm.css' />" type="text/css">
 </head>
+<script type="text/javascript">
+    	function signUpCheck() {
+    		if(form.title.value == "") {
+    			alert("ì œëª©ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.title.focus();
+    			return false;
+    		} if(form.creationDate.value == "") {
+    			alert("ìƒì„± ë‚ ì§œë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.creationDate.focus();
+    			return false;
+    		} if(form.totalTime.value == "") {
+    			alert("ì´ ìš´ë™ ì‹œê°„ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.totalTime.focus();
+    			return false;
+    		} if(form.category.value == "") {
+    			alert("ì¢…ëª©ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.category.focus();
+    			return false;
+    		} if(form.routine.value == "") {
+    			alert("ìš´ë™ ë£¨í‹´ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.routine.focus();
+    			return false;
+    		} if(form.diet.value == "") {
+    			alert("ì‹ë‹¨ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.diet.focus();
+    			return false;
+    		} if(form.shareOption.value == "") {
+    			alert("ê³µìœ  ì˜µì…˜ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
+    			form.shareOption.focus();
+    			return false;
+    		 } 
+    		console.log("form submit");
+    		form.submit();
+    	}
+    </script>
+    
 <body>
 	<div class="flex-container">
 		<div id="wrapper">
 			<!-- header -->
 			<div class="header">
 
-				<!-- ·Î±×ÀÎ, È¸¿ø°¡ÀÔ -->
+				<!-- ë¡œê·¸ì¸, íšŒì›ê°€ì… -->
 				<div id="userMenu">
 					<ul class="list_menu">
 						<li class="menu menu_login"><a class="link link_login"
-							href="../html/login.html">·Î±×ÀÎ</a></li>
-						<li class="menu menu_join"><a class="link link_join" href="#">È¸¿ø°¡ÀÔ</a>
+							href="../html/login.html">ë¡œê·¸ì¸</a></li>
+						<li class="menu menu_join"><a class="link link_join" href="#">íšŒì›ê°€ì…</a>
 						</li>
 					</ul>
 				</div>
 
-				<!-- ·Î°í -->
+				<!-- ë¡œê³  -->
 				<div id="headerLogo" class="layout-wrapper">
 					<h1 class="logo">
 						<a class="link_main" href="../html/main.html">
@@ -32,103 +69,78 @@
 					</h1>
 				</div>
 
-				<!-- ¸Ş´º¹Ù -->
+				<!-- ë©”ë‰´ë°” -->
 				<div class="gnb_main">
 					<ul class="gnb">
-						<li class="menu1"><a href="" class="link all">³ªÀÇ ±â·Ï</a>
-						<li class="menu2"><a href="#" class="link new">¿îµ¿ ±â·Ï</a></li>
+						<li class="menu1"><a href="" class="link all">ë‚˜ì˜ ê¸°ë¡</a>
+						<li class="menu2"><a href="#" class="link new">ìš´ë™ ê¸°ë¡</a></li>
 						<li class="menu3"><a href="#" class="link best">Fit Mate</a>
 						</li>
-						<li class="menu4"><a href="#" class="link bargain">ÃßÃµ/¸ÅÄª</a>
+						<li class="menu4"><a href="#" class="link bargain">ì¶”ì²œ/ë§¤ì¹­</a>
 						</li>
-						<li class="menu5"><a href="#" class="link event">¸¶ÀÌÆäÀÌÁö</a></li>
+						<li class="menu5"><a href="#" class="link event">ë§ˆì´í˜ì´ì§€</a></li>
 					</ul>
 				</div>
 
 			</div>
 
 			<!-- container -->
-			<!-- recordForm ºÎºĞ -->
+			<!-- recordForm ë¶€ë¶„ -->
 			<div class="container">
 				<form name="form" method="POST" action="<c:url value='/myRecord/write'/>">
 					<div class="recordForm">
-						<h1 style="font-size: 21px;">_________´ÔÀÇ ¿îµ¿ ÀÏÁö</h1>
+					<!-- ë¡œê·¸ì¸ êµ¬í˜„ í›„ sessionì—ì„œ exerciserId ê°–ê³  ì˜¤ë„ë¡ êµ¬í˜„ -->
+						<h1 style="font-size: 21px;">_________ë‹˜ì˜ ìš´ë™ ì¼ì§€</h1>
 					</div>
 					<div class="name">
-						<input type="text" name="title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.">
+						<input type="text" name="title" placeholder="ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.">
 					</div>
 					<div class="name">
-						<input type="date" name="creationdate">
+						<input type="date" name="creationDate">
 					</div>
 					<div class="name">
-						<input type="text" name="totaltime"
-							placeholder="ÃÑ ¿îµ¿½Ã°£À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä. (¿¹: 3)">
+						<input type="text" name="totalTime" placeholder="ì´ ìš´ë™ì‹œê°„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”. (ì˜ˆ: 3)">
 					</div>
 					<div class="line">
 						<hr>
 					</div>
 					<div class="area">
 						<select id="category" name="category">
-							<option selected>Á¾¸ñÀ» ¼±ÅÃÇÏ¼¼¿ä.</option>
-							<option>Çï½º</option>
-							<option>ÇÊ¶óÅ×½º</option>
-							<option>¿ä°¡</option>
-							<option>·¯´×</option>
-							<option>±âÅ¸</option>
+							<option selected>ì¢…ëª©ì„ ì„ íƒí•˜ì„¸ìš”.</option>
+							<option value="1">í—¬ìŠ¤</option>
+							<option value="2">í•„ë¼í…ŒìŠ¤</option>
+							<option value="3">ìš”ê°€</option>
+							<option value="4">ëŸ¬ë‹</option>
+							<option value="5">ê¸°íƒ€</option>
 						</select>
 					</div>
 					<div class="name">
-						<textarea rows="5" cols="115" name="routine"
-							aria-label="With textarea" placeholder="¿îµ¿ ·çÆ¾À» ÀÔ·ÂÇÏ¼¼¿ä."></textarea>
+						<textarea rows="5" cols="110%" name="routine"
+							aria-label="With textarea" placeholder="ìš´ë™ ë£¨í‹´ì„ ì…ë ¥í•˜ì„¸ìš”."></textarea>
 					</div>
 					<div class="name">
-						<textarea rows="5" cols="115" name="diet"
-							aria-label="With textarea" placeholder="½Ä´ÜÀ» ÀÔ·ÂÇÏ¼¼¿ä."></textarea>
+						<textarea rows="5" cols="110%" name="diet"
+							aria-label="With textarea" placeholder="ì‹ë‹¨ì„ ì…ë ¥í•˜ì„¸ìš”."></textarea>
 					</div>
 					<div class="name">
 						<input type="file" name="photo">
 					</div>
 					<div class="name">
 						<select name="shareOption">
-							<option selected>±â·Ï °øÀ¯¸¦ ÇÏ½Ã°Ú½À´Ï±î?</option>
-							<option>¿¹</option>
-							<option>¾Æ´Ï¿À</option>
+							<option selected>ê¸°ë¡ ê³µìœ ë¥¼ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</option>
+							<option value="1">ì˜ˆ</option>
+							<option value="0">ì•„ë‹ˆì˜¤</option>
 						</select>
 					</div>
 					<div class="button">
-						<button type="button" onclick="signUpCheck()">µî·ÏÇÏ±â</button>
+						<button type="button" onclick="signUpCheck()">ë“±ë¡í•˜ê¸°</button>
 					</div>
 				</form>
 			</div>
 		</div>
 
 		<!-- footer -->
-		<footer>
-			<div class="container">
-				<table>
-					<div class="row justify-content-center">
-						<div class="col-sm-4 col-md-3 item">
-							<td>
-								<p id="fit_footer">Fit Calendar</p> <a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a>&nbsp;<a
-								href="#">ÀÌ¿ë¾à°ü</a>&nbsp;<a href="#">Á¦ÈŞ¹®ÀÇ</a>
-								<p id="from">µ¿´ö¿©´ë&nbsp;&nbsp;µ¥ÀÌÅÍº£ÀÌ½ºÇÁ·Î±×·¡¹Ö</p>
-							</td>
-						</div>
-						<div class="col-sm-4 col-md-3 item">
-							<td>
-								<ul>
-									<p id="info">
-										¼­ºñ½º¸í: Fit Calendar / ¾çÇıÁö ¿ÀÀÎ¿ì Á¤Ã¤¿ø ÇÑÈ£Á¤ / 8»öÁ¶ <br>°³ÀÎÁ¤º¸ º¸È£
-										Ã¥ÀÓÀÚ: ÇÑÈ£Á¤ / Email: hojeong2747@gmail.com
-									</p>
-									<p>COPYRIGHT (C) ALL RIGHTS RESERVED</p>
-								</ul>
-							</td>
-						</div>
-					</div>
-				</table>
-			</div>
-		</footer>
+		<%@ include file="../frameFooter.jsp" %>
 	</div>
 </body>
 </html>
