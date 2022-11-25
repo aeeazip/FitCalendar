@@ -1,3 +1,4 @@
+
 package controller.matching;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +15,13 @@ import model.service.ExerciserManager;
 import model.service.MatchingManager;
 
 
-//Matching 시작버튼 누름 -> useMatchSvc 버튼 값 변경 
-public class UpdateMatchingOptionController implements Controller {
+public class ShowMatchingOptionController implements Controller{
 	private static final Logger log = LoggerFactory.getLogger(MatchingStartController.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		MatchingManager matchingManager = MatchingManager.getInstance();
+		MatchingManager manager = MatchingManager.getInstance();
 		ExerciserManager exManager = ExerciserManager.getInstance();
 
 		HttpSession session = request.getSession();
@@ -29,10 +29,16 @@ public class UpdateMatchingOptionController implements Controller {
 		//로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
 		
-		//UseMatchSvc&maxMate 값 변경
-		
-		//실패시, 다시 설정하도록.
-		
-		return "redirect:matching/changeOptions";
+		//maxMate 설정하기
+		int maxMate = Integer.getInteger(request.getParameter("maxMate"));
+		try {
+			manager.optionChange(exerciser.getExerciserId(), maxMate, exerciser.getUseMatchSvc());
+			return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding
+		} catch (Exception e) {
+			request.setAttribute("checkFailed", true);
+			request.setAttribute("exception", e);
+			request.setAttribute("exerciserId", exerciser.getExerciserId());
+			return "/matching/setMaxMate.jsp"; //실패 시, 다시 maxMate설정 페이지로!
+		}
 	}
 }

@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
 import controller.matching.MatchingStartController;
-import controller.matching.UpdateMaxMateController;
+import controller.matching.UpdateOptionController;
 import controller.record.AllRecordController;
 import controller.record.DeleteRecordController;
 import controller.record.ListRecordController;
@@ -30,9 +30,10 @@ public class RequestMapping {
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
 		
-
+		//Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
-		mappings.put("/matching/setMate", new UpdateMaxMateController());
+		mappings.put("/matching/setMate", new UpdateOptionController());
+		mappings.put("/matching/setOptions", new UpdateOptionController());// option설정은 같은 Controller에서 처리
 		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());

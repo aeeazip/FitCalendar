@@ -36,13 +36,13 @@ public class MatchingStartController implements Controller {
 			int result = matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
 			//createOption 성공
 			if (result == 1) 
-				return "redirect:matching/setMaxMate";
+				return "/matching/setMaxMate.jsp";
 			}
 		} catch (Exception e) {
 			request.setAttribute("CreateOptionsFailed", true);
 			request.setAttribute("exerciser", exerciser);
 		}
-		//실패시, 다시 설정하도록.
+		//실패시, 다시 설정하도록 같은 페이지
 		return "redirect:matching/startMatching";
 	}
 }

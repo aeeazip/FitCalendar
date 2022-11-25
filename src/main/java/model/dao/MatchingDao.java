@@ -37,11 +37,12 @@ public class MatchingDao {
 	}
 	
 	/**
-	 * maxMate 수 -> exerciser table에 저장
+	 * maxMate & useMatchSvc 변경 가능
+	 * 두 항목 exerciser table에 저장
 	 */
-	public int optionChange(int exerciserId, int maxMate) {
-		String query = "UPDATE exerciser SET maxMate = ? WHERE exerciserId = ?";
-		Object[] param = new Object[] {maxMate, exerciserId};
+	public int optionChange(int exerciserId, int maxMate, String useMatchSvc) {
+		String query = "UPDATE exerciser SET maxMate = ?, useMatchSvc = ? WHERE exerciserId = ?";
+		Object[] param = new Object[] {maxMate, useMatchSvc, exerciserId};
 		jdbcUtil.setSqlAndParameters(query, param);
 		
 		try {
@@ -202,7 +203,7 @@ public class MatchingDao {
 	/**
 	 * exerciser의 matching 상태 확인
 	 */
-	public List<MatchingStatus> showSitationList(int exerciserId) {
+/*public List<MatchingStatus> showSitationList(int exerciserId) {
 		String query = "SELECT * FROM matchingStatus WHERE senderId = ?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -222,5 +223,5 @@ public class MatchingDao {
 			jdbcUtil.close();
 		}
 		return null;	
-	}
+	}*/
 }
