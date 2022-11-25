@@ -4,18 +4,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Exerciser;
 import model.RecommendList;
 
 
 public class RecommendDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
+	private ExerciserDao exerciserDao;
 
 	public RecommendDao() { // 생성자
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 	}
 	
 	/**
-	 * exerciser가 추천받은 exerciser의 목록(3명)인 recommendList 조회 
+	 * exerciser가 추천받은 exerciser의 목록(3명)인 recommendList 조회  //수정 완료
 	 */
 	public RecommendList displayExerciser(int exerciserId){
 		String query = "SELECT exerciserId, recomId1, recomId2, recomId3 FROM RecommendList WHERE exerciserId = ?";
@@ -26,47 +28,67 @@ public class RecommendDao {
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-
-			while (rs.next()) {
-				recommend = new RecommendList(rs.getInt("recomId1"),rs.getInt("recomId2"),rs.getInt("recomId3"));	}
-			return recommend;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
-	
-	/**
-	 * exerciser에게 matching 신청을 한 list 조회
-	 */
-	public List<RecommendList> showGetRecommendList(int exerciserId){
-		String query = "SELECT * FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
-		Object[] param = new Object[] { exerciserId,exerciserId,exerciserId };
-		jdbcUtil.setSqlAndParameters(query, param);
-		
-		RecommendList recommend = null;
-		
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			List<RecommendList> getRecommList = new ArrayList<RecommendList>();
-			while (rs.next()) {
+			if (rs.next()) {
+				//매개변수와 이름이 동일해서 변수 이름 수정
+				int exerciser_id = rs.getInt("exerciserId");
+				Exerciser recom1 = exerciserDao.findExerciser(rs.getInt("recomId1"));
+				Exerciser recom2 = exerciserDao.findExerciser(rs.getInt("recomId2"));
+				Exerciser recom3 = exerciserDao.findExerciser(rs.getInt("recomId3"));
 				recommend = new RecommendList(
-						rs.getInt("exerciserId"), rs.getInt("recomId1"),rs.getInt("recomId2"),rs.getInt("recomId3"));	
-				getRecommList.add(recommend);
+						exerciser_id, recom1, recom2, recom3);	
+				return recommend;
 			}
-			return getRecommList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			jdbcUtil.close();
 		}
-		return null;
+		return recommend;
 	}
+
+	/**
+	    * exerciser에게 matching 신청을 한 list 조회 
+	    */
+	   public List<RecommendList> showGetRecommendList(int exerciserId){
+	      String query = "SELECT * FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
+	      Object[] param = new Object[] { exerciserId,exerciserId,exerciserId };
+	      jdbcUtil.setSqlAndParameters(query, param);
+	      
+	      RecommendList recommend = null;
+	      
+	      try {
+	         ResultSet rs = jdbcUtil.executeQuery();
+	         List<RecommendList> getRecommList = new ArrayList<RecommendList>();
+	         while (rs.next()) {
+	        	 	int recomm_id = rs.getInt("exerciserId");
+	        	 	Exerciser wantRecomm = exerciserDao.findExerciser(recomm_id);
+					Exerciser exerciser1 = exerciserDao.findExerciser(rs.getInt("recomId1"));
+					Exerciser exerciser2 = exerciserDao.findExerciser(rs.getInt("recomId2"));
+					Exerciser exerciser3 = exerciserDao.findExerciser(rs.getInt("recomId3"));
+					if(exerciser1 != null) {
+						recommend = new RecommendList(
+								exerciser1.getExerciserId(), wantRecomm);	 
+					}else if(exerciser2 != null) {
+						recommend = new RecommendList(
+								exerciser2.getExerciserId(), wantRecomm);	 
+					}else {
+						recommend = new RecommendList(
+								exerciser3.getExerciserId(), wantRecomm);	 
+					}
+					 
+	            getRecommList.add(recommend);
+	         }
+	         return getRecommList;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         jdbcUtil.close();
+	      }
+	      return null;
+	   }
 	
 	/**
-	 * 추천 정보 입력하면 recommendList table에 추천받는 exerciserId가 추가됨.
+	 * 추천 정보 입력하면 recommendList table에 추천받는 exerciserId가 추가됨 //내 파트
 	 */
 	public int recommendExerciser(int exerciserId){
 		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?)";
