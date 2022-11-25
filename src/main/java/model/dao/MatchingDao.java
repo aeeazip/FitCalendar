@@ -11,7 +11,8 @@ import model.MatchingStatus;
 
 public class MatchingDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
-
+	private ExerciserDao exerciserDao;
+	
 	public MatchingDao() { // 생성자
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 	}
@@ -203,7 +204,9 @@ public class MatchingDao {
 	/**
 	 * exerciser의 matching 상태 확인
 	 */
-/*public List<MatchingStatus> showSitationList(int exerciserId) {
+  public List<MatchingStatus> showSitationList(int exerciserId) {
+	    Exerciser sender;
+	    Exerciser reciever = exerciserDao.findExerciser(exerciserId);
 		String query = "SELECT * FROM matchingStatus WHERE senderId = ?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -213,7 +216,8 @@ public class MatchingDao {
 			
 			List<MatchingStatus> matchingList = new ArrayList<MatchingStatus>();
 			while(rs.next()) {
-				MatchingStatus matchingStatus = new MatchingStatus(rs.getInt("senderId"), rs.getInt("receiverId"), rs.getInt("status"));
+				sender = exerciserDao.findExerciser(rs.getInt("receiverId"));
+				MatchingStatus matchingStatus = new MatchingStatus(sender, reciever, rs.getInt("status"));
 				matchingList.add(matchingStatus);
 			}
 			return matchingList;
@@ -223,5 +227,7 @@ public class MatchingDao {
 			jdbcUtil.close();
 		}
 		return null;	
-	}*/
+	}
+  
+  
 }

@@ -60,7 +60,7 @@ public class MatchingManager {
 	}
 
 	public List<MatchingStatus> showSitationList(int exerciserId) {
-		return null; //matchingDao.showSitationList(exerciserId);
+		return matchingDao.showSitationList(exerciserId);
 	}
 
 }
