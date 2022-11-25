@@ -1,5 +1,7 @@
 package model.service;
 
+import java.sql.SQLException;
+
 import model.Exerciser;
 import model.dao.ExerciserDao;
 
@@ -42,12 +44,21 @@ public class ExerciserManager {
 
 		return 0;
 	}
-	
+
 	public Exerciser findExerciserById(int exerciserId) {
 		return exerciserDao.findExerciser(exerciserId);
 	}
 
 	public int updatePoint(int exerciserId) {
 		return exerciserDao.updatePoint(exerciserId);
+	}
+
+	public boolean login(String userId, String password)
+			throws SQLException, UserNotFoundException, PasswordMismatchException {
+		Exerciser exerciser = findExerciser(userId);
+		if (exerciser.matchPassword(password) == false) {
+			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
+		}
+		return true;
 	}
 }
