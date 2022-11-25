@@ -34,8 +34,10 @@ public class UpdateOptionController implements Controller{
 		//maxMate 설정하기
 		if(request.getServletPath().equals("/matching/setMate")) {
 			try {
-				manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
-				return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding 
+				int result = manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
+				if(result == 1) {
+					return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding 	
+				}
 			} catch (Exception e) {
 				request.setAttribute("checkFailed", true);
 				request.setAttribute("exception", e);
