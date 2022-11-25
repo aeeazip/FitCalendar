@@ -32,8 +32,9 @@ public class RecommendManager {
 	
 	//매칭 재추천시 30포인트 차감 + recommend -> 실패 시 0 성공 시 0 이상의 값을 반환함
 	public int recommendExerciser(int exerciserId){
-		if(recommendDao.usePoint(exerciserId, 30) != 0)
-		return recommendDao.recommendExerciser(exerciserId);
+		if(recommendDao.usePoint(exerciserId, 30) != 0 &&  recommendDao.countingMaxMate(exerciserId) < exerciserDao.findExerciser(exerciserId).getMaxMate())
+			return recommendDao.recommendExerciser(exerciserId);
+	
 		return 0;
 	}
 	
