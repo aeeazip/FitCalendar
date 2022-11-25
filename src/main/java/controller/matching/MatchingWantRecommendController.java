@@ -1,0 +1,35 @@
+package controller.matching;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import controller.Controller;
+import controller.exerciser.ExerciserSessionUtils;
+import model.Exerciser;
+import model.service.ExerciserManager;
+import model.service.RecommendManager;
+
+public class MatchingWantRecommendController implements Controller{
+	private static final Logger log = LoggerFactory.getLogger(MatchingWantRecommendController.class);
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		RecommendManager recommendManager = RecommendManager.getInstance();
+		ExerciserManager exerciserManager = ExerciserManager.getInstance();
+		
+		HttpSession session = request.getSession();
+		
+		Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+	
+		if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
+			return "/matching/matchingMenu/wantRecommendList.jsp";
+		
+		return "/matching/matchingMenu/wantRecommedForm.jsp";
+	}	
+
+}

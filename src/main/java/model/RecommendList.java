@@ -4,9 +4,9 @@ public class RecommendList {
 	//수정된 부분 -> id 대신 Exerciser 객체를 저장할거임 -> 화면에 Recommend 정보를 띄우기 위한 부분
 	int exerciserId;
 	Exerciser recommend1;
-	Exerciser rocommend2;
+	Exerciser recommend2;
 	Exerciser recommend3;
-	
+	int counting;
 	public RecommendList() {
 		super();
 	}
@@ -17,12 +17,21 @@ public class RecommendList {
 		this.recommend1 = recommend1;
 	}
 
-	public RecommendList(int exerciserId, Exerciser recommend1, Exerciser rocommend2, Exerciser recommend3) {
+	public RecommendList(int exerciserId, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3) {
 		super();
 		this.exerciserId = exerciserId;
 		this.recommend1 = recommend1;
-		this.rocommend2 = rocommend2;
+		this.recommend2 = recommend2;
 		this.recommend3 = recommend3;
+	}
+	public RecommendList(int exerciserId, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3,
+			int counting) {
+		super();
+		this.exerciserId = exerciserId;
+		this.recommend1 = recommend1;
+		this.recommend2 = recommend2;
+		this.recommend3 = recommend3;
+		this.counting = counting;
 	}
 	public int getExerciserId() {
 		return exerciserId;
@@ -36,11 +45,11 @@ public class RecommendList {
 	public void setRecommend1(Exerciser recommend1) {
 		this.recommend1 = recommend1;
 	}
-	public Exerciser getRocommend2() {
-		return rocommend2;
+	public Exerciser getRecommend2() {
+		return recommend2;
 	}
-	public void setRocommend2(Exerciser rocommend2) {
-		this.rocommend2 = rocommend2;
+	public void setRecommend2(Exerciser recommend2) {
+		this.recommend2 = recommend2;
 	}
 	public Exerciser getRecommend3() {
 		return recommend3;
@@ -48,12 +57,18 @@ public class RecommendList {
 	public void setRecommend3(Exerciser recommend3) {
 		this.recommend3 = recommend3;
 	}
+	public int getCounting() {
+		return counting;
+	}
+	public void setCounting(int counting) {
+		this.counting = counting;
+	}
 	@Override
 	public String toString() {
-		return "RecommendList [exerciserId=" + exerciserId + ", recommend1=" + recommend1 + ", rocommend2=" + rocommend2
-				+ ", recommend3=" + recommend3 + "]";
+		return "RecommendList [exerciserId=" + exerciserId + ", recommend1=" + recommend1 + ", recommend2=" + recommend2
+				+ ", recommend3=" + recommend3 + ", counting=" + counting + "]";
 	}
 	
-	
+
 	
 }

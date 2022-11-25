@@ -11,6 +11,7 @@ public class RecommendDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
 	private ExerciserDao exerciserDao;
 
+
 	public RecommendDao() { // 생성자
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 	}
@@ -85,10 +86,42 @@ public class RecommendDao {
 	/**
 	 * 추천 정보 입력하면 recommendList table에 추천받는 exerciserId가 추가됨 //내 파트
 	 */
-	public int recommendExerciser(int exerciserId) {
-		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?)";
-		Object[] param = new Object[] { exerciserId };
-		jdbcUtil.setSqlAndParameters(query, param); // JDBCUtil 에 insert into문과 매개 변수 설정
+	public int recommendExerciser(int exerciserId){
+		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?, ?, ?, ?, ?)";
+		int randomRecomm1 =  (int)((Math.random()*10000)%10);
+		int randomRecomm2 =  (int)((Math.random()*10000)%10);
+		int randomRecomm3 =  (int)((Math.random()*10000)%10);
+
+		Exerciser recom1 = exerciserDao.findExerciser(randomRecomm1);
+		int count = countingMaxMate(randomRecomm1);
+		//maxMate 초과 여부 검사
+		while(count <= recom1.getMaxMate()) {
+			randomRecomm1 =  (int)((Math.random()*10000)%10);
+			recom1 = exerciserDao.findExerciser(randomRecomm1);
+			count = countingMaxMate(randomRecomm1);
+		}
+
+		Exerciser recom2 = exerciserDao.findExerciser(randomRecomm2);
+		count = countingMaxMate(randomRecomm2);
+		//maxMate 초과 여부 검사
+		while(count <= recom2.getMaxMate()) {
+			randomRecomm2 =  (int)((Math.random()*10000)%10);
+			recom2 = exerciserDao.findExerciser(randomRecomm2);
+			count = countingMaxMate(randomRecomm2);
+		}
+
+		Exerciser recom3 = exerciserDao.findExerciser(randomRecomm3);
+		count = countingMaxMate(randomRecomm3);
+		//maxMate 초과 여부 검사
+		while(count <= recom3.getMaxMate()) {
+			randomRecomm3 =  (int)((Math.random()*10000)%10);
+			recom3 = exerciserDao.findExerciser(randomRecomm3);
+			count = countingMaxMate(randomRecomm3);
+		}
+
+
+		Object[] param = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3, 0};
+		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert into문 실행
@@ -100,8 +133,9 @@ public class RecommendDao {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
-		return 0;
+		return 0;   
 	}
+
 
 	/**
 	 * 추천 or 매칭 기능 이용 시, exerciser table의 point 차감
@@ -144,6 +178,48 @@ public class RecommendDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return 0;
+	}
+
+	//재추천 메소드
+	public int reRecommendExerciser(int exerciserId, int recomId1, int recomId2, int recomId3){
+		String query = "UPDATE recommendlist SET count=count+1 " + "WHERE exerciserId = ? ";
+		Object[] param = new Object[] {exerciserId};
+		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;   
+	}
+
+
+	//maxMate 초과 여부 검사
+	public int countingMaxMate(int exerciserId) {
+		String query = "SELECT COUNT(*) AS c FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
+		Object[] param = new Object[] { exerciserId,exerciserId,exerciserId };
+		jdbcUtil.setSqlAndParameters(query, param);
+		int count = 0;
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if (rs.next()) {
+				//매개변수와 이름이 동일해서 변수 이름 수정
+				count = rs.getInt("c");
+				return count;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return count;
 	}
 
 }
