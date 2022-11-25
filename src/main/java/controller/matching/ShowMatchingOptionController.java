@@ -28,17 +28,14 @@ public class ShowMatchingOptionController implements Controller{
 		
 		//로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		int exerciserId = exerciser.getExerciserId();
 		
-		//maxMate 설정하기
-		int maxMate = Integer.getInteger(request.getParameter("maxMate"));
-		try {
-			manager.optionChange(exerciser.getExerciserId(), maxMate, exerciser.getUseMatchSvc());
-			return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding
-		} catch (Exception e) {
-			request.setAttribute("checkFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("exerciserId", exerciser.getExerciserId());
-			return "/matching/setMaxMate.jsp"; //실패 시, 다시 maxMate설정 페이지로!
-		}
+		//maxMate, useMatchSvc를 request에 전달!!
+		
+		exerciser = manager.showOption(exerciserId, exerciser.getUseMatchSvc(), exerciser.getMaxMate());
+		
+		request.setAttribute("exerciser", exerciser);
+		request.setAttribute("exerciserId", exerciserId);	//option정보 저장
+		return "/matching/matchingMenu/options.jsp";		//matchingMenu에 띄어져있는거임.
 	}
 }
