@@ -30,8 +30,8 @@ public class MatchingManager {
 		return matchingDao.createOption(exerciserId, useMatchSvc);
 	}
 
-	public int optionChange(int exerciserId, int maxMate) {
-		return matchingDao.optionChange(exerciserId, maxMate);
+	public int optionChange(int exerciserId, int maxMate, String useMatchSvc) {
+		return matchingDao.optionChange(exerciserId, maxMate, useMatchSvc);
 	}
 
 	public Exerciser showOption(int exerciserId, int useMatchSvc, int maxMate) {
@@ -60,7 +60,7 @@ public class MatchingManager {
 	}
 
 	public List<MatchingStatus> showSitationList(int exerciserId) {
-		return matchingDao.showSitationList(exerciserId);
+		return null;//matchingDao.showSitationList(exerciserId);
 	}
 
 }
