@@ -12,30 +12,40 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
+import model.Fitmate;
 import model.RecommendList;
 import model.service.ExerciserManager;
-import model.service.RecommendManager;
+import model.service.MatchingManager;
 
 
-public class MatchingGetRecommendListController implements Controller {
+public class MatchingCompleteController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(MatchingGetRecommendListController.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RecommendManager recommManager = RecommendManager.getInstance();
+		MatchingManager matchingManager = MatchingManager.getInstance();
 		ExerciserManager exManager = ExerciserManager.getInstance();
-		
+			
 		HttpSession session = request.getSession();
 		
 		//로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
 
-		List<RecommendList> recommendList = recommManager.showGetRecommendList(exerciser.getExerciserId());
-
-		//recommendList 전달해서 forwarding
-		request.setAttribute("recommendList", recommendList);
-	
-		return "/matching/matchingMenu/getRecommendList.jsp";
+		//상대exerciser(=fitmate) ID
+		int fitmateId = Integer.parseInt(request.getParameter("fitmateId"));
+		
+		//accept -> fitmate table에 저장
+		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmateId);
+		
+		//매칭 수락시, status=1로 바꿔주기		
+		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmateId);
+		
+		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
+		List<Fitmate> fitmateList =  matchingManager.showFitmateList(exerciser.getExerciserId());
+		
+		request.setAttribute("fitmateList", fitmateList);
+		
+		return "/exerciser/fitmate/list.jsp";
 	}
 
 }

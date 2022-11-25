@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Exerciser;
+import model.Fitmate;
 import model.MatchingStatus;
 import model.dao.ExerciserDao;
 import model.dao.MatchingDao;
@@ -50,7 +51,10 @@ public class MatchingManager {
 	public int matchingComplete(int myExerciserId, int yourExerciserId) {
 		return matchingDao.matchingComplete(myExerciserId, yourExerciserId);
 	}
-
+	
+	public List<Fitmate> showFitmateList(int exerciserId) {
+		return matchingDao.showFitmateList(exerciserId);
+	}
 	public int matchingRefuse(int myExerciserId, int yourExerciserId) {
 		return matchingDao.matchingRefuse(myExerciserId, yourExerciserId);
 	}
