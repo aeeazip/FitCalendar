@@ -1,42 +1,54 @@
 package model;
 
 public class MatchingStatus {
-	private int senderId;
-	private int receiverId;
+	
+	private Exerciser sender;
+	private Exerciser receiver;
 	private int status;
 	
-	public int getSenderId() {
-		return senderId;
+	public Exerciser getSender() {
+		return sender;
 	}
-	public void setSenderId(int senderId) {
-		this.senderId = senderId;
+
+	public void setSender(Exerciser sender) {
+		this.sender = sender;
 	}
-	public int getReceiverId() {
-		return receiverId;
+
+
+	public Exerciser getReceiver() {
+		return receiver;
 	}
-	public void setReceiverId(int receiverId) {
-		this.receiverId = receiverId;
+
+
+	public void setReceiver(Exerciser receiver) {
+		this.receiver = receiver;
 	}
+
+
 	public int getStatus() {
 		return status;
 	}
+
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	public MatchingStatus(int senderId, int receiverId, int status) {
-		super();
-		this.senderId = senderId;
-		this.receiverId = receiverId;
-		this.status = status;
-	}
-	
+
+
 	public MatchingStatus() {
 		super();
 	}
-	
+
+	public MatchingStatus(Exerciser sender, Exerciser receiver, int status) {
+		super();
+		this.sender = sender;
+		this.receiver = receiver;
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
-		return "MatchingStatus [senderId=" + senderId + ", receiverId=" + receiverId + ", status=" + status + "]";
+		return "MatchingStatus [sender=" + sender + ", receiver=" + receiver + ", status=" + status + "]";
 	}
+	
 }

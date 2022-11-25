@@ -25,6 +25,11 @@ public class RecommendManager {
 		return recommendManager;
 	}
 	
+	//login한 exerciser를 매칭 신청한 list보기
+	public List<RecommendList> showGetRecommendList(int exerciserId) {
+		return recommendDao.showGetRecommendList(exerciserId);
+	}
+	
 	//매칭 재추천시 30포인트 차감 + recommend -> 실패 시 0 성공 시 0 이상의 값을 반환함
 	public int recommendExerciser(int exerciserId){
 		if(recommendDao.usePoint(exerciserId, 30) != 0)
