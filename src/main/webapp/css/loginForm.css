@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "utf-8";
 /* main */
 		#main {
 		    box-sizing: border-box;
@@ -32,12 +32,12 @@
 		
 		    border: none;
 		    border-bottom: 1px solid #B5B5B5;
-		    outline: none; /* ÀÔ·Â ½Ã Å×µÎ¸® Áö¿ò*/
+		    outline: none; /* ì…ë ¥ ì‹œ í…Œë‘ë¦¬ ì§€ì›€*/
 		    display: block;
 		    
 		    font-weight: 500;
 		    font-size: 14px;
-		    color: #909090;
+		    color: black;
 		
 		    margin-bottom: 25px;
 		    padding-bottom: 10px;
@@ -49,18 +49,21 @@
 		
 		    border: none;
 		    border-bottom: 1px solid #B5B5B5;
-		    outline: none; /* ÀÔ·Â ½Ã Å×µÎ¸® Áö¿ò*/
-		    display: block;
+		    outline: none; /* ì…ë ¥ ì‹œ í…Œë‘ë¦¬ ì§€ì›€*/
 		    
 		    font-weight: 500;
 		    font-size: 14px;
-		    color: #909090;
+		    color: black;
 		
 		    margin-bottom: 25px;
 		    padding-bottom: 10px;
 		}
 		
-		/* placeholder ÆùÆ® »ö º¯°æ, Å©·Ò/¿§Áö µÑ ´Ù Àû¿ë */
+		 input[type=password] {
+			font-family: 'Nanum Gothic', san-serif !important;
+		}
+		
+		/* placeholder í°íŠ¸ ìƒ‰ ë³€ê²½, í¬ë¡¬/ì—£ì§€ ë‘˜ ë‹¤ ì ìš© */
 		input::placeholder{color: #909090;}
 		input::-webkit-input-placeholder {color: #909090;}
 		input::-ms-input-placeholder{color: #909090;}
@@ -82,7 +85,7 @@
 		    /* margin: 20px 0 0 -31px; */
 		}
 		
-		/* È¸¿ø°¡ÀÔ*/
+		/* íšŒì›ê°€ì…*/
 		.findinfo{
 		    text-align: center;
 		    margin: 30px 30px 80px 30px;

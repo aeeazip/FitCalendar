@@ -166,4 +166,12 @@ public class Exerciser {
 				+ useMatchSvc + ", maxMate=" + maxMate + "]";
 	}
 
+//	비밀번호 검사
+	public boolean matchPassword(String pword) {
+		if (pword == null) {
+			return false;
+		}
+		return this.password.equals(pword);
+	}
+
 }
