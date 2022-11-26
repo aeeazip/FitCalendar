@@ -16,13 +16,6 @@ public class MatchingWantRecommendFormController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		RecommendManager recommendManager = RecommendManager.getInstance();
-		
-		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
-		
-		if(recommendManager.recommendExerciser(exerciserId) != 0)
-			return "/matching/matchingMenu/wantRecommendList.jsp";
-		
-		return "/matching/matchingMenu/wantRecommedForm.jsp";
+		return "/matching/wantRecommend.jsp";
 	}
 }
