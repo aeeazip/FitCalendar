@@ -25,6 +25,7 @@ public class MatchingStartController implements Controller {
 
       HttpSession session = request.getSession();
 
+<<<<<<< HEAD
       // 로그인한 사용자의 exerciser 객체
       //Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
       Exerciser exerciser = new Exerciser(12);
@@ -48,4 +49,29 @@ public class MatchingStartController implements Controller {
       // 실패시, main으로
       return "redirect:/exerciser/main";
    }
+=======
+		// 로그인한 사용자의 exerciser 객체
+		//Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		Exerciser exerciser = new Exerciser(12);
+		int id = exerciser.getExerciserId();
+		
+		// useMatchSvc값 변경
+		try {
+			//if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getExerciserId())) {
+			if(id == 12) {
+				exerciser.setUseMatchSvc("T");
+				matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
+				// createOption 성공
+				
+				request.setAttribute("nickname",exerciser.getNickname());
+				return "/matching/startMatching.jsp";
+			}
+		} catch (Exception e) {
+			request.setAttribute("CreateOptionsFailed", true);
+			request.setAttribute("exerciser", exerciser);
+		}
+		// 실패시, main으로
+		return "redirect:/exerciser/main";
+	}
+>>>>>>> c22ce542531b15f58853bfc823eec677c049056e
 }
