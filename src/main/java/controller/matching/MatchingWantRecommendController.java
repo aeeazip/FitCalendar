@@ -22,14 +22,16 @@ public class MatchingWantRecommendController implements Controller{
 		RecommendManager recommendManager = RecommendManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(); //세션 완성되면 사용할 예정!
 		
-		Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		String id = (String) session.getAttribute("id");
+		
+		Exerciser exerciser = exerciserManager.findExerciser(id);
 	
 		if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
-			return "/matching/matchingMenu/wantRecommendList.jsp";
+			return "/matching/wantRecommendList.jsp";
 		
-		return "/matching/matchingMenu/wantRecommedForm.jsp";
+		return "/matching/wantRecommend.jsp";
 	}	
 
 }

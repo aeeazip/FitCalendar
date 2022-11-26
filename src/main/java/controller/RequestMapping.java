@@ -8,8 +8,12 @@ import org.slf4j.LoggerFactory;
 
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
+import controller.matching.MatchingReRequestController;
+import controller.matching.MatchingRequestController;
 import controller.matching.MatchingStartController;
+import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController;
+import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateOptionController;
 import controller.record.AllRecordController;
@@ -39,9 +43,10 @@ public class RequestMapping {
 		mappings.put("/matching/matchingMenu/options", new ShowMatchingOptionController());
 		
 		//MAtching inwoo's Part!!!!
-		mappings.put("/matching/wantRecommend", new MatchingWantRecommendController());
-		mappings.put("/matching/wantRecommend/list", new MatchingWantRecommendController());
-		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController());
+		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
+		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
+		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
+		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
 		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());

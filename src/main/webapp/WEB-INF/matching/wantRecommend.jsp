@@ -1,19 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>WantRecommend</title>
+<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+ <script type="text/javascript">
+    	function recommend() {
+    		form.submit();
+    	}
+    </script>
 </head>
-
+<%@ include file="../frameHeader.jsp" %>
 <body>
 
-<form name="wantRecommend" action='/matching/wantRecommendList.jsp'>
-  <h2>FitMate 추천 목록을 보고 싶다면 버튼을 누르세요!</h2>
-  <input type='button'  value='추천 시작'onclick=submit()/>
+<div align ="center">
+ <form name="form" method="GET" action="<c:url value='/matching/wantRecommend/list' />">
+  <h2>FitMate 추천을 받고 싶다면 <br> 버튼을 누르세요!</h2>
+  <br>
+  <button type="button" id="login_btn" onclick="recommend();">추천하기</button>
 </form>
-
+</div>
 </body>
+
+<%@ include file="../frameFooter.jsp" %>
 </html>

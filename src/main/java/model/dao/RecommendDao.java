@@ -88,9 +88,9 @@ public class RecommendDao {
 	 */
 	public int recommendExerciser(int exerciserId){
 		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?, ?, ?, ?, ?)";
-		int randomRecomm1 =  (int)((Math.random()*10000)%10);
-		int randomRecomm2 =  (int)((Math.random()*10000)%10);
-		int randomRecomm3 =  (int)((Math.random()*10000)%10);
+		int randomRecomm1 =  (int)(Math.random()*20);
+		int randomRecomm2 =  (int)(Math.random()*20);
+		int randomRecomm3 =  (int)(Math.random()*20);
 
 		Exerciser recom1 = exerciserDao.findExerciser(randomRecomm1);
 		int count = countingMaxMate(randomRecomm1);
