@@ -9,7 +9,7 @@ import model.RecommendList;
 
 public class RecommendDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
-	private ExerciserDao exerciserDao;
+	private ExerciserDao exerciserDao = new ExerciserDao();
 
 
 	public RecommendDao() { // 생성자
