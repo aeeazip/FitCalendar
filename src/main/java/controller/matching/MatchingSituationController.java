@@ -25,15 +25,15 @@ public class MatchingSituationController  implements Controller {
 		MatchingManager matchingManager = MatchingManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 
-		HttpSession session = request.getSession();
-		Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		//HttpSession session = request.getSession();
+		//Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
 
-		List<MatchingStatus> matchingStatus = matchingManager.showSitationList(exerciser.getExerciserId());
-
+		//List<MatchingStatus> matchingStatus = matchingManager.showSitationList(exerciser.getExerciserId());
+		List<MatchingStatus> matchingStatus = matchingManager.showSitationList(21);
 		//MatchingStatusList를 보내고 jsp 에서 반복문으로 찍어냄(setAttribute 변수 이름을 계속 다르게 줘야하기 때문)
 		request.setAttribute("matchingStatus", matchingStatus);
 	
-		return "/matching/matchingMenu/situation.jsp";
+		return "/matching/situation.jsp";
 	}
 
 }

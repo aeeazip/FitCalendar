@@ -27,11 +27,11 @@ public class MatchingWantRecommendController implements Controller{
 		//String id = (String) session.getAttribute("id");
 		
 		Exerciser exerciser = exerciserManager.findExerciser("hhj1030");
-	
-		if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
-			return "/matching/wantRecommend/list";
+		recommendManager.recommendExerciser(exerciser.getExerciserId());
+		//if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
+		return "/matching/wantRecocommend/list";
 		
-		return "redirect:/matching/wantRecommend";
+		//return "redirect:/matching/wantRecommend";
 	}	
 
 }
