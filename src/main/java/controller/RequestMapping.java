@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
 import controller.matching.MatchingStartController;
+import controller.matching.MatchingWantRecommendController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateOptionController;
 import controller.record.AllRecordController;
@@ -37,8 +38,10 @@ public class RequestMapping {
 		mappings.put("/matching/setOptions", new UpdateOptionController());// option설정은 같은 Controller에서 처리
 		mappings.put("/matching/matchingMenu/options", new ShowMatchingOptionController());
 		
-		
-		
+		//MAtching inwoo's Part!!!!
+		mappings.put("/matching/wantRecommend", new MatchingWantRecommendController());
+		mappings.put("/matching/wantRecommend/list", new MatchingWantRecommendController());
+		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController());
 		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());

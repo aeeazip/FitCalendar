@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +6,7 @@
 	<link rel="stylesheet" href="<c:url value='../css/frame.css' />" type="text/css">
 </head>
 <%@ include file="../frameHeader.jsp" %>
-<body>
+
 <div>
 	<form name="matchingMenu" action="setMaxMate.jsp" method="POST">
 		<input type="text" value = "${exerciser.exerciserId} }">
@@ -23,7 +19,5 @@
 	</form>
 </div>
 
-
-</body>
 <%@ include file="../frameFooter.jsp" %>
 </html>

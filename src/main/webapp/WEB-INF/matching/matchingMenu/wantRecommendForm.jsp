@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>wantRecommendForm</title>
     <link rel="stylesheet" href="../../frame.css">
     <link rel="stylesheet" href="wantRecommendForm.css">
@@ -16,21 +17,21 @@
 	<form>
 		<div class="flex-container2">
 			<div id="subTitle">
-				<p class="subTitle">©Ьго╢б FitMate а╓╨╦╦╕ ют╥бго╫ц©ю</p>
+				<p class="subTitle">Л⌡░М∙≤К┼■ FitMate Л═∙КЁ╢К╔╪ Л·┘К═╔М∙≤Л▀°Л≤╓</p>
 			</div>
 				
 				<div style="text-align:center">
 					<form action="matchingResult_third.html">
 						<table style = "table-layout: auto; table-layout: fixed;">
 							<tr>
-								<td class="a" style="border-top: 1px solid black;"><b>╪╨╨╟</b></td>
+								<td class="a" style="border-top: 1px solid black;"><b>Л└╠КЁ└</b></td>
 								<td class="b" style="border-top: 1px solid black;">
-									<input type="radio" name="gender" value="male" checked>Ё╡юз
-									<input type="radio" name="gender" value="female">©╘юз
+									<input type="radio" name="gender" value="male" checked>К┌╗Л·░
+									<input type="radio" name="gender" value="female">Л≈╛Л·░
 								</td>
 							</tr>
 							<tr>
-								<td class="a"><b>е╟</b></td>
+								<td class="a"><b>М┌╓</b></td>
 								<td class="b">
 									<table style = "table-layout: auto; table-layout: fixed;">
 										<tr>
@@ -45,7 +46,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="a"><b>╦Ж╧╚╟т</b></td>
+								<td class="a"><b>К╙╦К╛╢Й╡▄</b></td>
 								<td class="b">
 									<table>
 										<tr>
@@ -64,7 +65,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="a"><b>ц╪аЖ╧Ф╥Э</b></td>
+								<td class="a"><b>Л╡╢Л╖─К╟╘К╔═</b></td>
 								<td class="b">
 									<table>
 										<tr>
@@ -78,20 +79,20 @@
 							</tr>
 							
 							<tr>
-								<td class="a"><b>©Ьго╢б ©Н╣© а╬╦Я</b></td>
+								<td class="a"><b>Л⌡░М∙≤К┼■ Л ╢К▐≥ Л╒┘К╙╘</b></td>
 								<td class="b">
 									<table>
 										<tr>
-											<td><input type="radio" name="category" value="1" checked>гО╫╨</td>
-											<td><input type="radio" name="category" value="2">©Д╟║/гй╤Сев╫╨</td>
-											<td><input type="radio" name="category" value="3">╥╞╢в</td>
-											<td><input type="radio" name="category" value="4">╠Бе╦</td>
+											<td><input type="radio" name="category" value="1" checked>М≈╛Л┼╓</td>
+											<td><input type="radio" name="category" value="2">Л ■Й╟─/М∙└К²╪М┘▄Л┼╓</td>
+											<td><input type="radio" name="category" value="3">К÷╛К▀²</td>
+											<td><input type="radio" name="category" value="4">Й╦╟М┐─</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr>
-								<td colspan='2'><input text-align = "center" type="submit" id="submit_btn" value="ют╥б а╓╨╦ юЭ╪ш"></td>
+								<td colspan='2'><input text-align = "center" type="submit" id="submit_btn" value="Л·┘К═╔ Л═∙КЁ╢ Л═└Л├║"></td>
 							</tr>
 						</table>	
 					</form>
