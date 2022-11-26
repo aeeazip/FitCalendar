@@ -87,15 +87,17 @@ public class RecommendDao {
 	 * 추천 정보 입력하면 recommendList table에 추천받는 exerciserId가 추가됨 //내 파트
 	 */
 	public int recommendExerciser(int exerciserId){
+		usePoint(exerciserId, 30);
 		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?, ?, ?, ?, ?)";
-		int randomRecomm1 =  (int)(Math.random()*20);
-		int randomRecomm2 =  (int)(Math.random()*20);
-		int randomRecomm3 =  (int)(Math.random()*20);
+		int randomRecomm1 =  (int)(Math.random()*10)+1;
+		int randomRecomm2 =  (int)(Math.random()*10)+1;
+		int randomRecomm3 =  (int)(Math.random()*10)+1;
 
 		Exerciser recom1 = exerciserDao.findExerciser(randomRecomm1);
 		int count = countingMaxMate(randomRecomm1);
+		
 		//maxMate 초과 여부 검사
-		while(count <= recom1.getMaxMate()) {
+		/*while(count <= recom1.getMaxMate()) {
 			randomRecomm1 =  (int)((Math.random()*10000)%10);
 			recom1 = exerciserDao.findExerciser(randomRecomm1);
 			count = countingMaxMate(randomRecomm1);
@@ -117,7 +119,7 @@ public class RecommendDao {
 			randomRecomm3 =  (int)((Math.random()*10000)%10);
 			recom3 = exerciserDao.findExerciser(randomRecomm3);
 			count = countingMaxMate(randomRecomm3);
-		}
+		}*/
 
 
 		Object[] param = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3, 0};

@@ -23,11 +23,11 @@ public class MatchingReRequestController  implements Controller {
 		RecommendManager recommendManager = RecommendManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 		
-		HttpSession session = request.getSession();
-		Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		//HttpSession session = request.getSession();
+		//Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
 		
-		recommendManager.recommendExerciser(exerciser.getExerciserId());
-		
+		//recommendManager.recommendExerciser(exerciser.getExerciserId());
+		recommendManager.recommendExerciser(21);
 		return "redirect:/matching/matchingMenu/wantRecommend/list";
 	}
 }

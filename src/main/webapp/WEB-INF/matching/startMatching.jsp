@@ -5,18 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>startMatching!!!</title>
-	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>startMatching!!!</title>
+   <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 </head>
 <%@ include file="../frameHeader.jsp" %>
 <body>
 <div align = "center">
-	<form name="startMateForm" action="<c:url value='/matching/setMate' />" method="POST">
-		<h2>${nickname}님 FitMate 매칭을 시작하시려면 버튼을 클릭해주세요!</h2>
-		<button type="submit">매칭 시작하기</button>
-	</form>
-</div>	
+
+   <form name="startMateForm" action="<c:url value='/matching/setMate' />" method="POST">
+      <h2>${nickname}님 FitMate 매칭을 시작하시려면 버튼을 클릭해주세요!</h2>
+      <button type="submit">매칭 시작하기</button>
+   </form>
+</div>   
 </body>
 <%@ include file="../frameFooter.jsp" %>
-</html>

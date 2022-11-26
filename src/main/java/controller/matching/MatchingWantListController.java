@@ -26,10 +26,13 @@ public class MatchingWantListController implements Controller {
 		//HttpSession session = request.getSession();
 
 		//Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
-
+		//if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
+			
 		//recommendList = recommendManager.displayExerciser(exerciser.getExerciserId());
-		recommendList = recommendManager.displayExerciser(1);
-		//추천한 사용자에 대해선 재 추천시, null로 만들어야함
+		//recommendList = recommendManager.displayExerciser(1);
+		//추천 기록이 있다면 추천 실행 아니라면 추천 실행 ㄴ
+		recommendList = recommendManager.displayExerciser(21);
+	
 		if(recommendList != null) {
 			if(recommendList.getCounting() == 0) {
 				request.setAttribute("recomm", recommendList.getRecommend1());

@@ -10,6 +10,7 @@ import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
 import controller.matching.MatchingReRequestController;
 import controller.matching.MatchingRequestController;
+import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController;
@@ -47,7 +48,8 @@ public class RequestMapping {
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
-		
+		mappings.put("/matching/wantRecommend/recommendRequest", new MatchingWantRecommendController());
+		mappings.put("/matching/situation/list", new MatchingSituationController());
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 
