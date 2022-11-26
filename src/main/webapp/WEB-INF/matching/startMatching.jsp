@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>start matching</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>startMatching!!!</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 </head>
+<%@ include file="../frameHeader.jsp" %>
 <body>
 <div align = "center">
 	<form name="startMateForm" action="setMaxMate.jsp" method="GET">

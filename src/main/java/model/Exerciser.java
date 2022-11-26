@@ -127,6 +127,11 @@ public class Exerciser {
 		this.useMatchSvc = useMatchSvc;
 		this.maxMate = maxMate;
 	}
+	
+	public Exerciser(int exerciserId) {
+		super();
+		this.exerciserId = exerciserId;
+	}
 
 // register 시 사용할 생성자
 	public Exerciser(String id, String password, String nickname, String explanation, String personality,

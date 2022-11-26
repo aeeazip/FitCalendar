@@ -26,7 +26,9 @@ public class UpdateOptionController implements Controller{
 		HttpSession session = request.getSession();
 		
 		//로그인한 사용자의 exerciser 객체
-		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		//Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		Exerciser exerciser = new Exerciser(12);
+		int id = exerciser.getExerciserId();
 		
 		//둘 다 maxMate 바꿀수 있어서 뺏음.
 		int maxMate = Integer.getInteger(request.getParameter("maxMate"));
@@ -34,7 +36,8 @@ public class UpdateOptionController implements Controller{
 		//maxMate 설정하기
 		if(request.getServletPath().equals("/matching/setMate")) {
 			try {
-				int result = manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
+				//int result = manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
+				int result = manager.optionChange(12, maxMate, "T");
 				if(result == 1) {
 					return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding 	
 				}
@@ -50,7 +53,8 @@ public class UpdateOptionController implements Controller{
 		else if(request.getServletPath().equals("/matching/setOptions")) {
 			String useMatchSvc = request.getParameter("useMatchSvc");
 			try {
-				manager.optionChange(exerciser.getExerciserId(), maxMate, useMatchSvc);
+				//manager.optionChange(exerciser.getExerciserId(), maxMate, useMatchSvc);
+				manager.optionChange(12, maxMate, useMatchSvc);
 				return "/matching/matchingMenu.jsp"; //성공하면 matchingMenu로 이동
 			} catch (Exception e) {
 				return "redirect:/matching/setOptions";	//실패하면 다시 changeOptions해주기.

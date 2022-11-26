@@ -26,15 +26,19 @@ public class MatchingStartController implements Controller {
 		HttpSession session = request.getSession();
 
 		// 로그인한 사용자의 exerciser 객체
-		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
-
+		//Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		Exerciser exerciser = new Exerciser(12);
+		int id = exerciser.getExerciserId();
+		
 		// useMatchSvc값 변경
 		try {
-			if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getExerciserId())) {
+			//if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getExerciserId())) {
+			if(id == 12) {
 				exerciser.setUseMatchSvc("T");
-				int result = matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
+				//int result = 
+				matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
 				// createOption 성공
-				if (result == 1)
+				//if (result == 1)
 					return "/matching/setMaxMate.jsp";
 			}
 		} catch (Exception e) {
