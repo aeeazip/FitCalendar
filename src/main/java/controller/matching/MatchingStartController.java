@@ -35,17 +35,17 @@ public class MatchingStartController implements Controller {
 			//if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getExerciserId())) {
 			if(id == 12) {
 				exerciser.setUseMatchSvc("T");
-				//int result = 
 				matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
 				// createOption 성공
-				//if (result == 1)
-					return "/matching/setMaxMate.jsp";
+				
+				request.setAttribute("nickname",exerciser.getNickname());
+				return "/matching/startMatching.jsp";
 			}
 		} catch (Exception e) {
 			request.setAttribute("CreateOptionsFailed", true);
 			request.setAttribute("exerciser", exerciser);
 		}
-		// 실패시, 다시 설정하도록 같은 페이지
-		return "redirect:matching/startMatching";
+		// 실패시, main으로
+		return "redirect:/exerciser/main";
 	}
 }

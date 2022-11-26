@@ -36,16 +36,14 @@ public class UpdateOptionController implements Controller{
 		//maxMate 설정하기
 		if(request.getServletPath().equals("/matching/setMate")) {
 			try {
-				//int result = manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
-				int result = manager.optionChange(12, maxMate, "T");
-				if(result == 1) {
-					return "/matching/matchingMenu.jsp"; //성공 시, 해당 페이지로 forwarding 	
-				}
+				//manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
+				 manager.optionChange(12, maxMate, "T");
+				return "/matching/setMate.jsp"; //성공 시, 해당 페이지로 forwarding 	
 			} catch (Exception e) {
 				request.setAttribute("checkFailed", true);
 				request.setAttribute("exception", e);
 				request.setAttribute("exerciserId", exerciser.getExerciserId());
-				return "redirect:/matching/setMaxMate"; //실패 시, 다시 maxMate설정 페이지로!
+				return "redirect:/matching/setMate"; //실패 시, 다시  maxMate설정 페이지로!(안넘어가게)
 			}
 		} 
 		
@@ -55,9 +53,9 @@ public class UpdateOptionController implements Controller{
 			try {
 				//manager.optionChange(exerciser.getExerciserId(), maxMate, useMatchSvc);
 				manager.optionChange(12, maxMate, useMatchSvc);
-				return "/matching/matchingMenu.jsp"; //성공하면 matchingMenu로 이동
+				return "/matching/setOptions.jsp"; //성공하면 matchingMenu로 이동
 			} catch (Exception e) {
-				return "redirect:/matching/setOptions";	//실패하면 다시 changeOptions해주기.
+				return "redirect:/matching/matchingMenu";	//실패하면 다시 changeOptions해주기.
 			}
 		}
 		return "redirect:/matching/matchingMenu"; //다 안되면 걍 메뉴로 이동.
