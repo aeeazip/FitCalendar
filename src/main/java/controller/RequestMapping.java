@@ -47,6 +47,7 @@ public class RequestMapping {
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
+		mappings.put("/matching/wantRecommend/recommendRequest", new MatchingWantRecommendController());
 		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());

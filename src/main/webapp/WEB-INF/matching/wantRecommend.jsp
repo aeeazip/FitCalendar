@@ -17,7 +17,7 @@
 <body>
 
 <div align ="center">
- <form name="form" method="GET" action="<c:url value='/matching/wantRecommend/list' />">
+ <form name="form" method="GET" action="<c:url value='/matching/wantRecommend/recommendRequest' />">
   <h2>FitMate 추천을 받고 싶다면 <br> 버튼을 누르세요!</h2>
   <br>
   <button type="button" id="login_btn" onclick="recommend();">추천하기</button>
