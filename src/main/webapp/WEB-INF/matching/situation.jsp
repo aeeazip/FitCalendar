@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>RecommendList</title>
+<title>Matching Situation</title>
 <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 <link rel="stylesheet" href="<c:url value='/css/situation.css' />" type="text/css">
 </head>
@@ -24,8 +24,8 @@
 <tbody>
 	<c:forEach var="result" items="${matchingStatus}" varStatus="status">
 		<tr>
-			<td><c:out value="${result.reciever }"/></td>
-			<td><c:out value="${result.status }"/></td>
+			<td><c:out value="${result.reciever.nickname}"/></td>
+			<td><c:out value="${result.status}"/></td>
 		</tr>
 	</c:forEach>
 </tbody>
