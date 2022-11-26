@@ -12,10 +12,11 @@
 <%@ include file="../frameHeader.jsp" %>
 <body>
 <div align = "center">
-	<form name="startMateForm" action="setMaxMate.jsp" method="GET">
-		<h2>FitMate 매칭을 시작하시려면 버튼을 클릭해주세요!</h2>
-		<button onclick="locaton='setMaxMate.jsp'">매칭 시작하기</button>
+	<form name="startMateForm" action="<c:url value='/matching/setMate' />" method="POST">
+		<h2>${nickname}님 FitMate 매칭을 시작하시려면 버튼을 클릭해주세요!</h2>
+		<button type="submit">매칭 시작하기</button>
 	</form>
 </div>	
 </body>
+<%@ include file="../frameFooter.jsp" %>
 </html>
