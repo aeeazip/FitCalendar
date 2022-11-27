@@ -1,28 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
 <head>
 <meta charset="EUC-KR">
 <title>recordForm</title>
-	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
+	type="text/css" />
 </head>
 <body>
-	<%
-		int cnt = Integer.parseInt((String)request.getAttribute("cnt"));	// ³»°¡ ÀÛ¼ºÇÑ ÃÑ Record °³¼ö È®ÀÎ
-		int pageSize = 3;		// ÇÑ ÆäÀÌÁö¿¡ Ãâ·ÂµÉ ±Û ¼ö 
-		
-		String pageNum = request.getParameter("pageNum");		// Çö ÆäÀÌÁö Á¤º¸ ¼³Á¤
-		if(pageNum == null){
-			pageNum = "1";
-		}
-		
-		int currentPage = Integer.parseInt(pageNum);		
-		int startRow = (currentPage - 1) * pageSize + 1;		// Ã¹Çà¹øÈ£¸¦ °è»ê
-		
-		
-		// https://heezit.tistory.com/84?category=965695
-		// ÀÌ°Å º¸°í ¸¶Àú ÀÛ¼ºÇÕ½Ã´ÙÀ×
-	%>
+	<%@ include file="../frameHeader.jsp"%>
+	<table id="recordT">
+		<tr>
+			<td align="center" bgcolor="E6ECDE" height="50">ê¸€ ë²ˆí˜¸</td>
+			<td align="center" bgcolor="E6ECDE">ì œëª©</td>
+			<td align="center" bgcolor="E6ECDE">ë¶„ë¥˜</td>
+			<td align="center" bgcolor="E6ECDE">ìž‘ì„±ìž</td>
+		</tr>
+		<c:forEach var="record" items="${recordList}">
+			<tr>
+				<td align="center" bgcolor="ffffff" height="35">
+					${record.recordId}</td>
+				<td bgcolor="ffffff" style="padding-left: 10"><a
+					href="<c:url value='/myRecord/list/detail'><c:param name='recordId' value='${record.recordId}'/></c:url>">${record.title}</a>
+				</td>
+				<td bgcolor="ffffff" style="padding-left: 10" align="center"><c:if
+						test="${record.category eq '1'}">
+						<p>í—¬ìŠ¤</p>
+					</c:if> <c:if test="${record.category eq '2'}">
+						<p>í•„ë¼í…ŒìŠ¤</p>
+					</c:if> <c:if test="${record.category eq '3'}">
+						<p>ìš”ê°€</p>
+					</c:if> <c:if test="${record.category eq '4'}">
+						<p>ëŸ¬ë‹</p>
+					</c:if> <c:if test="${record.category eq '5'}">
+						<p>ê¸°íƒ€</p>
+					</c:if></td>
+				<td bgcolor="ffffff" style="padding-left: 10" align="center">${nickname}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<%@ include file="../frameFooter.jsp"%>
 </body>
 </html>
