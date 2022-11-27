@@ -27,7 +27,7 @@
 	<a href="./getRecommendList">요청받은 fitmate</a><br><br>
 	<a href="./wantRecommend">FITMATE RECOMMEND</a><br><br>
 	<a href="./situation.jsp">요청 상태 관리</a><br><br>
-	<a href="./setOptions.jsp">옵션 바꾸기</a><br>
+	<a href="./setMate">옵션 바꾸기</a><br>
 </div>   
 </body>
 

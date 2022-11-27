@@ -42,7 +42,7 @@ public class MatchingDao {
 	 * maxMate & useMatchSvc 변경 가능 두 항목 exerciser table에 저장
 	 */
 	public int optionChange(int exerciserId, int maxMate, String useMatchSvc) {
-		String query = "UPDATE exerciser SET NVL(maxMate,0) = ?, useMatchSvc = ? WHERE exerciserId = ?";
+		String query = "UPDATE exerciser SET maxMate = ?, useMatchSvc = ? WHERE exerciserId = ?";
 		Object[] param = new Object[] { maxMate, useMatchSvc, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
