@@ -22,8 +22,16 @@
 <tbody>
 	<c:forEach var="result" items="${matchingStatus}" varStatus="status">
 		<tr>
-			<td><c:out value="${result.reciever.nickname}"/></td>
-			<td><c:out value="${result.status}"/></td>
+			<td><c:out value="${result.receiverNickName}"/></td>
+			<c:if test="${ 1 eq result.status }">
+			<td>요청 수락 O</td>
+			</c:if>
+			<c:if test="${ 2 eq result.status }">
+			<td>요청 대기</td>
+			</c:if>
+			<c:if test="${ 3 eq result.status }">
+			<td>요청 거절</td>
+			</c:if>
 		</tr>
 	</c:forEach>
 </tbody>

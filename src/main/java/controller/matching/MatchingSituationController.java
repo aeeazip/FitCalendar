@@ -1,5 +1,6 @@
 package controller.matching;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +28,23 @@ public class MatchingSituationController  implements Controller {
 
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		System.out.print(id);
+		
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 
 		List<MatchingStatus> matchingStatus = matchingManager.showSitationList(exerciser.getExerciserId());
+		
+		List<Exerciser> recieverList = new ArrayList<Exerciser>();
+		int recieverId;
+		int i = 0;
+		Exerciser reciever;
+		
+		for(MatchingStatus status : matchingStatus) {
+			recieverId = status.getReceiver();
+			reciever = exerciserManager.findExerciserById(recieverId);
+			matchingStatus.get(i).setReceiverNickName(reciever.getNickname());
+			
+			i++;
+		}
 
 		request.setAttribute("matchingStatus", matchingStatus);
 	
