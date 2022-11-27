@@ -23,8 +23,9 @@ public class MatchingRequestController implements Controller {
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 		
 		HttpSession session = request.getSession();
-		Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
-		
+		String id = (String)session.getAttribute("userId");
+		Exerciser exerciser = exerciserManager.findExerciser(id);
+
 		int fitMateId = Integer.parseInt(request.getParameter("fitMateId"));
 		
 		recommendManager.requestFitmate(exerciser.getExerciserId(), fitMateId);

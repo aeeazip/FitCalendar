@@ -95,9 +95,8 @@ public class RecommendDao {
 
 		Exerciser recom1 = exerciserDao.findExerciser(randomRecomm1);
 		int count = countingMaxMate(randomRecomm1);
-		
-		//maxMate 초과 여부 검사
-		/*while(count <= recom1.getMaxMate()) {
+
+		while(count <= recom1.getMaxMate()) {
 			randomRecomm1 =  (int)((Math.random()*10000)%10);
 			recom1 = exerciserDao.findExerciser(randomRecomm1);
 			count = countingMaxMate(randomRecomm1);
@@ -119,7 +118,7 @@ public class RecommendDao {
 			randomRecomm3 =  (int)((Math.random()*10000)%10);
 			recom3 = exerciserDao.findExerciser(randomRecomm3);
 			count = countingMaxMate(randomRecomm3);
-		}*/
+		}
 
 
 		Object[] param = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3, 0};
@@ -183,7 +182,7 @@ public class RecommendDao {
 	}
 
 	//재추천 메소드
-	public int reRecommendExerciser(int exerciserId, int recomId1, int recomId2, int recomId3){
+	public int reRecommendExerciser(int exerciserId){
 		String query = "UPDATE recommendlist SET count=count+1 " + "WHERE exerciserId = ? ";
 		Object[] param = new Object[] {exerciserId};
 		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정

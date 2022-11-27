@@ -38,9 +38,9 @@ public class RecommendManager {
 		return 0;
 	}
 	
-	public int reRecommendExerciser(int exerciserId, int recomId1, int recomId2, int recomId3) {
+	public int reRecommendExerciser(int exerciserId) {
 		if(recommendDao.usePoint(exerciserId, 30) != 0)
-			return recommendDao.reRecommendExerciser(exerciserId, recomId1, recomId2, recomId3);
+			return recommendDao.reRecommendExerciser(exerciserId);
 		return 0;
 	}
 	

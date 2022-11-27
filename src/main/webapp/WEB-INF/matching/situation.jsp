@@ -14,13 +14,11 @@
 <div align ="center">
 <h3>FitMate 요청 상태</h3>
 
-<c:if test="${matchingStatus}.size() == 0 }">
-	<tfoot>
-		<tr>
-			<td colspan="3">현재 요청하신 FitMate가 존재하지 않습니다..</td>
-		</tr>
-	</tfoot>
+<c:if test="${empty matchingStatus}">
+	현재 요청하신 FitMate가 존재하지 않습니다.
 </c:if>
+<c:if test="${not empty matchingStatus}">
+<table>
 <tbody>
 	<c:forEach var="result" items="${matchingStatus}" varStatus="status">
 		<tr>
@@ -29,7 +27,9 @@
 		</tr>
 	</c:forEach>
 </tbody>
+</c:if>
 </table>
+</div>
 
 <%@ include file="../frameFooter.jsp" %>
 </html>
