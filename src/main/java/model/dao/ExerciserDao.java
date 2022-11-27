@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import model.Exerciser;
 
@@ -264,5 +265,26 @@ public class ExerciserDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return -1;
+	}
+
+	/**
+	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사
+	 */
+	public boolean existingUser(String inputId) throws SQLException {
+		String sql = "SELECT count(*) FROM EXERCISER WHERE id=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { inputId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return false;
 	}
 }
