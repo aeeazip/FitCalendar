@@ -18,7 +18,8 @@ import model.service.ExerciserManager;
 public class DeleteRecordController implements Controller {
 
 	private static final Logger log = LoggerFactory.getLogger(DeleteRecordController.class);
-
+	private static HttpSession session;
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.debug("Delete Record Request");
@@ -31,8 +32,10 @@ public class DeleteRecordController implements Controller {
 		ExerciserManager exMgr = ExerciserManager.getInstance();
 		Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
 
-		HttpSession session = request.getSession();
-		if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getId())) {
+		session = request.getSession();
+		String str = (String)session.getAttribute("id");
+		
+		if (str.equals(exerciser.getId())) {
 			// 현재 로그인한 사용자가 수정 대상 사용자인 경우 -> 수정 가능
 			int result = manager.deleteRecord(recordId);
 			if (result == 1)

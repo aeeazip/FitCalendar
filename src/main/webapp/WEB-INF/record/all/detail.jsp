@@ -9,7 +9,7 @@ String nickname = (String) request.getAttribute("nickname");
 <html>
 <head>
 <meta charset="utf-8">
-<title>Health Category Record</title>
+<title>Exerciser Record</title>
 <link rel="stylesheet" href="<c:url value='/css/frame.css' />"
 	type="text/css">
 <script>
@@ -90,17 +90,9 @@ td {
 	</table>
 	<br>
 
-	<!-- 수정 및 삭제 -->
+	<!-- 목록 -->
 	<div style="text-align: center;">
-		<a href="<c:url value='/myRecord/update'>
-	     		   <c:param name='recordId' value='<%=String.valueOf(record.getRecordId())%>'/>
-			 	 </c:url>">수정</a>
-		&nbsp; <a
-			href="<c:url value='/myRecord/delete'>
-				   <c:param name='recordId' value='<%=String.valueOf(record.getRecordId())%>'/>
-			 	 </c:url>"
-			onclick="return recordRemove();">삭제</a> &nbsp; <a
-			href="<c:url value='/myRecord/list' />">목록</a> <br> <br>
+		<a href="<c:url value='/allRecord/list' />">목록</a> <br> <br>
 	</div>
 
 	<%@ include file="../../frameFooter.jsp"%>

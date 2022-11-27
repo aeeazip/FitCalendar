@@ -245,6 +245,7 @@ public class RecordDao {
 		return null;
 	}
 	
+	
 	public int findMyRecordCnt(int exerciserId) {
 		String query = "select count(*) from record where exerciserid=?";
 		Object[] param = new Object[] { exerciserId };
@@ -255,7 +256,7 @@ public class RecordDao {
 			int cnt = 0;
 			
 			while (rs.next()) {
-				cnt = rs.getInt(0);
+				cnt = rs.getInt(1);
 			}
 			return cnt;
 		} catch (Exception e) {
@@ -264,6 +265,39 @@ public class RecordDao {
 			jdbcUtil.close();
 		}
 		return -1;
+	}
+	
+	public List<Record> findAllExerciserRecords(){
+		String query = "select * from record where shareOption=1 order by recordid desc";
+		jdbcUtil.setSqlAndParameters(query, null);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+
+			List<Record> list = new ArrayList<Record>();
+			while (rs.next()) {
+				int recordId = rs.getInt("recordId");
+				String title = rs.getString("title");
+				String creationDate = rs.getString("creationDate");
+				int totalTime = rs.getInt("totalTime");
+				int category = rs.getInt("category");
+				String routine = rs.getString("routine");
+				String diet = rs.getString("diet");
+				String photo = rs.getString("photo");
+				int shareOption = rs.getInt("shareOption");
+				int exerciserId = rs.getInt("exerciserId");
+
+				Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo,
+						shareOption, exerciserId);
+				list.add(record);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return null;
 	}
 
 }
