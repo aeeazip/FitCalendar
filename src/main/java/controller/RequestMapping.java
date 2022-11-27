@@ -39,17 +39,19 @@ public class RequestMapping {
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
+
 		mappings.put("/myPage", new ForwardController("/myPage/myPageMenu.jsp"));
 		mappings.put("/myPage/attendance", new AttendanceController());
+		mappings.put("/myPage/static", new ForwardController("/myPage/static.jsp"));
 
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
 		mappings.put("/matching/setMate", new UpdateOptionController());
 		mappings.put("/matching/setOptions", new UpdateAllOptionController());
-		
+
 		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
-		
+
 		// MAtching inwoo's Part!!!!
 		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
