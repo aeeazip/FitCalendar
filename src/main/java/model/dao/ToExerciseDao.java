@@ -44,19 +44,20 @@ public class ToExerciseDao {
 		return null;
 	}
 
-	public ArrayList<ToExercise> addToExercise(int exerciserId, String content) {
+	public int addToExercise(int exerciserId, String content) {
 		Date date = new Date();
 		java.util.Date sqlDate = new java.sql.Date(date.getTime());
-
-		String query = "insert into toexercise  (creationdate, content, checked, exerciserid)\r\n"
-				+ "values (?, ?, F , ?)";
-		Object[] param = new Object[] { date, content, exerciserId };
+		System.out.println(content);
+		String query = "insert into toexercise ( itemid, content, checked, exerciserid)\r\n"
+				+ "values ( itemseq.nextval, ?, ? , ?)";
+		Object[] param = new Object[] { content, 'F', exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			System.out.println(result);
 			if (result == 1) {
-				return findToExercise(exerciserId); // insert 에 의해 반영된 레코드 수 반환
+				return result; // insert 에 의해 반영된 레코드 수 반환
 			}
 		} catch (Exception e) {
 			jdbcUtil.rollback();
@@ -66,7 +67,7 @@ public class ToExerciseDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 
-		return null;
+		return 0;
 	}
 
 	public ArrayList<ToExercise> checkToExercise(int exerciserId, int itemId) {
@@ -111,6 +112,28 @@ public class ToExerciseDao {
 		}
 
 		return null;
+	}
+	
+	public ArrayList<ToExercise> unCheckToExercise(int exerciserId, int itemId){
+		String query = "UPDATE FROM toexercise SET checked = 'F' WHERE exerciserid = ? and itemId = ? ";
+		Object[] param = new Object[] { exerciserId, itemId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			if (result == 1) {
+				return findToExercise(exerciserId); // insert 에 의해 반영된 레코드 수 반환
+			}
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+
+		return null;
+		
 	}
 
 }

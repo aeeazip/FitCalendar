@@ -139,24 +139,22 @@ public class MatchingDao {
 	}
 
 	/**
-	 * 매칭 거절 시, matchingStatus의 status 2(refuse)로 수정.
+	 * 매칭 거절 시, matchingStatus의 status 3(refuse)로 수정.
 	 */
 	public int matchingRefuse(int myExerciserId, int yourExerciserId) {
-		String query = "UPDATE matchingStatus SET status = 2 WHERE senderId =?, receiverId = ?";
-		Object[] param = new Object[] { myExerciserId, yourExerciserId };
+		System.out.println("dao");
+		String query = "UPDATE matchingStatus SET status = 3 WHERE senderId =? AND receiverId = ?";
+		Object[] param = new Object[] { yourExerciserId, myExerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
+		System.out.println(myExerciserId);
+		System.out.println(yourExerciserId);
 
 		try {
-			int result1 = jdbcUtil.executeUpdate();
+			int result = jdbcUtil.executeUpdate();
 
-			jdbcUtil.close();
+			System.out.println(result);
 
-			Object[] param2 = new Object[] { yourExerciserId, myExerciserId };
-			jdbcUtil.setSqlAndParameters(query, param2);
-
-			int result2 = jdbcUtil.executeUpdate();
-
-			return (result1 + result2); // 2가 return 되어야함
+			return result; 
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

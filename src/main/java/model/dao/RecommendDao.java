@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Exerciser;
+import model.MatchingStatus;
 import model.RecommendList;
 
 public class RecommendDao {
@@ -47,35 +48,28 @@ public class RecommendDao {
 	}
 
 	/**
-	 * exerciser에게 matching 신청을 한 list 조회
+	 * exerciser에게 matching 신청을 한 list 조회 3이 대기
 	 */
-	public RecommendList showGetRecommendList(int exerciserId) {
-		String query = "SELECT * FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
-		Object[] param = new Object[] { exerciserId, exerciserId, exerciserId };
+	public List<MatchingStatus> showGetRecommendList(int exerciserId) {
+		String query = "SELECT * FROM matchingstatus WHERE receiverId = ? AND status = 2";
+		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
-
-		RecommendList recommend = null;
+		List<MatchingStatus> statusList = new ArrayList<MatchingStatus>();
+		MatchingStatus status = null;
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-
+			System.out.println("result실행");
 			while (rs.next()) {
-				int sender = rs.getInt("exerciserId");
-
-				int recieverId1 = rs.getInt("recommId1");
-				int recieverId2 = rs.getInt("recommId2");
-				int recieverId3 = rs.getInt("recommId3");
-
-				if (recieverId1 == exerciserId) {
-					recommend = new RecommendList(recieverId1, sender);
-				} else if (recieverId2 == exerciserId) {
-					recommend = new RecommendList(recieverId2, sender);
-				} else {
-					recommend = new RecommendList(recieverId3, sender);
-				}
+				int sender = rs.getInt("senderId");
+				int reciever = rs.getInt("receiverid");
+				int status_int = rs.getInt("status");
+				System.out.println(reciever);
+				status = new MatchingStatus(sender, reciever, status_int);
+				statusList.add(status);
 
 			}
-			return recommend;
+			return statusList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

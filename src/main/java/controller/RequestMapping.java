@@ -8,8 +8,11 @@ import org.slf4j.LoggerFactory;
 
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
+import controller.myPage.ViewToExerciseController;
+import controller.matching.MatchingCompleteController;
 import controller.matching.MatchingGetRecommendListController;
 import controller.matching.MatchingReRequestController;
+import controller.matching.MatchingRecommendRefusalController;
 import controller.matching.MatchingRequestController;
 import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
@@ -19,8 +22,12 @@ import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateAllOptionController;
 import controller.matching.UpdateOptionController;
+import controller.myPage.AddToExerciseController;
 import controller.myPage.AttendanceController;
+import controller.myPage.CheckToExerciseController;
+import controller.myPage.DeleteToExerciseController;
 import controller.myPage.StaticController;
+import controller.myPage.UnCheckToExerciseController;
 import controller.record.AllRecordController;
 import controller.record.DeleteRecordController;
 import controller.record.ListRecordController;
@@ -53,6 +60,8 @@ public class RequestMapping {
 
 		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
+		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
+		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());
 
 		// MAtching inwoo's Part!!!!
 		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
@@ -91,6 +100,15 @@ public class RequestMapping {
 		mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
 		mappings.put("/allRecord/list", new AllRecordController());
 		mappings.put("/allRecord/list/detail", new RecordDetailController());
+		
+		//ToExercise
+		mappings.put("/mypage/ToExercise", new ViewToExerciseController());
+		mappings.put("/mypage/ToExercise/add", new AddToExerciseController());
+		mappings.put("/mypage/ToExercise/check", new CheckToExerciseController());
+		mappings.put("/mypage/ToExercise/uncheck", new UnCheckToExerciseController());
+		mappings.put("/mypage/ToExercise/delete", new DeleteToExerciseController());
+		
+		
 
 		log.info("Initialized Request Mapping!");
 

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Exerciser;
+import model.MatchingStatus;
 import model.RecommendList;
 import model.service.ExerciserManager;
 import model.service.RecommendManager;
@@ -31,30 +32,22 @@ public class MatchingGetRecommendListController implements Controller {
 		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(id);
 
-		RecommendList recommendList = recommManager.showGetRecommendList(exerciser.getExerciserId());
-
-		List<Exerciser> getRecommList = new ArrayList<Exerciser>();
+		List<MatchingStatus> statusList = recommManager.showGetRecommendList(exerciser.getExerciserId());
 		
-		Exerciser recomm1 = exManager.findExerciserById(recommendList.getRecommend1());
-		Exerciser recomm2 = exManager.findExerciserById(recommendList.getRecommend2());
-		Exerciser recomm3 = exManager.findExerciserById(recommendList.getRecommend3());
-		
+		List<Exerciser> recommList = new ArrayList<Exerciser>();
+		Exerciser recomm;
 		try {
-			if (recommendList != null) {
+			if (statusList != null) {
 				// 나에게 추천 신청을 한 사람들이 보여야함. 내가 recommId 1 2 3 에 있으면 누군가가 날 추천 누른거야.
 				// 그래서 나는 exerciserId를 구해서 리스트를 보내면 돼!!
-				if (recomm1.getExerciserId() == exerciser.getExerciserId()) {
-					getRecommList.add(recomm1);
-				} else if (recomm2.getExerciserId() == exerciser.getExerciserId()) {
-					getRecommList.add(recomm2);
-				} else if (recomm3.getExerciserId() == exerciser.getExerciserId()) {
-					getRecommList.add(recomm3);
+				for(MatchingStatus item : statusList) {
+					recomm = exManager.findExerciserById(item.getSender());
+					recommList.add(recomm);
 				}
-				
 			}
 			// getRecommList 전달해서 forwarding
-			request.setAttribute("getRecommList", getRecommList);
-			return "/matching/matchingMenu/getRecommendList.jsp";
+			request.setAttribute("getRecommList", recommList);
+			return "/matching/getRecommendList.jsp";
 			
 		} catch (Exception e) {
 			request.setAttribute("exerciser", exerciser);
