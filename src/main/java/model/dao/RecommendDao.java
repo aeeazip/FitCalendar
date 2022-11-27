@@ -20,21 +20,21 @@ public class RecommendDao {
 	 * exerciser가 추천받은 exerciser의 목록(3명)인 recommendList 조회 //수정 완료
 	 */
 	public RecommendList displayExerciser(int exerciserId) {
-		String query = "SELECT exerciserId, recomId1, recomId2, recomId3 FROM RecommendList WHERE exerciserId = ?";
+		String query = "SELECT exerciserId, recommId1, recommId2, recommId3 FROM RecommendList WHERE exerciserId = ?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
-
 		RecommendList recommend = null;
-
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			if (rs.next()) {
 				// 매개변수와 이름이 동일해서 변수 이름 수정
 				int exerciser_id = rs.getInt("exerciserId");
-				Exerciser recom1 = exerciserDao.findExerciser(rs.getInt("recomId1"));
-				Exerciser recom2 = exerciserDao.findExerciser(rs.getInt("recomId2"));
-				Exerciser recom3 = exerciserDao.findExerciser(rs.getInt("recomId3"));
-				recommend = new RecommendList(exerciser_id, recom1, recom2, recom3);
+				int recomId1 = rs.getInt("recommId1");
+				int recomId2 = rs.getInt("recommId2");
+				int recomId3 = rs.getInt("recommId3");
+				System.out.println(recomId1);
+
+				recommend = new RecommendList(exerciser_id, recomId1, recomId2, recomId3);
 				return recommend;
 			}
 		} catch (Exception e) {
@@ -59,17 +59,18 @@ public class RecommendDao {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<RecommendList> getRecommList = new ArrayList<RecommendList>();
 			while (rs.next()) {
-				int recomm_id = rs.getInt("exerciserId");
-				Exerciser wantRecomm = exerciserDao.findExerciser(recomm_id);
-				Exerciser exerciser1 = exerciserDao.findExerciser(rs.getInt("recomId1"));
-				Exerciser exerciser2 = exerciserDao.findExerciser(rs.getInt("recomId2"));
-				Exerciser exerciser3 = exerciserDao.findExerciser(rs.getInt("recomId3"));
-				if (exerciser1 != null) {
-					recommend = new RecommendList(exerciser1.getExerciserId(), wantRecomm);
-				} else if (exerciser2 != null) {
-					recommend = new RecommendList(exerciser2.getExerciserId(), wantRecomm);
+				int sender = rs.getInt("exerciserId");
+
+				int recieverId1 = rs.getInt("recomId1");
+				int recieverId2 = rs.getInt("recomId2");
+				int recieverId3 = rs.getInt("recomId3");
+
+				if (recieverId1 == exerciserId) {
+					recommend = new RecommendList(recieverId1, sender);
+				} else if (recieverId2 == exerciserId) {
+					recommend = new RecommendList(recieverId2, sender);
 				} else {
-					recommend = new RecommendList(exerciser3.getExerciserId(), wantRecomm);
+					recommend = new RecommendList(recieverId3, sender);
 				}
 
 				getRecommList.add(recommend);
@@ -86,47 +87,23 @@ public class RecommendDao {
 	/**
 	 * 추천 정보 입력하면 recommendList table에 추천받는 exerciserId가 추가됨 //내 파트
 	 */
-	public int recommendExerciser(int exerciserId){
+	public RecommendList recommendExerciser(int exerciserId){
 		usePoint(exerciserId, 30);
-		String query = "INSERT INTO recommendlist(exerciserId) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO recommendlist(exerciserId, recommid1, recommid2, recommid3, count) VALUES (?, ?, ?, ?, 0)";
 		int randomRecomm1 =  (int)(Math.random()*10)+1;
 		int randomRecomm2 =  (int)(Math.random()*10)+1;
 		int randomRecomm3 =  (int)(Math.random()*10)+1;
-
-		Exerciser recom1 = exerciserDao.findExerciser(randomRecomm1);
-		int count = countingMaxMate(randomRecomm1);
-
-		while(count <= recom1.getMaxMate()) {
-			randomRecomm1 =  (int)((Math.random()*10000)%10);
-			recom1 = exerciserDao.findExerciser(randomRecomm1);
-			count = countingMaxMate(randomRecomm1);
-		}
-
-		Exerciser recom2 = exerciserDao.findExerciser(randomRecomm2);
-		count = countingMaxMate(randomRecomm2);
-		//maxMate 초과 여부 검사
-		while(count <= recom2.getMaxMate()) {
-			randomRecomm2 =  (int)((Math.random()*10000)%10);
-			recom2 = exerciserDao.findExerciser(randomRecomm2);
-			count = countingMaxMate(randomRecomm2);
-		}
-
-		Exerciser recom3 = exerciserDao.findExerciser(randomRecomm3);
-		count = countingMaxMate(randomRecomm3);
-		//maxMate 초과 여부 검사
-		while(count <= recom3.getMaxMate()) {
-			randomRecomm3 =  (int)((Math.random()*10000)%10);
-			recom3 = exerciserDao.findExerciser(randomRecomm3);
-			count = countingMaxMate(randomRecomm3);
-		}
-
-
-		Object[] param = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3, 0};
+		
+		RecommendList recommendList = null;
+		System.out.println(randomRecomm1);
+		Object[] param = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3};
 		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert into문 실행
-			return result; // insert into에 의해 반영된 레코드 수 반환
+			if(result > 0)
+				recommendList = new RecommendList(exerciserId, randomRecomm1, randomRecomm2, randomRecomm3, 0);
+			return recommendList; // insert into에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();
@@ -134,7 +111,7 @@ public class RecommendDao {
 			jdbcUtil.commit();
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
-		return 0;   
+		return recommendList;   
 	}
 
 
@@ -142,6 +119,7 @@ public class RecommendDao {
 	 * 추천 or 매칭 기능 이용 시, exerciser table의 point 차감
 	 */
 	public int usePoint(int exerciserId, int point) {
+		System.out.println("recommendDao");
 		String query = "UPDATE exerciser SET point = NVL(point, 0) - ? WHERE exerciserId = ?";
 		Object[] param = new Object[] { point, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
