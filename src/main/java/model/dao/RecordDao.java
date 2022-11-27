@@ -50,7 +50,7 @@ public class RecordDao {
 
 	// exerciser가 작성한 모든 Record 조회
 	public List<Record> findRecordList(int exerciserId) {
-		String query = "select * from record where exerciserId=?";
+		String query = "select * from record where exerciserId=? order by recordId desc";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 

@@ -86,8 +86,8 @@ public class RequestMapping {
 		mappings.put("/myRecord/write", new WriteRecordController());
 		mappings.put("/myRecord/list", new ListRecordController());
 		mappings.put("/myRecord/list/detail", new RecordDetailController());
-		mappings.put("/myRecord/list/detail/update", new UpdateRecordController());
-		mappings.put("/myRecord/list/detail/delete", new DeleteRecordController());
+		mappings.put("/myRecord/update", new UpdateRecordController());
+		mappings.put("/myRecord/delete", new DeleteRecordController());
 		mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
 		mappings.put("/allRecord/list", new AllRecordController());
 		mappings.put("/allRecord/list/detail", new RecordDetailController());

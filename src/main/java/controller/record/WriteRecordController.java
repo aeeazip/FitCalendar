@@ -27,7 +27,7 @@ public class WriteRecordController implements Controller {
 		
 		if (request.getMethod().equals("GET")) {
 			// GET request: 기록 등록 form 요청
-			str = (String)session.getAttribute("userId");
+			str = (String)session.getAttribute("id");
 			exerciser = userManager.findExerciser(str);
 			
 			// System.out.println(str);
@@ -56,8 +56,7 @@ public class WriteRecordController implements Controller {
 			int result = userManager.updatePoint(exerciserId);
 			// System.out.println(result);
 			
-			return "/main.jsp"; // test용
-			// return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
+			return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
 
 		} catch (Exception e) { // 예외 발생 시 회원가입 form으로 forwarding
 			request.setAttribute("createFailed", true);

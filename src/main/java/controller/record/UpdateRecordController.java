@@ -18,33 +18,36 @@ import model.service.ExerciserManager;
 public class UpdateRecordController implements Controller {
 
 	private static final Logger log = LoggerFactory.getLogger(UpdateRecordController.class);
-
+	private static HttpSession session;
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		session = request.getSession();
+		String str = (String)
+				session.getAttribute("id");
+		RecordManager manager = RecordManager.getInstance();
+		ExerciserManager exMgr = ExerciserManager.getInstance();
+		
+		
 		if (request.getMethod().equals("GET")) {
 			// GET request: 기록 수정 form 요청
 			log.debug("RecordUpdateForm Request");
 
 			int recordId = Integer.parseInt(request.getParameter("recordId"));
 
-			RecordManager manager = RecordManager.getInstance();
 			Record record = manager.findRecordDetails(recordId); // recordId로 사용자가 작성한 Record 정보를 가져온다
-			request.setAttribute("record", record);
-
-			ExerciserManager exMgr = ExerciserManager.getInstance();
-			// record의 int형 exerciserId로 String id값을 가져와야 함.
 			Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
-
-			HttpSession session = request.getSession();
-			if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getId())) {
+			
+			if (str.equals(exerciser.getId())) {
 				// 현재 로그인한 사용자가 수정 대상 사용자인 경우 -> 수정 가능
-				return "/myRecord/list/detail/updateForm.jsp"; // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송
+				request.setAttribute("record", record);
+				request.setAttribute("NickName", exerciser.getNickname());
+				return "/myRecord/updateForm.jsp"; // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송
 			}
 			// else (수정 불가능한 경우) 사용자 보기 화면으로 오류 메세지를 전달
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", new IllegalStateException("타인의 정보는 수정할 수 없습니다."));
 
-			return "/myRecord/list/detail/updateForm.jsp"; // registerForm으로 이동
+			return "/myRecord/updateForm.jsp"; // registerForm으로 이동
 		}
 
 		// POST request (기록 수정 정보가 parameter로 전송됨)
@@ -60,7 +63,6 @@ public class UpdateRecordController implements Controller {
 		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
 
 		try {
-			RecordManager manager = RecordManager.getInstance();
 			manager.updateRecord(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption,
 					exerciserId);
 			return "redirect:/myRecord/list/detail"; // 성공 시 사용자 리스트 화면으로 redirect
