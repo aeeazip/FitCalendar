@@ -29,25 +29,27 @@ public class MatchingCompleteController implements Controller {
 		HttpSession session = request.getSession();
 		
 		String userId = (String)session.getAttribute("id");
-
+		System.out.println("controllerComplete");
 	    // 로그인한 사용자의 exerciser 객체
 	    Exerciser exerciser = exManager.findExerciser(userId);
 	      
+	    String fitmateid = request.getParameter("fitmateId");
+	    System.out.println(fitmateid);
 		//상대exerciser(=fitmate) ID
-		//int fitmateId = Integer.parseInt(request.getParameter("fitmateId"));
+	    Exerciser fitmate = exManager.findExerciser(fitmateid);
 		
 		//accept -> fitmate table에 저장
-		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmateId);
+		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmate.getExerciserId());
 		
 		//매칭 수락시, status=1로 바꿔주기		
-		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmateId);
+		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmate.getExerciserId());
 		
 		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
 		List<Fitmate> fitmateList =  matchingManager.showFitmateList(exerciser.getExerciserId());
 		
 		request.setAttribute("fitmateList", fitmateList);
 		
-		return "redirect:/matching/fitmateList";
+		return "redirect:/matching/situation/list";
 	}
 
 }

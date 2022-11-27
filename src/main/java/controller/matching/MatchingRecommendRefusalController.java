@@ -22,20 +22,19 @@ public class MatchingRecommendRefusalController implements Controller {
 		ExerciserManager exManager = ExerciserManager.getInstance();
 
 		HttpSession session = request.getSession();
-
+		String id = (String)session.getAttribute("id");
 		// 로그인한 사용자의 exerciser 객체
-		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		Exerciser exerciser = exManager.findExerciser(id);
 
-		int yourExerciserId = Integer.parseInt(request.getParameter("yourExerciserId"));
-
-		// RecommendList table에서 삭제해주기
-		matchingManager.refuseRecommend(exerciser.getExerciserId(), yourExerciserId);
+		String fitMateId = (String)request.getParameter("fitmateId");
+		Exerciser fitmate = exManager.findExerciser(fitMateId);
+		System.out.println("refuse controller");
 
 		// matchingStatus 바꿔주기
-		matchingManager.matchingRefuse(exerciser.getExerciserId(), yourExerciserId);
+		matchingManager.matchingRefuse(exerciser.getExerciserId(), fitmate.getExerciserId());
 
 		//다시 나를 fitmate 신청한 페이지로 돌아가기
-		return "/matching/getRecommendList.jsp";
+		return "redirect:/matching/getRecommendList";
 	}
 
 }

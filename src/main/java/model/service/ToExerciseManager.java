@@ -26,7 +26,8 @@ public class ToExerciseManager {
 		return toExerciseDao.findToExercise(exerciserId);
 	}
 
-	public ArrayList<ToExercise> addToExercise(int exerciserId, String content) {
+	public int addToExercise(int exerciserId, String content) {
+		System.out.println("manager");
 		return toExerciseDao.addToExercise(exerciserId, content);
 	}
 
@@ -36,6 +37,10 @@ public class ToExerciseManager {
 
 	public ArrayList<ToExercise> deleteToExercise(int exerciserId, int itemId) {
 		return toExerciseDao.deleteToExercise(exerciserId, itemId);
+	}
+	
+	public ArrayList<ToExercise> uncheckToExercise(int exerciserId, int itemId){
+		return toExerciseDao.unCheckToExercise(exerciserId, itemId);
 	}
 
 }

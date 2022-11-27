@@ -5,17 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%!
+	int count = 1;
+%>
+
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <title>Matching request processing!!!</title>
    <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
-	<script type="text/javascript">
-    	function accept() {
-    		location.href="<c:url value='/matching/fitmateList' />";
-    	}
-    	function refuse() {
-    		location.href="<c:url value='/matching/getRecommendList' />";
-    	}
-    </script>
+
 </head>
 <%@ include file="../frameHeader.jsp" %>
 <body>
@@ -28,9 +25,10 @@
 	<c:if test="${not empty getRecommList}">
 	<table>
 		<c:forEach var = "list" items="${getRecommList}" varStatus="status">
+		<form name="submitform" method="POST" action="<c:url value='/matching/getRecommendList/accept'/>">
 		<tr>
 			<td>
-				No. <c:out value="${status.count}" />
+				No. <%=count %>
 				<p>닉네임: <c:out value="${list.nickname}" />
 				<p>한줄소개: <c:out value="${list.explanation}" />
 				<p>운동종목 : <c:out value="${list.speciality}" />
@@ -38,13 +36,22 @@
 				<p>성별 : <c:out value="${list.gender}" />
 			</td>
 			<td>
-				<button type="button" onclick="accept()">수락하기</button>
-				<br>
-				<button type="button" onclick="refuse()">거절하기</button>
+				<form name="acceptForm"action="<c:url value='/matching/getRecommendList/accept'/>" method="POST">
+				<input type="hidden" name = "fitmateId" value="${list.id}"/>
+				<button type="submit"  style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">수락하기</button>
+				</form>
+				<br><br>
+				<form name="refuseForm"action="<c:url value='/matching/getRecommendList/refuse'/>" method="POST">
+				<input type="hidden" name = "fitmateId" value="${list.id}"/>
+				<button type="submit"  style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">거절하기</button>
+				</form>
+				
 			</td>
 		</tr>
+		</form>
+		<%count++; %>
 		</c:forEach>
-		
+		<%count = 1; %>
 	</table>
    	</c:if>
 </div>   

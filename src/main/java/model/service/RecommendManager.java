@@ -26,7 +26,7 @@ public class RecommendManager {
 	}
 	
 	//login한 exerciser를 매칭 신청한 list보기
-	public RecommendList showGetRecommendList(int exerciserId) {
+	public List<MatchingStatus> showGetRecommendList(int exerciserId) {
 		return recommendDao.showGetRecommendList(exerciserId);
 	}
 	
