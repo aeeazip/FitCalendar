@@ -58,6 +58,10 @@ public class ExerciserManager {
 		return exerciserDao.updatePoint(exerciserId);
 	}
 
+	public int updatePoint2(int exerciserId) {
+		return exerciserDao.updatePoint(exerciserId);
+	}
+
 	public boolean login(String userId, String password)
 			throws SQLException, UserNotFoundException, PasswordMismatchException {
 		Exerciser exerciser = findExerciser(userId);
