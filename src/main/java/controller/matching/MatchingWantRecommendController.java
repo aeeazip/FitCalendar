@@ -22,16 +22,24 @@ public class MatchingWantRecommendController implements Controller{
 		RecommendManager recommendManager = RecommendManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 		
-		//HttpSession session = request.getSession(); //세션 완성되면 사용할 예정!
+		HttpSession session = request.getSession(); 
 		
-		//String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		
-		Exerciser exerciser = exerciserManager.findExerciser("hhj1030");
+		System.out.println(id);
+		Exerciser exerciser = exerciserManager.findExerciser(id);
 		recommendManager.recommendExerciser(exerciser.getExerciserId());
-		//if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
-		return "/matching/wantRecocommend/list";
 		
-		//return "redirect:/matching/wantRecommend";
+		 try {
+			 if(exerciser.getPoint() >= 30)
+				 if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
+					 return "/matching/wantRecocommend/list";
+		 }catch(Exception e){
+			 request.setAttribute("CreateOptionsFailed", true);
+			 request.setAttribute("exerciser", exerciser);
+      }
+		
+		 return "redirect:/exerciser/main";
 	}	
 
 }

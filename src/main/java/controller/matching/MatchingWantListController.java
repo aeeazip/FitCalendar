@@ -23,16 +23,14 @@ public class MatchingWantListController implements Controller {
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
 		RecommendList recommendList;
 
-		//HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
-		//Exerciser exerciser = exerciserManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
-		//if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
+		String id = (String)session.getAttribute("userId");
+		Exerciser exerciser = exerciserManager.findExerciser(id);
 			
-		//recommendList = recommendManager.displayExerciser(exerciser.getExerciserId());
-		//recommendList = recommendManager.displayExerciser(1);
 		//추천 기록이 있다면 추천 실행 아니라면 추천 실행 ㄴ
-		recommendList = recommendManager.displayExerciser(21);
-	
+		recommendList = recommendManager.displayExerciser(exerciser.getExerciserId());
+		try {
 		if(recommendList != null) {
 			if(recommendList.getCounting() == 0) {
 				request.setAttribute("recomm", recommendList.getRecommend1());
@@ -44,8 +42,12 @@ public class MatchingWantListController implements Controller {
 				request.setAttribute("EndRecommend", "The number of recommendations allowed has been exceeded.");
 			}
 		}
-
-
 		return "/matching/wantRecommendList.jsp";
+		}catch(Exception e) {
+			 request.setAttribute("MatchingWantListFailed", true);
+	         request.setAttribute("exerciser", exerciser);
+		}
+		
+		return "redirect:/exerciser/main";
 	}
 }
