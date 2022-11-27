@@ -36,10 +36,13 @@ public class MatchingWantListController implements Controller {
 		if(recommendList != null) {
 			if(recommendList.getCounting() == 0) {
 				request.setAttribute("recomm", recomm1);
+				request.setAttribute("recommId", recomm1.getId());
 			}else if(recommendList.getCounting() == 1) {
 				request.setAttribute("recomm", recomm2);
+				request.setAttribute("recommId", recomm2.getId());
 			}else if(recommendList.getCounting() ==2){
 				request.setAttribute("recomm", recomm3);
+				request.setAttribute("recommId", recomm3.getId());
 			}else {
 				request.setAttribute("EndRecommend", "The number of recommendations allowed has been exceeded.");
 			}
