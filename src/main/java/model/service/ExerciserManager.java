@@ -59,7 +59,11 @@ public class ExerciserManager {
 	}
 
 	public int updatePoint2(int exerciserId) {
-		return exerciserDao.updatePoint(exerciserId);
+		return exerciserDao.updatePoint2(exerciserId);
+	}
+
+	public int existingAttendance(int exerciserId) throws SQLException {
+		return exerciserDao.existingAttendance(exerciserId);
 	}
 
 	public boolean login(String userId, String password)
