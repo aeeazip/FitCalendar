@@ -37,12 +37,13 @@ public class ListRecordController implements Controller {
 		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
 		RecordManager manager = RecordManager.getInstance();
 		List<Record> recordList = manager.findRecordList(exerciserId);
+		int cnt = manager.findMyRecordCnt(exerciserId);
 		// List<User> userList = manager.findUserList(currentPage, countPerPage);
 
 		// recordList 객체와 현재 로그인한 사용자 ID를 request에 저장하여 전달
 		request.setAttribute("recordList", recordList);
 		request.setAttribute("exerciserId", ExerciserSessionUtils.getLoginUserId(request.getSession()));
-
+		request.setAttribute("cnt", cnt);
 		// 사용자가 작성한 Record 리스트 화면으로 이동(forwarding)
 		return "/myRecord/list.jsp";
 	}

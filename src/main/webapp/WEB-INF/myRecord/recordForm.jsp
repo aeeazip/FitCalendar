@@ -45,6 +45,7 @@
     </script>
     
 <body>
+
 	<div class="flex-container">
 		<div id="wrapper">
 			<!-- header -->
@@ -90,7 +91,7 @@
 				<form name="form" method="POST" action="<c:url value='/myRecord/write'/>">
 					<div class="recordForm">
 					<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-						<h1 style="font-size: 21px;">_________님의 운동 일지</h1>
+						<h1 style="font-size: 21px;">${NickName}님의 운동 일지</h1>
 					</div>
 					<div class="name">
 						<input type="text" name="title" placeholder="제목을 입력해 주세요.">
