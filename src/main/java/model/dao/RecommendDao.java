@@ -20,7 +20,7 @@ public class RecommendDao {
 	 * exerciser가 추천받은 exerciser의 목록(3명)인 recommendList 조회 //수정 완료
 	 */
 	public RecommendList displayExerciser(int exerciserId) {
-		String query = "SELECT exerciserId, recommId1, recommId2, recommId3 FROM RecommendList WHERE exerciserId = ?";
+		String query = "SELECT exerciserId, recommId1, recommId2, recommId3, count FROM RecommendList WHERE exerciserId = ?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 		RecommendList recommend = null;
@@ -32,9 +32,10 @@ public class RecommendDao {
 				int recomId1 = rs.getInt("recommId1");
 				int recomId2 = rs.getInt("recommId2");
 				int recomId3 = rs.getInt("recommId3");
+				int count = rs.getInt("count");
 				System.out.println(recomId1);
 
-				recommend = new RecommendList(exerciser_id, recomId1, recomId2, recomId3);
+				recommend = new RecommendList(exerciser_id, recomId1, recomId2, recomId3, count);
 				return recommend;
 			}
 		} catch (Exception e) {
@@ -61,9 +62,9 @@ public class RecommendDao {
 			while (rs.next()) {
 				int sender = rs.getInt("exerciserId");
 
-				int recieverId1 = rs.getInt("recomId1");
-				int recieverId2 = rs.getInt("recomId2");
-				int recieverId3 = rs.getInt("recomId3");
+				int recieverId1 = rs.getInt("recommId1");
+				int recieverId2 = rs.getInt("recommId2");
+				int recieverId3 = rs.getInt("recommId3");
 
 				if (recieverId1 == exerciserId) {
 					recommend = new RecommendList(recieverId1, sender);
@@ -142,7 +143,7 @@ public class RecommendDao {
 	 * table에 행 추가
 	 */
 	public int requestFitmate(int myExerciserId, int yourExerciserId) {
-		String query = "INSERT INTO RequestStatus values (?, ?, 0)";
+		String query = "INSERT INTO matchingStatus values (?, ?, 3)";
 		Object[] param = new Object[] { myExerciserId, yourExerciserId };
 		jdbcUtil.setSqlAndParameters(query, param); // JDBCUtil 에 insert문과 매개 변수 설정
 

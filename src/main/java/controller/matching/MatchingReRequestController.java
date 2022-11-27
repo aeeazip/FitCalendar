@@ -27,9 +27,13 @@ public class MatchingReRequestController  implements Controller {
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		
-		if(exerciser.getPoint() >= 30)
-			recommendManager.reRecommendExerciser(exerciser.getExerciserId());
+		if(exerciser.getPoint() >= 30) {
+			int result = recommendManager.reRecommendExerciser(exerciser.getExerciserId());
+			System.out.println(result);
+		}
 	
-		return "redirect:/matching/matchingMenu/wantRecommend/list";
+		System.out.println("Matching Re Request Controller");
+		
+		return "redirect:/matching/wantRecommend/recommendRequest";
 	}
 }

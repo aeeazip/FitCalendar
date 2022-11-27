@@ -57,12 +57,13 @@ public class RecommendManager {
 	
 	public int reRecommendExerciser(int exerciserId) {
 		Exerciser exerciser = exerciserDao.findExerciser(exerciserId);
+		System.out.println("RecommendManager");
 		if(exerciser.getPoint() < 30)
 			return 0;
 		if(recommendDao.usePoint(exerciserId, 30) == 0)
 			return 0;
 		recommendDao.reRecommendExerciser(exerciserId);
-		
+		System.out.println("RecommendManager");
 		return 1;
 	}
 	
