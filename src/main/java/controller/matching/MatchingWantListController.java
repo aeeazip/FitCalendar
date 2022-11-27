@@ -25,19 +25,21 @@ public class MatchingWantListController implements Controller {
 
 		HttpSession session = request.getSession();
 
-		String id = (String)session.getAttribute("userId");
+		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
-			
-		//추천 기록이 있다면 추천 실행 아니라면 추천 실행 ㄴ
+		System.out.println("List Controller");
 		recommendList = recommendManager.displayExerciser(exerciser.getExerciserId());
+		Exerciser recomm1 = exerciserManager.findExerciserById(recommendList.getRecommend1());
+		Exerciser recomm2 = exerciserManager.findExerciserById(recommendList.getRecommend2());
+		Exerciser recomm3 = exerciserManager.findExerciserById(recommendList.getRecommend3());
 		try {
 		if(recommendList != null) {
 			if(recommendList.getCounting() == 0) {
-				request.setAttribute("recomm", recommendList.getRecommend1());
+				request.setAttribute("recomm", recomm1);
 			}else if(recommendList.getCounting() == 1) {
-				request.setAttribute("recomm", recommendList.getRecommend2());
+				request.setAttribute("recomm", recomm2);
 			}else if(recommendList.getCounting() ==2){
-				request.setAttribute("recomm", recommendList.getRecommend3());
+				request.setAttribute("recomm", recomm3);
 			}else {
 				request.setAttribute("EndRecommend", "The number of recommendations allowed has been exceeded.");
 			}

@@ -247,7 +247,7 @@ public class ExerciserDao {
 		return 0;
 	}
 
-	// point update 수행
+	// 글 작성 시 + 10 - point update 수행
 	public int updatePoint(int exerciserId) {
 		String query = "update exerciser set point=point+10 where exerciserid=?"; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { exerciserId };
@@ -265,6 +265,45 @@ public class ExerciserDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return -1;
+	}
+
+	// 출석시 point + 5 - point update 수행
+	public int updatePoint2(int exerciserId) {
+		String query = "update exerciser set point=point+5 where exerciserid=?"; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { exerciserId };
+
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
+	}
+
+	// 주어진 사용자가 오늘 출석 했는지 여부 반환 -> 0이면 출석 안 한 거라 출석 체크, 1이면 출석 한 거라 출석 체크 또 못하게 해야함
+	public int existingAttendance(int exerciserId) throws SQLException {
+		String sql = "SELECT count(*) FROM attendance WHERE exerciserid=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { exerciserId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				return (count == 1 ? 1 : 0);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return 1;
 	}
 
 	/**
