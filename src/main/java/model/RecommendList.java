@@ -2,7 +2,7 @@ package model;
 
 public class RecommendList {
 	//수정된 부분 -> id 대신 Exerciser 객체를 저장할거임 -> 화면에 Recommend 정보를 띄우기 위한 부분
-	int exerciserId;
+	Exerciser exerciser;
 	Exerciser recommend1;
 	Exerciser recommend2;
 	Exerciser recommend3;
@@ -11,33 +11,33 @@ public class RecommendList {
 		super();
 	}
 	
-	public RecommendList(int exerciserId, Exerciser recommend1) {
+	public RecommendList(Exerciser exerciser, Exerciser recommend1) {
 		super();
-		this.exerciserId = exerciserId;
+		this.exerciser = exerciser;
 		this.recommend1 = recommend1;
 	}
 
-	public RecommendList(int exerciserId, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3) {
+	public RecommendList(Exerciser exerciser, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3) {
 		super();
-		this.exerciserId = exerciserId;
+		this.exerciser = exerciser;
 		this.recommend1 = recommend1;
 		this.recommend2 = recommend2;
 		this.recommend3 = recommend3;
 	}
-	public RecommendList(int exerciserId, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3,
+	public RecommendList(Exerciser exerciser, Exerciser recommend1, Exerciser recommend2, Exerciser recommend3,
 			int counting) {
 		super();
-		this.exerciserId = exerciserId;
+		this.exerciser = exerciser;
 		this.recommend1 = recommend1;
 		this.recommend2 = recommend2;
 		this.recommend3 = recommend3;
 		this.counting = counting;
 	}
-	public int getExerciserId() {
-		return exerciserId;
+	public Exerciser getExerciser() {
+		return exerciser;
 	}
-	public void setExerciserId(int exerciserId) {
-		this.exerciserId = exerciserId;
+	public void setExerciserId(Exerciser exerciser) {
+		this.exerciser = exerciser;
 	}
 	public Exerciser getRecommend1() {
 		return recommend1;
@@ -65,7 +65,7 @@ public class RecommendList {
 	}
 	@Override
 	public String toString() {
-		return "RecommendList [exerciserId=" + exerciserId + ", recommend1=" + recommend1 + ", recommend2=" + recommend2
+		return "RecommendList [exerciserId=" + exerciser + ", recommend1=" + recommend1 + ", recommend2=" + recommend2
 				+ ", recommend3=" + recommend3 + ", counting=" + counting + "]";
 	}
 	
