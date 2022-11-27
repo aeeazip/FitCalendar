@@ -22,10 +22,6 @@ public class StaticManager {
 		return manager;
 	}
 
-	public int checkAttendance(int exerciserId) {
-		return staticDao.checkAttendance(exerciserId);
-	}
-
 	public ArrayList<ToExercise> findToExercise(int exerciserId) {
 		return staticDao.findToExercise(exerciserId);
 	}

@@ -247,9 +247,29 @@ public class ExerciserDao {
 		return 0;
 	}
 
-	// point update 수행
+	// 글 작성 시 + 10 - point update 수행
 	public int updatePoint(int exerciserId) {
 		String query = "update exerciser set point=point+10 where exerciserid=?"; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { exerciserId };
+
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
+	}
+
+	// 출석시 point + 5 - point update 수행
+	public int updatePoint2(int exerciserId) {
+		String query = "update exerciser set point=point+5 where exerciserid=?"; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { exerciserId };
 
 		jdbcUtil.setSqlAndParameters(query, param);
