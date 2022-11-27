@@ -41,21 +41,32 @@ public class AttendanceController implements Controller {
 			int exerciserId = exerciser.getExerciserId();
 			System.out.println(exerciserId);
 
-			int result = exerciserMgr.updatePoint2(exerciserId);
-			System.out.println("포인트 추가 성공 여부: " + result);
+			// 해당 exerciserId가 오늘 출석 했으면 못 하게 해야 함
+			int confirmAttendance = exerciserMgr.existingAttendance(exerciserId);
+			System.out.println(confirmAttendance);
+			if (confirmAttendance == 1) {
+				// 이미 출석 했으므로 오늘 출석 또 못하게 해야함.
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('이미 출석체크 되었습니다.'); history.go(-2); </script>");
+				out.flush();
+			} else if (confirmAttendance == 0) {
+				int addPoint = exerciserMgr.updatePoint2(exerciserId);
+				System.out.println("포인트 추가 성공 여부: " + addPoint);
 
-			System.out.println(att + " 출석 ");
+				System.out.println(att + " 출석 ");
 
-			AttendanceManager attendanceMgr = AttendanceManager.getInstance();
-			attendanceMgr.checkAttendance(exerciserId);
-			System.out.println("id" + exerciserId + "출석");
+				AttendanceManager attendanceMgr = AttendanceManager.getInstance();
+				attendanceMgr.checkAttendance(exerciserId);
+				System.out.println("id" + exerciserId + "출석");
 
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('출석체크 되었습니다.'); history.go(-2); </script>");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('출석체크 되었습니다.'); history.go(-2); </script>");
 
-			System.out.println(att + "출석  !!");
-			out.flush();
+				System.out.println(att + "출석  !!");
+				out.flush();
+			}
 			return "redirect:/myPage";
 		} catch (Exception e) {
 			request.setAttribute("attendanceFailed", true);
