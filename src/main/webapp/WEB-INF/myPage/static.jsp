@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	int weeklyCount = (int)request.getAttribute("weeklyCount");
+	int MonthlyCount = (int)request.getAttribute("MonthlyCount");
+	
+	int ComparePercentFat = (int)request.getAttribute("ComparePercentFat");
+	int CompareMuscle = (int)request.getAttribute("CompareMuscle");
+	int CompareVisceralFat = (int)request.getAttribute("CompareVisceralFat");
+	System.out.println(weeklyCount);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,31 +32,31 @@
                             
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                        <div class="category2">이번주 운동 횟수</div> 
+                                        <div class="category2">이번주 운동 횟수 : <%= weeklyCount%> 회</div> 
                                 </div>
                             </div>
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                        <div class="category2">이번달 운동 횟수</div> 
+                                        <div class="category2">이번달 운동 횟수 : <%= MonthlyCount%> 회</div> 
                                 </div>
                             </div>
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                        <div class="category2">ToExerciseList</div> 
+                                        <div class="category2">ComparePercentFat : <%= ComparePercentFat%></div> 
                                 </div>
                             </div>
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                        <div class="category2">My Statics</div>
+                                        <div class="category2">CompareMuscle : <%= CompareMuscle%></div>
                                 </div>
                             </div>
                             
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                        <div class="category2">Settings</div> 
+                                        <div class="category2">CompareVisceralFat : <%= CompareVisceralFat%></div> 
                                 </div>
                                     
                             </div>
