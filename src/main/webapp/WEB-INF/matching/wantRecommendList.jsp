@@ -48,12 +48,13 @@
 		<form name="startMateForm"
 			action="<c:url value='/matching/wantRecommend/list/request' />"
 			method="POST">
-			<button type="submit">Fitmate 요청</button>
+			<button type="submit"  style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">Fitmate 요청</button>
 		</form>
+		<br>
 		<form name="startMateForm"
 			action="<c:url value='/matching/wantRecommend/list/reRequest' />"
 			method="POST">
-			<button type="submit">재추천</button>
+			<button type="submit" style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">재추천</button>
 		</form>
 
 	</div>
