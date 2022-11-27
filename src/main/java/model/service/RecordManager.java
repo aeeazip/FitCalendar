@@ -57,4 +57,11 @@ public class RecordManager {
 		return recordDao.findRecordListByCategory(category);
 	}
 
+	public int findMyRecordCnt(int exerciserId) {
+		return recordDao.findMyRecordCnt(exerciserId);
+	}
+	
+	public List<Record> getRecordList(int startRow, int pageSize){
+		return recordDao.getRecordList(startRow, pageSize);
+	}
 }
