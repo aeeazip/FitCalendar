@@ -49,7 +49,7 @@ public class RecommendDao {
 	/**
 	 * exerciser에게 matching 신청을 한 list 조회
 	 */
-	public List<RecommendList> showGetRecommendList(int exerciserId) {
+	public RecommendList showGetRecommendList(int exerciserId) {
 		String query = "SELECT * FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
 		Object[] param = new Object[] { exerciserId, exerciserId, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -58,7 +58,7 @@ public class RecommendDao {
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-			List<RecommendList> getRecommList = new ArrayList<RecommendList>();
+
 			while (rs.next()) {
 				int sender = rs.getInt("exerciserId");
 
@@ -74,9 +74,8 @@ public class RecommendDao {
 					recommend = new RecommendList(recieverId3, sender);
 				}
 
-				getRecommList.add(recommend);
 			}
-			return getRecommList;
+			return recommend;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

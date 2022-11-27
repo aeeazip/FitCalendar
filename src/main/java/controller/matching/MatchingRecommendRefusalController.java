@@ -35,7 +35,7 @@ public class MatchingRecommendRefusalController implements Controller {
 		matchingManager.matchingRefuse(exerciser.getExerciserId(), yourExerciserId);
 
 		//다시 나를 fitmate 신청한 페이지로 돌아가기
-		return "/matching/matchingMenu/getRecommendList.jsp";
+		return "/matching/getRecommendList.jsp";
 	}
 
 }
