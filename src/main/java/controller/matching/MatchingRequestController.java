@@ -21,15 +21,15 @@ public class MatchingRequestController implements Controller {
 		// TODO Auto-generated method stub
 		RecommendManager recommendManager = RecommendManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
-		
+		System.out.println("MatchingRequestController");
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("userId");
+		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 
 		int fitMateId = Integer.parseInt(request.getParameter("fitMateId"));
 		
 		recommendManager.requestFitmate(exerciser.getExerciserId(), fitMateId);
 
-		return "/matching/matchingMenu/situation.jsp";
+		return "redirect:/matching/matchingMenu/situation.jsp";
 	}
 }

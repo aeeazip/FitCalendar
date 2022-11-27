@@ -21,25 +21,25 @@ public class MatchingWantRecommendController implements Controller{
 		// TODO Auto-generated method stub
 		RecommendManager recommendManager = RecommendManager.getInstance();
 		ExerciserManager exerciserManager = ExerciserManager.getInstance();
-		
+
 		HttpSession session = request.getSession(); 
-		
+
 		String id = (String) session.getAttribute("id");
-		
-		System.out.println(id);
+
+		System.out.println("matchingWantRecommendController");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
-		recommendManager.recommendExerciser(exerciser.getExerciserId());
-		
-		 try {
-			 if(exerciser.getPoint() >= 30)
-				 if(recommendManager.recommendExerciser(exerciser.getExerciserId()) != 0)
-					 return "/matching/wantRecocommend/list";
-		 }catch(Exception e){
-			 request.setAttribute("CreateOptionsFailed", true);
-			 request.setAttribute("exerciser", exerciser);
-      }
-		
-		 return "redirect:/exerciser/main";
+
+		int result = recommendManager.recommendExerciser(exerciser.getExerciserId());
+		System.out.println(result);
+		try {
+			if(result != 0)
+				return "redirect:/matching/wantRecommend/list";
+		}catch(Exception e){
+			request.setAttribute("MatchingFailed", true);
+			request.setAttribute("exerciser", exerciser);
+		}
+
+		return "redirect:/matching/wantRecommend";
 	}	
 
 }

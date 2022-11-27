@@ -8,6 +8,16 @@
 <title>RecommendList</title>
 <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 <link rel="stylesheet" href="<c:url value='/css/wantRecommendList.css' />" type="text/css">
+<script>
+function createFitmate() {
+	request.setAttribute(${recomm.id});
+	form.submit();
+}
+
+function reRecommend() {
+	form.submit();
+}
+</script>
 </head>
 <%@ include file="../frameHeader.jsp" %>
 <body>
@@ -36,8 +46,13 @@
     </tr>
   </table>
   <br><br>
-  <input type="submit" value="FitMate 신청" formaction="/matching/wantRecommend/list/request">&nbsp; &nbsp; &nbsp; &nbsp; 
-  <input type="submit" value="재추천" formaction="/matching/wantRecommend/list/reRequest">
+  <form name="form" method="POST" action="<c:url value='/matching/wantRecommend/list/request' />">
+  <button type="button" id="login_btn" onclick="createFitmate();">Fitmate 요청</button>
+</form>&nbsp; &nbsp; &nbsp; &nbsp; 
+<form name="form" method="GET" action="<c:url value='/matching/wantRecommend/list/reRequest' />">
+  <br>
+  <button type="button" id="login_btn" onclick="reRecommend();">재추천</button>
+</form>
   </div>
 </body>
 
