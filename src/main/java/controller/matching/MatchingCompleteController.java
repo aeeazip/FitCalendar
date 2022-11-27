@@ -28,9 +28,11 @@ public class MatchingCompleteController implements Controller {
 			
 		HttpSession session = request.getSession();
 		
-		//로그인한 사용자의 exerciser 객체
-		Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
+		String userId = (String)session.getAttribute("id");
 
+	    // 로그인한 사용자의 exerciser 객체
+	    Exerciser exerciser = exManager.findExerciser(userId);
+	      
 		//상대exerciser(=fitmate) ID
 		int fitmateId = Integer.parseInt(request.getParameter("fitmateId"));
 		

@@ -17,25 +17,26 @@ import model.service.MatchingManager;
 public class MatchingStartController implements Controller {
    private static final Logger log = LoggerFactory.getLogger(MatchingStartController.class);
 
-   @Override
+@Override
    public String execute(HttpServletRequest request, HttpServletResponse response) {
       // TODO Auto-generated method stub
       MatchingManager matchingManager = MatchingManager.getInstance();
       ExerciserManager exManager = ExerciserManager.getInstance();
 
       HttpSession session = request.getSession();
-
+      
+      String userId = (String)session.getAttribute("id");
 
       // 로그인한 사용자의 exerciser 객체
-      //Exerciser exerciser = exManager.findExerciser(ExerciserSessionUtils.getLoginUserId(session));
-      Exerciser exerciser = new Exerciser(12);
-      int id = exerciser.getExerciserId();
-      
+      Exerciser exerciser = exManager.findExerciser(userId);
+
       // useMatchSvc값 변경
       try {
-         //if (ExerciserSessionUtils.getLoginUserId(session).equals(exerciser.getExerciserId())) {
-         if(id == 12) {
+         if (userId.equals(exerciser.getId())) {
+      
             exerciser.setUseMatchSvc("T");
+            System.out.println(exerciser.getUseMatchSvc());
+            System.out.println(exerciser.getNickname());
             matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
             // createOption 성공
             
@@ -49,5 +50,5 @@ public class MatchingStartController implements Controller {
       // 실패시, main으로
       return "redirect:/exerciser/main";
    }
-	
+   
 }

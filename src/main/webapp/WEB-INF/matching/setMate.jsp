@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +11,11 @@
 <%@ include file="../frameHeader.jsp" %>
 <body>
 <div align = "center">
-	<form name="setMaxMateForm" action="matchingMenu.jsp" method="GET">
-		¼ÒÅëÇÏ°í ½ÍÀº ÃÖ´ë Mate ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä! <br><br>
+	<form name="setMaxMateForm" action="<c:url value='/matching/matchingMenu' />" method="GET">
+		ì†Œí†µí•˜ê³  ì‹¶ì€ ìµœëŒ€ Mate ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”! <br><br>
 		<input type="text" name="maxMate"><br><br>
-		<input type="reset" value="ÀçÀÔ·Â"> 
-		<input type="submit" value="Á¦Ãâ"> 		
+		<input type="reset" value="ìž¬ìž…ë ¥"> 
+		<input type="submit" value="ì œì¶œ"> 		
 	</form>
 </div>
 </body>

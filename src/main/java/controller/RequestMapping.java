@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.exerciser.LoginController;
 import controller.exerciser.RegisterController;
+import controller.matching.MatchingGetRecommendListController;
 import controller.matching.MatchingReRequestController;
 import controller.matching.MatchingRequestController;
 import controller.matching.MatchingSituationController;
@@ -16,6 +17,7 @@ import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController;
 import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowMatchingOptionController;
+import controller.matching.UpdateAllOptionController;
 import controller.matching.UpdateOptionController;
 import controller.myPage.AttendanceController;
 import controller.record.AllRecordController;
@@ -43,9 +45,11 @@ public class RequestMapping {
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
 		mappings.put("/matching/setMate", new UpdateOptionController());
-		mappings.put("/matching/setOptions", new UpdateOptionController());// option설정은 같은 Controller에서 처리
-		mappings.put("/matching/matchingMenu/options", new ShowMatchingOptionController());
-
+		mappings.put("/matching/setOptions", new UpdateAllOptionController());
+		
+		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
+		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
+		
 		// MAtching inwoo's Part!!!!
 		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
