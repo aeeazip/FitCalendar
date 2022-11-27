@@ -17,6 +17,7 @@ import controller.matching.MatchingWantRecommendController;
 import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateOptionController;
+import controller.myPage.AttendanceController;
 import controller.record.AllRecordController;
 import controller.record.DeleteRecordController;
 import controller.record.ListRecordController;
@@ -36,14 +37,16 @@ public class RequestMapping {
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
-		
-		//Matching 관련
+		mappings.put("/myPage", new ForwardController("/myPage/myPageMenu.jsp"));
+		mappings.put("/myPage/attendance", new AttendanceController());
+
+		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
 		mappings.put("/matching/setMate", new UpdateOptionController());
 		mappings.put("/matching/setOptions", new UpdateOptionController());// option설정은 같은 Controller에서 처리
 		mappings.put("/matching/matchingMenu/options", new ShowMatchingOptionController());
-		
-		//MAtching inwoo's Part!!!!
+
+		// MAtching inwoo's Part!!!!
 		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
@@ -71,18 +74,18 @@ public class RequestMapping {
 		 * ForwardController("/mypage/viewRoutineStatics.jsp"));
 		 * 
 		 */
-		 // Record 관련 요청 
-		 mappings.put("/myRecord/write", new WriteRecordController());
-		 mappings.put("/myRecord/list", new ListRecordController());
-		 mappings.put("/myRecord/list/detail", new RecordDetailController());
-		 mappings.put("/myRecord/list/detail/update", new UpdateRecordController());
-		 mappings.put("/myRecord/list/detail/delete", new DeleteRecordController());
-		 mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
-		 mappings.put("/allRecord/list", new AllRecordController());
-		 mappings.put("/allRecord/list/detail", new RecordDetailController());
-		 
-		 log.info("Initialized Request Mapping!");
-		
+		// Record 관련 요청
+		mappings.put("/myRecord/write", new WriteRecordController());
+		mappings.put("/myRecord/list", new ListRecordController());
+		mappings.put("/myRecord/list/detail", new RecordDetailController());
+		mappings.put("/myRecord/list/detail/update", new UpdateRecordController());
+		mappings.put("/myRecord/list/detail/delete", new DeleteRecordController());
+		mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
+		mappings.put("/allRecord/list", new AllRecordController());
+		mappings.put("/allRecord/list/detail", new RecordDetailController());
+
+		log.info("Initialized Request Mapping!");
+
 	}
 
 	public Controller findController(String uri) {

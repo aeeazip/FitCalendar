@@ -27,9 +27,9 @@ public class LoginController implements Controller {
 		try {
 			ExerciserManager.getInstance().login(id, pwd);
 
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", id);
-			System.out.println(session.getAttribute("userId"));
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id", id);
+			System.out.println(session.getAttribute("id"));
 
 			return "/main.jsp";
 		} catch (Exception e) {
