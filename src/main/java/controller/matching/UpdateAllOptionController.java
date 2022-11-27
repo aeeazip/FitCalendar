@@ -36,10 +36,9 @@ public class UpdateAllOptionController implements Controller {
 		String useMatchSvc = request.getParameter("useMatchSvc");
 		try {
 			manager.optionChange(exerciser.getExerciserId(), maxMate, useMatchSvc);
-			return "/matching/setOptions.jsp"; // 성공하면 matchingMenu로 이동
+			return "/matching/setOptions.jsp"; 
 		} catch (Exception e) {
-			return "redirect:/matching/matchingMenu"; // 실패하면 다시 changeOptions해주기.
+			return "redirect:/matching/matchingMenu"; 
 		}
-
 	}
 }

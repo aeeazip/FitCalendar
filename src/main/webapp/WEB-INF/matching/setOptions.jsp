@@ -12,7 +12,7 @@
 <%@ include file="../frameHeader.jsp" %>
 <body>
 <div align = "center">
-	<form name="setMaxMateForm" action="matchingMenu.jsp" method="GET">
+	<form name="setMaxMateForm" action="<c:url value='/matching/matchingMenu' />" method="GET">
 		소통하고 싶은 최대 Mate 수를 입력하세요! <br><br>
 		<input type="text" name="maxMate">
 		<input type="text" name="useMatchSvc"><br><br>

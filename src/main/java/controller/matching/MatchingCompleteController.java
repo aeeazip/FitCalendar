@@ -34,7 +34,7 @@ public class MatchingCompleteController implements Controller {
 	    Exerciser exerciser = exManager.findExerciser(userId);
 	      
 		//상대exerciser(=fitmate) ID
-		int fitmateId = Integer.parseInt(request.getParameter("fitmateId"));
+		//int fitmateId = Integer.parseInt(request.getParameter("fitmateId"));
 		
 		//accept -> fitmate table에 저장
 		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmateId);
@@ -47,7 +47,7 @@ public class MatchingCompleteController implements Controller {
 		
 		request.setAttribute("fitmateList", fitmateList);
 		
-		return "/exerciser/fitmate/list.jsp";
+		return "redirect:/matching/fitmateList";
 	}
 
 }
