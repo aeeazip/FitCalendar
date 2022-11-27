@@ -236,20 +236,20 @@ public class MatchingDao {
 	 * exerciser의 matching 상태 확인
 	 */
 	public List<MatchingStatus> showSitationList(int exerciserId) {
-		Exerciser sender = exerciserDao.findExerciser(exerciserId);
-		Exerciser reciever;
+		int receiverId;
+		int status;
+		MatchingStatus matchingStatus;
 		String query = "SELECT * FROM matchingStatus WHERE senderId = ?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
-		System.out.println(exerciserId);
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<MatchingStatus> matchingList = new ArrayList<MatchingStatus>();
-			
+		
 			while (rs.next()) {
-				reciever = exerciserDao.findExerciser(rs.getInt("receiverId"));
-				System.out.println(rs.getInt("receiverId"));
-				MatchingStatus matchingStatus = new MatchingStatus(sender, reciever, rs.getInt("status"));
+				receiverId = rs.getInt("receiverId");
+				status = rs.getInt("status");
+				matchingStatus = new MatchingStatus(exerciserId, receiverId, status);
 				matchingList.add(matchingStatus);
 			}
 			return matchingList;
