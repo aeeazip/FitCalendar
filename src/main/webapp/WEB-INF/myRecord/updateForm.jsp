@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="utf-8" import="model.Record"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="<c:url value='/css/recordForm.css' />"
 	type="text/css">
 </head>
+<%
+	Record record = (Record)request.getAttribute("record");
+%>
 <script type="text/javascript">
 	function signUpCheck() {
 		if (form.title.value == "") {
@@ -28,7 +31,7 @@
 			form.totalTime.focus();
 			return false;
 		}
-		if (form.category.value == "") {
+		if (form.category.value == "" || form.category.value == "종목을 선택하세요.") {
 			alert("종목을 입력하십시오.");
 			form.category.focus();
 			return false;
@@ -43,7 +46,7 @@
 			form.diet.focus();
 			return false;
 		}
-		if (form.shareOption.value == "") {
+		if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
 			alert("공유 옵션을 입력하십시오.");
 			form.shareOption.focus();
 			return false;
@@ -56,25 +59,28 @@
 <body>
 
 	<%@ include file="../frameHeader.jsp" %>
-	
+	<input type="hidden" name="test" value="${record.recordId}" />
 	<!-- container -->
 	<!-- recordForm 부분 -->
 	<div class="container">
-		<form name="form" method="POST"
-			action="<c:url value='/myRecord/write'/>">
+		<form name="form" method="POST" action="<c:url value='/myRecord/update'/>">
 			<div class="recordForm">
 				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${NickName}님의운동일지</h1>
+				<h1 style="font-size: 21px;">${NickName}님의 운동일지</h1>
 			</div>
 			<div class="name">
-				<input type="text" name="title" placeholder="제목을 입력해 주세요.">
+				<input type="text" name="title" placeholder="제목을 입력해 주세요." value="${record.title}">
 			</div>
 			<div class="name">
-				<input type="date" name="creationDate">
+				<%
+					String d = record.getCreationDate();
+					String str = d.substring(0, 10);
+				%>
+				<input type="date" name="creationDate" value="<%=str%>">
 			</div>
 			<div class="name">
 				<input type="text" name="totalTime"
-					placeholder="총 운동시간을 입력해 주세요. (예: 3)">
+					placeholder="총 운동시간을 입력해 주세요. (예: 3)" value="${record.totalTime}">
 			</div>
 			<div class="line">
 				<hr>
@@ -91,14 +97,14 @@
 			</div>
 			<div class="name">
 				<textarea rows="5" cols="110%" name="routine"
-					aria-label="With textarea" placeholder="운동 루틴을 입력하세요."></textarea>
+					aria-label="With textarea" placeholder="운동 루틴을 입력하세요.">${record.routine}</textarea>
 			</div>
 			<div class="name">
 				<textarea rows="5" cols="110%" name="diet"
-					aria-label="With textarea" placeholder="식단을 입력하세요."></textarea>
+					aria-label="With textarea" placeholder="식단을 입력하세요.">${record.diet}</textarea>
 			</div>
 			<div class="name">
-				<input type="file" name="photo">
+				<input type="file" name="photo" value="${record.photo}">
 			</div>
 			<div class="name">
 				<select name="shareOption">

@@ -19,23 +19,28 @@ public class UpdateRecordController implements Controller {
 
 	private static final Logger log = LoggerFactory.getLogger(UpdateRecordController.class);
 	private static HttpSession session;
+	private int exerciserId;
+	private int recordId;
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		session = request.getSession();
-		String str = (String)
-				session.getAttribute("id");
+		String str = (String)session.getAttribute("id");
 		RecordManager manager = RecordManager.getInstance();
 		ExerciserManager exMgr = ExerciserManager.getInstance();
 		
-		
+		Exerciser exerciser;
+			
 		if (request.getMethod().equals("GET")) {
 			// GET request: 기록 수정 form 요청
 			log.debug("RecordUpdateForm Request");
 
-			int recordId = Integer.parseInt(request.getParameter("recordId"));
-
+			recordId = Integer.parseInt(request.getParameter("recordId"));
+			System.out.println("39라인 : " + recordId);
+			
 			Record record = manager.findRecordDetails(recordId); // recordId로 사용자가 작성한 Record 정보를 가져온다
-			Exerciser exerciser = exMgr.findExerciserById(record.getExerciserId());
+			exerciser = exMgr.findExerciserById(record.getExerciserId());
+			exerciserId = exerciser.getExerciserId();
 			
 			if (str.equals(exerciser.getId())) {
 				// 현재 로그인한 사용자가 수정 대상 사용자인 경우 -> 수정 가능
@@ -50,23 +55,34 @@ public class UpdateRecordController implements Controller {
 			return "/myRecord/updateForm.jsp"; // registerForm으로 이동
 		}
 
+		
 		// POST request (기록 수정 정보가 parameter로 전송됨)
-		int recordId = Integer.parseInt(request.getParameter("recordId"));
 		String title = request.getParameter("title");
+		System.out.println("title " + title);
 		String creationDate = request.getParameter("creationDate");
 		int totalTime = Integer.parseInt(request.getParameter("totalTime"));
+		System.out.println(totalTime);
 		int category = Integer.parseInt(request.getParameter("category"));
+		System.out.println(category);
 		String routine = request.getParameter("routine");
+		System.out.println(routine);
 		String diet = request.getParameter("diet");
+		System.out.println(diet);
 		String photo = request.getParameter("photo");
+		System.out.println(photo);
 		int shareOption = Integer.parseInt(request.getParameter("shareOption"));
-		int exerciserId = Integer.parseInt(request.getParameter("exerciserId"));
+		System.out.println(shareOption);
+		System.out.println("75 라인 recordId" + recordId);
+		System.out.println(exerciserId);
 
+	
 		try {
-			manager.updateRecord(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption,
-					exerciserId);
-			return "redirect:/myRecord/list/detail"; // 성공 시 사용자 리스트 화면으로 redirect
-
+			manager.updateRecord(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
+			System.out.println("recordID : " + recordId);
+			
+			// 컨트롤러 간 데이터 전달 어떻게 해요?????????????????????????????
+			
+			return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
 		} catch (Exception e) { // 예외 발생 시 회원가입 form으로 forwarding
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", e);
@@ -74,5 +90,4 @@ public class UpdateRecordController implements Controller {
 			return "/myRecord/list/detail.jsp"; // record 상세 정보를 보여주는 페이지로 이동
 		}
 	}
-
 }

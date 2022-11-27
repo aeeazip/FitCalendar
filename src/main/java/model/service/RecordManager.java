@@ -45,11 +45,11 @@ public class RecordManager {
 	public int deleteRecord(int recordId) {
 		return recordDao.deleteRecord(recordId);
 	}
-
+	
+	// recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId
 	public int updateRecord(int recordId, String title, String creationDate, int totalTime, int category,
 			String routine, String diet, String photo, int shareOption, int exerciserId) {
-		return updateRecord(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption,
-				exerciserId);
+		return recordDao.updateRecord(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
 	}
 
 	// 카테고리에 따라 전체 사용자의 전체 기록 조회 메소드
@@ -63,5 +63,9 @@ public class RecordManager {
 	
 	public List<Record> getRecordList(int startRow, int pageSize){
 		return recordDao.getRecordList(startRow, pageSize);
+	}
+	
+	public List<Record> findAllExerciserRecords(){
+		return recordDao.findAllExerciserRecords();
 	}
 }

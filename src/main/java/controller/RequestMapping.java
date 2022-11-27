@@ -29,6 +29,7 @@ import controller.myPage.DeleteToExerciseController;
 import controller.myPage.StaticController;
 import controller.myPage.UnCheckToExerciseController;
 import controller.record.AllRecordController;
+import controller.record.AllRecordDetailController;
 import controller.record.DeleteRecordController;
 import controller.record.ListRecordController;
 import controller.record.RecordDetailController;
@@ -99,7 +100,7 @@ public class RequestMapping {
 		mappings.put("/myRecord/delete", new DeleteRecordController());
 		mappings.put("/myRecord/moveToForm", new ForwardController("/myRecord/recordForm.jsp"));
 		mappings.put("/allRecord/list", new AllRecordController());
-		mappings.put("/allRecord/list/detail", new RecordDetailController());
+		mappings.put("/allRecord/list/detail", new AllRecordDetailController());
 		
 		//ToExercise
 		mappings.put("/mypage/ToExercise", new ViewToExerciseController());

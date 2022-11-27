@@ -28,7 +28,7 @@
 			form.totalTime.focus();
 			return false;
 		}
-		if (form.category.value == "") {
+		if (form.category.value == "" || form.category.value == "종목을 선택하세요.") {
 			alert("종목을 입력하십시오.");
 			form.category.focus();
 			return false;
@@ -43,7 +43,7 @@
 			form.diet.focus();
 			return false;
 		}
-		if (form.shareOption.value == "") {
+		if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
 			alert("공유 옵션을 입력하십시오.");
 			form.shareOption.focus();
 			return false;
@@ -64,7 +64,7 @@
 			action="<c:url value='/myRecord/write'/>">
 			<div class="recordForm">
 				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${NickName}님의운동일지</h1>
+				<h1 style="font-size: 21px;">${NickName}님의 운동일지</h1>
 			</div>
 			<div class="name">
 				<input type="text" name="title" placeholder="제목을 입력해 주세요.">
