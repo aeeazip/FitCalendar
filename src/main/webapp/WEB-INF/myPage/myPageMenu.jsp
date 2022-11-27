@@ -45,7 +45,7 @@
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                    <a href="<c:url value='/exerciser/register' />">
+                                    <a href="<c:url value='/myPage/static' />">
                                         <div class="category2">My Statics</div> </a>
                                 </div>
                             </div>
