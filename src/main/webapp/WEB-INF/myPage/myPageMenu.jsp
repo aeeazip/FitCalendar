@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +49,7 @@
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
                                     <a href="<c:url value='/myPage/static' />">
+<%--                                     	<c:param name='id' value='<% %>' /> </c:url>"> --%>
                                         <div class="category2">My Statics</div> </a>
                                 </div>
                             </div>

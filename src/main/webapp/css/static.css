@@ -97,5 +97,5 @@ button {
     text-align: center;
     text-decoration-line: underline;
     color: #909090;
-
+    cursor: pointer;
 }

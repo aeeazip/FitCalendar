@@ -20,6 +20,7 @@ import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateAllOptionController;
 import controller.matching.UpdateOptionController;
 import controller.myPage.AttendanceController;
+import controller.myPage.StaticController;
 import controller.record.AllRecordController;
 import controller.record.DeleteRecordController;
 import controller.record.ListRecordController;
@@ -42,7 +43,8 @@ public class RequestMapping {
 
 		mappings.put("/myPage", new ForwardController("/myPage/myPageMenu.jsp"));
 		mappings.put("/myPage/attendance", new AttendanceController());
-		mappings.put("/myPage/static", new ForwardController("/myPage/static.jsp"));
+		mappings.put("/myPage/static", new StaticController());
+//		mappings.put("/myPage/static", new ForwardController("/myPage/static.jsp"));
 
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
