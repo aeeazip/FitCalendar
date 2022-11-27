@@ -29,13 +29,15 @@ public class UpdateOptionController implements Controller {
 
 		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(userId);
-
-		int maxMate = Integer.getInteger(request.getParameter("maxMate"));
+		String maxMate = request.getParameter("maxMate");
+		//int maxMate = Integer.getInteger(request.getParameter("maxMate"));
+		System.out.println(maxMate);
+		int max = Integer.parseInt(maxMate);
 
 		// maxMate 설정하기
 		try {
-			manager.optionChange(exerciser.getExerciserId(), maxMate, "T");
-			return "/matching/setMate.jsp"; // 성공 시, 해당 페이지로 forwarding
+			manager.optionChange(exerciser.getExerciserId(), max, "T");
+			return "redirect:/matching/matchingMenu"; // 성공 시, 해당 페이지로 forwarding
 		} catch (Exception e) {
 			request.setAttribute("checkFailed", true);
 			request.setAttribute("exception", e);
