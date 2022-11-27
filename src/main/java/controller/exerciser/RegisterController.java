@@ -9,8 +9,9 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import model.Exerciser;
 import model.Inbody;
-import model.service.InbodyManager;
 import model.service.ExerciserManager;
+import model.service.ExistingUserException;
+import model.service.InbodyManager;
 
 public class RegisterController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(RegisterController.class);
@@ -45,12 +46,14 @@ public class RegisterController implements Controller {
 			manager.insertExerciser(password, nickname, explanation, personality, speciality, gender, id);
 			exerciserid = manager.findExerciser(id).getExerciserId();
 			System.out.println(exerciserid);
-		} catch (Exception e) {
+		} catch (ExistingUserException e) {
 			// 예외 발생 시 회원가입 form으로 forwarding
 			request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("exerciser", exerciser);
-			return "/exerciser/register.jsp";
+			System.out.println("ExistingUserException 예외 발생");
+			// redirect할 때 data 가지고 가는 거 구현하기
+			return "redirect:/exerciser/register";
 		}
 
 //		System.out.println(request.getParameter("height"));
@@ -82,7 +85,7 @@ public class RegisterController implements Controller {
 			request.setAttribute("InbodyInsertFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("inbody", inbody);
-			return "/exerciser/register.jsp";
+			return "redirect:/exerciser/register";
 //			login 만들고 로그인 페이지로 가도록 수정하기
 		}
 

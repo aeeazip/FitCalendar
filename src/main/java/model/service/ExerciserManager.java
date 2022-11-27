@@ -30,7 +30,12 @@ public class ExerciserManager {
 	}
 
 	public int insertExerciser(String password, String nickname, String explanation, String speciality,
-			String personality, String gender, String id) {
+			String personality, String gender, String id) throws SQLException, ExistingUserException {
+
+		if (exerciserDao.existingUser(id) == true) {
+			System.out.println(id + "는 존재하는 아이디입니다.");
+			throw new ExistingUserException(id + "는 존재하는 아이디입니다.");
+		}
 		return exerciserDao.insertExerciser(password, nickname, explanation, speciality, personality, gender, id);
 	}
 
