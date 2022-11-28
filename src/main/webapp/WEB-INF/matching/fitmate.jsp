@@ -35,7 +35,7 @@
 		<td>
 			<form name="messageForm"action="<c:url value='/matching/fitmate'/>" method="POST">
 				<input type="hidden" name = "fitmateId" value="${list.id}"/>
-				<button type="submit"  style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">쪽지보내기</button>
+				<button type="submit" style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">쪽지보내기</button>
 			</form>
 		</td>
 	</tr>

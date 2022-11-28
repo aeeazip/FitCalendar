@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import controller.exerciser.LoginController;
 import controller.exerciser.LogoutController;
 import controller.exerciser.RegisterController;
+import controller.matching.ListMessageController;
 import controller.matching.MatchingCompleteController;
 import controller.matching.MatchingGetRecommendListController;
 import controller.matching.MatchingReRequestController;
@@ -81,7 +82,8 @@ public class RequestMapping {
 		// MatchingWantRecommendController());
 
 		mappings.put("/matching/situation/list", new MatchingSituationController());
-
+		mappings.put("/matching/fitmate/message", new ListMessageController());
+		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 
