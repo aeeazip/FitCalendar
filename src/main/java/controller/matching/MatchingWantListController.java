@@ -44,7 +44,7 @@ public class MatchingWantListController implements Controller {
 				request.setAttribute("recomm", recomm3);
 				request.setAttribute("recommId", recomm3.getId());
 			}else {
-				request.setAttribute("EndRecommend", "The number of recommendations allowed has been exceeded.");
+				return "redirect:/matching/matchingMenu";
 			}
 		}
 		return "/matching/wantRecommendList.jsp";

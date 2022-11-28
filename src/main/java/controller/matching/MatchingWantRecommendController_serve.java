@@ -113,7 +113,7 @@ public class MatchingWantRecommendController_serve implements Controller{
 			request.setAttribute("exerciser", exerciser);
 		}
 
-		return "redirect:/matching/wantRecommend";
+		return "redirect:/matching/wantRecommend/list";
 	}	
 
 }
