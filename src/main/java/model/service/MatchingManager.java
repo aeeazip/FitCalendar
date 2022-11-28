@@ -44,8 +44,8 @@ public class MatchingManager {
 		return matchingDao.acceptRecommend(myExerciserId, yourExerciserId);
 	}
 
-	public int notifyMatching(int myExerciserId, int yourExerciserId) {
-		return matchingDao.notifyMatching(myExerciserId, yourExerciserId);
+	public int notifyMatching(int myExerciserId) {
+		return matchingDao.notifyMatching(myExerciserId);
 	}
 
 	public int matchingComplete(int myExerciserId, int yourExerciserId) {
