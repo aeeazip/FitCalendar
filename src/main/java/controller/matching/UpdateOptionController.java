@@ -15,7 +15,7 @@ import model.service.MatchingManager;
 
 //MatMate 값 변경
 public class UpdateOptionController implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(MatchingStartController.class);
+	private static final Logger log = LoggerFactory.getLogger(UpdateOptionController.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,20 +29,38 @@ public class UpdateOptionController implements Controller {
 
 		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(userId);
-		String maxMate = request.getParameter("maxMate");
+		String maxMate;
 		//int maxMate = Integer.getInteger(request.getParameter("maxMate"));
-		System.out.println(maxMate);
-		int max = Integer.parseInt(maxMate);
-
-		// maxMate 설정하기
-		try {
-			manager.optionChange(exerciser.getExerciserId(), max, "T");
-			return "redirect:/matching/matchingMenu"; // 성공 시, 해당 페이지로 forwarding
-		} catch (Exception e) {
-			request.setAttribute("checkFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("exerciserId", exerciser.getExerciserId());
-			return "redirect:/matching/setMate"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
+		int max;
+		
+		if (request.getServletPath().equals("/matching/setMate")) {
+			try {
+				maxMate = request.getParameter("maxMate");
+				System.out.println(maxMate);
+				max = Integer.parseInt(maxMate);
+				manager.optionChange(exerciser.getExerciserId(), max, "T");
+				return "redirect:/matching/matchingMenu"; // 성공 시, 해당 페이지로 forwarding
+			} catch (Exception e) {
+				request.setAttribute("checkFailed", true);
+				request.setAttribute("exception", e);
+				request.setAttribute("exerciserId", exerciser.getExerciserId());
+				return "redirect:/matching/startMatching"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
+			}
+		    
 		}
-	}
+		else {   
+			try {
+				System.out.println("update2");
+				return "/matching/setOptions.jsp"; // 성공 시, 해당 페이지로 forwarding
+			} catch (Exception e) {
+				request.setAttribute("checkFailed", true);
+				request.setAttribute("exception", e);
+				request.setAttribute("exerciserId", exerciser.getExerciserId());
+				return "redirect:/matching/setOptions"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
+			}
+		}
+			
+		}
+
+		
 }

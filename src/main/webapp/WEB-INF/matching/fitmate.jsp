@@ -20,13 +20,9 @@
 	현재 요청하신 FitMate가 존재하지 않습니다.
 </c:if>
 <c:if test="${not empty fitmateList}">
+<h2>FitMate 목록</h2>
 <table>
 	<c:forEach var="list" items="${fitmateList}" varStatus="status">
-<<<<<<< HEAD
-		<tr>
-			<td>${list.}</td>
-		</tr>
-=======
 	<tr>
 		<td>
 			No. <%=count %>
@@ -38,7 +34,6 @@
 		</td>
 	</tr>
 	<%count++; %>
->>>>>>> 8354f70b7a38d6f965eadf715fc81649b56574c0
 	</c:forEach>
 	<%count = 1; %>
 </tbody>
