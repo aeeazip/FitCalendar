@@ -1,64 +1,84 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String exerciserid = (String)request.getAttribute("exerciserid");
+	String nickname = (String)request.getAttribute("nickname");
+	String explanation = (String)request.getAttribute("explanation");
+	String personality = (String)request.getAttribute("personality");
+	String speciality = (String)request.getAttribute("speciality");
+	String gender = (String)request.getAttribute("gender");
+	System.out.println("12행 : " + gender);
+	
+	int height = (int)request.getAttribute("height");
+	int weight = (int)request.getAttribute("weight");
+	int percentBodyFat = (int)request.getAttribute("percentBodyFat");
+	int skeletalMM = (int)request.getAttribute("skeletalMM");
+	int visceralFat = (int)request.getAttribute("visceralFat");
+	String measureDate = (String)request.getAttribute("measureDate");
+	System.out.println("18행 : " + measureDate);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>updateProfileForm</title>
-<link rel="stylesheet" href="updateProfileForm.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>profile</title>
+    <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/registerForm.css' />" type="text/css">
 </head>
-<body>
-	<form name="updateProfileForm" method="POST"
-		action="<c:url value='/mypage/profile/update' />">
-		<!-- 2. 필드 -->
-		<div class="field">
-			<b>아이디</b> <span class="placehold-text"><input type="text"
-				value="${exerciser.id}"></span>
-		</div>
-		<div class="field">
-			<b>비밀번호</b> <input class="userpw" type="password"
-				value="${exerciser.password}">
-		</div>
-		<div class="field">
-			<b>비밀번호 재확인</b> <input class="userpw-confirm" type="password">
-		</div>
-		<div class="field">
-			<b>닉네임</b> <input type="text" value="${exerciser.nickname}">
-		</div>
 
-		<div class="field">
-			<b>한줄 소개</b> <input type="text" value="${exerciser.explanation}">
-		</div>
+<%@ include file="../frameHeader.jsp" %>
 
-		<div class="field">
-			<b>운동 주종목</b> <input type="text" value="${exerciser.speciality}">
-		</div>
+	<div id="main">
+       <form name="form" >
+           <div class="flex-container2">
+               <div id="subTitle">
+                   <p class="subTitle">My Profile</p>
+               </div>
+               <div id="loginBox">
+                   <div class="box">
+                       <p class="inputInfo">아이디 : <%= exerciserid%></p>
+                   </div>
+                   <div class="box">
+                   		<p class="inputInfo">닉네임 : <%= nickname%></p>
+                   </div>
+                   <div class="box">
+                   		<p class="inputInfo">한줄소개 : <%= explanation%></p>
+                   </div>
+                   <div class="box">
+                   		<p class="inputInfo">성격 : <%= personality%></p>
+                   </div>
+                   <div class="box">
+                   		<p class="inputInfo">주로 하는 운동 종목 : <%= speciality%></p>
+                   </div>
+                   <div class="box">
+                   		<p class="inputInfo">성별 : <%= gender%></p>
+                   </div>
+                   <div class="inbodyBox">*InBody 정보</div>
+                   <div class="box">
+                       <p class="inputInbody">키 : <%= height%></p>
+                   </div>
+                   <div class="box">
+                       <p class="inputInbody">몸무게 : <%= weight%></p>
+                   </div>
+                   <div class="box">
+                       <p class="inputInbody">골격근량 : <%= skeletalMM%></p>
+                   </div>
+                   <div class="box">
+                       <p class="inputInbody">체지방률 : <%= percentBodyFat%></p>
+                   </div>
+                   
+                   <div class="box">
+                       <p class="inputInbody">내장지방레벨 : <%= visceralFat%></p>
+                   </div>
+                   <div class="box">
+                       <p class="inputInbody">측정날짜 : <%= measureDate%></p>
+                   </div>
+               </div>
+           </div>
+       </form>
+   </div>
+            
 
-		<div class="field">
-			<b>성격</b> <input type="text" value="${exerciser.personality}">
-		</div>
-
-		<div class="field gender">
-			<b>성별</b>
-			<div>
-				<label><input type="radio" name="gender">남자</label> <label><input
-					type="radio" name="gender">여자</label>
-			</div>
-		</div>
-
-		<div class="field gender">
-			<b>Do you want to use Matching Service?</b>
-			<div>
-				<label><input type="radio" name="userMatchSvc">Yes</label> <label><input
-					type="radio" name="useMatchSvc">No</label>
-			</div>
-		</div>
-		<!-- 6. 가입하기 버튼 -->
-		<input type="submit" value="가입하기">
-	</form>
-</body>
-</html>
+<%@ include file="../frameFooter.jsp" %>

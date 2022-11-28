@@ -34,14 +34,7 @@
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                    <a href="<c:url value='/myPage/profile' />">
-                                        <div class="category2">My Profile</div>  </a>
-                                </div>
-                            </div>
-
-                            <div class="flex-container-icon">
-                                <div class="flex-container-icon-sub1">
-                               		<a href="<c:url value='/exerciser/register' />">
+                               		<a href="<c:url value='/mypage/ToExercise' />">
                                         <div class="category2">ToExerciseList</div> </a>
                                 </div>
                             </div>
@@ -49,15 +42,21 @@
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
                                     <a href="<c:url value='/myPage/static' />">
-<%--                                     	<c:param name='id' value='<% %>' /> </c:url>"> --%>
                                         <div class="category2">My Statics</div> </a>
                                 </div>
                             </div>
                             
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                    <a href="<c:url value='/exerciser/register' />">
-                                        <div class="category2">Settings</div> </a>
+                                    <a href="<c:url value='/myPage/profile' />">
+                                        <div class="category2">My Profile</div>  </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-container-icon">
+                                <div class="flex-container-icon-sub1">
+                                    <a href="<c:url value='/mypage/profile/update' />">
+                                        <div class="category2">Update My Profile</div> </a>
                                 </div>
                                     
                             </div>

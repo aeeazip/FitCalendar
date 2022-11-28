@@ -26,7 +26,6 @@
 	<title>profile</title>
     <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/css/registerForm.css' />" type="text/css">
-    <link rel="stylesheet" href="<c:url value='/css/profile.css' />" type="text/css">
 </head>
 
 <%@ include file="../frameHeader.jsp" %>

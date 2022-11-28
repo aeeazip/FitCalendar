@@ -30,6 +30,7 @@ import controller.myPage.DeleteToExerciseController;
 import controller.myPage.ProfileController;
 import controller.myPage.StaticController;
 import controller.myPage.UnCheckToExerciseController;
+import controller.myPage.UpdateProfileController;
 import controller.myPage.ViewToExerciseController;
 import controller.record.AllRecordController;
 import controller.record.AllRecordDetailController;
@@ -57,7 +58,13 @@ public class RequestMapping {
 		mappings.put("/myPage/attendance", new AttendanceController());
 		mappings.put("/myPage/static", new StaticController());
 		mappings.put("/myPage/profile", new ProfileController());
-//		mappings.put("/myPage/static", new ForwardController("/myPage/static.jsp"));
+		mappings.put("/mypage/profile/update", new UpdateProfileController());
+		/*
+		 * mappings.put("/mypage/delete/form", new
+		 * ForwardController("/mypage/deleteForm.jsp")); mappings.put("/mypage/delete",
+		 * new DeleteExerciserController());
+		 * 
+		 */
 
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
@@ -83,15 +90,7 @@ public class RequestMapping {
 
 		mappings.put("/matching/situation/list", new MatchingSituationController());
 		mappings.put("/matching/fitmate/message", new ListMessageController());
-		
-		/*
-		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
-		 * 
-		 * mappings.put("/mypage/delete/form", new
-		 * ForwardController("/mypage/deleteForm.jsp")); mappings.put("/mypage/delete",
-		 * new DeleteExerciserController());
-		 * 
-		 */
+
 		// Record 관련 요청
 		mappings.put("/myRecord/write", new WriteRecordController());
 		mappings.put("/myRecord/list", new ListRecordController());
