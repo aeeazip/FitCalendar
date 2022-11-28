@@ -7,12 +7,21 @@
         <div id="wrapper">
             <!-- header -->
             <div class="header">
+            
+            <% 
+            	HttpSession s = request.getSession();
+            	String id = (String)s.getAttribute("id"); 
+            %>
                 
                 <!-- 로그인, 회원가입 -->
                 <div id="userMenu">
                     <ul class="list_menu">
                         <li class="menu menu_login">
+                        <% if (id == null) { %>
                             <a class="link link_login" href="<c:url value='/exerciser/login' />">로그인</a>
+                        <% } else { %>
+                            <a class="link link_logout" href="<c:url value='/exerciser/logout' />" >로그아웃</a>
+                        <% } %>
                         </li>
                         <li class="menu menu_join">
                             <a class="link link_join" href="<c:url value='/exerciser/register' />">회원가입</a>
