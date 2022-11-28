@@ -47,7 +47,7 @@
                             <a href="<c:url value='/allRecord/list' />" class="link new">운동 기록</a>
                         </li>
                         <li class="menu3">
-                            <a href="<c:url value='/exerciser/register' />" class="link best">Fit Mate</a>
+                            <a href="<c:url value='/matching/fitmate' />" class="link best">Fit Mate</a>
                         </li>
                         <li class="menu4">
                             <a href="<c:url value='/matching/startMatching' />" class="link bargain">추천/매칭</a>
