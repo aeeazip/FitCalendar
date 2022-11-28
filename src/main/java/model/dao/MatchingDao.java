@@ -168,7 +168,21 @@ public class MatchingDao {
 	/**
 	 * 매칭 수락 시, 메시지 활성화됐다는 메시지 보내기
 	 */
-	public int notifyMatching(int myExerciserId, int yourExerciserId) {
+	public int notifyMatching(int exerciserId) {			
+		String query = "INSERT INTO message(msgid, content, senderid, receiverid) VALUES (MSGIDSEQ.nextval, ?, ?, ?)";
+		Object[] param = new Object[] { "Fitmate 간 메시지가 활성화되었습니다.", 61, exerciserId};
+		jdbcUtil.setSqlAndParameters(query, param); // JDBCUtil 에 insert into문과 매개 변수 설정
+
+		try {
+			int result1 = jdbcUtil.executeUpdate(); // insert into문 실행		
+			return result1;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
 		return 0;
 	}
 
