@@ -21,7 +21,7 @@
 <tbody>
 	<c:forEach var="list" items="${fitmateList}" varStatus="status">
 		<tr>
-			<!-- 여기여기역이겨이겨ㅣ여ㅣ우ㅠㅠㅠㅠㅠㅠㅠㅠㅠ -->
+			<td>${list.}</td>
 		</tr>
 	</c:forEach>
 </tbody>

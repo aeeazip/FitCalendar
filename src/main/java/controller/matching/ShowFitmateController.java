@@ -1,6 +1,7 @@
 
 package controller.matching;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,22 @@ public class ShowFitmateController implements Controller{
 	    Exerciser exerciser = exManager.findExerciser(userId);
 	      
 		List<Fitmate> fitmateList = manager.showFitmateList(exerciser.getExerciserId());
+		
+		int fitmateId;
+		Exerciser fitMate;
+		List<Exerciser> fitMateList = new ArrayList<Exerciser>();
+		
+		for(Fitmate item : fitmateList) {
+			if(exerciser.getExerciserId() == item.getExerciser1()) {
+				fitmateId = item.getExerciser2();
+				fitMate = exManager.findExerciserById(fitmateId);
+				fitMateList.add(fitMate);
+			}{
+				fitmateId = item.getExerciser1();
+				fitMate = exManager.findExerciserById(fitmateId);
+				fitMateList.add(fitMate);
+			}
+		}
 		
 		request.setAttribute("fitmateList", fitmateList);
 		

@@ -208,16 +208,19 @@ public class MatchingDao {
 		String query = "SELECT * FROM fitmate WHERE excerciser1 = ? OR exerciser2 = ?";
 		Object[] param = new Object[] { exerciserId, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
+		int exerciser1;
+		int exerciser2;
+		Fitmate fitmate;
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 
 			List<Fitmate> fitmateList = new ArrayList<Fitmate>();
 			while (rs.next()) {
-				Exerciser exerciser1 = exerciserDao.findExerciser(rs.getInt("excerciser1"));
-				Exerciser exerciser2 = exerciserDao.findExerciser(rs.getInt("exerciser2"));
+				exerciser1 = rs.getInt("excerciser1");
+				exerciser2 = rs.getInt("excerciser2");
 
-				Fitmate fitmate = new Fitmate(exerciser1, exerciser2);
+				fitmate = new Fitmate(exerciser1, exerciser2);
 
 				fitmateList.add(fitmate);
 			}
