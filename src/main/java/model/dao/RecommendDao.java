@@ -141,7 +141,7 @@ public class RecommendDao {
 			randomRecomm2 = recomm_list.get(1);
 			randomRecomm3 = recomm_list.get(2);
 			
-			System.out.println(randomRecomm3);
+			System.out.println("recommendId in Dao " + randomRecomm3);
 	
 			String query2 = "INSERT INTO recommendlist(exerciserId, recommid1, recommid2, recommid3, count) VALUES (?, ?, ?, ?, 0)";
 			Object[] param2 = new Object[] {exerciserId, randomRecomm1, randomRecomm2, randomRecomm3};

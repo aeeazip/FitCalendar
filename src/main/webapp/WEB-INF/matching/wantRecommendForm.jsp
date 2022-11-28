@@ -23,7 +23,7 @@
 <%@ include file="../frameHeader.jsp"%>
 
 <div id="main">
-	<form>
+	
 		<div class="flex-container2">
 			<div id="subTitle">
 				<p class="subTitle">원하는 FitMate 정보를 입력하시오</p>
@@ -120,7 +120,7 @@
 				</form>
 			</div>
 		</div>
-	</form>
+	
 </div>
 
 

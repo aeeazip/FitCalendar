@@ -44,6 +44,8 @@ public class MatchingWantListController implements Controller {
 				request.setAttribute("recomm", recomm3);
 				request.setAttribute("recommId", recomm3.getId());
 			}else {
+				if(recommendList.getCounting() > 3)
+					recommendManager.countZero(exerciser.getExerciserId());
 				return "redirect:/matching/matchingMenu";
 			}
 		}
