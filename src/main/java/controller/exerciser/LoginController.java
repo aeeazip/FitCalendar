@@ -1,5 +1,7 @@
 package controller.exerciser;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,8 +30,18 @@ public class LoginController implements Controller {
 			ExerciserManager.getInstance().login(id, pwd);
 
 			HttpSession session = request.getSession(true);
-			session.setAttribute("id", id);
 			System.out.println(session.getAttribute("id"));
+			session.setAttribute(UserSessionUtils.USER_SESSION_KEY, id);
+			System.out.println(
+					"36행 : " + UserSessionUtils.USER_SESSION_KEY + "\n" + UserSessionUtils.getLoginUserId(session));
+
+			// alert창
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('로그인 되었습니다.'); history.go(-2); </script>");
+			out.println("<script>alert('로그인 되었습니다.'); location.href='../main'; </script>");
+
+			out.flush();
 
 			return "/main.jsp";
 		} catch (Exception e) {
