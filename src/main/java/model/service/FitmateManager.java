@@ -24,10 +24,10 @@ public class FitmateManager {
 	}
 
 	public List<Message> getSendMessage(int senderId, int receiverId){ // sender에 내 id receiver에 상대 fitmate id
-		return getSendMessage(senderId, receiverId);
+		return fitmateDao.getSendMessage(senderId, receiverId);
 	}
 	
 	public List<Message> getReceiveMessage(int senderId, int receiverId){ // sender에 상대 fitmate, receiver에 내 id
-		return getReceiveMessage(senderId, receiverId);
+		return fitmateDao.getReceiveMessage(senderId, receiverId);
 	}
 }
