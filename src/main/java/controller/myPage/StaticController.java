@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.exerciser.UserSessionUtils;
 import model.CompareStatic;
 import model.Exerciser;
 import model.service.ExerciserManager;
@@ -18,9 +19,12 @@ public class StaticController implements Controller {
 		System.out.println(request.getSession());
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("id"));
-		String userId = (String) session.getAttribute("id");
-		System.out.println(userId);
+//		System.out.println(session.getAttribute("id"));
+//		String userId = (String) session.getAttribute("id");
+//		System.out.println(userId);
+		System.out.println("19행 : " + session.getAttribute("id"));
+		System.out.println("20행 : " + UserSessionUtils.getLoginUserId(session));
+		String userId = UserSessionUtils.getLoginUserId(session);
 
 		// 로그인한 id의 user의 static 정보를 request 객체에 저장해 뷰에 전달
 		ExerciserManager exerciserMgr = ExerciserManager.getInstance();

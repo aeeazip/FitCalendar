@@ -34,7 +34,7 @@
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
-                                    <a href="<c:url value='/exerciser/register' />">
+                                    <a href="<c:url value='/myPage/profile' />">
                                         <div class="category2">My Profile</div>  </a>
                                 </div>
                             </div>

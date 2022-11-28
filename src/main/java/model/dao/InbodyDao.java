@@ -1,5 +1,9 @@
 package model.dao;
 
+import java.sql.ResultSet;
+
+import model.Inbody;
+
 public class InbodyDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
 
@@ -25,6 +29,33 @@ public class InbodyDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return 0;
+	}
+
+	public Inbody findInbody(int exerciserId) {
+		Inbody inbody = null;
+		String query = "select * from inbody where exerciserId=?";
+		Object[] param = new Object[] { exerciserId };
+		jdbcUtil.setSqlAndParameters(query, param);
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+
+			while (rs.next()) {
+				int height = rs.getInt("height");
+				int weight = rs.getInt("weight");
+				int percentbodyfat = rs.getInt("percentbodyfat");
+				int skeletalmm = rs.getInt("skeletalmm");
+				int visceralfat = rs.getInt("visceralfat");
+				String measuredate = rs.getString("measuredate");
+
+				inbody = new Inbody(height, weight, percentbodyfat, skeletalmm, visceralfat, measuredate, exerciserId);
+			}
+			return inbody;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return null;
 	}
 
 	// exerciserId로 최근 inbody 정보 2개 제외하고 지우기

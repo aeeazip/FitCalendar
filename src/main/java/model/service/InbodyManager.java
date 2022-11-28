@@ -1,5 +1,6 @@
 package model.service;
 
+import model.Inbody;
 import model.dao.InbodyDao;
 
 public class InbodyManager {
@@ -12,6 +13,10 @@ public class InbodyManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public Inbody findInbody(int exerciserId) {
+		return inbodyDao.findInbody(exerciserId);
 	}
 
 	public static InbodyManager getInstance() {
