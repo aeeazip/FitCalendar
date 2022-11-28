@@ -168,9 +168,9 @@ public class MatchingDao {
 	/**
 	 * 매칭 수락 시, 메시지 활성화됐다는 메시지 보내기
 	 */
-	public int notifyMatching(int exerciserId) {			
+	public int notifyMatching(int sender, int receiver) {			
 		String query = "INSERT INTO message(msgid, content, senderid, receiverid) VALUES (MSGIDSEQ.nextval, ?, ?, ?)";
-		Object[] param = new Object[] { "Fitmate 간 메시지가 활성화되었습니다.", 61, exerciserId};
+		Object[] param = new Object[] { "Fitmate 간 메시지가 활성화되었습니다.", sender, receiver};
 		jdbcUtil.setSqlAndParameters(query, param); // JDBCUtil 에 insert into문과 매개 변수 설정
 
 		try {

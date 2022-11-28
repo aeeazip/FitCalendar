@@ -46,10 +46,10 @@ public class MatchingCompleteController implements Controller {
 		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmate.getExerciserId());
 		
 		// 매칭 수락 시 시스템에서 fitmate간 메시지 활성화
-		int result = matchingManager.notifyMatching(exerciser.getExerciserId()); // 나
+		int result = matchingManager.notifyMatching(fitmate.getExerciserId(), exerciser.getExerciserId()); // 나
 		System.out.println(result);
 		
-		int result1 = matchingManager.notifyMatching(fitmate.getExerciserId()); //상대
+		int result1 = matchingManager.notifyMatching(exerciser.getExerciserId(), fitmate.getExerciserId()); //상대
 		System.out.println(result1);
 		
 		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
