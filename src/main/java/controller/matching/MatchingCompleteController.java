@@ -49,7 +49,7 @@ public class MatchingCompleteController implements Controller {
 		
 		request.setAttribute("fitmateList", fitmateList);
 		
-		return "redirect:/matching/situation/list";
+		return "redirect:/matching/fitmate";
 	}
 
 }

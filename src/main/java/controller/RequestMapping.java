@@ -19,6 +19,7 @@ import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController;
 import controller.matching.MatchingWantRecommendFormController;
+import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateAllOptionController;
 import controller.matching.UpdateOptionController;
@@ -57,13 +58,14 @@ public class RequestMapping {
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
 		mappings.put("/matching/setMate", new UpdateOptionController());
-		mappings.put("/matching/setOptions", new UpdateAllOptionController());
+		mappings.put("/matching/setOptions", new UpdateOptionController());
 
 		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
 		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
 		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());
-
+		mappings.put("/matching/fitmate", new ShowFitmateController());
+		
 		// MAtching inwoo's Part!!!!
 		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());

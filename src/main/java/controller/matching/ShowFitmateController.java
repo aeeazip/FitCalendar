@@ -1,4 +1,7 @@
+
 package controller.matching;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,13 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
+import model.Fitmate;
 import model.service.ExerciserManager;
 import model.service.MatchingManager;
 
-//MatMate 값 변경
-public class UpdateAllOptionController implements Controller {
+
+public class ShowFitmateController implements Controller{
 	private static final Logger log = LoggerFactory.getLogger(MatchingStartController.class);
 
 	@Override
@@ -24,22 +27,16 @@ public class UpdateAllOptionController implements Controller {
 		ExerciserManager exManager = ExerciserManager.getInstance();
 
 		HttpSession session = request.getSession();
-
-		String userId = (String) session.getAttribute("id");
-
-		// 로그인한 사용자의 exerciser 객체
-		Exerciser exerciser = exManager.findExerciser(userId);
-
-		String maxMate = request.getParameter("maxMate");
-		int mate = Integer.parseInt(maxMate);
-
-		// option(매칭 설정 취소 or maxMate 재설정) 전체 설정
-		String useMatchSvc = request.getParameter("useMatchSvc");
-		try {
-			manager.optionChange(exerciser.getExerciserId(), mate, useMatchSvc);
-			return "matching/matchingMenu.jsp"; 
-		} catch (Exception e) {
-			return "redirect:/matching/matchingMenusetOptions.jsp"; 
-		}
+	      
+	    String userId = (String)session.getAttribute("id");
+	    
+	    // 로그인한 사용자의 exerciser 객체
+	    Exerciser exerciser = exManager.findExerciser(userId);
+	      
+		List<Fitmate> fitmateList = manager.showFitmateList(exerciser.getExerciserId());
+		
+		request.setAttribute("fitmateList", fitmateList);
+		
+		return "/matching/fitmate.jsp";	
 	}
 }
