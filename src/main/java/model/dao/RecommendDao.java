@@ -113,7 +113,7 @@ public class RecommendDao {
 	 * 추천 or 매칭 기능 이용 시, exerciser table의 point 차감
 	 */
 	public int usePoint(int exerciserId, int point) {
-		System.out.println("recommendDao");
+		//System.out.println("recommendDao");
 		String query = "UPDATE exerciser SET point = NVL(point, 0) - ? WHERE exerciserId = ?";
 		Object[] param = new Object[] { point, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -136,7 +136,7 @@ public class RecommendDao {
 	 * table에 행 추가
 	 */
 	public int requestFitmate(int myExerciserId, int yourExerciserId) {
-		String query = "INSERT INTO matchingStatus values (?, ?, 3)";
+		String query = "INSERT INTO matchingStatus values (?, ?, 2)";
 		Object[] param = new Object[] { myExerciserId, yourExerciserId };
 		jdbcUtil.setSqlAndParameters(query, param); // JDBCUtil 에 insert문과 매개 변수 설정
 
