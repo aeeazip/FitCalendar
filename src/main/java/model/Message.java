@@ -6,6 +6,7 @@ public class Message {
 	int senderId;
 	int receiverId;
 	String sendDate;
+	
 	public int getMsgId() {
 		return msgId;
 	}

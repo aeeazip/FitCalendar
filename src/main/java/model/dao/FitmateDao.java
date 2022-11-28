@@ -15,7 +15,7 @@ public class FitmateDao {
 	}
 	
 	public List<Message> getSendMessage(int senderId, int receiverId){ // sender에 내 id receiver에 상대 fitmate id
-		String query = "select * from message where senderid=? and receiverid=?";
+		String query = "select * from message where senderid=? and receiverid=? order by msgid desc";
 		Object[] param = new Object[] {senderId, receiverId};
 		jdbcUtil.setSqlAndParameters(query, param);
 
@@ -43,7 +43,7 @@ public class FitmateDao {
 	}
 	
 	public List<Message> getReceiveMessage(int senderId, int receiverId){ // sender에 상대 fitmate, receiver에 내 id
-		String query = "select * from message where senderid=? and receiverid=?";
+		String query = "select * from message where senderid=? and receiverid=? order by msgid desc";
 		Object[] param = new Object[] {senderId, receiverId};
 		jdbcUtil.setSqlAndParameters(query, param);
 
