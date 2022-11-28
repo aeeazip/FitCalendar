@@ -68,6 +68,10 @@ public class RecommendManager {
 		return 1;
 	}
 	
+	public int countZero(int exerciserId) {
+		return recommendDao.countZero(exerciserId);
+	}
+	
 	//RecommendList return -> recommendList DTO 수정
 	public RecommendList displayExerciser(int exerciserId){
 		return recommendDao.displayExerciser(exerciserId);

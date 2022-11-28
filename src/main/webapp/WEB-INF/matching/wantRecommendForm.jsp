@@ -11,7 +11,9 @@
 <link rel="stylesheet"
 	href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
 <script>
-	function recommend() {
+
+	function recommend(targetUri) {
+		form.action = targetUri;
 		form.submit();
 	}
 </script>
@@ -112,9 +114,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan='2'>
-							
-									<button type="submit">제출하기</button></td>
+							<td colspan='2'><button type="submit">매칭 시작하기</button></td>
 						</tr>
 					</table>
 				</form>

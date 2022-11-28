@@ -136,7 +136,7 @@ public class RecommendDao {
 			}
 			System.out.println("Recommend 137 DAOLINE");
 			
-			System.out.println(count);
+			System.out.println("count: " + count);
 			randomRecomm1 = recomm_list.get(0);
 			randomRecomm2 = recomm_list.get(1);
 			randomRecomm3 = recomm_list.get(2);
@@ -246,6 +246,25 @@ public class RecommendDao {
 			jdbcUtil.close();
 		}
 		return count;
+	}
+	
+	public int countZero(int exerciserId) {
+		System.out.println("countzero dao");
+		String query = "UPDATE recommendlist SET count = 0 WHERE exerciserId = ? ";
+		Object[] param = new Object[] {exerciserId};
+		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정
+
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0; 
 	}
 
 }
