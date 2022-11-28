@@ -70,8 +70,9 @@ public class ToExerciseDao {
 		return 0;
 	}
 
-	public ArrayList<ToExercise> checkToExercise(int exerciserId, int itemId) {
-		String query = "UPDATE toexercise " + "SET checked = ? " + " WHERE exerciserid = ? and itemdId = ? ";
+	public int checkToExercise(int exerciserId, int itemId) {
+		System.out.println("checking dao");
+		String query = "UPDATE toexercise SET checked = ?  WHERE exerciserid = ? and itemId = ?";
 
 		Object[] param = new Object[] { "T", exerciserId, itemId };
 
@@ -79,8 +80,9 @@ public class ToExerciseDao {
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			System.out.println("result: " + result);
 			if (result == 1) {
-				return findToExercise(exerciserId); // insert 에 의해 반영된 레코드 수 반환
+				return 1; // insert 에 의해 반영된 레코드 수 반환
 			}
 		} catch (Exception e) {
 			jdbcUtil.rollback();
@@ -90,18 +92,19 @@ public class ToExerciseDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 
-		return null;
+		return 0;
 	}
 
-	public ArrayList<ToExercise> deleteToExercise(int exerciserId, int itemId) {
-		String query = "DELETE FROM toexercise WHERE exerciserid = ? and itemdId = ? ";
+	public int deleteToExercise(int exerciserId, int itemId) {
+		String query = "DELETE FROM toexercise WHERE exerciserid = ? and itemId = ? ";
 		Object[] param = new Object[] { exerciserId, itemId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			System.out.println("delete result: " + result);
 			if (result == 1) {
-				return findToExercise(exerciserId); // insert 에 의해 반영된 레코드 수 반환
+				return 1; // insert 에 의해 반영된 레코드 수 반환
 			}
 		} catch (Exception e) {
 			jdbcUtil.rollback();
@@ -111,18 +114,18 @@ public class ToExerciseDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 
-		return null;
+		return 0;
 	}
 	
-	public ArrayList<ToExercise> unCheckToExercise(int exerciserId, int itemId){
-		String query = "UPDATE FROM toexercise SET checked = 'F' WHERE exerciserid = ? and itemId = ? ";
-		Object[] param = new Object[] { exerciserId, itemId };
+	public int unCheckToExercise(int exerciserId, int itemId){
+		String query = "UPDATE toexercise SET checked = ?  WHERE exerciserid = ? and itemId = ?";
+		Object[] param = new Object[] { "F", exerciserId, itemId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
 			if (result == 1) {
-				return findToExercise(exerciserId); // insert 에 의해 반영된 레코드 수 반환
+				return 1; // insert 에 의해 반영된 레코드 수 반환
 			}
 		} catch (Exception e) {
 			jdbcUtil.rollback();
@@ -132,7 +135,7 @@ public class ToExerciseDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 
-		return null;
+		return 0;
 		
 	}
 

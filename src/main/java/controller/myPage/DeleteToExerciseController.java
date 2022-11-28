@@ -28,17 +28,12 @@ public class DeleteToExerciseController implements Controller {
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		
-		int itemId = Integer.parseInt("itemId");
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
+		System.out.println("delete controller");
+		toExerciserManager.deleteToExercise(exerciser.getExerciserId(), itemId);
 
-		ArrayList<ToExercise> list = toExerciserManager.deleteToExercise(exerciser.getExerciserId(), itemId);
-
-		if (list != null) {
-			request.setAttribute("ToExerciseList", list);
-			return "redirect:/mypage/ToExercise";
-		}
-
-		return " /mypage/ToExercise.jsp";
+		return "redirect:/mypage/ToExercise";
 	}
 
 }
