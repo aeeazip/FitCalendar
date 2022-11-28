@@ -20,6 +20,7 @@
 	현재 요청하신 FitMate가 존재하지 않습니다.
 </c:if>
 <c:if test="${not empty fitmateList}">
+<h2>FitMate 목록</h2>
 <table>
 	<c:forEach var="list" items="${fitmateList}" varStatus="status">
 	<tr>

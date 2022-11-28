@@ -204,39 +204,36 @@ public class MatchingDao {
 	/**
 	 * exerciser의 fitmateList보여주기
 	 */
-	public List<Fitmate> showFitmateList(int exerciserId) {
-		String query = "SELECT * FROM fitmate WHERE excerciser1 = ? OR exerciser2 = ?";
-		Object[] param = new Object[] { exerciserId, exerciserId };
-		jdbcUtil.setSqlAndParameters(query, param);
+	 public List<Fitmate> showFitmateList(int exerciserId) {
+	      String query = "SELECT * FROM fitmate WHERE exerciser1 = ? OR exerciser2 = ?";
+	      Object[] param = new Object[] { exerciserId, exerciserId };
+	      jdbcUtil.setSqlAndParameters(query, param);
+	      System.out.println(exerciserId);
+	      int exerciser1;
+	      int exerciser2;
+	      Fitmate fitmate;
+	      System.out.println("showFitmateList 실행");
 
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
+	      try {
+	         ResultSet rs = jdbcUtil.executeQuery();
 
-			List<Fitmate> fitmateList = new ArrayList<Fitmate>();
-			
-			Fitmate fitmate = null;
-			
-			while (rs.next()) {
-				if(rs.getInt("excerciser1") == exerciserId) {
-					Exerciser exerciser2 = exerciserDao.findExerciser(rs.getInt("exerciser2"));
-					fitmate = new Fitmate(exerciser2);
-					fitmateList.add(fitmate);
-					
-				}
-				else if (rs.getInt("exerciser2") == exerciserId) {
-					Exerciser exerciser1 = exerciserDao.findExerciser(rs.getInt("exerciser1"));
-					fitmate = new Fitmate(exerciser1);
-					fitmateList.add(fitmate);
-				}
-			}
-			return fitmateList;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
+	         List<Fitmate> fitmateList = new ArrayList<Fitmate>();
+	         while (rs.next()) {
+	            exerciser1 = rs.getInt("exerciser1");
+	            exerciser2 = rs.getInt("exerciser2");
+	            System.out.println(exerciser1);
+	            fitmate = new Fitmate(exerciser1, exerciser2);
+
+	            fitmateList.add(fitmate);
+	         }
+	         return fitmateList;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         jdbcUtil.close();
+	      }
+	      return null;
+	   }
 
 	/**
 	 * exerciser의 matching 상태 확인
