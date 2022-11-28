@@ -28,7 +28,7 @@ public class UnCheckToExerciseController implements Controller {
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		
-		int itemId = Integer.parseInt("itemId");
+		int itemId = Integer.parseInt((String)request.getParameter("itemId"));
 
 		toExerciserManager.uncheckToExercise(exerciser.getExerciserId(), itemId);
 

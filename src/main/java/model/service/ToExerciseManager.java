@@ -31,15 +31,15 @@ public class ToExerciseManager {
 		return toExerciseDao.addToExercise(exerciserId, content);
 	}
 
-	public ArrayList<ToExercise> checkToExercise(int exerciserId, int itemId) {
+	public int checkToExercise(int exerciserId, int itemId) {
 		return toExerciseDao.checkToExercise(exerciserId, itemId);
 	}
 
-	public ArrayList<ToExercise> deleteToExercise(int exerciserId, int itemId) {
+	public int deleteToExercise(int exerciserId, int itemId) {
 		return toExerciseDao.deleteToExercise(exerciserId, itemId);
 	}
 	
-	public ArrayList<ToExercise> uncheckToExercise(int exerciserId, int itemId){
+	public int uncheckToExercise(int exerciserId, int itemId){
 		return toExerciseDao.unCheckToExercise(exerciserId, itemId);
 	}
 

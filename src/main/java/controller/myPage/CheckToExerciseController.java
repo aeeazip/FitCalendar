@@ -27,10 +27,14 @@ public class CheckToExerciseController implements Controller {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
+		String itemId = (String)request.getParameter("itemId");
+		int item_id = Integer.parseInt(itemId);
+		System.out.println("checkController");
 		
-		int itemId = Integer.parseInt("itemId");
+		
+		System.out.println(itemId);
 
-		toExerciserManager.checkToExercise(exerciser.getExerciserId(), itemId);
+		toExerciserManager.checkToExercise(exerciser.getExerciserId(), item_id);
 
 		return "redirect:/mypage/ToExercise";
 

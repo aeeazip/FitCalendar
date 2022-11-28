@@ -28,6 +28,10 @@ public class ViewToExerciseController implements Controller {
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		
 		ArrayList<ToExercise> list = toExerciserManager.findToExercise(exerciser.getExerciserId());
+		
+		for(ToExercise item : list) {
+			System.out.println(item.toString());
+		}
 
 		if (list != null) {
 			request.setAttribute("ToExerciseList", list);
