@@ -40,6 +40,12 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<!-- 글작성 -->
+	<br><br>
+	<div style="text-align: center;">
+		<a href="<c:url value='/myRecord/write'></c:url>">글쓰기</a>
+	</div>
 	<%@ include file="../frameFooter.jsp"%>
 </body>
 </html>
