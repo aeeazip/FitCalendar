@@ -34,6 +34,6 @@ public class MatchingReRequestController  implements Controller {
 	
 		System.out.println("Matching Re Request Controller");
 		
-		return "redirect:/matching/wantRecommend/recommendRequest";
+		return "redirect:/matching/wantRecommend/list";
 	}
 }

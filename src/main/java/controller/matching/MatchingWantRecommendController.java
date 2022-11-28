@@ -26,7 +26,6 @@ public class MatchingWantRecommendController implements Controller{
 
 		String id = (String) session.getAttribute("id");
 
-		System.out.println("matchingWantRecommendController");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 
 		int result = recommendManager.recommendExerciser(exerciser.getExerciserId());

@@ -18,6 +18,7 @@ import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController;
+import controller.matching.MatchingWantRecommendController_serve;
 import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
@@ -68,12 +69,17 @@ public class RequestMapping {
 		mappings.put("/matching/fitmate", new ShowFitmateController());
 
 		// MAtching inwoo's Part!!!!
-		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());
-		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
+		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());//추천 설문 form return OK
+		
+		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController_serve());//전송 OK
+		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());//OK
+		
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
-		mappings.put("/matching/wantRecommend/recommendRequest", new MatchingWantRecommendController());
+	//	mappings.put("/matching/wantRecommend/recommendRequest", new MatchingWantRecommendController());
+	
 		mappings.put("/matching/situation/list", new MatchingSituationController());
+		
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 
