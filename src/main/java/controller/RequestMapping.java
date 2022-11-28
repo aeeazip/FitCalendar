@@ -17,7 +17,6 @@ import controller.matching.MatchingRequestController;
 import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
-import controller.matching.MatchingWantRecommendController;
 import controller.matching.MatchingWantRecommendController_serve;
 import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowFitmateController;
@@ -27,6 +26,7 @@ import controller.myPage.AddToExerciseController;
 import controller.myPage.AttendanceController;
 import controller.myPage.CheckToExerciseController;
 import controller.myPage.DeleteToExerciseController;
+import controller.myPage.ProfileController;
 import controller.myPage.StaticController;
 import controller.myPage.UnCheckToExerciseController;
 import controller.myPage.ViewToExerciseController;
@@ -55,6 +55,7 @@ public class RequestMapping {
 		mappings.put("/myPage", new ForwardController("/myPage/myPageMenu.jsp"));
 		mappings.put("/myPage/attendance", new AttendanceController());
 		mappings.put("/myPage/static", new StaticController());
+		mappings.put("/myPage/profile", new ProfileController());
 //		mappings.put("/myPage/static", new ForwardController("/myPage/static.jsp"));
 
 		// Matching 관련
@@ -69,36 +70,24 @@ public class RequestMapping {
 		mappings.put("/matching/fitmate", new ShowFitmateController());
 
 		// MAtching inwoo's Part!!!!
-		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());//추천 설문 form return OK
-		
-		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController_serve());//전송 OK
-		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());//OK
-		
+		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());// 추천 설문 form return OK
+
+		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController_serve());// 전송 OK
+		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());// OK
+
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
-	//	mappings.put("/matching/wantRecommend/recommendRequest", new MatchingWantRecommendController());
-	
+		// mappings.put("/matching/wantRecommend/recommendRequest", new
+		// MatchingWantRecommendController());
+
 		mappings.put("/matching/situation/list", new MatchingSituationController());
-		
+
 		/*
 		 * mappings.put("/mypage/profile/update", new UpdateProfileController());
 		 * 
 		 * mappings.put("/mypage/delete/form", new
 		 * ForwardController("/mypage/deleteForm.jsp")); mappings.put("/mypage/delete",
 		 * new DeleteExerciserController());
-		 * 
-		 * mappings.put("/mypage/Attendance", new
-		 * ForwardController("/mypage/checkAttendance.jsp"));
-		 * mappings.put("/mypage/checkAttendance", new ViewAttendanceController());
-		 * 
-		 * mappings.put("/mypage/ToExercise", new ViewToExerciseController());
-		 * mappings.put("/mypage/ToExercise/add", new AddToExerciseController());
-		 * mappings.put("/mypage/ToExercise/check", new CheckToExerciseController());
-		 * mappings.put("/mypage/ToExercise/delete ", new DeleteToExerciseController());
-		 * 
-		 * mappings.put("/mypage/Statics", new ViewStaticController());
-		 * mappings.put("/mypage/Statics", new
-		 * ForwardController("/mypage/viewRoutineStatics.jsp"));
 		 * 
 		 */
 		// Record 관련 요청
