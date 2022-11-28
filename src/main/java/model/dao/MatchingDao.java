@@ -216,13 +216,30 @@ public class MatchingDao {
 			ResultSet rs = jdbcUtil.executeQuery();
 
 			List<Fitmate> fitmateList = new ArrayList<Fitmate>();
+			
+			Fitmate fitmate = null;
+			
 			while (rs.next()) {
+<<<<<<< HEAD
 				exerciser1 = rs.getInt("excerciser1");
 				exerciser2 = rs.getInt("excerciser2");
 
 				fitmate = new Fitmate(exerciser1, exerciser2);
 
 				fitmateList.add(fitmate);
+=======
+				if(rs.getInt("excerciser1") == exerciserId) {
+					Exerciser exerciser2 = exerciserDao.findExerciser(rs.getInt("exerciser2"));
+					fitmate = new Fitmate(exerciser2);
+					fitmateList.add(fitmate);
+					
+				}
+				else if (rs.getInt("exerciser2") == exerciserId) {
+					Exerciser exerciser1 = exerciserDao.findExerciser(rs.getInt("exerciser1"));
+					fitmate = new Fitmate(exerciser1);
+					fitmateList.add(fitmate);
+				}
+>>>>>>> 8354f70b7a38d6f965eadf715fc81649b56574c0
 			}
 			return fitmateList;
 		} catch (Exception e) {
