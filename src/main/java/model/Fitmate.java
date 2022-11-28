@@ -22,6 +22,10 @@ public class Fitmate {
 		this.exerciser1 = exerciser1;
 		this.exerciser2 = exerciser2;
 	}
+	public Fitmate(Exerciser exerciser1) {
+		super();
+		this.exerciser1 = exerciser1;
+	}
 	
 	@Override
 	public String toString() {

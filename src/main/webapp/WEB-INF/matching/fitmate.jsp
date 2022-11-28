@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%!
+	int count = 1;
+%>
 <meta charset="utf-8">
 <title>Fitmate</title>
 <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
@@ -18,12 +21,20 @@
 </c:if>
 <c:if test="${not empty fitmateList}">
 <table>
-<tbody>
 	<c:forEach var="list" items="${fitmateList}" varStatus="status">
-		<tr>
-			<!-- 여기여기역이겨이겨ㅣ여ㅣ우ㅠㅠㅠㅠㅠㅠㅠㅠㅠ -->
-		</tr>
+	<tr>
+		<td>
+			No. <%=count %>
+			<p>닉네임: <c:out value="${list.nickname}" />
+			<p>한줄소개: <c:out value="${list.explanation}" />
+			<p>운동종목 : <c:out value="${list.speciality}" />
+			<p>성격 : <c:out value="${list.personality}" />
+			<p>성별 : <c:out value="${list.gender}" />
+		</td>
+	</tr>
+	<%count++; %>
 	</c:forEach>
+	<%count = 1; %>
 </tbody>
 </c:if>
 </table>
