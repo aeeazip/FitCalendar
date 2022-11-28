@@ -40,9 +40,17 @@ public class MatchingCompleteController implements Controller {
 		
 		//accept -> fitmate table에 저장
 		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmate.getExerciserId());
+		System.out.println("완료");
 		
 		//매칭 수락시, status=1로 바꿔주기		
 		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmate.getExerciserId());
+		
+		// 매칭 수락 시 시스템에서 fitmate간 메시지 활성화
+		int result = matchingManager.notifyMatching(fitmate.getExerciserId(), exerciser.getExerciserId()); // 나
+		System.out.println(result);
+		
+		int result1 = matchingManager.notifyMatching(exerciser.getExerciserId(), fitmate.getExerciserId()); //상대
+		System.out.println(result1);
 		
 		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
 		List<Fitmate> fitmateList =  matchingManager.showFitmateList(exerciser.getExerciserId());
