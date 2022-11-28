@@ -24,7 +24,7 @@ public class MatchingWantListController implements Controller {
 		RecommendList recommendList;
 
 		HttpSession session = request.getSession();
-
+		
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		System.out.println("List Controller");
@@ -52,7 +52,7 @@ public class MatchingWantListController implements Controller {
 			 request.setAttribute("MatchingWantListFailed", true);
 	         request.setAttribute("exerciser", exerciser);
 		}
-		
+
 		return "redirect:/exerciser/main";
 	}
 }
