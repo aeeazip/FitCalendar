@@ -5,18 +5,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>wantRecommendForm</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet"
-	href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
-<script>
+	<title>wantRecommendForm</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
+	<script>
 
-	function recommend(targetUri) {
-		form.action = targetUri;
-		form.submit();
-	}
-</script>
+		function recommend(targetUri) {
+			form.action = targetUri;
+			form.submit();
+		}
+	</script>
 </head>
 
 
@@ -25,10 +24,9 @@
 <div id="main">
 	
 		<div class="flex-container2">
-			<div id="subTitle">
-				<p class="subTitle">원하는 FitMate 정보를 입력하시오</p>
+			<div id="subTitle" >
+				<p class="subTitle" style="font-size:18px; margin-bottom:30px;">원하는 FitMate 정보를 체크하세요.</p>
 			</div>
-
 			<div style="text-align: center">
 				<form name="form" method="POST" action="<c:url value='/matching/wantRecommend/form' />">
 					<table style="table-layout: auto; table-layout: fixed;">
@@ -114,11 +112,16 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan='2'><button type="submit">매칭 시작하기</button></td>
+							<td colspan='2'><button type="submit" class="start_btn" style="margin-top:30px">매칭 시작하기</button></td>
 						</tr>
 					</table>
 				</form>
+			<form name="startMateForm"
+				action="<c:url value='/matching/matchingMenu' />" method="GET">
+				<button type="submit" class="start_btn" >menu 화면으로 돌아가기</button>
+			</form>
 			</div>
+			
 		</div>
 	
 </div>

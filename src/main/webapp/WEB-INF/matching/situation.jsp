@@ -6,46 +6,53 @@
 <head>
 <meta charset="utf-8">
 <title>Matching Situation</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet" href="<c:url value='/css/situation.css' />"
-	type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	
 </head>
 <%@ include file="../frameHeader.jsp"%>
-<body>
-	<div align="center">
-		<h3>FitMate 요청 상태</h3>
+
+
+<div id="main">
+	<div class="flex-container2">
+		<div id="subTitle" >
+           <p class="subTitle" style="font-size:18px; margin-bottom:30px;">FitMate 요청 상태</p>
+ 	 	</div>
+
 
 		<c:if test="${empty matchingStatus}">
-	현재 요청하신 FitMate가 존재하지 않습니다.
-</c:if>
+		<p class="subTitle" style="font-size:18px; margin-bottom:30px;">현재 요청하신 FitMate가 존재하지 않습니다.</p>
+		</c:if>
 		<c:if test="${not empty matchingStatus}">
-			<table>
-				<tbody>
+		
+		<div style="text-align: center">
+		<form>
+			<table style="table-layout: auto; table-layout: fixed;">
 					<c:forEach var="result" items="${matchingStatus}"
 						varStatus="status">
 						<tr>
-							<td><c:out value="${result.receiverNickName}" /></td>
+							<td class="a" style="border-top: 1px solid black;"><c:out value="${result.receiverNickName}" /></td>
 							<c:if test="${ 1 eq result.status }">
-								<td>요청 수락 O</td>
+								<td class="a" style="border-top: 1px solid black;">요청 수락 O</td>
 							</c:if>
 							<c:if test="${ 2 eq result.status }">
-								<td>요청 대기</td>
+								<td class="a" style="border-top: 1px solid black;">요청 대기</td>
 							</c:if>
 							<c:if test="${ 3 eq result.status }">
-								<td>요청 거절</td>
+								<td class="a" style="border-top: 1px solid black;">요청 거절</td>
 							</c:if>
 						</tr>
 					</c:forEach>
-				</tbody>
 				</c:if>
 			</table>
+			</form>
 
 			<form name="startMateForm"
 				action="<c:url value='/matching/matchingMenu' />" method="GET">
-				<button type="submit">menu 화면으로 돌아가기</button>
+				<button type="submit" class="fitmatelist_btn" >menu 화면으로 돌아가기</button>
 			</form>
 	</div>
-
+</div>
+</div>
 	<%@ include file="../frameFooter.jsp"%>
-</html>
