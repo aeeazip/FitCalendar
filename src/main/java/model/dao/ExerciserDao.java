@@ -224,10 +224,10 @@ public class ExerciserDao {
 
 		return null;
 	}
-
+	
 	// 계정 삭제(id로 삭제)
-	public int deleteExerciser(String deleteId) {
-		String query = "DELETE FROM exerciser WHERE id = ?"; // JDBCUtil 에 query 문 설정
+	public int deleteExerciser(int deleteId) {
+		String query = "DELETE FROM exerciser WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
