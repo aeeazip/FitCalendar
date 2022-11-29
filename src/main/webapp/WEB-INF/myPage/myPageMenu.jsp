@@ -63,9 +63,8 @@
 
                             <div class="flex-container-icon2">
                                 <div class="flex-container-icon-sub1"></div>
-                                <div id="out">
-                                    <button type="button" onclick="quit_alert()">회원탈퇴</button>
-                                </div>
+	                                <a href="<c:url value='/mypage/delete/form' />">
+	                                 <div class="category2 delete" >회원탈퇴</div> </a>
                             </div>
 
                             

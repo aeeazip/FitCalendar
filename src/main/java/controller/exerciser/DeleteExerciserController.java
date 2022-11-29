@@ -1,5 +1,7 @@
 package controller.exerciser;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,24 +22,29 @@ public class DeleteExerciserController implements Controller {
 
 		ExerciserManager manager = ExerciserManager.getInstance();
 		HttpSession session = request.getSession();
-		
+
 		String id = (String) session.getAttribute("id");
-		
+
 		Exerciser deleteExerciser = manager.findExerciser(id);
-		
+
 		if (request.getServletPath().equals("/mypage/delete/form")) {
-		    return "/myPage/deleteForm.jsp";
-		}
-		else if (request.getServletPath().equals("/mypage/delete")) {
+			return "/myPage/deleteForm.jsp";
+		} else if (request.getServletPath().equals("/mypage/delete")) {
 			int result = manager.deleteExerciser(deleteExerciser.getExerciserId(), deletePwd); // 사용자 정보 삭제
 			System.out.println("deleteResult: " + result);
-			if(result != 0) {
-				return  "redirect:/mypage"; 
+			if (result != 0) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('탈퇴 되었습니다.'); location.href='../main'; </script>");
+
+				System.out.println("탈퇴");
+				out.flush();
+
+				return "/main.jsp";
 			}
-			return "redirect:/mypage/delete/form"; 
-			
+			return "redirect:/mypage/delete/form";
 		}
-		
-		return "redirect:/mypage/delete/form"; 
+
+		return "redirect:/mypage/delete/form";
 	}
 }

@@ -97,5 +97,17 @@ button {
     text-align: center;
     text-decoration-line: underline;
     color: #909090;
+}
 
+.delete {
+	background-color: #FFFFFF;
+    border: none;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 23px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #909090;
 }

@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* main */
+		#main {
+		    box-sizing: border-box;
+		    padding: 0px 30px 0 30px;
+		
+		    height: auto;
+		    background: #FFFFFF;
+		    /* border: 1px solid #909090; */
+		    border-bottom: 0;
+		}
+		
+		#subTitle .subTitle {
+		    position: relative;
+		
+		    font-style: normal;
+		    font-weight: 700;
+		    font-size: 22px;
+		    margin-bottom: 50px;
+		
+		    color: #414141;
+		}
+		
+		.flex-container2 {
+		    display: flex;
+		    flex-direction: column;
+		}
+		
+		.inputPW {
+		    display: block;
+		    width: 300px;
+		
+		    border: none;
+		    border-bottom: 1px solid #B5B5B5;
+		    outline: none; /* 입력 시 테두리 지움*/
+		    
+		    font-weight: 500;
+		    font-size: 14px;
+		    color: black;
+		
+		    margin-bottom: 25px;
+		    margin-left: 30px;
+		    padding-bottom: 10px;
+		}
+		
+		 input[type=password] {
+			font-family: 'Nanum Gothic', san-serif !important;
+		}
+		
+		/* placeholder 폰트 색 변경, 크롬/엣지 둘 다 적용 */
+		input::placeholder{color: #909090;}
+		input::-webkit-input-placeholder {color: #909090;}
+		input::-ms-input-placeholder{color: #909090;}
+		
+		#delete_btn {
+		     background: linear-gradient(91.36deg, #556B2F -24.31%, #a8eb8b 130.3%);
+		    box-shadow: 0px -10px 40px rgba(#556B2F, 0.3);
+		    border-radius: 12px;
+		    border: none;
+		    color: white;
+		    text-align: center;
+		    display: inline-block;
+		    font-size: 18px;
+		    font-weight: 600;
+		
+		    width: 340px;
+		    padding: 12px 0;
+		    cursor: pointer;
+		    margin-left: 15px;
+		}
