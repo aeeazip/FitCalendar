@@ -22,7 +22,7 @@ public class StaticDao {
 		int monthlyCount = 0;
 
 		String query = "SELECT percentbodyfat, skeletalmm, visceralfat \r\n"
-				+ "FROM (SELECT percentbodyfat, skeletalmm, visceralfat, measuredate FROM inbody WHERE exerciserid = ? ORDER BY measuredate ASC)\r\n"
+				+ "FROM (SELECT percentbodyfat, skeletalmm, visceralfat, measuredate FROM inbody WHERE exerciserid = ? ORDER BY inbodyid DESC)\r\n"
 				+ "WHERE rownum <=2";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);

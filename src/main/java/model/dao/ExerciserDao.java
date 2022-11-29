@@ -123,18 +123,15 @@ public class ExerciserDao {
 		return 0;
 	}
 
-	public int updateExerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String speciality, String personality, String gender, String useMatchSvc, int maxMate) {
-		String query = " UPDATE exerciser "
-				+ "SET id = ?, nickname = ?, password = ?, explanation = ?, speciality = ?, personality = ?, gender = ?, useMatchSvc = ? , maxMate = ? "
-				+ " WHERE exerciserId = ? "; // JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] { id, nickname, password, explanation, speciality, personality, gender,
-				useMatchSvc, maxMate, exerciserId };
+	public int updateExerciser(int exerciserId, String nickname, String explanation, String speciality,
+			String personality) {
+		String query = "update exerciser set nickname=?, explanation=?, speciality=?, personality=? where exerciserid=?";
+		Object[] param = new Object[] { nickname, explanation, speciality, personality, exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
-			int result = jdbcUtil.executeUpdate(); // delete 문 실행
-			return result; // delete 에 의해 반영된 레코드 수 반환
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result; // update 에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();

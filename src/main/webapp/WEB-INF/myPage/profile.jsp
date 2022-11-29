@@ -57,25 +57,31 @@
                    </div>
                    <div class="inbodyBox">*InBody 정보</div>
                    <div class="box">
-                       <p class="inputInbody">키 : <%= height%></p>
+                       <p class="viewInbody">키 : <%= height%></p>
                    </div>
                    <div class="box">
-                       <p class="inputInbody">몸무게 : <%= weight%></p>
+                       <p class="viewInbody">몸무게 : <%= weight%></p>
                    </div>
                    <div class="box">
-                       <p class="inputInbody">골격근량 : <%= skeletalMM%></p>
+                       <p class="viewInbody">골격근량 : <%= skeletalMM%></p>
                    </div>
                    <div class="box">
-                       <p class="inputInbody">체지방률 : <%= percentBodyFat%></p>
+                       <p class="viewInbody">체지방률 : <%= percentBodyFat%></p>
                    </div>
                    
                    <div class="box">
-                       <p class="inputInbody">내장지방레벨 : <%= visceralFat%></p>
+                       <p class="viewInbody">내장지방레벨 : <%= visceralFat%></p>
                    </div>
                    <div class="box">
-                       <p class="inputInbody">측정날짜 : <%= measureDate%></p>
+                       <p class="viewInbody">측정날짜 : <%= measureDate%></p>
                    </div>
                </div>
+                <div class="flex-container-icon2">
+                       <div class="flex-container-icon-sub1"></div>
+                       <div id="out">
+                           <button type="button" class="backBtn" onclick="history.back();">이전으로</button>
+                       </div>
+                 </div>
            </div>
        </form>
    </div>

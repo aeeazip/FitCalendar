@@ -111,7 +111,7 @@ public class Exerciser {
 	}
 
 	public Exerciser(int exerciserId, String id, String nickname, String password, String explanation,
-			String personality, String speciality, String gender, int point, int ranking, String useMatchSvc,
+			String speciality, String personality, String gender, int point, int ranking, String useMatchSvc,
 			int maxMate) {
 		super();
 		this.exerciserId = exerciserId;
@@ -127,7 +127,7 @@ public class Exerciser {
 		this.useMatchSvc = useMatchSvc;
 		this.maxMate = maxMate;
 	}
-	
+
 	public Exerciser(int exerciserId) {
 		super();
 		this.exerciserId = exerciserId;
@@ -171,7 +171,7 @@ public class Exerciser {
 				+ useMatchSvc + ", maxMate=" + maxMate + "]";
 	}
 
-//	비밀번호 검사
+	// 비밀번호 검사
 	public boolean matchPassword(String pword) {
 		if (pword == null) {
 			return false;
