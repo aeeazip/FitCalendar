@@ -38,7 +38,7 @@
 			<c:forEach var="list" items="${ToExerciseList}" varStatus="status">
 				<c:if test="${ 'F' eq list.checked }">
 					<li>
-						<p class="listText">✅ ${list.content}
+						<p class="listText">✅ ${list.content} <br><br>
 						<form name="deleteForm"action="<c:url value='/mypage/ToExercise/check'/>" class="btnForm"  method="POST">
 						<input type="hidden" name = "itemId" value="${list.itemId}" class="listText" />
 						<button type="submit" class="toBtn" >do</button>
@@ -54,7 +54,7 @@
 			</c:if>
 				<c:if test="${ 'T' eq list.checked }">
 					<li>
-						<p class="done listText">✅${list.content}
+						<p class="done listText">✅${list.content} <br><br>
 						<form name="deleteForm" action="<c:url value='/mypage/ToExercise/uncheck'/>" class="btnForm" method="POST">
 						<input type="hidden" name = "itemId" value="${list.itemId}"/>
 						<button type="submit" class="toBtn">undo</button>

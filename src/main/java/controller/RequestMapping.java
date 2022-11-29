@@ -50,7 +50,7 @@ public class RequestMapping {
 	private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
 	public void initMapping() {
-		mappings.put("/", new ForwardController("/index.jsp"));
+		mappings.put("/", new ForwardController("/main.jsp"));
 		mappings.put("/main", new ForwardController("/main.jsp"));
 
 		mappings.put("/exerciser/register", new RegisterController());

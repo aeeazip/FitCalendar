@@ -23,6 +23,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				원하는 fitmate 수 : ${maxMate}명
 			</div>
+			<br><br><br>
 	   </div>
 	   
 
@@ -34,14 +35,14 @@
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
                                    <a href="./getRecommendList">
-                                        <div class="category2">요청받은 fitmate</div>  </a>
+                                        <div class="category2">요청받은 Fitmate</div>  </a>
                                 </div>
                             </div>
 
                             <div class="flex-container-icon">
                                 <div class="flex-container-icon-sub1">
                                		<a href="./wantRecommend">
-                                        <div class="category2">FITMATE RECOMMEND</div> </a>
+                                        <div class="category2">Fitmate 추천받기</div> </a>
                                 </div>
                             </div>
 
