@@ -10,6 +10,7 @@ import controller.exerciser.DeleteExerciserController;
 import controller.exerciser.LoginController;
 import controller.exerciser.LogoutController;
 import controller.exerciser.RegisterController;
+import controller.exerciser.ShowExerciserInfoController;
 import controller.matching.ListMessageController;
 import controller.matching.MatchingCompleteController;
 import controller.matching.MatchingGetRecommendListController;
@@ -51,7 +52,9 @@ public class RequestMapping {
 
 	public void initMapping() {
 		mappings.put("/", new ForwardController("/main.jsp"));
-		mappings.put("/main", new ForwardController("/main.jsp"));
+		mappings.put("/main", new ForwardController("/main.jsp"));		
+		
+		mappings.put("/exerciser/mainInfo", new ShowExerciserInfoController());
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());

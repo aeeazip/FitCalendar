@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
 import model.service.ExerciserManager;
 import model.service.MatchingManager;
