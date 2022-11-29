@@ -80,6 +80,15 @@
     color: #414141;
 }
 
+.category3 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #414141;
+    
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
 .state{
     font-weight: 600;
     font-size: 18px;

@@ -5,60 +5,64 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>RecommendList</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet"
-	href="<c:url value='/css/wantRecommendList.css' />" type="text/css">
-<%
-	String fitmateId = (String)request.getAttribute("recommId");
-	session.setAttribute("fitMateId",fitmateId);
-	System.out.println(fitmateId);
-%>
+	<title>RecommendList</title>
+	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<%
+		String fitmateId = (String)request.getAttribute("recommId");
+		session.setAttribute("fitMateId",fitmateId);
+		System.out.println(fitmateId);
+	%>
 
 </head>
 <%@ include file="../frameHeader.jsp"%>
-<body>
-	<div align="center">
-		<h3>추천 FitMate</h3>
-		<table>
-			<tr>
-				<td>NickName</td>
-				<td>${recomm.nickname}</td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td>${recomm.gender}</td>
-			</tr>
-			<tr>
-				<td>운동 주종목</td>
-				<td>${recomm.speciality}</td>
-			</tr>
-			<tr>
-				<td>한줄 소개</td>
-				<td>${recomm.explanation}</td>
-			</tr>
-			<tr>
-				<td>성격</td>
-				<td>${recomm.personality}</td>
-			</tr>
-		</table>
-		<br>
-		<br>
-		<form name="startMateForm"
-			action="<c:url value='/matching/wantRecommend/list/request' />"
+
+	<div id="main">
+	<div class="flex-container2">
+		<div id="subTitle" >
+           <p class="subTitle" style="font-size:18px; margin-bottom:30px;">FitMate 추천 결과입니다</p>
+      	 </div>
+      	 
+		<div style="text-align: center">
+				<form>
+					<table style="table-layout: auto; table-layout: fixed;">
+							<tr>
+								<td class="a" style="border-top: 1px solid black;">NickName</td>
+								<td class="b" style="border-top: 1px solid black;">${recomm.nickname}</td>
+							</tr>
+							<tr>
+								<td class="a">성별</td>
+								<td class="b">${recomm.gender}</td>
+							</tr>
+							<tr>
+								<td class="a">운동 주종목</td>
+								<td class="b">${recomm.speciality}</td>
+							</tr>
+							<tr>
+								<td class="a">한줄 소개</td>
+								<td class="b">${recomm.explanation}</td>
+							</tr>
+							<tr>
+								<td class="a">성격</td>
+								<td class="b">${recomm.personality}</td>
+							</tr>
+					</table>
+				</form>
+				
+		<form name="startMateForm" action="<c:url value='/matching/wantRecommend/list/request' />"
 			method="POST">
-			<button type="submit"  style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">Fitmate 요청</button>
+			<button type="submit" class="fitmatelist_btn">Fitmate 요청 보내기</button>
 		</form>
-		<br>
-		<form name="startMateForm"
+		
+		<form name="startMateForm" 
 			action="<c:url value='/matching/wantRecommend/list/reRequest' />"
 			method="POST">
-			<button type="submit" style="padding:3px; background-color: #A2C2B3; border-radius: 5px; border: none;">재추천</button>
+			<button type="submit" class="fitmatelist_btn">재추천 받기</button>
 		</form>
 
 	</div>
-</body>
-
+	
+</div>
+</div>
 <%@ include file="../frameFooter.jsp"%>
-</html>

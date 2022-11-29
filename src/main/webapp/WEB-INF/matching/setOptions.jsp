@@ -8,18 +8,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>setMate!!</title>
 	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
 </head>
 <%@ include file="../frameHeader.jsp" %>
 <body>
-<div align = "center">
+<div id="main">
 	<form name="setMaxMateForm" action="<c:url value='/matching/setMate' />" method="POST">
-		소통하고 싶은 최대 Mate 수를 재입력하세요! <br><br>
-		<input type="text" name="maxMate">
+		<div id="subTitle" style="margin-left:50px">
+           <p class="subTitle2">소통하고 싶은 최대 Mate 수를 재입력하세요!</p>
+        </div>
 		
-		<input type="reset" value="재입력"> 
-		<input type="submit" value="제출"> 		
+		<input type="text" name="maxMate" class="input" 
+		 placeholder="소통하고 싶은 최대 Mate 수"
+          onfocus="this.placeholder = ''" 
+          onblur="this.placeholder = '소통하고 싶은 최대 Mate 수'">
+		
+		<button type="submit" value="제출" class="start_btn" >옵션 바꾸기</button>
 	</form>
 </div>
-</body>
 <%@ include file="../frameFooter.jsp" %>
-</html>
