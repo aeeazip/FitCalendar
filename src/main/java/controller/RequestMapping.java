@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.exerciser.DeleteExerciserController;
 import controller.exerciser.LoginController;
 import controller.exerciser.LogoutController;
 import controller.exerciser.RegisterController;
@@ -60,6 +61,8 @@ public class RequestMapping {
 		mappings.put("/myPage/static", new StaticController());
 		mappings.put("/myPage/profile", new ProfileController());
 		mappings.put("/mypage/profile/update", new UpdateProfileController());
+		mappings.put("/mypage/delete/form", new DeleteExerciserController());
+		mappings.put("/mypage/delete", new DeleteExerciserController());
 		/*
 		 * mappings.put("/mypage/delete/form", new
 		 * ForwardController("/mypage/deleteForm.jsp")); mappings.put("/mypage/delete",

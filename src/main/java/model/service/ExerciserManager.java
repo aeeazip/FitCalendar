@@ -43,9 +43,11 @@ public class ExerciserManager {
 		return exerciserDao.updateExerciserProfile(exerciser);
 	}
 
-	public int deleteExerciser(String deleteId, String password) {
-		if (exerciserDao.findExerciserById(deleteId).getPassword().equals(password))
+	public int deleteExerciser(int deleteId, String password) {
+		if (exerciserDao.findExerciser(deleteId).getPassword().equals(password)) {
 			return exerciserDao.deleteExerciser(deleteId);
+		}
+		
 
 		return 0;
 	}
