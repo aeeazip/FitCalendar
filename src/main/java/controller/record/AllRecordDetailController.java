@@ -51,7 +51,7 @@ public class AllRecordDetailController implements Controller {
 		
 		session = request.getSession();
 		String str = (String)session.getAttribute("id");
-		Exerciser exerciser = userManager.findExerciser(str);
+		Exerciser exerciser = userManager.findExerciserById(record.getExerciserId());
 
 		// record 객체와 nickname을 request에 저장하여 전달
 		request.setAttribute("record", record);
