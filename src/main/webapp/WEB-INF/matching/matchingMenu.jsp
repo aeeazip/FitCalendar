@@ -13,7 +13,7 @@
 <%@ include file="../frameHeader.jsp" %>
 	   <div id="subTitle">
 	       <p class="subTitle">${nickname}님의 option정보입니다.</p>
-	       <div class="flex-container-icon-sub1 category3">
+	       <p class="category2" align="center" style="margin-bottom:20px;">
 				<c:if test="${useMatchSvc eq 'T'}">
 				<input type="radio" checked>&nbsp;&nbsp;매칭 가능 상태
 				</c:if>
@@ -22,10 +22,8 @@
 				</c:if>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				원하는 fitmate 수 : ${maxMate}명
-			</div>
-			<br><br><br>
-	   </div>
-	   
+			</p>
+		</div>
 
 			<div id="main" style="padding-bottom: 30px;">
                     <div class="flex-container2">

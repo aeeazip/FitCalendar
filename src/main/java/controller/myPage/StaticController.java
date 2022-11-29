@@ -19,11 +19,7 @@ public class StaticController implements Controller {
 		System.out.println(request.getSession());
 
 		HttpSession session = request.getSession();
-		//		System.out.println(session.getAttribute("id"));
-		//		String userId = (String) session.getAttribute("id");
-		//		System.out.println(userId);
-		System.out.println("19행 : " + session.getAttribute("id"));
-		System.out.println("20행 : " + UserSessionUtils.getLoginUserId(session));
+		System.out.println("22행 : " + UserSessionUtils.getLoginUserId(session));
 		String userId = UserSessionUtils.getLoginUserId(session);
 
 		// 로그인한 id의 user의 static 정보를 request 객체에 저장해 뷰에 전달
@@ -39,8 +35,8 @@ public class StaticController implements Controller {
 		CompareStatic compareStatic = staticMgr.calculateStatic(exerciserId);
 		System.out.println("36행 : " + compareStatic);
 
-		if(compareStatic == null) 
-			request.setAttribute("error", "데이터가 충분히 쌓이지 않았습니다.");
+		if (compareStatic == null)
+			request.setAttribute("error", "출석체크와 인바디 기록을 더 쌓아주세요 !");
 		else {
 
 			int weeklyCount = compareStatic.getWeeklyCount();
