@@ -10,6 +10,22 @@
 	type="text/css">
 <link rel="stylesheet" href="<c:url value='/css/recordForm.css' />"
 	type="text/css">
+<style>
+#recordB {
+	background: linear-gradient(91.36deg, #556B2F -24.31%, #a8eb8b 130.3%);
+	box-shadow: 0px -10px 40px rgba(#556B2F, 0.3);
+	border-radius: 12px;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 600;
+	height: 40px;
+	padding: 12px 0;
+	cursor: pointer;
+}
+</style>
 </head>
 <script type="text/javascript">
 	function signUpCheck() {
@@ -55,8 +71,8 @@
 
 <body>
 
-	<%@ include file="../frameHeader.jsp" %>
-	
+	<%@ include file="../frameHeader.jsp"%>
+
 	<!-- container -->
 	<!-- recordForm 부분 -->
 	<div class="container">
@@ -64,7 +80,7 @@
 			action="<c:url value='/myRecord/write'/>">
 			<div class="recordForm">
 				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${NickName}님의 운동일지</h1>
+				<h1 style="font-size: 21px;">${NickName}님의운동일지</h1>
 			</div>
 			<div class="name">
 				<input type="text" name="title" placeholder="제목을 입력해 주세요.">
@@ -107,8 +123,9 @@
 					<option value="0">아니오</option>
 				</select>
 			</div>
+			<!-- css 적용이 안돼서 버튼에 직접 넣었으 -->
 			<div class="button">
-				<button type="button" onclick="signUpCheck()">등록하기</button>
+				<button type="button" id="recordB" onclick="signUpCheck()">전송하기</button>
 			</div>
 		</form>
 	</div>

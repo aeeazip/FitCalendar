@@ -68,6 +68,12 @@ td {
 		</c:forEach>
 	</table>
 
+	<!-- 메시지 작성 -->
+	<br><br>
+	<div style="text-align: center;">
+		<a href="<c:url value='/matching/fitmate/message/write'><c:param name='senderId' value='${sendList[0].senderId}'/><c:param name='receiverId' value='${receiveList[0].senderId}'/></c:url>">메시지 작성</a>
+		
+	</div>
 	<%@ include file="../../frameFooter.jsp"%>
 </body>
 </html>

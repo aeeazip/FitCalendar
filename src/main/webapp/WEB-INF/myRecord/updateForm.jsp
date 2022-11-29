@@ -10,9 +10,25 @@
 	type="text/css">
 <link rel="stylesheet" href="<c:url value='/css/recordForm.css' />"
 	type="text/css">
+<style>
+#recordB {
+	background: linear-gradient(91.36deg, #556B2F -24.31%, #a8eb8b 130.3%);
+	box-shadow: 0px -10px 40px rgba(#556B2F, 0.3);
+	border-radius: 12px;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 600;
+	height: 40px;
+	padding: 12px 0;
+	cursor: pointer;
+}
+</style>
 </head>
 <%
-	Record record = (Record)request.getAttribute("record");
+Record record = (Record) request.getAttribute("record");
 %>
 <script type="text/javascript">
 	function signUpCheck() {
@@ -46,7 +62,8 @@
 			form.diet.focus();
 			return false;
 		}
-		if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
+		if (form.shareOption.value == ""
+				|| form.shareOption.value == "기록 공유를 하시겠습니까?") {
 			alert("공유 옵션을 입력하십시오.");
 			form.shareOption.focus();
 			return false;
@@ -58,23 +75,25 @@
 
 <body>
 
-	<%@ include file="../frameHeader.jsp" %>
+	<%@ include file="../frameHeader.jsp"%>
 	<input type="hidden" name="test" value="${record.recordId}" />
 	<!-- container -->
 	<!-- recordForm 부분 -->
 	<div class="container">
-		<form name="form" method="POST" action="<c:url value='/myRecord/update'/>">
+		<form name="form" method="POST"
+			action="<c:url value='/myRecord/update'/>">
 			<div class="recordForm">
 				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${NickName}님의 운동일지</h1>
+				<h1 style="font-size: 21px;">${NickName}님의운동일지</h1>
 			</div>
 			<div class="name">
-				<input type="text" name="title" placeholder="제목을 입력해 주세요." value="${record.title}">
+				<input type="text" name="title" placeholder="제목을 입력해 주세요."
+					value="${record.title}">
 			</div>
 			<div class="name">
 				<%
-					String d = record.getCreationDate();
-					String str = d.substring(0, 10);
+				String d = record.getCreationDate();
+				String str = d.substring(0, 10);
 				%>
 				<input type="date" name="creationDate" value="<%=str%>">
 			</div>
@@ -114,7 +133,7 @@
 				</select>
 			</div>
 			<div class="button">
-				<button type="button" onclick="signUpCheck()">등록하기</button>
+				<button type="button" id="recordB" onclick="signUpCheck()">등록하기</button>
 			</div>
 		</form>
 	</div>
