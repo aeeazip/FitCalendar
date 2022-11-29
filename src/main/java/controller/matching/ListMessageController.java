@@ -29,6 +29,9 @@ public class ListMessageController implements Controller {
 		session = request.getSession();
 		String eId = (String)session.getAttribute("id");
 		String fId = (String)request.getParameter("fitmateId");
+		if(fId == null)
+			fId = (String)session.getAttribute("fitmateId");
+		System.out.println(eId + fId);
 		
 		Exerciser e1 = exManager.findExerciser(eId);
 		Exerciser e2 = exManager.findExerciser(fId);

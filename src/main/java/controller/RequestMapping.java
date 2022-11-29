@@ -23,6 +23,7 @@ import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateOptionController;
+import controller.matching.WriteMessageController;
 import controller.myPage.AddToExerciseController;
 import controller.myPage.AttendanceController;
 import controller.myPage.CheckToExerciseController;
@@ -89,8 +90,11 @@ public class RequestMapping {
 		// MatchingWantRecommendController());
 
 		mappings.put("/matching/situation/list", new MatchingSituationController());
+		
+		// Fitmate 관련 요청
 		mappings.put("/matching/fitmate/message", new ListMessageController());
-
+		mappings.put("/matching/fitmate/message/write", new WriteMessageController());
+		
 		// Record 관련 요청
 		mappings.put("/myRecord/write", new WriteRecordController());
 		mappings.put("/myRecord/list", new ListRecordController());
