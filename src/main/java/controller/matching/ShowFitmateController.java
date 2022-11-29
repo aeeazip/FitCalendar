@@ -49,7 +49,7 @@ public class ShowFitmateController implements Controller {
 				fitMate = exManager.findExerciserById(fitmateId);
 				fitMateList.add(fitMate);
 			}
-			{
+			else{
 				fitmateId = item.getExerciser1();
 				fitMate = exManager.findExerciserById(fitmateId);
 				fitMateList.add(fitMate);

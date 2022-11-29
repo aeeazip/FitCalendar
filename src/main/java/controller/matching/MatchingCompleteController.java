@@ -1,5 +1,6 @@
 package controller.matching;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,8 +55,28 @@ public class MatchingCompleteController implements Controller {
 		
 		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
 		List<Fitmate> fitmateList =  matchingManager.showFitmateList(exerciser.getExerciserId());
+		List<Exerciser> fitmate_list = new ArrayList<Exerciser>();
+		Exerciser fitmate_item;
 		
-		request.setAttribute("fitmateList", fitmateList);
+		for(Fitmate item: fitmateList) {
+			if(item.getExerciser1() == exerciser.getExerciserId()) {
+				fitmate_item = exManager.findExerciserById(item.getExerciser2());
+				System.out.println("exerciser1 fitmate");
+			}
+			else {
+				fitmate_item = exManager.findExerciserById(item.getExerciser1());
+				System.out.println("exerciser2 fitmate");
+			}
+			
+			fitmate_list.add(fitmate_item);
+				
+		}
+		
+		for(Exerciser exer : fitmate_list) {
+			System.out.println(exer.getNickname());
+		}
+		
+		request.setAttribute("fitmateList", fitmate_list);
 		
 		return "redirect:/matching/fitmate";
 	}
