@@ -19,9 +19,9 @@ public class StaticController implements Controller {
 		System.out.println(request.getSession());
 
 		HttpSession session = request.getSession();
-//		System.out.println(session.getAttribute("id"));
-//		String userId = (String) session.getAttribute("id");
-//		System.out.println(userId);
+		//		System.out.println(session.getAttribute("id"));
+		//		String userId = (String) session.getAttribute("id");
+		//		System.out.println(userId);
 		System.out.println("19행 : " + session.getAttribute("id"));
 		System.out.println("20행 : " + UserSessionUtils.getLoginUserId(session));
 		String userId = UserSessionUtils.getLoginUserId(session);
@@ -39,22 +39,27 @@ public class StaticController implements Controller {
 		CompareStatic compareStatic = staticMgr.calculateStatic(exerciserId);
 		System.out.println("36행 : " + compareStatic);
 
-		int weeklyCount = compareStatic.getWeeklyCount();
-		System.out.println(weeklyCount);
-		int MonthlyCount = compareStatic.getMonthlyCount();
-		System.out.println(MonthlyCount);
-		int ComparePercentFat = compareStatic.getComparePercentFat();
-		System.out.println(ComparePercentFat);
-		int CompareMuscle = compareStatic.getCompareMuscle();
-		System.out.println(CompareMuscle);
-		int CompareVisceralFat = compareStatic.getCompareVisceralFat();
-		System.out.println(CompareVisceralFat);
+		if(compareStatic == null) 
+			request.setAttribute("error", "데이터가 충분히 쌓이지 않았습니다.");
+		else {
 
-		request.setAttribute("weeklyCount", weeklyCount);
-		request.setAttribute("MonthlyCount", MonthlyCount);
-		request.setAttribute("ComparePercentFat", ComparePercentFat);
-		request.setAttribute("CompareMuscle", CompareMuscle);
-		request.setAttribute("CompareVisceralFat", CompareVisceralFat);
+			int weeklyCount = compareStatic.getWeeklyCount();
+			System.out.println(weeklyCount);
+			int MonthlyCount = compareStatic.getMonthlyCount();
+			System.out.println(MonthlyCount);
+			int ComparePercentFat = compareStatic.getComparePercentFat();
+			System.out.println(ComparePercentFat);
+			int CompareMuscle = compareStatic.getCompareMuscle();
+			System.out.println(CompareMuscle);
+			int CompareVisceralFat = compareStatic.getCompareVisceralFat();
+			System.out.println(CompareVisceralFat);
+
+			request.setAttribute("weeklyCount", weeklyCount);
+			request.setAttribute("MonthlyCount", MonthlyCount);
+			request.setAttribute("ComparePercentFat", ComparePercentFat);
+			request.setAttribute("CompareMuscle", CompareMuscle);
+			request.setAttribute("CompareVisceralFat", CompareVisceralFat);
+		}
 
 		return "/myPage/static.jsp";
 	}
