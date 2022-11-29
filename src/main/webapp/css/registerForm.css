@@ -6,7 +6,6 @@
 
     height: auto;
     background: #FFFFFF;
-    /* border: 1px solid #909090; */
     border-bottom: 0;
 }
 
@@ -32,6 +31,86 @@
 
     border: none;
     border-bottom: 1px solid #B5B5B5;
+    outline: none; 
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+.theme {
+    display: inline-block;
+    width: 70px;
+
+    border: none;
+    outline: none; 
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+.theme2 {
+    display: inline-block;
+    width: 90px;
+
+    border: none;
+/*     border-bottom: 1px solid #B5B5B5; */
+    outline: none; 
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+.theme3 {
+    display: inline-block;
+    width: 70px;
+
+    border: none;
+    outline: none; 
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    margin-left: 35px;
+}
+.updateInfo {
+    display: inline-block;
+    width: 280px;
+
+    border: none;
+    border-bottom: 1px solid #B5B5B5;
+    outline: none; 
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+ input[type=password] {
+	font-family: 'Nanum Gothic', san-serif !important;
+}
+
+.info1 {
+    display: block;
+    width: 270px;
+
+    border: none;
+    border-bottom: 1px solid #B5B5B5;
     outline: none; /* ���� �� ����由� 吏���*/
     
     font-weight: 500;
@@ -42,8 +121,20 @@
     padding-bottom: 10px;
 }
 
- input[type=password] {
-	font-family: 'Nanum Gothic', san-serif !important;
+.info2 {
+    display: block;
+    width: 90px;
+
+    border: none;
+    border-bottom: 1px solid #B5B5B5;
+    outline: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 .inputS {
@@ -58,6 +149,18 @@
     margin-bottom: 20px;
 }
 
+.updateS {
+	display: inline-block;
+    width: 120px;
+
+    border: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    margin-bottom: 20px;
+}
+
 .inputGender {
 	display: inline-block;
     width: 40px;
@@ -67,6 +170,20 @@
     font-weight: 500;
     font-size: 14px;
     color: #909090;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+
+.updateGender {
+	display: inline-block;
+    width: 40px;
+
+    border: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
 
     margin-bottom: 25px;
     padding-bottom: 10px;
@@ -118,6 +235,22 @@
 
 .inputInbody {
     display: inline-block;
+    width: 50px;
+
+    border: none;
+    border-bottom: 1px solid #B5B5B5;
+    outline: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+/*      margin-left: 15px; */
+}
+.viewInbody {
+display: inline-block;
     width: 180px;
 
     border: none;
@@ -132,8 +265,24 @@
     padding-bottom: 10px;
 }
 
+.updateDate {
+    display: inline-block;
+    width: 90px;
 
-/* placeholder �고�� �� 蹂�寃�, �щ＼/�ｌ� �� �� ���� */
+    border: none;
+    border-bottom: 1px solid #B5B5B5;
+    outline: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    margin-left: 35px;
+}
+
+
 input::placeholder{color: #909090; font-family: 'NanumSquare', sans-serif; }
 input::-webkit-input-placeholder {color: #909090; font-family: 'NanumSquare', sans-serif; }
 input::-ms-input-placeholder{color: #909090; font-family: 'NanumSquare', sans-serif; }
@@ -155,15 +304,17 @@ input::-ms-input-placeholder{color: #909090; font-family: 'NanumSquare', sans-se
     /* margin: 20px 0 0 -31px; */
 }
 
-/* ����媛���*/
-.findinfo{
+.backBtn {
+    background-color: #FFFFFF;
+    border: none;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 23px;
     text-align: center;
-    margin: 30px 30px 80px 30px;
-    font-size: 11px;
-    color: #919191;
-}
-.signUPTxt {
-    color: #919191;
-    padding: 0 10px;
-    font-weight: 500;
+    text-decoration-line: underline;
+    color: #909090;
+    cursor: pointer;
+    margin-left: 315px;
 }

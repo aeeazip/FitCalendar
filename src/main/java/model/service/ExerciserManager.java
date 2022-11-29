@@ -39,8 +39,9 @@ public class ExerciserManager {
 		return exerciserDao.insertExerciser(password, nickname, explanation, speciality, personality, gender, id);
 	}
 
-	public Exerciser updateExerciserProfile(Exerciser exerciser) {
-		return exerciserDao.updateExerciserProfile(exerciser);
+	public int updateExerciser(int exerciserId, String nickname, String explanation, String speciality,
+			String personality) {
+		return exerciserDao.updateExerciser(exerciserId, nickname, explanation, speciality, personality);
 	}
 
 	public int deleteExerciser(String deleteId, String password) {

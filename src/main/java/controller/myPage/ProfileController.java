@@ -58,7 +58,7 @@ public class ProfileController implements Controller {
 		int height = inbody.getHeight();
 		int weight = inbody.getWeight();
 		int percentBodyFat = inbody.getPercentBodyFat();
-		int skeletalMM = inbody.getVisceralFat();
+		int skeletalMM = inbody.getSkeletalMM();
 		int visceralFat = inbody.getVisceralFat();
 		String measureDate = inbody.getMeasureDate();
 		System.out.println("64행 : " + height);
