@@ -13,6 +13,6 @@
 </head>
 <%@ include file="frameHeader.jsp" %>
 
-
+<%@ include file="exerciser/mainInfo.jsp" %>
 
 <%@ include file="frameFooter.jsp" %>

@@ -77,4 +77,9 @@ public class ExerciserManager {
 		}
 		return true;
 	}
+	
+	public Exerciser showInfo(int exerciserId, String nickName, int point,  String explanation, String gender) {
+		Exerciser exerciser = exerciserDao.showInfo(exerciserId);
+		return exerciser;
+	}
 }

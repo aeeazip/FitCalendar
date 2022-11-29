@@ -323,4 +323,31 @@ public class ExerciserDao {
 		}
 		return false;
 	}
+	
+	/**
+	 * 사용자의 정보 검색 //main 출력용
+	 */
+	public Exerciser showInfo(int exerciserId) {
+		String sql = "SELECT exerciserId, nickname, point, explanation, gender FROM EXERCISER WHERE exerciserId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { exerciserId }); // JDBCUtil에 query문과 매개 변수 설정
+
+		Exerciser exerciser = null;
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			while(rs.next()) {
+				exerciser = new Exerciser();
+				exerciser.setNickname(rs.getString("nickname"));
+				exerciser.setPoint(rs.getInt("point"));
+				exerciser.setGender(rs.getString("gender"));
+
+			}
+			return exerciser;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return null;
+	}
+	
 }
