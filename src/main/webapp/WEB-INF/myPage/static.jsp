@@ -23,16 +23,19 @@
 
 					if(error != null){
 				%>
-<br>
-<br>
-<br>
+
+
 <div id="main">
 	<div class="flex-container2">
-		<div  style="margin: 0 auto;">
-			<br><br><br><p style="text-align: center;"><%=error%></p><br><br><br>
+		 <p class="subTitle" style="font-size:18px; margin-bottom:30px;"><%=error%></p>
 		</div>
 	</div>
-</div>
+	<div class="flex-container-icon2">
+				<div class="flex-container-icon-sub1"></div>
+				<div id="out">
+					<button type="button" onclick="history.back();">이전으로</button>
+				</div>
+			</div>
 <% 
 					} else {
 						int weeklyCount = (int)request.getAttribute("weeklyCount");

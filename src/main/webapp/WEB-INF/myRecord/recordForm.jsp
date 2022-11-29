@@ -4,84 +4,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>recordForm</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet" href="<c:url value='/css/recordForm.css' />"
-	type="text/css">
-<style>
-#recordB {
-	background: linear-gradient(91.36deg, #556B2F -24.31%, #a8eb8b 130.3%);
-	box-shadow: 0px -10px 40px rgba(#556B2F, 0.3);
-	border-radius: 12px;
-	border: none;
-	color: white;
-	text-align: center;
-	display: inline-block;
-	font-size: 18px;
-	font-weight: 600;
-	height: 40px;
-	padding: 12px 0;
-	cursor: pointer;
-}
-</style>
+	<meta charset="utf-8">
+	<title>recordForm</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/recordForm.css' />" type="text/css">
+	 <link rel="stylesheet" href="<c:url value='/css/registerForm.css' />" type="text/css">
+    
+	<script type="text/javascript">
+		function signUpCheck() {
+			if (form.title.value == "") {
+				alert("제목을 입력하십시오.");
+				form.title.focus();
+				return false;
+			}
+			if (form.creationDate.value == "") {
+				alert("생성 날짜를 입력하십시오.");
+				form.creationDate.focus();
+				return false;
+			}
+			if (form.totalTime.value == "") {
+				alert("총 운동 시간을 입력하십시오.");
+				form.totalTime.focus();
+				return false;
+			}
+			if (form.category.value == "" || form.category.value == "종목을 선택하세요.") {
+				alert("종목을 입력하십시오.");
+				form.category.focus();
+				return false;
+			}
+			if (form.routine.value == "") {
+				alert("운동 루틴을 입력하십시오.");
+				form.routine.focus();
+				return false;
+			}
+			if (form.diet.value == "") {
+				alert("식단을 입력하십시오.");
+				form.diet.focus();
+				return false;
+			}
+			if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
+				alert("공유 옵션을 입력하십시오.");
+				form.shareOption.focus();
+				return false;
+			}
+			console.log("form submit");
+			form.submit();
+		}
+	</script>
 </head>
-<script type="text/javascript">
-	function signUpCheck() {
-		if (form.title.value == "") {
-			alert("제목을 입력하십시오.");
-			form.title.focus();
-			return false;
-		}
-		if (form.creationDate.value == "") {
-			alert("생성 날짜를 입력하십시오.");
-			form.creationDate.focus();
-			return false;
-		}
-		if (form.totalTime.value == "") {
-			alert("총 운동 시간을 입력하십시오.");
-			form.totalTime.focus();
-			return false;
-		}
-		if (form.category.value == "" || form.category.value == "종목을 선택하세요.") {
-			alert("종목을 입력하십시오.");
-			form.category.focus();
-			return false;
-		}
-		if (form.routine.value == "") {
-			alert("운동 루틴을 입력하십시오.");
-			form.routine.focus();
-			return false;
-		}
-		if (form.diet.value == "") {
-			alert("식단을 입력하십시오.");
-			form.diet.focus();
-			return false;
-		}
-		if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
-			alert("공유 옵션을 입력하십시오.");
-			form.shareOption.focus();
-			return false;
-		}
-		console.log("form submit");
-		form.submit();
-	}
-</script>
-
-<body>
 
 	<%@ include file="../frameHeader.jsp"%>
 
 	<!-- container -->
 	<!-- recordForm 부분 -->
-	<div class="container">
-		<form name="form" method="POST"
-			action="<c:url value='/myRecord/write'/>">
-			<div class="recordForm">
-				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${NickName}님의운동일지</h1>
-			</div>
+<div id="main">
+
+		<form name="form" method="POST" action="<c:url value='/myRecord/write' />">
+           <div class="flex-container2 ">
+               <div id="subTitle">
+                   <p class="subTitle" style="font-size:18px; margin-bottom:20px;">${NickName} 님의 운동 기록</p>
+               </div>
+
 			<div class="name">
 				<input type="text" name="title" placeholder="제목을 입력해 주세요.">
 			</div>
@@ -106,11 +89,11 @@
 				</select>
 			</div>
 			<div class="name">
-				<textarea rows="5" cols="110%" name="routine"
+				<textarea rows="5" name="routine"
 					aria-label="With textarea" placeholder="운동 루틴을 입력하세요."></textarea>
 			</div>
 			<div class="name">
-				<textarea rows="5" cols="110%" name="diet"
+				<textarea rows="5" name="diet" 
 					aria-label="With textarea" placeholder="식단을 입력하세요."></textarea>
 			</div>
 			<div class="name">
@@ -123,14 +106,11 @@
 					<option value="0">아니오</option>
 				</select>
 			</div>
-			<!-- css 적용이 안돼서 버튼에 직접 넣었으 -->
 			<div class="button">
-				<button type="button" id="recordB" onclick="signUpCheck()">전송하기</button>
+				<button type="button" id="register_btn" onclick="signUpCheck()">전송하기</button>
+			</div>
 			</div>
 		</form>
-	</div>
-
+</div>
 	<!-- footer -->
 	<%@ include file="../frameFooter.jsp"%>
-</body>
-</html>
