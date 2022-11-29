@@ -29,6 +29,7 @@ import controller.myPage.AddToExerciseController;
 import controller.myPage.AttendanceController;
 import controller.myPage.CheckToExerciseController;
 import controller.myPage.DeleteToExerciseController;
+import controller.myPage.MyPageController;
 import controller.myPage.ProfileController;
 import controller.myPage.StaticController;
 import controller.myPage.UnCheckToExerciseController;
@@ -56,19 +57,13 @@ public class RequestMapping {
 		mappings.put("/exerciser/login", new LoginController());
 		mappings.put("/exerciser/logout", new LogoutController());
 
-		mappings.put("/myPage", new ForwardController("/myPage/myPageMenu.jsp"));
+		mappings.put("/myPage", new MyPageController());
 		mappings.put("/myPage/attendance", new AttendanceController());
 		mappings.put("/myPage/static", new StaticController());
 		mappings.put("/myPage/profile", new ProfileController());
 		mappings.put("/mypage/profile/update", new UpdateProfileController());
 		mappings.put("/mypage/delete/form", new DeleteExerciserController());
 		mappings.put("/mypage/delete", new DeleteExerciserController());
-		/*
-		 * mappings.put("/mypage/delete/form", new
-		 * ForwardController("/mypage/deleteForm.jsp")); mappings.put("/mypage/delete",
-		 * new DeleteExerciserController());
-		 * 
-		 */
 
 		// Matching 관련
 		mappings.put("/matching/startMatching", new MatchingStartController());
@@ -89,15 +84,13 @@ public class RequestMapping {
 
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
-		// mappings.put("/matching/wantRecommend/recommendRequest", new
-		// MatchingWantRecommendController());
 
 		mappings.put("/matching/situation/list", new MatchingSituationController());
-		
+
 		// Fitmate 관련 요청
 		mappings.put("/matching/fitmate/message", new ListMessageController());
 		mappings.put("/matching/fitmate/message/write", new WriteMessageController());
-		
+
 		// Record 관련 요청
 		mappings.put("/myRecord/write", new WriteRecordController());
 		mappings.put("/myRecord/list", new ListRecordController());
