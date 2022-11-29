@@ -33,6 +33,12 @@
                     </div>
                 </div>
                 <div><button type="button" id="att_btn" onclick="check();">출석체크 하기</button></div>
+            <div class="flex-container-icon2">
+                       <div class="flex-container-icon-sub1"></div>
+                       <div id="out">
+                           <button type="button" class="backBtn" onclick="history.back();" style="margin-top:15px">이전으로</button>
+                       </div>
+             </div>
             </div>
         </form>
     </div>

@@ -33,7 +33,7 @@ public class InbodyDao {
 
 	public Inbody findInbody(int exerciserId) {
 		Inbody inbody = null;
-		String query = "select * from inbody where exerciserId=?";
+		String query = "SELECT * FROM (SELECT * FROM inbody WHERE exerciserid = ? ORDER BY inbodyid DESC)WHERE rownum <=1";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
 		try {

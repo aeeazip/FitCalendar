@@ -72,4 +72,18 @@
 		    cursor: pointer;
 		    /* margin: 20px 0 0 -31px; */
 		}
+	.backBtn {
+    background-color: #FFFFFF;
+    border: none;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 23px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #909090;
+    cursor: pointer;
+    margin-left: 315px;
+}
 	
