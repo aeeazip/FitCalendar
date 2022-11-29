@@ -114,11 +114,13 @@ public class RecommendDao {
 		int randomRecomm1;
 		int randomRecomm2;
 		int randomRecomm3;
-		
+		System.out.println("Recommend 117 DAOLINE");
 		RecommendList recommendList = null;
 		List<Integer> recomm_list = new ArrayList<Integer>();
 		
-		String query = "SELECT * FROM inbody WHERE (height BETWEEN ? AND ? ) AND  (weight BETWEEN ? AND ? ) AND (percentbodyfat BETWEEN ? AND ? )";
+		String query = "SELECT * "
+				+ "FROM INBODY i1, (SELECT exerciserId, MAX(inbodyid) inbodyid FROM inbody GROUP BY exerciserid) i2 "
+				+ "where (i1.inbodyid = i2.inbodyid) AND (height BETWEEN ? AND ? ) AND  (weight BETWEEN ? AND ? ) AND (percentbodyfat BETWEEN ? AND ? )";
 		Object[] param = new Object[] {height1, height2, weight1, weight2, percentBodyFat1, percentBodyFat2 };
 		jdbcUtil.setSqlAndParameters(query, param);  
 
@@ -228,8 +230,8 @@ public class RecommendDao {
 
 	//maxMate 초과 여부 검사
 	public int countingMaxMate(int exerciserId) {
-		String query = "SELECT COUNT(*) AS c FROM recommendlist WHERE recomId1 = ? OR recomId2 = ? OR recomId3 = ?";
-		Object[] param = new Object[] { exerciserId,exerciserId,exerciserId };
+		String query = "SELECT COUNT(*) AS c FROM fitmate WHERE exerciser1 = ? OR exerciser2 = ? ";
+		Object[] param = new Object[] { exerciserId,exerciserId};
 		jdbcUtil.setSqlAndParameters(query, param);
 		int count = 0;
 
