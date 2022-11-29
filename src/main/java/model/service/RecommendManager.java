@@ -50,9 +50,10 @@ public class RecommendManager {
 		int maxCount2 = recommendDao.countingMaxMate(recommendList.getRecommend2());
 		int maxCount3 = recommendDao.countingMaxMate(recommendList.getRecommend3());
 		
-		while(maxCount1 != recom1.getMaxMate() && maxCount2 != recom2.getMaxMate() && maxCount3 != recom3.getMaxMate())
-			recommendList = recommendDao.recommendExerciser(exerciserId, height1, height2, weight1, weight2, percentBodyFat1, percentBodyFat2);
-		
+		System.out.println(maxCount1);	
+		System.out.println(maxCount2);		
+		System.out.println(maxCount3);		
+	
 		return 1;
 	}
 	
