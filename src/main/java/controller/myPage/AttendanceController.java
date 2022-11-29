@@ -43,8 +43,8 @@ public class AttendanceController implements Controller {
 
 			// 해당 exerciserId가 오늘 출석 했으면 못 하게 해야 함
 			int confirmAttendance = exerciserMgr.existingAttendance(exerciserId);
-			System.out.println(confirmAttendance);
-			if (confirmAttendance == 1) {
+			System.out.println("출석: " + confirmAttendance);
+			if (confirmAttendance >= 1) {
 				// 이미 출석 했으므로 오늘 출석 또 못하게 해야함.
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();

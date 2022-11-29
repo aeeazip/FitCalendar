@@ -284,16 +284,16 @@ public class ExerciserDao {
 		return -1;
 	}
 
-	// 주어진 사용자가 오늘 출석 했는지 여부 반환 -> 0이면 출석 안 한 거라 출석 체크, 1이면 출석 한 거라 출석 체크 또 못하게 해야함
+	// 주어진 사용자가 오늘 출석 했는지 여부 반환 -> 0이면 출석 안 한 거라 출석 체크, 그 이상은 못하게 해야함
 	public int existingAttendance(int exerciserId) throws SQLException {
-		String sql = "SELECT count(*) FROM attendance WHERE exerciserid=? and creationdate=SYSDATE";
+		String sql = "SELECT count(*) FROM attendance WHERE exerciserid=? and (TO_CHAR(creationdate, 'YYYY/MM/DD') = TO_CHAR(SYSDATE, 'YYYY/MM/DD'))";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { exerciserId }); // JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			if (rs.next()) {
 				int count = rs.getInt(1);
-				return (count == 1 ? 1 : 0);
+				return count;
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
