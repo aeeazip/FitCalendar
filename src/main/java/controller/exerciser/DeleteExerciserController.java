@@ -33,6 +33,8 @@ public class DeleteExerciserController implements Controller {
 			int result = manager.deleteExerciser(deleteExerciser.getExerciserId(), deletePwd); // 사용자 정보 삭제
 			System.out.println("deleteResult: " + result);
 			if (result != 0) {
+				session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
+				session.invalidate();
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('탈퇴 되었습니다.'); location.href='../main'; </script>");
