@@ -357,7 +357,7 @@ public class ExerciserDao {
 	 * 
 	 */
 	public List<Exerciser> showRanking() {
-		String sql = "select a.* from (select * from exerciser order by point desc) a where rownum <=3;";
+		String sql = "select a.* from (select * from exerciser order by point desc) a where rownum <=3";
 		jdbcUtil.setSqlAndParameters(sql, null); // JDBCUtil에 query문과 매개 변수 설정
 
 		List<Exerciser> exerciserList = new ArrayList<Exerciser>();
@@ -366,7 +366,7 @@ public class ExerciserDao {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
 			while(rs.next()) {
 				exerciser = new Exerciser();
-				exerciser.setExerciserId(rs.getInt("exerciserId"));
+				exerciser.setNickname(rs.getString("nickname"));
 				exerciser.setPoint(rs.getInt("point"));
 				exerciserList.add(exerciser);
 			}

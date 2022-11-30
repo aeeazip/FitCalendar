@@ -35,7 +35,7 @@
 		<div align="center">
 			<c:forEach var="ranking" items="${rankingList }">
 				<%=count %>등
-				<p>닉네임: <c:out value="${ranking.exerciserId}" />	
+				<p>닉네임: <c:out value="${ranking.nickname}" />	
 				<p>보유 포인트: <c:out value="${ranking.point}" />	
 				<%count++; %>
 			</c:forEach>			
