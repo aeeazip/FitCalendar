@@ -43,7 +43,7 @@ public class LoginController implements Controller {
 
 			out.flush();
 
-			return "/main.jsp";
+			return "redirect:/main";
 		} catch (Exception e) {
 			request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);
