@@ -1,5 +1,7 @@
 package controller.exerciser;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -79,14 +81,18 @@ public class RegisterController implements Controller {
 		try {
 			InbodyManager mgr = InbodyManager.getInstance();
 			mgr.insertInbody(height, weight, percentBodyFat, skeletalMM, visceralFat, measureDate, exerciserid);
-			return "/main.jsp";
-//			login 만들고 로그인 페이지로 가도록 수정하기
+			// alert창
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('회원가입 되었습니다.'); location.href='../exerciser/login'; </script>");
+
+			out.flush();
+			return "/exerciser/loginForm.jsp";
 		} catch (Exception e) {
 			request.setAttribute("InbodyInsertFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("inbody", inbody);
 			return "redirect:/exerciser/register";
-//			login 만들고 로그인 페이지로 가도록 수정하기
 		}
 
 	}
