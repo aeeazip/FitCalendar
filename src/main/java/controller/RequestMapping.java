@@ -52,9 +52,9 @@ public class RequestMapping {
 
 	public void initMapping() {
 		mappings.put("/", new ForwardController("/main.jsp"));
-		mappings.put("/main", new ForwardController("/main.jsp"));		
+		//mappings.put("/main", new ForwardController("/main.jsp"));		
 		
-		mappings.put("/exerciser/mainInfo", new ShowExerciserInfoController());
+		mappings.put("/main", new ShowExerciserInfoController());
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
