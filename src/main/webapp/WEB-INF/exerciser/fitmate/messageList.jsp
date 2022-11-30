@@ -4,24 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>AllRecord</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<style>
-#messageList {
-	width: 100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
-}
-
-td {
-	border-bottom: 1px solid #444444;
-	padding: 10px;
-}
-</style>
+	<meta charset="utf-8">
+	<title>AllRecord</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<script>
+		function recordRemove() {
+			return confirm("정말 삭제하시겠습니까?");
+		}
+	</script>
+	<style>
+	 	.messageList { 
+	 		border-collapse: collapse; 
+	 	} 
+ 	</style>
 </head>
-<body>
 	<%@ include file="../../frameHeader.jsp" %>
 
 	<%
@@ -31,52 +28,63 @@ td {
 		int i=1;
 		int j=1;
 	%>
-	<p>내가 Fitmate에게 보낸 메시지</p>
-	<table id="messageList">
-		<tr>
-			<td align="center" bgcolor="E6ECDE" height="50">메시지번호</td>
-			<td align="center" bgcolor="E6ECDE">메시지 내용</td>
-			<td align="center" bgcolor="E6ECDE">작성일</td>
-		</tr>
-		<c:forEach var="sendList" items="${sendList}">
-			<tr>
-				<td align="center" bgcolor="ffffff" height="35">
-					<%=i++%></td>
-				<td bgcolor="ffffff" style="padding-left: 10">
-					${sendList.content}
-				</td>
-				<td bgcolor="ffffff" style="padding-left: 10" align="center">${sendList.sendDate}</td>
-			</tr>
-		</c:forEach>
-	</table>
-	
-	<br><br><br>
-	
-	<p>Fitmate가 나에게 보낸 메시지</p>
-	<table id="messageList">
-		<tr>
-			<td align="center" bgcolor="E6ECDE" height="50">메시지번호</td>
-			<td align="center" bgcolor="E6ECDE">메시지 내용</td>
-			<td align="center" bgcolor="E6ECDE">작성일</td>
-		</tr>
-		<c:forEach var="receiveList" items="${receiveList}">
-			<tr>
-				<td align="center" bgcolor="ffffff" height="35">
-					<%=j++%></td>
-				<td bgcolor="ffffff" style="padding-left: 10">
-					${receiveList.content}
-				</td>
-				<td bgcolor="ffffff" style="padding-left: 10" align="center">${receiveList.sendDate}</td>
-			</tr>
-		</c:forEach>
-	</table>
-
-	<!-- 메시지 작성 -->
-	<br><br>
-	<div style="text-align: center;">
-		<a href="<c:url value='/matching/fitmate/message/write'><c:param name='senderId' value='${sendList[0].senderId}'/><c:param name='receiverId' value='${receiveList[0].senderId}'/></c:url>">메시지 작성</a>
+	<div id="main">
+	<div class="flex-container2">
+		<div id="subTitle" >
 		
+			<p class="subTitle" align="left" style="font-size:18px; margin-bottom:10px;">내가 Fitmate에게 보낸 메시지</p>
+				
+			<div style="text-align: center">
+					<form>
+						<table class="messageList" style="table-layout: auto; table-layout: fixed;">
+							<tr>
+								<td align="center" bgcolor="E6ECDE" height="40" class="a" style="border-top: 1px solid black;">메시지번호</td>
+								<td align="center" bgcolor="E6ECDE" class="a" style="border-top: 1px solid black;">메시지 내용</td>
+								<td align="center" bgcolor="E6ECDE" class="a" style="border-top: 1px solid black;">작성일</td>
+							</tr>
+							<c:forEach var="sendList" items="${sendList}">
+							<tr>
+								<td align="center" bgcolor="ffffff" height="35"  class="a">
+									<%=i++%></td>
+								<td bgcolor="ffffff" class="b">
+									${sendList.content}
+								</td>
+								<td bgcolor="ffffff" class="a">${sendList.sendDate}</td>
+							</tr>
+						</c:forEach>
+						</table>
+					</form>
+				</div>
+			
+			
+			<p class="subTitle" align="left" style="font-size:18px; margin-bottom:10px; margin-top:50px;">Fitmate가 나에게 보낸 메시지</p>
+			<div style="text-align: center">
+					<form>
+						<table class="messageList" style="table-layout: auto; table-layout: fixed;">
+							<tr>
+								<td align="center" bgcolor="E6ECDE" height="40" class="a" style="border-top: 1px solid black;">메시지번호</td>
+								<td align="center" bgcolor="E6ECDE" class="a" style="border-top: 1px solid black;">메시지 내용</td>
+								<td align="center" bgcolor="E6ECDE" class="a" style="border-top: 1px solid black;">작성일</td>
+							</tr>
+						<c:forEach var="receiveList" items="${receiveList}">
+							<tr>
+								<td align="center" bgcolor="ffffff" height="35" class="a">
+									<%=j++%></td>
+								<td bgcolor="ffffff" class="b">
+									${receiveList.content}
+								</td>
+								<td bgcolor="ffffff" class="a">${receiveList.sendDate}</td>
+							</tr>
+						</c:forEach>
+						</table>
+					</form>
+				</div>
+		
+			<!-- 메시지 작성 -->
+			<div style="text-align: center;">
+				<a href="<c:url value='/matching/fitmate/message/write'><c:param name='senderId' value='${sendList[0].senderId}'/><c:param name='receiverId' value='${receiveList[0].senderId}'/></c:url>" class="record_btn">메시지 보내기</a>
+			</div>
+		</div>
 	</div>
+</div>
 	<%@ include file="../../frameFooter.jsp"%>
-</body>
-</html>

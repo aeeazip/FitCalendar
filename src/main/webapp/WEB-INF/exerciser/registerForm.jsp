@@ -123,38 +123,38 @@
                    </div>
                    <div class="inbodyBox">*InBody 정보</div>
                    <div class="box">
-                       <input type="text" class="inputInbody" maxlength="30" name="height"
+                       <input type="text" class="regisInbody" maxlength="30" name="height"
                        placeholder="키"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '키'">
                    </div>
                    <div class="box">
-                       <input type="text" class="inputInbody" maxlength="30" name="weight"
+                       <input type="text" class="regisInbody" maxlength="30" name="weight"
                        placeholder="몸무게"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '몸무게'">
                    </div>
                    <div class="box">
-                       <input type="text" class="inputInbody" maxlength="30" name="skeletalmm"
+                       <input type="text" class="regisInbody" maxlength="30" name="skeletalmm"
                        placeholder="골격근량"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '골격근량'">
                    </div>
                    <div class="box">
-                       <input type="text" class="inputInbody" maxlength="30" name="percentbodyfat"
+                       <input type="text" class="regisInbody" maxlength="30" name="percentbodyfat"
                        placeholder="체지방률"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '체지방률'">
                    </div>
                    
                    <div class="box">
-                       <input type="text" class="inputInbody" maxlength="30" name="visceralfat"
+                       <input type="text" class="regisInbody" maxlength="30" name="visceralfat"
                        placeholder="내장지방레벨"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '내장지방레벨'">
                    </div>
                    <div class="box">
-                       <input type="date" class="inputInbody" maxlength="30" name="measuredate"
+                       <input type="date" class="regisInbody" maxlength="30" name="measuredate"
                        placeholder="측정날짜"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '측정날짜'">

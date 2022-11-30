@@ -126,7 +126,23 @@
 		    margin-top:20px;
 		    cursor: pointer;
 		}
+		.send_btn {
+		    background: linear-gradient(91.36deg, #556B2F -24.31%, #a8eb8b 130.3%);
+		    box-shadow: 0px -10px 40px rgba(#556B2F, 0.3);
+		    border-radius: 6px;
+		    border: none;
+		    color: white;
+		    text-align: center;
+		    display: inline-block;
+		    font-size: 14px;
+		    font-weight: 400;
 		
+		    width: 100px;
+		    padding: 8px 0;
+			margin-left: 10px;
+		    margin-top:20px;
+		    cursor: pointer;
+		}
 
 
 		#submit_btn {

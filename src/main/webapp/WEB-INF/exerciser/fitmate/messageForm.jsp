@@ -4,14 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>MessageForm</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet" href="<c:url value='/css/messageForm.css' />"
-	type="text/css">
-</head>
-<script type="text/javascript">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>messageForm</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/recordForm.css' />" type="text/css">
+	 <link rel="stylesheet" href="<c:url value='/css/registerForm.css' />" type="text/css">
+    
+	<script type="text/javascript">
 	function signUpCheck() {
 		if (form.content.value == "") {
 			alert("메시지 내용을 입력하십시오.");
@@ -21,33 +20,27 @@
 		console.log("form submit");
 		form.submit();
 	}
-</script>
+	</script>
+</head>
+<%@ include file="../../frameHeader.jsp"%>
 
-<body>
-	<%@ include file="../../frameHeader.jsp"%>
-	<br><br><br>
-	
-	<!-- container -->
-	<!-- recordForm 부분 -->
-	<div class="container">
-		<form name="form" method="POST"
-			action="<c:url value='/matching/fitmate/message/write' ></c:url>">
-			<div class="recordForm">
-				<!-- 로그인 구현 후 session에서 exerciserId 갖고 오도록 구현 -->
-				<h1 style="font-size: 21px;">${nickname}님에게 보내는 메시지</h1>
-			</div>
-			<br><br><br>
-			<div class="name">
-				<textarea rows="10" cols="110%" name="content"
-					aria-label="With textarea" placeholder="메시지 내용을 입력하세요"></textarea>
-			</div>
-			<div class="button">
-				<button type="button" id="sendMessage_btn" onclick="signUpCheck()">전송하기</button>
+<div id="main">
+		<form name="form" method="POST" action="<c:url value='/matching/fitmate/message/write' />">
+           <div class="flex-container2 ">
+               <div id="subTitle">
+                   <p class="subTitle" style="font-size:18px; margin-bottom:20px;">${nickname}님에게 보내는 메시지</p>
+               </div>
+               
+               <div id="loginBox">
+                   <div class="box">
+                       <textarea rows="10"  class="Qtype4" name="content" id="content"
+                       placeholder="메시지 내용을 입력하세요."
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '메시지 내용을 입력하세요.'"></textarea>
+                   </div>
+                   <div><button type="button" id="record_btn" onclick="signUpCheck();">전송하기</button></div>
+				</div>
 			</div>
 		</form>
 	</div>
-
-	<!-- footer -->
 	<%@ include file="../../frameFooter.jsp"%>
-</body>
-</html>
