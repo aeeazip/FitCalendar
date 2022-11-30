@@ -32,8 +32,10 @@ public class ShowExerciserInfoController implements Controller{
 	    request.setAttribute("point", exerciser.getPoint());
 	    request.setAttribute("explanation", exerciser.getExplanation());
 	    request.setAttribute("gender", exerciser.getGender());
+	    request.setAttribute("exerciser", exerciser);
+	    
 	      
-		return "/exerciser/mainInfo.jsp";
+		return "/main.jsp";
 	}
 
 }

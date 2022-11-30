@@ -5,9 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>main</title>
-	<link rel="stylesheet" href="<c:url value='../css/frame.css' />" type="text/css">
-
+	<title>mainInfo</title>
 </head>
 	   <div id="subTitle" align = "center">
 	       <p class="subTitle">안녕하세요 ${nickname}님!</p>
@@ -22,4 +20,3 @@
 			<c:if test="${gender eq 'M' }">남자</c:if>
 			<c:if test="${gender eq 'F' }">여자</c:if>
 		</div>      
-
