@@ -42,7 +42,7 @@ String nickname = (String) request.getAttribute("nickname");
 				<table id="recordT" style="table-layout: auto; table-layout: fixed;">
 					
 					<tr>
-						<td align="center" width="150" bgcolor="E6ECDE" height="40" class="a" style="border-top: 1px solid black;">글 번호</td>
+						<td align="center" width="150" bgcolor="E6ECDE" height="40" class="a" style="border-top: 1px solid black;">RecordId</td>
 						<td bgcolor="ffffff" class="a" style="border-top: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;<%=record.getRecordId()%>
 						</td>
 					</tr>
