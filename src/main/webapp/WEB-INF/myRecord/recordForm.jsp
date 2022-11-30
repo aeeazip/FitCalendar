@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>recordForm</title>
 	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/css/recordForm.css' />" type="text/css">
@@ -12,39 +12,29 @@
     
 	<script type="text/javascript">
 		function signUpCheck() {
-			if (form.title.value == "") {
+			if (document.getElementById("title").value == "") {
 				alert("제목을 입력하십시오.");
-				form.title.focus();
+				document.getElementById("title").focus();
 				return false;
 			}
-			if (form.creationDate.value == "") {
+			if (document.getElementById("creationDate").value == "") {
 				alert("생성 날짜를 입력하십시오.");
-				form.creationDate.focus();
+				document.getElementById("creationDate").focus();
 				return false;
 			}
-			if (form.totalTime.value == "") {
+			if (document.getElementById("totalTime").value == "") {
 				alert("총 운동 시간을 입력하십시오.");
-				form.totalTime.focus();
+				document.getElementById("totalTime").focus();
 				return false;
 			}
-			if (form.category.value == "" || form.category.value == "종목을 선택하세요.") {
-				alert("종목을 입력하십시오.");
-				form.category.focus();
-				return false;
-			}
-			if (form.routine.value == "") {
+			if (document.getElementById("routine").value == "") {
 				alert("운동 루틴을 입력하십시오.");
-				form.routine.focus();
+				document.getElementById("routine").focus();
 				return false;
 			}
-			if (form.diet.value == "") {
+			if (document.getElementById("diet").value == "") {
 				alert("식단을 입력하십시오.");
-				form.diet.focus();
-				return false;
-			}
-			if (form.shareOption.value == "" || form.shareOption.value == "기록 공유를 하시겠습니까?") {
-				alert("공유 옵션을 입력하십시오.");
-				form.shareOption.focus();
+				document.getElementById("diet").focus();
 				return false;
 			}
 			console.log("form submit");
@@ -57,8 +47,7 @@
 
 
 <div id="main">
-
-		<form name="recordForm" method="POST" action="<c:url value='/myRecord/write' />">
+		<form name="form" method="POST" action="<c:url value='/myRecord/write' />">
            <div class="flex-container2 ">
                <div id="subTitle">
                    <p class="subTitle" style="font-size:18px; margin-bottom:20px;">${NickName} 님의 운동 기록</p>
@@ -66,25 +55,25 @@
                
                 <div id="loginBox">
                    <div class="box">
-                       <input type="text" class="inputRecord" name="title"
+                       <input type="text" class="inputRecord" name="title" id="title" 
                        placeholder="제목을 입력해 주세요."
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '제목을 입력해 주세요.'">
                    </div>
 
                    <div class="box">
-                       <input type="date" class="inputRecord"  name="creationDate">
+                       <input type="date" class="inputRecord"  name="creationDate" id="creationDate" >
                    </div>
                    
                    <div class="box">
-                       <input type="text" class="inputRecord" name="title"
+                       <input type="text" class="inputRecord" name="totalTime" id="totalTime"
                        placeholder="총 운동시간을 입력해 주세요. (예: 3)"
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '총 운동시간을 입력해 주세요. (예: 3)'">
                    </div>
                    
                    <div class="box">
-                   	<div class=inputS>주로 하는 운동 종목</div>
+                   	<div class=inputS>운동 종목</div>
                    		<select name="category" id="category" class="Stype">
 							<option value="1" selected>헬스</option>
 							<option value="2">필라테스</option>
@@ -96,38 +85,31 @@
                    
                    
                     <div class="box">
-                       <textarea rows="5"  class="Qtype4" name="routine"
+                       <textarea rows="5"  class="Qtype4" name="routine" id="routine"
                        placeholder="운동 루틴을 입력하세요."
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '운동 루틴을 입력하세요.'"></textarea>
                    </div>
                    <div class="box">
-                       <textarea rows="5"  class="Qtype4" name="diet"
+                       <textarea rows="5"  class="Qtype4" name="diet" id="diet"
                        placeholder="식단을 입력하세요."
                        onfocus="this.placeholder = ''" 
                        onblur="this.placeholder = '식단을 입력하세요.'"></textarea>
                    </div>
                     <div class="box">
-                       <input type="file" class="inputRecord" name="photo"
-                       placeholder="총 운동시간을 입력해 주세요. (예: 3)"
-                       onfocus="this.placeholder = ''" 
-                       onblur="this.placeholder = '총 운동시간을 입력해 주세요. (예: 3)'">
+                       <input type="file" class="inputRecord" name="photo" id="photo">
                    </div>
                    
 					<div class="box">
 	                   	<div class="inputR">기록 공유를 하시겠습니까?</div>
-	                   		<select name="shareOption" class="Stype">
+	                   		<select name="shareOption" class="Stype" id="shareOption">
 								<option value="1" selected>예</option>
 								<option value="0">아니오</option>
 	                   		</select>
 	                  </div>
-						
-					
-					<div class="button">
-						<button type="button" id="register_btn" onclick="signUpCheck()" style="font-size: 16px">전송하기</button>
 					</div>
+					<div><button type="button" id="record_btn" onclick="signUpCheck();">기록하기</button></div>
 				</div>
-			</div>
 		</form>
 </div>
 

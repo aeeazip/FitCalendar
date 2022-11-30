@@ -38,7 +38,7 @@
 <div id="main">
 	<div class="flex-container2">
 		<div id="subTitle" >
-			<p class="subTitle" style="font-size:18px; margin-bottom:10px;">나의 운동 기록</p>
+			<p class="subTitle" style="font-size:18px; margin-bottom:10px;">전체 운동 기록</p>
 			<p class="subTitle" style="font-size:14px; margin-bottom:30px;">제목을 클릭하면 기록이 보여요 !</p>
 		</div>
 			
@@ -56,10 +56,10 @@
 					<tr>
 							<td align="center" bgcolor="ffffff" height="35" class="a">
 								${record.recordId}</td>
-							<td bgcolor="ffffff" style="padding-left: 10" class="b">
+							<td bgcolor="ffffff"  class="b">
 								<a href="<c:url value='/allRecord/list/detail'><c:param name='recordId' value='${record.recordId}'/></c:url>">${record.title}</a>
 							</td>
-							<td bgcolor="ffffff" style="padding-left: 10" align="center" class="a"><c:if
+							<td bgcolor="ffffff" align="center" class="a"><c:if
 									test="${record.category eq '1'}">
 									<p>헬스</p>
 								</c:if> <c:if test="${record.category eq '2'}">
@@ -71,7 +71,7 @@
 								</c:if> <c:if test="${record.category eq '5'}">
 									<p>기타</p>
 								</c:if></td>
-							<td bgcolor="ffffff" style="padding-left: 10" align="center" class="b"><%=nickNameList.get(i++) %></td>
+							<td bgcolor="ffffff" align="center" class="b"><%=nickNameList.get(i++) %></td>
 						</tr>
 					</c:forEach>
 				</table>

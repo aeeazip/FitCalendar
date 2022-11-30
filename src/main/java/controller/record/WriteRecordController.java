@@ -17,19 +17,19 @@ public class WriteRecordController implements Controller {
 	private static HttpSession session;
 	String str;
 	Exerciser exerciser;
-	
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		session = request.getSession();
-		
+
 		RecordManager recordManager = RecordManager.getInstance();
 		ExerciserManager userManager = ExerciserManager.getInstance();
-		
+
 		if (request.getMethod().equals("GET")) {
 			// GET request: 기록 등록 form 요청
-			str = (String)session.getAttribute("id");
+			str = (String) session.getAttribute("id");
 			exerciser = userManager.findExerciser(str);
-			
+
 			// System.out.println(str);
 			// System.out.println(exerciser.getNickname());
 			request.setAttribute("NickName", exerciser.getNickname());
@@ -39,23 +39,32 @@ public class WriteRecordController implements Controller {
 
 		// POST request (기록 정보가 parameter로 전송됨)
 		String title = request.getParameter("title");
+		System.out.println("42행:" + title);
 		String creationDate = request.getParameter("creationDate");
+		System.out.println("42행:" + creationDate);
 		int totalTime = Integer.parseInt(request.getParameter("totalTime"));
+		System.out.println("42행:" + totalTime);
 		int category = Integer.parseInt(request.getParameter("category"));
+		System.out.println("42행:" + category);
 		String routine = request.getParameter("routine");
+		System.out.println("42행:" + routine);
 		String diet = request.getParameter("diet");
+		System.out.println("42행:" + diet);
 		String photo = request.getParameter("photo");
+		System.out.println("42행:" + photo);
 		int shareOption = Integer.parseInt(request.getParameter("shareOption"));
+		System.out.println("42행:" + shareOption);
 		int exerciserId = exerciser.getExerciserId();
+		System.out.println("42행:" + exerciserId);
 
-		
-		try {	
+		try {
 			// 1. DB에 Record 정보 등록하기
-			recordManager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
+			recordManager.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption,
+					exerciserId);
 			// 2. 10 포인트 적립하기
 			int result = userManager.updatePoint(exerciserId);
-			// System.out.println(result);
-			
+			System.out.println("57행:" + result);
+
 			return "redirect:/myRecord/list"; // 성공 시 사용자 리스트 화면으로 redirect
 
 		} catch (Exception e) { // 예외 발생 시 회원가입 form으로 forwarding
