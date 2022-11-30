@@ -38,7 +38,6 @@ public class LoginController implements Controller {
 			// alert창
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('로그인 되었습니다.'); history.go(-2); </script>");
 			out.println("<script>alert('로그인 되었습니다.'); location.href='../main'; </script>");
 
 			out.flush();
