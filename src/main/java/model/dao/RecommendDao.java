@@ -210,12 +210,14 @@ public class RecommendDao {
 
 	//재추천 메소드
 	public int reRecommendExerciser(int exerciserId){
+		System.out.println("reRecommend Dao");
 		String query = "UPDATE recommendlist SET count=count+1 " + "WHERE exerciserId = ? ";
 		Object[] param = new Object[] {exerciserId};
 		jdbcUtil.setSqlAndParameters(query, param);   // JDBCUtil 에 insert into문과 매개 변수 설정
 
 		try {
 			int result = jdbcUtil.executeUpdate();
+			System.out.println(result);
 			return result;
 		} catch (Exception e) {
 			jdbcUtil.rollback();
