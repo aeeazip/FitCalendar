@@ -58,6 +58,17 @@ public class AllRecordDetailController implements Controller {
 		request.setAttribute("nickname", exerciser.getNickname());
 		System.out.println(exerciser.getNickname());
 		System.out.println(record.getCategory());
+		
+		if (category == 1) // 카테고리 : 헬스
+			request.setAttribute("category", "헬스");
+		else if (category == 2) // 카테고리 : 필라테스
+			request.setAttribute("category", "필라테스");
+		else if (category == 3) // 카테고리 : 필라테스, 요가
+			request.setAttribute("category", "요가");
+		else if (category == 4) // 카테고리 : 런닝
+			request.setAttribute("category", "러닝");
+		else // 카테고리 : 기타
+			request.setAttribute("category", "기타");
 				
 		return "/record/all/detail.jsp";
 	}
