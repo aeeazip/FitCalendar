@@ -59,8 +59,10 @@ public class RecordDetailController implements Controller {
 		System.out.println(exerciser.getNickname());
 		System.out.println(record.getCategory());
 				
-		if (category == 1) // 카테고리 : 헬스
+		if (category == 1) { // 카테고리 : 헬스
+			System.out.println("/record/health/detail.jsp");
 			return "/record/health/detail.jsp";
+		}
 		else if (category == 2 || category == 3) // 카테고리 : 필라테스, 요가
 			return "/record/yoga/detail.jsp";
 		else if (category == 4) // 카테고리 : 런닝
