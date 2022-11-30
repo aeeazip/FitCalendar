@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%!
+	int count = 1;
+%>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>FitCalendar</title>
 	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
@@ -25,11 +28,24 @@
 			성별 : 
 			<c:if test="${gender eq 'M' }">남자</c:if>
 			<c:if test="${gender eq 'F' }">여자</c:if>
-		</div>      
+			
+			<br><Br><br><br><br><br>
+					
+		</div>
+		<div align="center">
+			<c:forEach var="ranking" items="${rankingList }">
+				<%=count %>등
+				<p>닉네임: <c:out value="${ranking.exerciserId}" />	
+				<p>보유 포인트: <c:out value="${ranking.point}" />	
+				<%count++; %>
+			</c:forEach>			
+			<%count =  1;%>
+		</div>
+		      
+	
 </c:if>
 <c:if test="${empty exerciser}">
-	<div id="subTitle" align = "center">
-	       
+	<div id="subTitle" align = "center">       
 	       	FitCalendar를 방문해주셔서 감사합니다!
 	       <br><br><br>
 			로그인을 해주세요!

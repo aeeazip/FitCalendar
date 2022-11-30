@@ -1,5 +1,8 @@
 package controller.exerciser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,7 +37,13 @@ public class ShowExerciserInfoController implements Controller{
 	    request.setAttribute("gender", exerciser.getGender());
 	    request.setAttribute("exerciser", exerciser);
 	    
-	      
+	    
+	    
+	    //랭킹관련
+	    List<Exerciser> eList = manager.showRanking();
+	    
+	    request.setAttribute("rankingList", eList);
+	         
 		return "/main.jsp";
 	}
 
