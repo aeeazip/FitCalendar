@@ -55,62 +55,80 @@
 
 	<%@ include file="../frameHeader.jsp"%>
 
-	<!-- container -->
-	<!-- recordForm 부분 -->
+
 <div id="main">
 
-		<form name="form" method="POST" action="<c:url value='/myRecord/write' />">
+		<form name="recordForm" method="POST" action="<c:url value='/myRecord/write' />">
            <div class="flex-container2 ">
                <div id="subTitle">
                    <p class="subTitle" style="font-size:18px; margin-bottom:20px;">${NickName} 님의 운동 기록</p>
                </div>
+               
+                <div id="loginBox">
+                   <div class="box">
+                       <input type="text" class="inputRecord" name="title"
+                       placeholder="제목을 입력해 주세요."
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '제목을 입력해 주세요.'">
+                   </div>
 
-			<div class="name">
-				<input type="text" name="title" placeholder="제목을 입력해 주세요.">
-			</div>
-			<div class="name">
-				<input type="date" name="creationDate">
-			</div>
-			<div class="name">
-				<input type="text" name="totalTime"
-					placeholder="총 운동시간을 입력해 주세요. (예: 3)">
-			</div>
-			<div class="line">
-				<hr>
-			</div>
-			<div class="area">
-				<select id="category" name="category">
-					<option selected>종목을 선택하세요.</option>
-					<option value="1">헬스</option>
-					<option value="2">필라테스</option>
-					<option value="3">요가</option>
-					<option value="4">러닝</option>
-					<option value="5">기타</option>
-				</select>
-			</div>
-			<div class="name">
-				<textarea rows="5" name="routine"
-					aria-label="With textarea" placeholder="운동 루틴을 입력하세요."></textarea>
-			</div>
-			<div class="name">
-				<textarea rows="5" name="diet" 
-					aria-label="With textarea" placeholder="식단을 입력하세요."></textarea>
-			</div>
-			<div class="name">
-				<input type="file" name="photo">
-			</div>
-			<div class="name">
-				<select name="shareOption">
-					<option selected>기록 공유를 하시겠습니까?</option>
-					<option value="1">예</option>
-					<option value="0">아니오</option>
-				</select>
-			</div>
-			<div class="button">
-				<button type="button" id="register_btn" onclick="signUpCheck()">전송하기</button>
-			</div>
+                   <div class="box">
+                       <input type="date" class="inputRecord"  name="creationDate">
+                   </div>
+                   
+                   <div class="box">
+                       <input type="text" class="inputRecord" name="title"
+                       placeholder="총 운동시간을 입력해 주세요. (예: 3)"
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '총 운동시간을 입력해 주세요. (예: 3)'">
+                   </div>
+                   
+                   <div class="box">
+                   	<div class=inputS>주로 하는 운동 종목</div>
+                   		<select name="category" id="category" class="Stype">
+							<option value="1" selected>헬스</option>
+							<option value="2">필라테스</option>
+							<option value="3">요가</option>
+							<option value="4">러닝</option>
+							<option value="5">기타</option>
+                   		</select>
+                   </div>
+                   
+                   
+                    <div class="box">
+                       <textarea rows="5"  class="Qtype4" name="routine"
+                       placeholder="운동 루틴을 입력하세요."
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '운동 루틴을 입력하세요.'"></textarea>
+                   </div>
+                   <div class="box">
+                       <textarea rows="5"  class="Qtype4" name="diet"
+                       placeholder="식단을 입력하세요."
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '식단을 입력하세요.'"></textarea>
+                   </div>
+                    <div class="box">
+                       <input type="file" class="inputRecord" name="photo"
+                       placeholder="총 운동시간을 입력해 주세요. (예: 3)"
+                       onfocus="this.placeholder = ''" 
+                       onblur="this.placeholder = '총 운동시간을 입력해 주세요. (예: 3)'">
+                   </div>
+                   
+					<div class="box">
+	                   	<div class="inputR">기록 공유를 하시겠습니까?</div>
+	                   		<select name="shareOption" class="Stype">
+								<option value="1" selected>예</option>
+								<option value="0">아니오</option>
+	                   		</select>
+	                  </div>
+						
+					
+					<div class="button">
+						<button type="button" id="register_btn" onclick="signUpCheck()" style="font-size: 16px">전송하기</button>
+					</div>
+				</div>
 			</div>
 		</form>
 </div>
-	<!-- footer -->
+
 	<%@ include file="../frameFooter.jsp"%>

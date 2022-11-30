@@ -14,18 +14,14 @@
 		}
 	</script>
 	<style>
- 	#recordT { 
- 		border-top: 1px solid #414141; 
- 		border-collapse: collapse; 
- 	} 
-	
- 	td { 
-		padding: 10px 0; 
- 	} 
+	 	#recordT { 
+	 		border-top: 1px solid #414141; 
+	 		border-collapse: collapse; 
+	 	} 
+		
+	 	td { padding: 10px 0; } 
  	</style>
 </head>
-
-<%@ include file="../../frameHeader.jsp"%>
 
 	<%
 		List<Record> recordList = (List<Record>) request.getAttribute("recordList");
@@ -34,6 +30,10 @@
 		
 		int i = 0;
 	%>
+	
+	
+<%@ include file="../../frameHeader.jsp"%>
+
 	
 <div id="main">
 	<div class="flex-container2">
