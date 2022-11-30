@@ -96,6 +96,12 @@ public class MatchingDao {
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert into문 실행
+			
+			String query2 = "UPDATE matchingStatus SET status = 1 WHERE (senderId =? AND receiverId = ?) OR (receiverId =? AND senderId = ?)";
+			Object[] param2 = new Object[] { myExerciserId, yourExerciserId, myExerciserId, yourExerciserId };
+			jdbcUtil.setSqlAndParameters(query2, param2);
+			result = jdbcUtil.executeUpdate();
+			System.out.println("acceptRecommend result: " + result);
 			return result; // insert into에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();
