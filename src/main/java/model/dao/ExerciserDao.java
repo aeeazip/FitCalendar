@@ -378,4 +378,152 @@ public class ExerciserDao {
 		}
 		return null;
 	}
+	
+	//계정 삭제를 위해서 모든 column 을 삭제할 메소드 
+	// 계정 삭제(id로 삭제)
+	public int deleteAttendance(int deleteId) {
+		String query = "DELETE FROM Attendance WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteFitmate(int deleteId) {
+		String query = "DELETE FROM Fitmate WHERE exerciser1 = ? OR exerciser2 = ?"; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId, deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	
+	public int deleteInbody(int deleteId) {
+		String query = "DELETE FROM Inbody WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteMatchingStatus(int deleteId) {
+		String query = "DELETE FROM matchingStatus WHERE senderid = ? OR receiverid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId, deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteMessage(int deleteId) {
+		String query = "DELETE FROM Message WHERE senderid = ? OR receiverid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId, deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteRecommendList(int deleteId) {
+		String query = "DELETE FROM RecommendList WHERE exerciserid = ? OR recommid1 = ? OR recommid2 = ? OR recommid3 = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId, deleteId, deleteId, deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteRecord(int deleteId) {
+		String query = "DELETE FROM Record WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
+	public int deleteToExercise(int deleteId) {
+		String query = "DELETE FROM ToExercise WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { deleteId };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // delete 문 실행
+			return result; // delete 에 의해 반영된 레코드 수 반환
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return 0;
+	}
+	
 }
