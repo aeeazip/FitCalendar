@@ -2,6 +2,8 @@ package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Exerciser;
 
@@ -350,4 +352,30 @@ public class ExerciserDao {
 		return null;
 	}
 	
+	/**
+	 * 사용자들 랭킹 3위까지 보여주기
+	 * 
+	 */
+	public List<Exerciser> showRanking() {
+		String sql = "select a.* from (select * from exerciser order by point desc) a where rownum <=3;";
+		jdbcUtil.setSqlAndParameters(sql, null); // JDBCUtil에 query문과 매개 변수 설정
+
+		List<Exerciser> exerciserList = new ArrayList<Exerciser>();
+		Exerciser exerciser = null;
+		try {
+			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+			while(rs.next()) {
+				exerciser = new Exerciser();
+				exerciser.setExerciserId(rs.getInt("exerciserId"));
+				exerciser.setPoint(rs.getInt("point"));
+				exerciserList.add(exerciser);
+			}
+			return exerciserList;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close(); // resource 반환
+		}
+		return null;
+	}
 }

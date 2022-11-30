@@ -1,6 +1,7 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import model.Exerciser;
 import model.dao.ExerciserDao;
@@ -77,9 +78,13 @@ public class ExerciserManager {
 		}
 		return true;
 	}
-	
+	//메인 출력용 사용자 정보
 	public Exerciser showInfo(int exerciserId, String nickName, int point,  String explanation, String gender) {
 		Exerciser exerciser = exerciserDao.showInfo(exerciserId);
 		return exerciser;
+	}
+	//랭킹1,2,3위 보여주기
+	public List<Exerciser> showRanking(){
+		return exerciserDao.showRanking();
 	}
 }
