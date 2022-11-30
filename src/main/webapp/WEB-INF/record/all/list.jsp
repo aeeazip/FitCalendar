@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" import="model.Record" import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	int recordId = 1;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +58,7 @@
 					<c:forEach var="record" items="${recordList}">
 					<tr>
 							<td align="center" bgcolor="ffffff" height="35" class="a">
-								${record.recordId}</td>
+								<%= recordId++ %></td>
 							<td bgcolor="ffffff"  class="b">
 								<a href="<c:url value='/allRecord/list/detail'><c:param name='recordId' value='${record.recordId}'/></c:url>">${record.title}</a>
 							</td>
