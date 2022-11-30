@@ -33,7 +33,9 @@ td {
 				클릭하면 기록이 보여요 !</p>
 		</div>
 
-
+		<%
+			int recordId = 1;
+		%>
 		<div style="text-align: center">
 			<form>
 				<table id="recordT" style="table-layout: auto; table-layout: fixed;">
@@ -51,7 +53,7 @@ td {
 					<c:forEach var="record" items="${recordList}">
 						<tr>
 							<td align="center" bgcolor="ffffff" height="35" class="a">
-								${record.recordId}</td>
+								<%= recordId++ %></td>
 							<td bgcolor="ffffff" style="padding-left: 10" class="b"><a
 								href="<c:url value='/myRecord/list/detail'><c:param name='recordId' value='${record.recordId}'/></c:url>">${record.title}</a>
 							</td>
@@ -75,7 +77,6 @@ td {
 				</table>
 			</form>
 		</div>
-
 		<!-- 글작성 -->
 		<form action="<c:url value='/myRecord/write' />" method="GET">
 			<button type="submit" class="record_btn">기록 작성하기</button>
