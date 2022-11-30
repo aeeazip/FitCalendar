@@ -27,6 +27,9 @@ td {
 	<%
 		List<Message> sendList = (List<Message>)request.getAttribute("sendList");
 		List<Message> receiveList = (List<Message>)request.getAttribute("receiveList");	
+		
+		int i=1;
+		int j=1;
 	%>
 	<p>내가 Fitmate에게 보낸 메시지</p>
 	<table id="messageList">
@@ -38,7 +41,7 @@ td {
 		<c:forEach var="sendList" items="${sendList}">
 			<tr>
 				<td align="center" bgcolor="ffffff" height="35">
-					${sendList.msgId}</td>
+					<%=i++%></td>
 				<td bgcolor="ffffff" style="padding-left: 10">
 					${sendList.content}
 				</td>
@@ -59,7 +62,7 @@ td {
 		<c:forEach var="receiveList" items="${receiveList}">
 			<tr>
 				<td align="center" bgcolor="ffffff" height="35">
-					${receiveList.msgId}</td>
+					<%=j++%></td>
 				<td bgcolor="ffffff" style="padding-left: 10">
 					${receiveList.content}
 				</td>
