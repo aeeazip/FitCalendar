@@ -139,13 +139,24 @@
 
 .inputS {
 	display: inline-block;
-    width: 120px;
+    width: 80px;
 
     border: none;
     
     font-weight: 500;
     font-size: 14px;
     color: #909090;
+    margin-bottom: 20px;
+}
+.inputSS {
+	display: inline-block;
+    width: 80px;
+
+    border: none;
+    
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -301,7 +312,6 @@ input::-ms-input-placeholder{color: #909090; font-family: 'NanumSquare', sans-se
     width: 370px;
     padding: 12px 0;
     cursor: pointer;
-    /* margin: 20px 0 0 -31px; */
 }
 
 .backBtn {
