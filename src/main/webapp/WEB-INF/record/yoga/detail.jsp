@@ -59,7 +59,7 @@ String nickname = (String) request.getAttribute("nickname");
 					<tr>
 						<td align="center" bgcolor="E6ECDE" height="40" class="a">운동
 							종류</td>
-						<td bgcolor="ffffff" class="b">&nbsp;&nbsp;&nbsp;&nbsp;요가</td>
+						<td bgcolor="ffffff" class="b">&nbsp;&nbsp;&nbsp;&nbsp;필라테스/요가</td>
 					</tr>
 					<tr>
 						<td align="center" bgcolor="E6ECDE" height="40" class="a">총
