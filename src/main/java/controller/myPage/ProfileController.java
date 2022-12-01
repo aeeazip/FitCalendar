@@ -15,7 +15,6 @@ public class ProfileController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(request.getSession());
 
 		HttpSession session = request.getSession();
 		System.out.println("19행 : " + session.getAttribute("id"));

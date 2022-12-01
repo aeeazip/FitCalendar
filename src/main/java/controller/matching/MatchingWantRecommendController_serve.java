@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Exerciser;
+import model.heightRange;
+import model.percentBodyFatRange;
+import model.weightRange;
 import model.service.ExerciserManager;
 import model.service.RecommendManager;
 
@@ -40,83 +43,17 @@ public class MatchingWantRecommendController_serve implements Controller {
 
 		System.out.println(height_option);
 
-		int height1 = 0, height2 = 0;
-		int weight1 = 0, weight2 = 0;
-		int percentBodyFat1 = 0, percentBodyFat2 = 0;
+		weightRange w_range;
+		heightRange h_range;
+		percentBodyFatRange p_range;
+		
+		w_range = recommendManager.calculateWeightrange(weight_option);
+		h_range = recommendManager.calculateHeightrange(height_option);
+		p_range = recommendManager.calculatePercentBodyFatrange(percentBodyFat_option);
 
-		switch (height_option) {
-		case 1:
-			height1 = 150;
-			height2 = 159;
-			break;
-
-		case 2:
-			height1 = 160;
-			height2 = 169;
-			break;
-		case 3:
-			height1 = 170;
-			height2 = 179;
-			break;
-		case 4:
-			height1 = 180;
-			height2 = 200;
-			break;
-
-		}
-
-		switch (weight_option) {
-		case 1:
-			weight1 = 40;
-			weight2 = 49;
-			break;
-
-		case 2:
-			weight1 = 50;
-			weight2 = 59;
-			break;
-		case 3:
-			weight1 = 60;
-			weight2 = 69;
-			break;
-		case 4:
-			weight1 = 70;
-			weight2 = 79;
-			break;
-		case 5:
-			weight1 = 80;
-			weight2 = 89;
-			break;
-		case 6:
-			weight1 = 90;
-			weight2 = 150;
-			break;
-
-		}
-
-		switch (percentBodyFat_option) {
-		case 1:
-			percentBodyFat1 = 0;
-			percentBodyFat2 = 14;
-			break;
-
-		case 2:
-			percentBodyFat1 = 15;
-			percentBodyFat2 = 24;
-			break;
-		case 3:
-			percentBodyFat1 = 25;
-			percentBodyFat2 = 34;
-			break;
-		case 4:
-			percentBodyFat1 = 35;
-			percentBodyFat2 = 50;
-			break;
-
-		}
-		System.out.println(height1);
-		int result = recommendManager.recommendExerciser(exerciser.getExerciserId(), height1, height2, weight1, weight2,
-				percentBodyFat1, percentBodyFat2);
+		
+		int result = recommendManager.recommendExerciser(exerciser.getExerciserId(), h_range.getHeight1(), h_range.getHeight2(), w_range.getWeight1(), w_range.getWeight2(),
+				p_range.getPercentBodyFat1(), p_range.getPercentBodyFat2());
 		System.out.println(result);
 		try {
 			if (result != 0)
