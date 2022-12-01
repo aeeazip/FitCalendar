@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Exerciser;
-import model.heightRange;
-import model.percentBodyFatRange;
-import model.weightRange;
+import model.HeightRange;
+import model.PercentBodyFatRange;
+import model.WeightRange;
 import model.service.ExerciserManager;
 import model.service.RecommendManager;
 
@@ -43,9 +43,9 @@ public class MatchingWantRecommendController_serve implements Controller {
 
 		System.out.println(height_option);
 
-		weightRange w_range;
-		heightRange h_range;
-		percentBodyFatRange p_range;
+		WeightRange w_range;
+		HeightRange h_range;
+		PercentBodyFatRange p_range;
 		
 		w_range = recommendManager.calculateWeightrange(weight_option);
 		h_range = recommendManager.calculateHeightrange(height_option);

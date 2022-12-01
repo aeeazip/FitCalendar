@@ -1,10 +1,10 @@
 package model;
 
-public class percentBodyFatRange {
+public class PercentBodyFatRange {
 	private int percentBodyFatId;
 	private int percentBodyFat1;
 	private int percentBodyFat2;
-	public percentBodyFatRange(int percentBodyFatId, int percentBodyFat1, int percentBodyFat2) {
+	public PercentBodyFatRange(int percentBodyFatId, int percentBodyFat1, int percentBodyFat2) {
 		super();
 		this.percentBodyFatId = percentBodyFatId;
 		this.percentBodyFat1 = percentBodyFat1;
