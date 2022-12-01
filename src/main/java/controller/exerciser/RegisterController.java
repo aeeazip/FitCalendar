@@ -40,7 +40,6 @@ public class RegisterController implements Controller {
 		String gender = request.getParameter("gender");
 
 		Exerciser exerciser = new Exerciser(id, password, nickname, explanation, personality, speciality, gender);
-		System.out.println(exerciser);
 		log.debug("Create exerciser : {}", exerciser);
 
 		try {
@@ -76,7 +75,7 @@ public class RegisterController implements Controller {
 
 //		System.out.println(height + weight + percentBodyFat + skeletalMM + visceralFat + measureDate);
 		Inbody inbody = new Inbody(height, weight, percentBodyFat, skeletalMM, visceralFat, measureDate, exerciserid);
-		System.out.println(inbody);
+	
 
 		try {
 			InbodyManager mgr = InbodyManager.getInstance();

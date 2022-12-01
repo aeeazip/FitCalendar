@@ -16,8 +16,6 @@ public class StaticController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println(request.getSession());
-
 		HttpSession session = request.getSession();
 		System.out.println("22행 : " + UserSessionUtils.getLoginUserId(session));
 		String userId = UserSessionUtils.getLoginUserId(session);

@@ -7,6 +7,9 @@ import java.util.List;
 import model.Exerciser;
 import model.MatchingStatus;
 import model.RecommendList;
+import model.heightRange;
+import model.percentBodyFatRange;
+import model.weightRange;
 
 public class RecommendDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
@@ -269,6 +272,78 @@ public class RecommendDao {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
 		}
 		return 0; 
+	}
+	
+	public weightRange calculateWeightrange(int weightOptions) {
+		weightRange w_range = null;
+		String query = "SELECT * FROM WeightOptions WHERE weightId = ? ";
+		Object[] param = new Object[] { weightOptions };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if (rs.next()) {
+				//매개변수와 이름이 동일해서 변수 이름 수정
+				int weight1 = rs.getInt("weight1");
+				int weight2 = rs.getInt("weight2");
+				w_range = new weightRange(weightOptions, weight1, weight2);
+				return w_range;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+
+		return w_range;
+	}
+	
+	public heightRange calculateHeightrange(int heightOptions) {
+		heightRange h_range = null;
+		String query = "SELECT * FROM HeightOptions WHERE heightId = ? ";
+		Object[] param = new Object[] { heightOptions };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if (rs.next()) {
+				//매개변수와 이름이 동일해서 변수 이름 수정
+				int height1 = rs.getInt("height1");
+				int height2 = rs.getInt("height2");
+				h_range = new heightRange(heightOptions, height1, height2);
+				return h_range;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+
+		return h_range;
+	}
+	
+	public percentBodyFatRange calculatePercentBodyFatrange(int percentBodyFatOptions) {
+		percentBodyFatRange p_range = null;
+		String query = "SELECT * FROM PercentBodyFatOptions WHERE percentBodyFatId = ? ";
+		Object[] param = new Object[] { percentBodyFatOptions };
+		jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if (rs.next()) {
+				//매개변수와 이름이 동일해서 변수 이름 수정
+				int percentBodyFat1 = rs.getInt("percentBodyFat1");
+				int percentBodyFat2 = rs.getInt("percentBodyFat2");
+				p_range = new percentBodyFatRange(percentBodyFatOptions, percentBodyFat1, percentBodyFat2);
+				return p_range;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+
+		return p_range;
 	}
 
 }
