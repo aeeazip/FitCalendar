@@ -62,7 +62,8 @@
 
 <c:if test="${empty exerciser}">
 	<div id="subTitle" align="center">
-		FitCalendar를 방문해주셔서 감사합니다! <br> <br> <br> 로그인을 해주세요!
+		<p class="subTitle" style="font-size:18px; margin-bottom:10px;">FitCalendar를 방문해주셔서 감사합니다.</p>
+		<p class="subTitle" style="font-size:18px; margin-bottom:10px;">로그인을 해주세요 !</p>
 	</div>
 </c:if>
 
