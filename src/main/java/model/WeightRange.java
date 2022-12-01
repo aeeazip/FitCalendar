@@ -1,11 +1,11 @@
 package model;
 
-public class weightRange {
+public class WeightRange {
 	private int weightId;
 	private int weight1;
 	private int weight2;
 	
-	public weightRange(int weightId, int weight1, int weight2) {
+	public WeightRange(int weightId, int weight1, int weight2) {
 		super();
 		this.weightId = weightId;
 		this.weight1 = weight1;

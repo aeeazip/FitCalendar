@@ -1,10 +1,10 @@
 package model;
 
-public class heightRange {
+public class HeightRange {
 	private int heightId;
 	private int height1;
 	private int height2;
-	public heightRange(int heightId, int height1, int height2) {
+	public HeightRange(int heightId, int height1, int height2) {
 		super();
 		this.heightId = heightId;
 		this.height1 = height1;

@@ -84,15 +84,15 @@ public class RecommendManager {
 	}
 	
 	//recommend Form options (박창섭 교수님 피드백 반영!!!!!하겠슴돵ㅎㅎㅎㅎㅎ이누씅)
-	public weightRange calculateWeightrange(int weightOptions) {
+	public WeightRange calculateWeightrange(int weightOptions) {
 		return recommendDao.calculateWeightrange(weightOptions);
 	}
 	
-	public heightRange calculateHeightrange(int heightOptions) {
+	public HeightRange calculateHeightrange(int heightOptions) {
 		return recommendDao.calculateHeightrange(heightOptions);
 	}
 	
-	public percentBodyFatRange calculatePercentBodyFatrange(int percentBodyFatOptions) {
+	public PercentBodyFatRange calculatePercentBodyFatrange(int percentBodyFatOptions) {
 		return recommendDao.calculatePercentBodyFatrange(percentBodyFatOptions);
 	}
 	

@@ -7,9 +7,9 @@ import java.util.List;
 import model.Exerciser;
 import model.MatchingStatus;
 import model.RecommendList;
-import model.heightRange;
-import model.percentBodyFatRange;
-import model.weightRange;
+import model.HeightRange;
+import model.PercentBodyFatRange;
+import model.WeightRange;
 
 public class RecommendDao {
 	private JDBCUtil jdbcUtil = null; // JDBCUtil 참조 변수 선언
@@ -274,8 +274,8 @@ public class RecommendDao {
 		return 0; 
 	}
 	
-	public weightRange calculateWeightrange(int weightOptions) {
-		weightRange w_range = null;
+	public WeightRange calculateWeightrange(int weightOptions) {
+		WeightRange w_range = null;
 		String query = "SELECT * FROM WeightOptions WHERE weightId = ? ";
 		Object[] param = new Object[] { weightOptions };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -286,7 +286,7 @@ public class RecommendDao {
 				//매개변수와 이름이 동일해서 변수 이름 수정
 				int weight1 = rs.getInt("weight1");
 				int weight2 = rs.getInt("weight2");
-				w_range = new weightRange(weightOptions, weight1, weight2);
+				w_range = new WeightRange(weightOptions, weight1, weight2);
 				return w_range;
 			}
 		} catch (Exception e) {
@@ -298,8 +298,8 @@ public class RecommendDao {
 		return w_range;
 	}
 	
-	public heightRange calculateHeightrange(int heightOptions) {
-		heightRange h_range = null;
+	public HeightRange calculateHeightrange(int heightOptions) {
+		HeightRange h_range = null;
 		String query = "SELECT * FROM HeightOptions WHERE heightId = ? ";
 		Object[] param = new Object[] { heightOptions };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -310,7 +310,7 @@ public class RecommendDao {
 				//매개변수와 이름이 동일해서 변수 이름 수정
 				int height1 = rs.getInt("height1");
 				int height2 = rs.getInt("height2");
-				h_range = new heightRange(heightOptions, height1, height2);
+				h_range = new HeightRange(heightOptions, height1, height2);
 				return h_range;
 			}
 		} catch (Exception e) {
@@ -322,8 +322,8 @@ public class RecommendDao {
 		return h_range;
 	}
 	
-	public percentBodyFatRange calculatePercentBodyFatrange(int percentBodyFatOptions) {
-		percentBodyFatRange p_range = null;
+	public PercentBodyFatRange calculatePercentBodyFatrange(int percentBodyFatOptions) {
+		PercentBodyFatRange p_range = null;
 		String query = "SELECT * FROM PercentBodyFatOptions WHERE percentBodyFatId = ? ";
 		Object[] param = new Object[] { percentBodyFatOptions };
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -334,7 +334,7 @@ public class RecommendDao {
 				//매개변수와 이름이 동일해서 변수 이름 수정
 				int percentBodyFat1 = rs.getInt("percentBodyFat1");
 				int percentBodyFat2 = rs.getInt("percentBodyFat2");
-				p_range = new percentBodyFatRange(percentBodyFatOptions, percentBodyFat1, percentBodyFat2);
+				p_range = new PercentBodyFatRange(percentBodyFatOptions, percentBodyFat1, percentBodyFat2);
 				return p_range;
 			}
 		} catch (Exception e) {
