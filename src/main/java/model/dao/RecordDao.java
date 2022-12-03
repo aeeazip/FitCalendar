@@ -299,5 +299,27 @@ public class RecordDao {
 		}
 		return null;
 	}
+	
+	/**
+	 * 레코드 개수세기
+	 */
+	public int countRecord(int exerciserId) {
+		// String query = "update ranking set point=point+5 where exerciserid=?"; //
+		// JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { exerciserId };
 
+		//jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
+	}
 }
