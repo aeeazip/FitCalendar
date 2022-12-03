@@ -301,6 +301,8 @@ public class ExerciserDao {
 		}
 		return 1;
 	}
+	
+	
 
 	/**
 	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사
