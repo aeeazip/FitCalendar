@@ -33,11 +33,10 @@ public class ExerciserDao {
 				String personality = rs.getString("personality");
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
-				int ranking = rs.getInt("ranking");
 				String useMatchSvc = rs.getString("useMatchSvc");
 				int maxMate = rs.getInt("maxMate");
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc, maxMate);
+						gender, point, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
@@ -67,12 +66,11 @@ public class ExerciserDao {
 				String personality = rs.getString("personality");
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
-				int ranking = rs.getInt("ranking");
 				String useMatchSvc = rs.getString("useMatchSvc");
 				int maxMate = rs.getInt("maxMate");
 
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc, maxMate);
+						gender, point, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
@@ -163,12 +161,11 @@ public class ExerciserDao {
 				String personality = rs.getString("personality");
 				String gender = rs.getString("gender");
 				int point = rs.getInt("point");
-				int ranking = rs.getInt("ranking");
 				String useMatchSvc = rs.getString("useMatchSvc");
 				int maxMate = rs.getInt("maxMate");
 
 				exerciser = new Exerciser(exerciserId, id, nickname, password, explanation, speciality, personality,
-						gender, point, ranking, useMatchSvc, maxMate);
+						gender, point, useMatchSvc, maxMate);
 			}
 			return exerciser;
 		} catch (Exception e) {
