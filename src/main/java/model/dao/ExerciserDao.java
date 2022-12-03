@@ -223,7 +223,7 @@ public class ExerciserDao {
 
 		return null;
 	}
-	
+
 	// 계정 삭제(id로 삭제)
 	public int deleteExerciser(int deleteId) {
 		String query = "DELETE FROM exerciser WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
@@ -283,6 +283,29 @@ public class ExerciserDao {
 		return -1;
 	}
 
+	/**
+	 * ranking table에 point누적시키기
+	 */
+	public int accumulatedPoint(int exerciserId) {
+		// String query = "update ranking set point=point+5 where exerciserid=?"; //
+		// JDBCUtil 에 query 문 설정
+		Object[] param = new Object[] { exerciserId };
+
+		//jdbcUtil.setSqlAndParameters(query, param);
+
+		try {
+			int result = jdbcUtil.executeUpdate(); // update 문 실행
+			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
+	}
+
 	// 주어진 사용자가 오늘 출석 했는지 여부 반환 -> 0이면 출석 안 한 거라 출석 체크, 그 이상은 못하게 해야함
 	public int existingAttendance(int exerciserId) throws SQLException {
 		String sql = "SELECT count(*) FROM attendance WHERE exerciserid=? and (TO_CHAR(creationdate, 'YYYY/MM/DD') = TO_CHAR(SYSDATE, 'YYYY/MM/DD'))";
@@ -301,8 +324,6 @@ public class ExerciserDao {
 		}
 		return 1;
 	}
-	
-	
 
 	/**
 	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사
@@ -324,7 +345,7 @@ public class ExerciserDao {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 사용자의 정보 검색 //main 출력용
 	 */
@@ -335,7 +356,7 @@ public class ExerciserDao {
 		Exerciser exerciser = null;
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			while(rs.next()) {
+			while (rs.next()) {
 				exerciser = new Exerciser();
 				exerciser.setNickname(rs.getString("nickname"));
 				exerciser.setPoint(rs.getInt("point"));
@@ -350,7 +371,7 @@ public class ExerciserDao {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 사용자들 랭킹 3위까지 보여주기
 	 * 
@@ -363,7 +384,7 @@ public class ExerciserDao {
 		Exerciser exerciser = null;
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-			while(rs.next()) {
+			while (rs.next()) {
 				exerciser = new Exerciser();
 				exerciser.setNickname(rs.getString("nickname"));
 				exerciser.setPoint(rs.getInt("point"));
@@ -377,8 +398,8 @@ public class ExerciserDao {
 		}
 		return null;
 	}
-	
-	//계정 삭제를 위해서 모든 column 을 삭제할 메소드 
+
+	// 계정 삭제를 위해서 모든 column 을 삭제할 메소드
 	// 계정 삭제(id로 삭제)
 	public int deleteAttendance(int deleteId) {
 		String query = "DELETE FROM Attendance WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
@@ -397,7 +418,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteFitmate(int deleteId) {
 		String query = "DELETE FROM Fitmate WHERE exerciser1 = ? OR exerciser2 = ?"; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId, deleteId };
@@ -415,8 +436,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
-	
+
 	public int deleteInbody(int deleteId) {
 		String query = "DELETE FROM Inbody WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId };
@@ -434,7 +454,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteMatchingStatus(int deleteId) {
 		String query = "DELETE FROM matchingStatus WHERE senderid = ? OR receiverid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId, deleteId };
@@ -452,7 +472,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteMessage(int deleteId) {
 		String query = "DELETE FROM Message WHERE senderid = ? OR receiverid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId, deleteId };
@@ -470,9 +490,13 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteRecommendList(int deleteId) {
-		String query = "DELETE FROM RecommendList WHERE exerciserid = ? OR recommid1 = ? OR recommid2 = ? OR recommid3 = ? "; // JDBCUtil 에 query 문 설정
+		String query = "DELETE FROM RecommendList WHERE exerciserid = ? OR recommid1 = ? OR recommid2 = ? OR recommid3 = ? "; // JDBCUtil
+																																// 에
+																																// query
+																																// 문
+																																// 설정
 		Object[] param = new Object[] { deleteId, deleteId, deleteId, deleteId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
@@ -488,7 +512,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteRecord(int deleteId) {
 		String query = "DELETE FROM Record WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId };
@@ -506,7 +530,7 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 	public int deleteToExercise(int deleteId) {
 		String query = "DELETE FROM ToExercise WHERE exerciserid = ? "; // JDBCUtil 에 query 문 설정
 		Object[] param = new Object[] { deleteId };
@@ -524,5 +548,5 @@ public class ExerciserDao {
 		}
 		return 0;
 	}
-	
+
 }
