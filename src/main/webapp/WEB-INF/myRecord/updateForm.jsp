@@ -54,7 +54,7 @@ Record record = (Record) request.getAttribute("record");
 	
 	
 <div id="main">
-		<form name="form" method="POST" action="<c:url value='/myRecord/update' />">
+		<form name="form" method="POST" action="<c:url value='/myRecord/update' />" enctype="multipart/form-data">
            <div class="flex-container2 ">
                <div id="subTitle">
                    <p class="subTitle" style="font-size:18px; margin-bottom:50px;">${NickName} 님의 운동 기록</p>
@@ -112,7 +112,7 @@ Record record = (Record) request.getAttribute("record");
                        onblur="this.placeholder = '식단을 입력하세요.'">${record.diet}</textarea>
                    </div>
                    <div class="box">
-                       <input type="file" class="inputRecord" name="photo" id="photo"  value="${record.photo}">
+                       <input type="file" class="inputRecord" name="photo" id="photo" multiple="multiple">
                    </div>
                    <div class="box">
 	                   	<div class="inputRR">기록 공유를 하시겠습니까?</div>

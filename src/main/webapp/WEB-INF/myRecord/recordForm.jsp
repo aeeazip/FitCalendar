@@ -47,7 +47,7 @@
 
 
 <div id="main">
-		<form name="form" method="POST" action="<c:url value='/myRecord/write' />">
+		<form name="form" method="POST" action="<c:url value='/myRecord/write' />" enctype="multipart/form-data">
            <div class="flex-container2 ">
                <div id="subTitle">
                    <p class="subTitle" style="font-size:18px; margin-bottom:20px;">${NickName} 님의 운동 기록</p>
@@ -97,7 +97,7 @@
                        onblur="this.placeholder = '식단을 입력하세요.'"></textarea>
                    </div>
                     <div class="box">
-                       <input type="file" class="inputRecord" name="photo" id="photo">
+                       <input type="file" class="inputRecord" name="photo" id="photo" multiple="multiple">
                    </div>
                    
 					<div class="box">
