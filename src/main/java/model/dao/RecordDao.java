@@ -1,12 +1,10 @@
 package model.dao;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import model.Record;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Record;
 
 public class RecordDao {
 
@@ -211,11 +209,11 @@ public class RecordDao {
 	}
 
 	public List<Record> getRecordList(int startRow, int pageSize) {
-		
+
 		String query = "select * from record where recordid between ? and ? order by recordid desc";
 		Object[] param = new Object[] { startRow, startRow + pageSize };
 		jdbcUtil.setSqlAndParameters(query, param);
-		
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 
@@ -244,17 +242,17 @@ public class RecordDao {
 		}
 		return null;
 	}
-	
-	
+
+
 	public int findMyRecordCnt(int exerciserId) {
 		String query = "select count(*) from record where exerciserid=?";
 		Object[] param = new Object[] { exerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
-		
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			int cnt = 0;
-			
+
 			while (rs.next()) {
 				cnt = rs.getInt(1);
 			}
@@ -266,32 +264,35 @@ public class RecordDao {
 		}
 		return -1;
 	}
-	
-	public List<Record> findAllExerciserRecords(){
+
+	public List<Record> findAllExerciserRecords(int currentPage, int countPerPage){
 		String query = "select * from record where shareOption=1 order by recordid desc";
-		jdbcUtil.setSqlAndParameters(query, null);
-		
+		jdbcUtil.setSqlAndParameters(query, null, 
+				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
+				ResultSet.CONCUR_READ_ONLY);
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
+			int start = ((currentPage-1) * countPerPage) + 1;	// 출력을 시작할 행 번호 계산
+			if ((start >= 0) && rs.absolute(start)) {			// 커서를 시작 행으로 이동
+				List<Record> list = new ArrayList<Record>();
+				do {
+					int recordId = rs.getInt("recordId");
+					String title = rs.getString("title");
+					String creationDate = rs.getString("creationDate");
+					int totalTime = rs.getInt("totalTime");
+					int category = rs.getInt("category");
+					String routine = rs.getString("routine");
+					String diet = rs.getString("diet");
+					String photo = rs.getString("photo");
+					int shareOption = rs.getInt("shareOption");
+					int exerciserId = rs.getInt("exerciserId");
 
-			List<Record> list = new ArrayList<Record>();
-			while (rs.next()) {
-				int recordId = rs.getInt("recordId");
-				String title = rs.getString("title");
-				String creationDate = rs.getString("creationDate");
-				int totalTime = rs.getInt("totalTime");
-				int category = rs.getInt("category");
-				String routine = rs.getString("routine");
-				String diet = rs.getString("diet");
-				String photo = rs.getString("photo");
-				int shareOption = rs.getInt("shareOption");
-				int exerciserId = rs.getInt("exerciserId");
-
-				Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo,
-						shareOption, exerciserId);
-				list.add(record);
+					Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo, shareOption, exerciserId);
+					list.add(record);
+				} while ((rs.next()) && (--countPerPage > 0));		
+				return list;
 			}
-			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -299,7 +300,7 @@ public class RecordDao {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 레코드 개수세기
 	 */
@@ -313,6 +314,29 @@ public class RecordDao {
 		try {
 			int result = jdbcUtil.executeUpdate(); // update 문 실행
 			return result;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
+	}
+	
+	public int getTotalPages(int countPerPage) {
+		String query = "select count(*) from record";
+		jdbcUtil.setSqlAndParameters(query, null);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			int result = 0;
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+			if(result%countPerPage != 0)
+				return result/countPerPage + 1;
+			return result/countPerPage;
 		} catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();

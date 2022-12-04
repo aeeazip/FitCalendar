@@ -65,7 +65,11 @@ public class RecordManager {
 		return recordDao.getRecordList(startRow, pageSize);
 	}
 	
-	public List<Record> findAllExerciserRecords(){
-		return recordDao.findAllExerciserRecords();
+	public List<Record> findAllExerciserRecords(int currentPage, int countPerPage){
+		return recordDao.findAllExerciserRecords(currentPage, countPerPage);
+	}
+	
+	public int getTotalPages(int countPerPage) {
+		return recordDao.getTotalPages(countPerPage);
 	}
 }
