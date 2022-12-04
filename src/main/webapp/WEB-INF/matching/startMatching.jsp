@@ -14,7 +14,7 @@
 <%@ include file="../frameHeader.jsp" %>
 <div id="main">
 
-   <form name="startMateForm" action="<c:url value='/matching/setMate' />" method="POST">
+   <form name="startMateForm" action="<c:url value='/matching/option/setMate' />" method="POST">
 	   <div id="subTitle">
 	       <p class="subTitle">${nickname}님 FitMate 매칭을 시작해보세요!</p>
 	   </div>
