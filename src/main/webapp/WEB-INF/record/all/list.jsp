@@ -31,14 +31,14 @@
 		String currentP = (String)request.getAttribute("currentPage");
 		System.out.println(currentP);
 		
-		int recordId, i;
-		if(pageT == null){
+		int recordId;
+		int i = 0;
+		
+		if(currentP == null){
 			recordId = 1;
-			i = 0; 
 		}	
 		else{
 			recordId = (Integer.parseInt(currentP) - 1)*5 + 1;
-			i = (Integer.parseInt(currentP) - 1)*5;
 		}
 	%>
 	
