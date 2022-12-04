@@ -13,8 +13,8 @@ import model.Exerciser;
 import model.service.ExerciserManager;
 import model.service.MatchingManager;
 
-//MatMate 값 변경
-public class UpdateAllOptionController implements Controller {
+//UseMatchSvc 옵션 끄기(매칭 서비스 불가)
+public class UpdateMatchOptionController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(MatchingStartController.class);
 
 	@Override
@@ -30,16 +30,19 @@ public class UpdateAllOptionController implements Controller {
 		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(userId);
 
-		String maxMate = request.getParameter("maxMate");
-		int mate = Integer.parseInt(maxMate);
-
-		// option(매칭 설정 취소 or maxMate 재설정) 전체 설정
-		String useMatchSvc = request.getParameter("useMatchSvc");
 		try {
-			manager.optionChange(exerciser.getExerciserId(), mate, useMatchSvc);
-			return "matching/matchingMenu.jsp"; 
+			exerciser.setUseMatchSvc("F");
+			request.setAttribute("nickname", exerciser.getNickname());
+			manager.optionChange(exerciser.getExerciserId(), 0, exerciser.getUseMatchSvc());
+			return "redirect:/main"; // 성공 시, main 페이지로 forwarding
+			
 		} catch (Exception e) {
-			return "redirect:/matching/matchingMenusetOptions.jsp"; 
+			request.setAttribute("checkFailed", true);
+			request.setAttribute("exception", e);
+			request.setAttribute("exerciserId", exerciser.getExerciserId());
 		}
+
+		return "redirect:/matching/option/setOption"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
+
 	}
 }

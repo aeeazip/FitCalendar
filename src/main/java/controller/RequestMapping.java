@@ -13,6 +13,8 @@ import controller.exerciser.RegisterController;
 import controller.exerciser.ShowExerciserInfoController;
 import controller.matching.ListMessageController;
 import controller.matching.MatchingCompleteController;
+import controller.matching.MatchingEndFormController;
+import controller.matching.MatchingReMaxmateFormController;
 import controller.matching.MatchingGetRecommendListController;
 import controller.matching.MatchingReRequestController;
 import controller.matching.MatchingRecommendRefusalController;
@@ -24,6 +26,7 @@ import controller.matching.MatchingWantRecommendController_serve;
 import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
+import controller.matching.UpdateMatchOptionController;
 import controller.matching.UpdateOptionController;
 import controller.matching.WriteMessageController;
 import controller.myPage.AddToExerciseController;
@@ -59,7 +62,8 @@ public class RequestMapping {
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
 		mappings.put("/exerciser/logout", new LogoutController());
-
+		
+		
 		mappings.put("/myPage", new MyPageController());
 		mappings.put("/myPage/attendance", new AttendanceController());
 		mappings.put("/myPage/static", new StaticController());
@@ -69,11 +73,15 @@ public class RequestMapping {
 		mappings.put("/mypage/delete", new DeleteExerciserController());
 
 		// Matching 관련
-		mappings.put("/matching/startMatching", new MatchingStartController());
-		mappings.put("/matching/setMate", new UpdateOptionController());
-		mappings.put("/matching/setOptions", new UpdateOptionController());
-
+		mappings.put("/matching/startMatching", new MatchingStartController());		
+		
 		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
+		
+		mappings.put("/matching/option", new MatchingReMaxmateFormController());	
+		mappings.put("/matching/option/setMate", new UpdateOptionController());
+		mappings.put("/matching/option/setOption", new UpdateMatchOptionController());
+		mappings.put("/matching/option/endOption", new MatchingEndFormController());	
+		
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
 		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
 		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());
