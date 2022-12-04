@@ -26,18 +26,22 @@ public class MatchingStartController implements Controller {
 		HttpSession session = request.getSession();
 
 		String userId = (String) session.getAttribute("id");
-		// 로그인 했는지 체크하고, 안했으면 login으로.
+		// 로그인 했는지 체크하고, 안했으면 login으로!
 		if (userId == null) {
 			return "redirect:/exerciser/login";
 		}
-
 		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(userId);
-
+		
+		//이미 useMatchSvc 값이 true면 그냥 바로 메뉴로!
+		if(exerciser.getUseMatchSvc().equals("T")) {
+			return "redirect:/matching/matchingMenu";
+		}
+		
 		// useMatchSvc값 변경
 		try {
 			if (userId.equals(exerciser.getId())) {
-
+				
 				exerciser.setUseMatchSvc("T");
 				System.out.println(exerciser.getUseMatchSvc());
 				System.out.println(exerciser.getNickname());
@@ -51,7 +55,7 @@ public class MatchingStartController implements Controller {
 			request.setAttribute("CreateOptionsFailed", true);
 			request.setAttribute("exerciser", exerciser);
 		}
-		// 실패시, main으로
+		// 모든 것이 실패시, main으로
 		return "redirect:/exerciser/main";
 	}
 
