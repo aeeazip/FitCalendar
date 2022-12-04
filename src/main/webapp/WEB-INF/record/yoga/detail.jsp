@@ -80,7 +80,7 @@ String nickname = (String) request.getAttribute("nickname");
 						<td align="center" bgcolor="E6ECDE" height="200" class="a">사진</td>
 						<td bgcolor="ffffff" class="b">
 							<c:if test="${!empty record.photo}">
-								<img width="300px" height="200px" src="<c:url value='/upload/${record.photo}'/>" />
+								<img height="300px" src="<c:url value='/upload/${record.photo}'/>" />
 							</c:if>
 						</td>
 					</tr>
