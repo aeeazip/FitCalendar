@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" import="model.Record" import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	int recordId = 1;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +27,19 @@
 		List<Record> recordList = (List<Record>) request.getAttribute("recordList");
 		List<String> nickNameList = (List<String>)request.getAttribute("nickNameList");
 		String category = (String)request.getAttribute("category");
+		String pageT = (String) request.getAttribute("totalP");
+		String currentP = (String)request.getAttribute("currentPage");
+		System.out.println(currentP);
 		
-		int i = 0;
+		int recordId, i;
+		if(pageT == null){
+			recordId = 1;
+			i = 0; 
+		}	
+		else{
+			recordId = (Integer.parseInt(currentP) - 1)*5 + 1;
+			i = (Integer.parseInt(currentP) - 1)*5;
+		}
 	%>
 	
 	
@@ -78,7 +86,18 @@
 						</tr>
 					</c:forEach>
 				</table>
-			</form>
+			</form>		
+		</div>
+		<br><br>
+		<div style="text-align: center">
+				<%
+					for(int j=1; j<=Integer.parseInt(pageT); j++){
+						String str = String.valueOf(j);
+				%>
+				<a href="<c:url value='/allRecord/list'><c:param name='currentPage' value='<%= str %>'/></c:url>"><%= j %></a>
+				<%
+				}
+				%>
 		</div>
 	</div>
 </div>
