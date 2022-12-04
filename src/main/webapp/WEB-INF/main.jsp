@@ -11,6 +11,7 @@
 	<title>FitCalendar</title>
 	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.2-dist/css/bootstrap.min.css" />
 	<style>
 	 	#recordT { 
 	 		border-collapse: collapse; 
