@@ -26,8 +26,8 @@ public class RecordManager {
 	}
 
 	// exerciser가 작성한 모든 Record 조회
-	public List<Record> findRecordList(int exerciserId) {
-		return recordDao.findRecordList(exerciserId);
+	public List<Record> findRecordList(int exerciserId, int currentPage, int countPerPage) {
+		return recordDao.findRecordList(exerciserId, currentPage, countPerPage);
 	}
 
 	// 모든 exerciser의 전체 운동 기록 조회
