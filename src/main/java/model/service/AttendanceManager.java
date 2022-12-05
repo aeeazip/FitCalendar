@@ -1,10 +1,11 @@
 package model.service;
 
-import model.dao.AttendanceDao;
+import model.dao.mybatis.AttendanceDao;
 
 public class AttendanceManager {
 
 	private static AttendanceManager manager = new AttendanceManager();
+	//private AttendanceDao attendanceDao;
 	private AttendanceDao attendanceDao;
 
 	private AttendanceManager() {
