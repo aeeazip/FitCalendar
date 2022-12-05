@@ -15,10 +15,10 @@ public class RecordTest {
 		Record r = recordDao.findRecordDetails(2);
 		System.out.println(r.toString());
 
-		List<Record> list1 = recordDao.findRecordList(1);
+		// List<Record> list1 = recordDao.findRecordList(1);
 		List<Record> list2 = recordDao.findAllRecords();
 
-		System.out.println(list1.toString());
+		// System.out.println(list1.toString());
 		System.out.println(list2.toString());
 
 //		recordDao.deleteRecord(3);

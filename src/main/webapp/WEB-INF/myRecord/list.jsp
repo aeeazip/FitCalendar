@@ -34,7 +34,16 @@ td {
 		</div>
 
 		<%
-			int recordId = 1;
+			String pageT = (String) request.getAttribute("totalPage");
+			String currentP = (String)request.getAttribute("currentPage");
+			
+			int recordId;
+			
+			// 화면에 출력할 Record 개수를 5개로 설정 -> *5 해주는 것!! (ex. 10개씩 출력하고 싶다면 10으로 변경)
+			if(currentP == null)
+				recordId = 1;
+			else
+				recordId = (Integer.parseInt(currentP) - 1)*5 + 1;
 		%>
 		<div style="text-align: center">
 			<form>
@@ -77,6 +86,18 @@ td {
 				</table>
 			</form>
 		</div>
+		<br><br>
+		<div style="text-align: center">
+				<%
+					for(int j=1; j<=Integer.parseInt(pageT); j++){
+						String str = String.valueOf(j);
+				%>
+				<a href="<c:url value='/myRecord/list'><c:param name='currentPage' value='<%= str %>'/></c:url>"><%= j %></a>
+				<%
+				}
+				%>
+		</div>
+		
 		<!-- 글작성 -->
 		<form action="<c:url value='/myRecord/write' />" method="GET">
 			<button type="submit" class="record_btn">기록 작성하기</button>

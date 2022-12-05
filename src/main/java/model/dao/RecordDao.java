@@ -47,31 +47,36 @@ public class RecordDao {
 	}
 
 	// exerciser가 작성한 모든 Record 조회
-	public List<Record> findRecordList(int exerciserId) {
+	public List<Record> findRecordList(int exerciserId, int currentPage, int countPerPage) {
 		String query = "select * from record where exerciserId=? order by recordId desc";
 		Object[] param = new Object[] { exerciserId };
-		jdbcUtil.setSqlAndParameters(query, param);
+		jdbcUtil.setSqlAndParameters(query, param,
+				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
+				ResultSet.CONCUR_READ_ONLY);
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 
-			List<Record> list = new ArrayList<Record>();
-			while (rs.next()) {
-				int recordId = rs.getInt("recordId");
-				String title = rs.getString("title");
-				String creationDate = rs.getString("creationDate");
-				int totalTime = rs.getInt("totalTime");
-				int category = rs.getInt("category");
-				String routine = rs.getString("routine");
-				String diet = rs.getString("diet");
-				String photo = rs.getString("photo");
-				int shareOption = rs.getInt("shareOption");
+			int start = ((currentPage-1) * countPerPage) + 1;	// 출력을 시작할 행 번호 계산
+			if ((start >= 0) && rs.absolute(start)) {			// 커서를 시작 행으로 이동
+				List<Record> list = new ArrayList<Record>();
+				do {
+					int recordId = rs.getInt("recordId");
+					String title = rs.getString("title");
+					String creationDate = rs.getString("creationDate");
+					int totalTime = rs.getInt("totalTime");
+					int category = rs.getInt("category");
+					String routine = rs.getString("routine");
+					String diet = rs.getString("diet");
+					String photo = rs.getString("photo");
+					int shareOption = rs.getInt("shareOption");
 
-				Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo,
-						shareOption, exerciserId);
-				list.add(record);
+					Record record = new Record(recordId, title, creationDate, totalTime, category, routine, diet, photo,
+							shareOption, exerciserId);
+					list.add(record);
+				} while ((rs.next()) && (--countPerPage > 0));		
+				return list;
 			}
-			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -323,11 +328,11 @@ public class RecordDao {
 		}
 		return -1;
 	}
-	
+
 	public int getTotalPages(int countPerPage) {
 		String query = "select count(*) from record";
 		jdbcUtil.setSqlAndParameters(query, null);
-		
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			int result = 0;
