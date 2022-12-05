@@ -23,6 +23,7 @@
      <commons-dbcp2.version>2.2.0</commons-dbcp2.version>   
      <commons-fileupload.version>1.4</commons-fileupload.version>   
      <oracle-jdbc-driver.version>21.1.0.0</oracle-jdbc-driver.version>
+     <mybatis.version>3.5.7</mybatis.version>
   </properties>
 
   <dependencies>
@@ -85,6 +86,13 @@
           <artifactId>slf4j-api</artifactId>
           <version>1.7.25</version>
       </dependency>
+      
+      <!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
   </dependencies>
 
   <build>
