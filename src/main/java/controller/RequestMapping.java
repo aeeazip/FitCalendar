@@ -14,7 +14,6 @@ import controller.exerciser.ShowExerciserInfoController;
 import controller.matching.ListMessageController;
 import controller.matching.MatchingCompleteController;
 import controller.matching.MatchingEndFormController;
-import controller.matching.MatchingReMaxmateFormController;
 import controller.matching.MatchingGetRecommendListController;
 import controller.matching.MatchingReRequestController;
 import controller.matching.MatchingRecommendRefusalController;
@@ -77,7 +76,7 @@ public class RequestMapping {
 		
 		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
 		
-		mappings.put("/matching/option", new MatchingReMaxmateFormController());	
+		mappings.put("/matching/option", new ForwardController("/matching/setMate.jsp"));			
 		mappings.put("/matching/option/setMate", new UpdateOptionController());
 		mappings.put("/matching/option/setOption", new UpdateMatchOptionController());
 		mappings.put("/matching/option/endOption", new MatchingEndFormController());	
@@ -85,6 +84,7 @@ public class RequestMapping {
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
 		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
 		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());
+		
 		mappings.put("/matching/fitmate", new ShowFitmateController());
 
 		// MAtching inwoo's Part!!!!
