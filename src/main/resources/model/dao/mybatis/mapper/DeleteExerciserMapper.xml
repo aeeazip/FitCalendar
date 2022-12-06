@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<delete id="deleteExerciser" parameterType="int">
+		DELETE FROM Exerciser
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteAttendance" parameterType="int">
+		DELETE FROM Attendance
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteFitmate" parameterType="int">
+		DELETE FROM Fitmate
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteInbody" parameterType="int">
+		DELETE FROM Inbody
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteMatchingStatus" parameterType="int">
+		DELETE FROM matchingStatus
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteMessage" parameterType="int">
+		DELETE FROM Message
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteRecommendList" parameterType="int">
+		DELETE FROM RecommendList
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteRecord" parameterType="int">
+		DELETE FROM RecommendList
+		WHERE exerciserId = #{deleteId}
+</delete>
+
+<delete id="deleteToExercise" parameterType="int">
+		DELETE FROM ToExercise
+		WHERE exerciserId = #{deleteId}
+</delete>
