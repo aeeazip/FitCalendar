@@ -4,13 +4,13 @@
 <mapper namespace="model.dao.mybatis.mapper.RecordMapper">
 	<cache />
 	
-	<insert id="insertRecord" parameterType="Record">
+	<insert id="insertRecord" parameterType="int">
 		<selectKey keyProperty="id" resultType="int" order="BEFORE">
 			SELECT RECORDIDSEQ.nextval AS id FROM DUAL
 		</selectKey>
 				
 		INSERT INTO Community (recordid, title, creationdate, totaltime, category, routine, diet, photo, shareoption, exerciserid)
-		VALUES (#{id}, #{title}, #{creationDate}, #{totalTime},#{category},#{routine},#{diet},#{photo},#{diet},#{photo},#{shareOption},#{exerciserId})
+		VALUES (#{id}, #{title}, #{creationDate}, #{totalTime},#{category},#{routine},#{diet},#{photo},#{shareOption},#{exerciserId})
 	</insert>
 	
 </mapper>

@@ -7,7 +7,7 @@
     	<setting name="cacheEnabled" value="false"/>
   	</settings>
   	<typeAliases>
-		<typeAlias type="model.ToExercise" alias="ToExercise" />
+		<typeAlias type="model.Record" alias="Record" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -21,6 +21,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="model/dao/mybatis/mapper/ToExerciseMapper.xml" />
+		<mapper resource="model/dao/mybatis/mapper/RecordMapper.xml" />
 	</mappers>
 </configuration>
