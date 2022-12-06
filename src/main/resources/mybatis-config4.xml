@@ -7,7 +7,6 @@
     	<setting name="cacheEnabled" value="false"/>
   	</settings>
   	<typeAliases>
-		<typeAlias type="model.Static" alias="Static" />
 		<typeAlias type="model.ToExercise" alias="ToExercise" />
 	</typeAliases>
 	<environments default="development">
@@ -22,6 +21,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="model/dao/mybatis/mapper/AttendanceMapper.xml" />
+		<mapper resource="model/dao/mybatis/mapper/ToExerciseMapper.xml" />
 	</mappers>
 </configuration>

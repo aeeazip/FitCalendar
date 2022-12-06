@@ -36,7 +36,7 @@
 
 <delete id="deleteRecommendList" parameterType="int">
 		DELETE FROM RecommendList
-		WHERE exerciserId = #{deleteId} OR recommId1 = #{deleteId} OR recommId2 = #{deletId} OR recommId3 = #{deleteId}
+		WHERE exerciserId = #{deleteId} OR recommId1 = #{deleteId} OR recommId2 = #{deleteId} OR recommId3 = #{deleteId}
 </delete>
 
 <delete id="deleteRecord" parameterType="int">
