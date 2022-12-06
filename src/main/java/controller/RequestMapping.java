@@ -22,7 +22,6 @@ import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
 import controller.matching.MatchingWantRecommendController_serve;
-import controller.matching.MatchingWantRecommendFormController;
 import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateMatchOptionController;
@@ -78,8 +77,8 @@ public class RequestMapping {
 		mappings.put("/matching/option/endOption", new MatchingEndFormController());			
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
 		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
-		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());		
-		mappings.put("/matching/wantRecommend", new MatchingWantRecommendFormController());// 추천 설문 form return OK
+		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());			
+		mappings.put("/matching/wantRecommend", new ForwardController("/matching/wantRecommendForm.jsp"));// 추천 설문 form return OK
 		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController_serve());// 전송 OK
 		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());// OK
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
