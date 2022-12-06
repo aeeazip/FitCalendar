@@ -44,15 +44,19 @@
 							</c:if>
 						</tr>
 					</c:forEach>
-				</c:if>
 			</table>
 			</form>
-
+			</div>
+			</c:if>
 			<form name="startMateForm"
 				action="<c:url value='/matching/matchingMenu' />" method="GET">
 				<button type="submit" class="fitmatelist_btn" >menu 화면으로 돌아가기</button>
 			</form>
+			
+			<form name="startMateForm"
+				action="<c:url value='/matching/wantRecommend' />" method="GET">
+				<button type="submit" class="fitmatelist_btn" >Fitmate 추천받기</button>
+			</form>
 	</div>
-</div>
 </div>
 	<%@ include file="../frameFooter.jsp"%>

@@ -9,10 +9,11 @@
 	int count = 1;
 %>
 
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <title>Matching request processing!!!</title>
-   <link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
-   <link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Matching request processing!!!</title>
+	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<style>
 	 	#recordT { 
 	 		border-collapse: collapse; 
@@ -24,17 +25,17 @@
 
 <div id="main">
 	<div class="flex-container2">
+	
+	<c:if test="${!empty getRecommList}">
 		<div id="subTitle" >
            <p class="subTitle" style="font-size:18px; margin-bottom:30px;">나에게 요청을 보낸 예비 Fitmate입니다!<br>수락/거절을 해주세요.</p>
       	 </div>
+	</c:if>
 	
-		<c:if test="${empty getRecommList}">
-		<p class="subTitle" style="font-size:18px; margin-bottom:30px;">현재 getRecommList가 없습니다. </p>
-		</c:if>
-		<c:if test="${not empty getRecommList}">
-	
-	
-	
+	<c:if test="${empty getRecommList}">
+	<p class="subTitle" style="font-size:18px; margin-bottom:30px;">현재 요청받은 Fitmate가 없습니다. </p>
+	</c:if>
+	<c:if test="${not empty getRecommList}">
 		<div style="text-align: center">
 			<form name="submitform" method="POST" action="<c:url value='/matching/getRecommendList/accept'/>">
 				<table id="recordT" style="table-layout: auto; table-layout: fixed;">
@@ -69,12 +70,14 @@
 					<%count++; %>
 					</c:forEach>
 					<%count = 1; %>
-					</table>	
-					<a href="<c:url value='/matching/matchingMenu'>
-				     		   <c:param name='fitmateId' value='${list.id}'/>
-						 	 </c:url>" class="golist_btn" style="margin-top:50px">menu 화면으로 돌아가기</a>
-				</form></div>
+					</table>
+				</form>
    			</c:if>
-</div> 
+			</div> 
+			
+   			<form name="startMateForm"
+				action="<c:url value='/matching/matchingMenu' />" method="GET">
+				<button type="submit" class="fitmatelist_btn" style="margin-top:15px;">menu 화면으로 돌아가기</button>
+			</form>
 </div>
 <%@ include file="../frameFooter.jsp" %>
