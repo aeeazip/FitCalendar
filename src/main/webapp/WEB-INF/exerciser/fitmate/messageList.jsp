@@ -4,48 +4,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>AllRecord</title>
-<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
-	type="text/css">
-<link rel="stylesheet"
-	href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
-<script>
-	function recordRemove() {
-		return confirm("정말 삭제하시겠습니까?");
-	}
-
-	function send() {
-		var x = document.getElementById("recieve");
-		var y = document.getElementById("send");
-		if (y.style.display === "none") {
-			x.style.display = "none";
-			y.style.display = "block";
-		} else {
-			x.style.display = "none";
-			y.style.display = "block";
+	<meta charset="utf-8">
+	<title>AllRecord</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />"
+		type="text/css">
+	<link rel="stylesheet"
+		href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
+	<script>
+		function recordRemove() {
+			return confirm("정말 삭제하시겠습니까?");
 		}
-
-	}
-
-	function recieve() {
-		var x = document.getElementById("send");
-		var y = document.getElementById("recieve");
-		if (y.style.display === "none") {
-			x.style.display = "none";
-			y.style.display = "block";
-		} else {
-			x.style.display = "none";
-			y.style.display = "block";
+	
+		function send() {
+			var x = document.getElementById("recieve");
+			var y = document.getElementById("send");
+			if (y.style.display === "none") {
+				x.style.display = "none";
+				y.style.display = "block";
+			} else {
+				x.style.display = "none";
+				y.style.display = "block";
+			}
+	
 		}
-
+	
+		function recieve() {
+			var x = document.getElementById("send");
+			var y = document.getElementById("recieve");
+			if (y.style.display === "none") {
+				x.style.display = "none";
+				y.style.display = "block";
+			} else {
+				x.style.display = "none";
+				y.style.display = "block";
+			}
+	
+		}
+	</script>
+	<style>
+	.messageList {
+		border-collapse: collapse;
 	}
-</script>
-<style>
-.messageList {
-	border-collapse: collapse;
-}
-</style>
+	</style>
 </head>
 <%@ include file="../../frameHeader.jsp"%>
 
@@ -57,8 +57,8 @@ int i = 1;
 int j = 1;
 %>
 
-<input type="button" value="보낸 메세지함" onClick="send()">
-<input type="button" value="받은 메세지함" onClick="recieve()">
+<input type="button" class="send_btn" value="보낸 메세지함" onClick="send()">
+<input type="button" class="send_btn" value="받은 메세지함" onClick="recieve()">
 
 <div id="main">
 	<div class="flex-container2">

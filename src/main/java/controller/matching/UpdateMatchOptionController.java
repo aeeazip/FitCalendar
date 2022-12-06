@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import controller.exerciser.ExerciserSessionUtils;
 import model.Exerciser;
 import model.service.ExerciserManager;
 import model.service.MatchingManager;
@@ -34,15 +33,20 @@ public class UpdateMatchOptionController implements Controller {
 			exerciser.setUseMatchSvc("F");
 			request.setAttribute("nickname", exerciser.getNickname());
 			manager.optionChange(exerciser.getExerciserId(), 0, exerciser.getUseMatchSvc());
+
+			// alert창
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('매칭 서비스 종료 되었습니다.'); location.href='../main'; </script>");
+//
+//			out.flush();
 			return "redirect:/main"; // 성공 시, main 페이지로 forwarding
-			
 		} catch (Exception e) {
 			request.setAttribute("checkFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("exerciserId", exerciser.getExerciserId());
+			return "redirect:/matching/option/setOption"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
 		}
-
-		return "redirect:/matching/option/setOption"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
 
 	}
 }

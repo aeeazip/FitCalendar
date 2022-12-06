@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
 </head>
 <%@ include file="../frameHeader.jsp" %>
-<body>
 <div id="main">
 	<form name="setMaxMateForm" action="<c:url value='/matching/option/setMate' />" method="POST">
 		<div id="subTitle" style="margin-left:50px">
@@ -24,6 +23,11 @@
           onblur="this.placeholder = '소통하고 싶은 최대 Mate 수'">
 		
 		<button type="submit" value="제출" class="start_btn" >옵션 바꾸기</button>
+	</form>
+	
+	<form name="startMateForm"
+				action="<c:url value='/matching/matchingMenu' />" method="GET">
+				<button type="submit" class="start_btn" style="margin-top:15px;">menu 화면으로 돌아가기</button>
 	</form>
 </div>
 <%@ include file="../frameFooter.jsp" %>
