@@ -57,10 +57,10 @@ int i = 1;
 int j = 1;
 %>
 
-<input type="button" class="send_btn" value="보낸 메세지함" onClick="send()">
-<input type="button" class="send_btn" value="받은 메세지함" onClick="recieve()">
+<button type="button" class="send_btn" onClick="send()" style="margin-left:30px;">보낸 메세지함</button>
+<button type="button" class="send_btn" onClick="recieve()">받은 메세지함</button>
 
-<div id="main">
+<div id="main" style="margin-top:20px;">
 	<div class="flex-container2">
 		<div id="subTitle">
 			<div id="send">
@@ -94,7 +94,7 @@ int j = 1;
 
 			<div id="recieve" style="display:none;">
 			<p class="subTitle" align="left"
-				style="font-size: 18px; margin-bottom: 10px; margin-top: 50px;">받은 메세지함</p>
+				style="font-size: 18px; margin-bottom: 10px;">받은 메세지함</p>
 			<div style="text-align: center">
 				<form>
 					<table class="messageList"
