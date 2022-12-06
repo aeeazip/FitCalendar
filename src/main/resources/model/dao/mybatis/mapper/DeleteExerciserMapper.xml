@@ -16,7 +16,7 @@
 
 <delete id="deleteFitmate" parameterType="int">
 		DELETE FROM Fitmate
-		WHERE exerciserId = #{deleteId}
+		WHERE exerciser1 = #{deleteId} OR exerciser2 = #{deleteId}
 </delete>
 
 <delete id="deleteInbody" parameterType="int">
@@ -26,17 +26,17 @@
 
 <delete id="deleteMatchingStatus" parameterType="int">
 		DELETE FROM matchingStatus
-		WHERE exerciserId = #{deleteId}
+		WHERE senderId = #{deleteId} OR receiverId = #{deleteId}
 </delete>
 
 <delete id="deleteMessage" parameterType="int">
 		DELETE FROM Message
-		WHERE exerciserId = #{deleteId}
+		WHERE senderId = #{deleteId} OR receiverId = #{deleteId}
 </delete>
 
 <delete id="deleteRecommendList" parameterType="int">
 		DELETE FROM RecommendList
-		WHERE exerciserId = #{deleteId}
+		WHERE exerciserId = #{deleteId} OR recommId1 = #{deleteId} OR recommId2 = #{deletId} OR recommId3 = #{deleteId}
 </delete>
 
 <delete id="deleteRecord" parameterType="int">
@@ -48,3 +48,5 @@
 		DELETE FROM ToExercise
 		WHERE exerciserId = #{deleteId}
 </delete>
+
+</mapper>
