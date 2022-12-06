@@ -16,7 +16,7 @@ public class MyBatis_ToExerciseDao {
    private SqlSessionFactory sqlSessionFactory;
    
    public MyBatis_ToExerciseDao() {
-      String resource = "mybatis-config2.xml";
+      String resource = "mybatis-config4.xml";
       InputStream inputStream;
       try {
          inputStream = Resources.getResourceAsStream(resource);
