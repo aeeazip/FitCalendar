@@ -15,7 +15,7 @@
 </head>
 <%@ include file="../frameHeader.jsp"%>
 <div id="subTitle">
-	<p class="subTitle">${nickname}님의option정보입니다.</p>
+	<p class="subTitle">${nickname}님의 Matching 옵션  정보입니다.</p>
 	<p class="category2" align="center" style="margin-bottom: 20px;">
 		<c:if test="${useMatchSvc eq 'T'}">
 			<input type="radio" checked>&nbsp;&nbsp;매칭 가능 상태
