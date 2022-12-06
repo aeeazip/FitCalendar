@@ -26,9 +26,9 @@
    WHERE exerciserId = #{exerciserID} AND itemId = #{itemId}
    </delete>
 
-   <select id="findToExercise" parameterType="int" resultType="ToExercise">  
-   SELECT itemId, creationDate, content, checked, exerciserId
-   FROM ToExercise
-   WHERE exerciserId = #{exerciserId}
+   <select id="findToExercise" parameterType="int" resultType="ToExercise">
+SELECT itemId, creationDate, content, checked, exerciserId
+FROM ToExercise
+WHERE exerciserId = #{exerciserId}
    </select>
 </mapper>
