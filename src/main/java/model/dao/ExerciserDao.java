@@ -493,10 +493,7 @@ public class ExerciserDao {
 
 	public int deleteRecommendList(int deleteId) {
 		String query = "DELETE FROM RecommendList WHERE exerciserid = ? OR recommid1 = ? OR recommid2 = ? OR recommid3 = ? "; // JDBCUtil
-																																// 에
-																																// query
-																																// 문
-																																// 설정
+																																// 에																															// 설정
 		Object[] param = new Object[] { deleteId, deleteId, deleteId, deleteId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
