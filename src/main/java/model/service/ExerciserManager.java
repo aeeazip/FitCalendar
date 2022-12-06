@@ -10,12 +10,12 @@ import model.dao.mybatis.DeleteExerciserDao;
 public class ExerciserManager {
 	private static ExerciserManager manager = new ExerciserManager();
 	private ExerciserDao exerciserDao;
-	private DeleteExerciserDao deleteDao;
+//	private DeleteExerciserDao deleteDao;
 
 	private ExerciserManager() {
 		try {
 			exerciserDao = new ExerciserDao();
-			deleteDao = new DeleteExerciserDao();
+//			deleteDao = new DeleteExerciserDao();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,16 +50,16 @@ public class ExerciserManager {
 
 	public int deleteExerciser(int deleteId, String password) {
 		if (exerciserDao.findExerciser(deleteId).getPassword().equals(password)) {
-			deleteDao.deleteAttendance(deleteId);
-			deleteDao.deleteFitmate(deleteId);
-			deleteDao.deleteInbody(deleteId);
-			deleteDao.deleteMatchingStatus(deleteId);
-			deleteDao.deleteMessage(deleteId);
-			deleteDao.deleteRecommendList(deleteId);
-			deleteDao.deleteRecord(deleteId);
-			deleteDao.deleteToExercise(deleteId);
+			exerciserDao.deleteAttendance(deleteId);
+			exerciserDao.deleteFitmate(deleteId);
+			exerciserDao.deleteInbody(deleteId);
+			exerciserDao.deleteMatchingStatus(deleteId);
+			exerciserDao.deleteMessage(deleteId);
+			exerciserDao.deleteRecommendList(deleteId);
+			exerciserDao.deleteRecord(deleteId);
+			exerciserDao.deleteToExercise(deleteId);
 			
-			return deleteDao.deleteExerciser(deleteId);
+			return exerciserDao.deleteExerciser(deleteId);
 		}
 		
 
