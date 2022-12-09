@@ -5,7 +5,7 @@
 	<cache />
 	
 	<insert id="checkAttendance" parameterType="int">				
-		INSERT INTO Attendance(exerciserId, creationdate) 
+		INSERT INTO Attendance(exerciserId, creationDate) 
 		VALUES (#{exerciserId}, SYSDATE)
 	</insert>
 
