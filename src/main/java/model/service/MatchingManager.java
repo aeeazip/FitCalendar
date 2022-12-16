@@ -15,7 +15,6 @@ public class MatchingManager {
 
 	private MatchingManager() {
 		try {
-			exerciserDao = new ExerciserDao();
 			matchingDao = new MatchingDao();
 		} catch (Exception e) {
 			e.printStackTrace();
