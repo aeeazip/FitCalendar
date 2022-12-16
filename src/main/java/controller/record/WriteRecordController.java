@@ -49,8 +49,6 @@ public class WriteRecordController implements Controller {
 			str = (String) session.getAttribute("id");
 			exerciser = userManager.findExerciser(str);
 
-			// System.out.println(str);
-			// System.out.println(exerciser.getNickname());
 			request.setAttribute("NickName", exerciser.getNickname());
 			log.debug("RecordForm Request");
 			return "/myRecord/recordForm.jsp"; // registerForm으로 이동
@@ -59,7 +57,8 @@ public class WriteRecordController implements Controller {
 		int exerciserId = exerciser.getExerciserId();
 
 		boolean check = ServletFileUpload.isMultipartContent(request);   
-		if(check) { // 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
+		if(check) { 
+			// 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
 			// 아래와 같이 하면 Tomcat 내부에 복사된 프로젝트 밑에 upload 폴더가 생성됨 
 			ServletContext context = request.getServletContext();
 			String path = context.getRealPath("/upload");
@@ -131,9 +130,8 @@ public class WriteRecordController implements Controller {
 				e.printStackTrace();
 			} catch(Exception e) {            
 				e.printStackTrace();
-			} // try catch 문 종료
-		} // if문 종료
-		
+			} 
+		} 
 		
 		try {
 			// 1. DB에 Record 정보 등록하기

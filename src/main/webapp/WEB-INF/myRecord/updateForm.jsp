@@ -88,15 +88,6 @@ Record record = (Record) request.getAttribute("record");
 							<option value="3">요가</option>
 							<option value="4">러닝</option>
 							<option value="5">기타</option>
-<%--                    		<c:forEach var="record" items="${record}"> --%>
-<!--                    			<option value="1" -->
-<%--                    				<c:if test="${record.category eq '1'}">selected="selected"</c:if> --%>
-<!--                    			>헬스</option> -->
-<!-- 							<option value="2">필라테스</option> -->
-<!-- 							<option value="3">요가</option> -->
-<!-- 							<option value="4">러닝</option> -->
-<!-- 							<option value="5">기타</option> -->
-<%-- 						</c:forEach> --%>
                    		</select>
                    </div>
                    <div class="box">

@@ -14,7 +14,7 @@ public class FitmateDao {
 		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성 및 활용
 	}
 	
-	public List<Message> getSendMessage(int senderId, int receiverId){ // sender에 내 id receiver에 상대 fitmate id
+	public List<Message> getSendMessage(int senderId, int receiverId){ // sender에 내 id + receiver에 상대 fitmate id
 		String query = "select * from message where senderid=? and receiverid=? order by msgid desc";
 		Object[] param = new Object[] {senderId, receiverId};
 		jdbcUtil.setSqlAndParameters(query, param);
@@ -42,7 +42,7 @@ public class FitmateDao {
 		return null;
 	}
 	
-	public List<Message> getReceiveMessage(int senderId, int receiverId){ // sender에 상대 fitmate, receiver에 내 id
+	public List<Message> getReceiveMessage(int senderId, int receiverId){ // sender에 상대 fitmate + receiver에 내 id
 		String query = "select * from message where senderid=? and receiverid=? order by msgid desc";
 		Object[] param = new Object[] {senderId, receiverId};
 		jdbcUtil.setSqlAndParameters(query, param);
