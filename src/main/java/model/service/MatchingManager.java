@@ -12,7 +12,6 @@ import model.dao.MatchingDao;
 public class MatchingManager {
 	private static MatchingManager matchingMan = new MatchingManager();
 	private MatchingDao matchingDao;
-	private ExerciserDao exerciserDao;
 
 	private MatchingManager() {
 		try {
