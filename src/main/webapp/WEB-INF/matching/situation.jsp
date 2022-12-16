@@ -25,7 +25,6 @@
 		<p class="subTitle" style="font-size:18px; margin-bottom:30px;">현재 요청하신 FitMate가 존재하지 않습니다.</p>
 		</c:if>
 		<c:if test="${not empty matchingStatus}">
-		
 		<div style="text-align: center">
 		<form>
 			<table style="table-layout: auto; table-layout: fixed;">
@@ -48,6 +47,8 @@
 			</form>
 			</div>
 			</c:if>
+			
+			
 			<form name="startMateForm"
 				action="<c:url value='/matching/matchingMenu' />" method="GET">
 				<button type="submit" class="fitmatelist_btn" >menu 화면으로 돌아가기</button>
