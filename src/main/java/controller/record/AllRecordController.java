@@ -39,7 +39,6 @@ public class AllRecordController implements Controller {
 		
 		for(Record r : recordList) {
 			Exerciser e = exManager.findExerciserById(r.getExerciserId());
-			// System.out.println(i + e.getNickname());
 			nickNameList.add(e.getNickname());
 		}
 		
@@ -51,6 +50,7 @@ public class AllRecordController implements Controller {
 		request.setAttribute("nickNameList", nickNameList);
 		request.setAttribute("totalP", String.valueOf(totalP));
 		request.setAttribute("currentPage", String.valueOf(currentPage));
+		
 		// 사용자가 작성한 Record 리스트 화면으로 이동(forwarding)
 		return "/record/all/list.jsp";
 	}

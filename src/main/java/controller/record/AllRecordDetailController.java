@@ -28,8 +28,6 @@ public class AllRecordDetailController implements Controller {
 		ExerciserManager userManager = ExerciserManager.getInstance();
 
 		Record record;
-
-		// recordId가 없으니까 parsing할게 없어서 null 뜸 -> 어케 고치냐..
 		String param = request.getParameter("recordId");
 		
 		System.out.println(param);
@@ -39,7 +37,6 @@ public class AllRecordDetailController implements Controller {
 			System.out.println(recordId);
 		}
 		else {
-			// System.out.println("열로 들어옴");
 			rId = Integer.parseInt((String)session.getAttribute("rId"));	
 			System.out.println(session.getAttribute("rId"));
 			System.out.println(rId);
