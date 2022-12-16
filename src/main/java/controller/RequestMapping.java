@@ -21,7 +21,7 @@ import controller.matching.MatchingRequestController;
 import controller.matching.MatchingSituationController;
 import controller.matching.MatchingStartController;
 import controller.matching.MatchingWantListController;
-import controller.matching.MatchingWantRecommendController_serve;
+import controller.matching.MatchingWantRecommendController;
 import controller.matching.ShowFitmateController;
 import controller.matching.ShowMatchingOptionController;
 import controller.matching.UpdateMatchOptionController;
@@ -52,14 +52,14 @@ public class RequestMapping {
 	private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
 	public void initMapping() {
-		mappings.put("/", new ForwardController("/main.jsp"));			
+		mappings.put("/", new ForwardController("/main.jsp"));
 		mappings.put("/main", new ShowExerciserInfoController());
 
 		mappings.put("/exerciser/register", new RegisterController());
 		mappings.put("/exerciser/login", new LoginController());
 		mappings.put("/exerciser/logout", new LogoutController());
-				
-		// MyPage 관련 요청		
+
+		// MyPage 관련 요청
 		mappings.put("/myPage", new MyPageController());
 		mappings.put("/myPage/attendance", new AttendanceController());
 		mappings.put("/myPage/static", new StaticController());
@@ -69,18 +69,18 @@ public class RequestMapping {
 		mappings.put("/mypage/delete", new DeleteExerciserController());
 
 		// Matching 관련 요청
-		mappings.put("/matching/startMatching", new MatchingStartController());				
-		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());		
-		mappings.put("/matching/option", new ForwardController("/matching/setMate.jsp"));			
+		mappings.put("/matching/startMatching", new MatchingStartController());
+		mappings.put("/matching/matchingMenu", new ShowMatchingOptionController());
+		mappings.put("/matching/option", new ForwardController("/matching/setMate.jsp"));
 		mappings.put("/matching/option/setMate", new UpdateOptionController());
 		mappings.put("/matching/option/setOption", new UpdateMatchOptionController());
-		mappings.put("/matching/option/endOption", new MatchingEndFormController());			
+		mappings.put("/matching/option/endOption", new MatchingEndFormController());
 		mappings.put("/matching/getRecommendList", new MatchingGetRecommendListController());
 		mappings.put("/matching/getRecommendList/accept", new MatchingCompleteController());
-		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());			
-		mappings.put("/matching/wantRecommend", new ForwardController("/matching/wantRecommendForm.jsp"));// 추천 설문 form return OK
-		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController_serve());// 전송 OK
-		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());// OK
+		mappings.put("/matching/getRecommendList/refuse", new MatchingRecommendRefusalController());
+		mappings.put("/matching/wantRecommend", new ForwardController("/matching/wantRecommendForm.jsp"));
+		mappings.put("/matching/wantRecommend/form", new MatchingWantRecommendController());
+		mappings.put("/matching/wantRecommend/list", new MatchingWantListController());
 		mappings.put("/matching/wantRecommend/list/request", new MatchingRequestController());
 		mappings.put("/matching/wantRecommend/list/reRequest", new MatchingReRequestController());
 		mappings.put("/matching/situation/list", new MatchingSituationController());
