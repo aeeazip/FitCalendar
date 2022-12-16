@@ -29,11 +29,10 @@ public class MatchingReRequestController  implements Controller {
 		
 		if(exerciser.getPoint() >= 30) {
 			int result = recommendManager.reRecommendExerciser(exerciser.getExerciserId());
-			System.out.println(result);
 		}
-	
-		System.out.println("Matching Re Request Controller");
 		
 		return "redirect:/matching/wantRecommend/list";
 	}
 }
+
+

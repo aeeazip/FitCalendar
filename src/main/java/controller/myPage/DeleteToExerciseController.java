@@ -30,7 +30,6 @@ public class DeleteToExerciseController implements Controller {
 		
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
-		System.out.println("delete controller");
 		toExerciserManager.deleteToExercise(exerciser.getExerciserId(), itemId);
 
 		return "redirect:/mypage/ToExercise";

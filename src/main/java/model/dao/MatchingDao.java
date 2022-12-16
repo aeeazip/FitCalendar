@@ -152,14 +152,9 @@ public class MatchingDao {
 		String query = "UPDATE matchingStatus SET status = 3 WHERE senderId =? AND receiverId = ?";
 		Object[] param = new Object[] { yourExerciserId, myExerciserId };
 		jdbcUtil.setSqlAndParameters(query, param);
-		System.out.println(myExerciserId);
-		System.out.println(yourExerciserId);
 
 		try {
 			int result = jdbcUtil.executeUpdate();
-
-			System.out.println(result);
-
 			return result; 
 
 		} catch (Exception ex) {
@@ -241,7 +236,6 @@ public class MatchingDao {
 	         while (rs.next()) {
 	            exerciser1 = rs.getInt("exerciser1");
 	            exerciser2 = rs.getInt("exerciser2");
-	            System.out.println(exerciser1);
 	            fitmate = new Fitmate(exerciser1, exerciser2);
 
 	            fitmateList.add(fitmate);

@@ -34,8 +34,6 @@ public class UpdateProfileController implements Controller {
 			// userId로 exerciser의 int id 값 얻어옴 -> 이거로 해당 exerciser의 정보 가져옴
 			Exerciser exerciser = exerciserMgr.findExerciser(id);
 			int exerciserId = exerciser.getExerciserId();
-			System.out.println("37행 : " + exerciserId);
-			System.out.println("38행 : " + exerciser);
 
 			String exerciserid = exerciser.getId();
 			String nickname = exerciser.getNickname();
@@ -80,7 +78,6 @@ public class UpdateProfileController implements Controller {
 		int result1 = exerciserMgr.updateExerciser(exerciserId, request.getParameter("nickname"),
 				request.getParameter("explanation"), request.getParameter("speciality"),
 				request.getParameter("personality"));
-		System.out.println(result1);
 
 		InbodyManager inbodyMgr = InbodyManager.getInstance();
 
@@ -90,13 +87,11 @@ public class UpdateProfileController implements Controller {
 				Integer.parseInt(request.getParameter("skeletalMM")),
 				Integer.parseInt(request.getParameter("visceralFat")), request.getParameter("measuredate"),
 				exerciserId);
-		System.out.println(result2);
 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>alert('수정 되었습니다.'); history.go(-2); </script>");
 
-		System.out.println("변경  !!");
 		out.flush();
 
 		return "redirect:/myPage";

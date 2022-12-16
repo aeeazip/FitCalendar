@@ -29,10 +29,7 @@ public class CheckToExerciseController implements Controller {
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		String itemId = (String)request.getParameter("itemId");
 		int item_id = Integer.parseInt(itemId);
-		System.out.println("checkController");
-		
-		
-		System.out.println(itemId);
+	
 
 		toExerciserManager.checkToExercise(exerciser.getExerciserId(), item_id);
 

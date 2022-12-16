@@ -27,7 +27,7 @@ public class MatchingWantListController implements Controller {
 		
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
-		System.out.println("List Controller");
+	
 		recommendList = recommendManager.displayExerciser(exerciser.getExerciserId());
 		Exerciser recomm1 = exerciserManager.findExerciserById(recommendList.getRecommend1());
 		Exerciser recomm2 = exerciserManager.findExerciserById(recommendList.getRecommend2());
