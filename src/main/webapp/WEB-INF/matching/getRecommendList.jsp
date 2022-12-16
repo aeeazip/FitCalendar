@@ -11,9 +11,9 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Matching request processing!!!</title>
+	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/css/startMatching.css' />" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/css/wantRecommendForm.css' />" type="text/css">
-	<link rel="stylesheet" href="<c:url value='/css/frame.css' />" type="text/css">
 	<style>
 	 	#recordT { 
 	 		border-collapse: collapse; 
@@ -71,13 +71,13 @@
 					</c:forEach>
 					<%count = 1; %>
 					</table>
-				</form>
+				</form></div>
    			</c:if>
 			</div> 
 			
    			<form name="startMateForm"
 				action="<c:url value='/matching/matchingMenu' />" method="GET">
-				<button type="submit" class="fitmatelist_btn" style="margin-top:15px;">menu 화면으로 돌아가기</button>
+				<button type="submit" class="fitmatelist_btn" style="margin-top:35px; margin-left:150px;">menu 화면으로 돌아가기</button>
 			</form>
 </div>
 <%@ include file="../frameFooter.jsp" %>

@@ -16,8 +16,8 @@ import model.WeightRange;
 import model.service.ExerciserManager;
 import model.service.RecommendManager;
 
-public class MatchingWantRecommendController_serve implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(MatchingWantRecommendController_serve.class);
+public class MatchingWantRecommendController implements Controller {
+	private static final Logger log = LoggerFactory.getLogger(MatchingWantRecommendController.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
