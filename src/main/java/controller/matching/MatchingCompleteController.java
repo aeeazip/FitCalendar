@@ -30,28 +30,24 @@ public class MatchingCompleteController implements Controller {
 		HttpSession session = request.getSession();
 		
 		String userId = (String)session.getAttribute("id");
-		System.out.println("controllerComplete");
 	    // 로그인한 사용자의 exerciser 객체
 	    Exerciser exerciser = exManager.findExerciser(userId);
 	      
 	    String fitmateid = request.getParameter("fitmateId");
-	    System.out.println(fitmateid);
+
 		//상대exerciser(=fitmate) ID
 	    Exerciser fitmate = exManager.findExerciser(fitmateid);
 		
 		//accept -> fitmate table에 저장
 		matchingManager.acceptRecommend(exerciser.getExerciserId(), fitmate.getExerciserId());
-		System.out.println("완료");
 		
 		//매칭 수락시, status=1로 바꿔주기		
 		matchingManager.matchingComplete(exerciser.getExerciserId(), fitmate.getExerciserId());
 		
 		// 매칭 수락 시 시스템에서 fitmate간 메시지 활성화
 		int result = matchingManager.notifyMatching(fitmate.getExerciserId(), exerciser.getExerciserId()); // 나
-		System.out.println(result);
 		
 		int result1 = matchingManager.notifyMatching(exerciser.getExerciserId(), fitmate.getExerciserId()); //상대
-		System.out.println(result1);
 		
 		//매칭 수락 시, fitmate list 보여주는 페이지로 이동
 		List<Fitmate> fitmateList =  matchingManager.showFitmateList(exerciser.getExerciserId());
@@ -61,19 +57,13 @@ public class MatchingCompleteController implements Controller {
 		for(Fitmate item: fitmateList) {
 			if(item.getExerciser1() == exerciser.getExerciserId()) {
 				fitmate_item = exManager.findExerciserById(item.getExerciser2());
-				System.out.println("exerciser1 fitmate");
 			}
 			else {
 				fitmate_item = exManager.findExerciserById(item.getExerciser1());
-				System.out.println("exerciser2 fitmate");
 			}
 			
 			fitmate_list.add(fitmate_item);
 				
-		}
-		
-		for(Exerciser exer : fitmate_list) {
-			System.out.println(exer.getNickname());
 		}
 		
 		request.setAttribute("fitmateList", fitmate_list);

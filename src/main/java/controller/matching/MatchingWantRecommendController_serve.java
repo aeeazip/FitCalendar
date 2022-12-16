@@ -28,20 +28,16 @@ public class MatchingWantRecommendController_serve implements Controller {
 		HttpSession session = request.getSession();
 
 		String id = (String) session.getAttribute("id");
-		System.out.println("matchingController: " + id);
 
-		System.out.println("matchingWantRecommendController");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
 		String height = request.getParameter("height");
 		String weight = request.getParameter("weight");
 		String percentBodyFat = request.getParameter("percentBodyFat");
-		System.out.println(height);
 
 		int height_option = Integer.parseInt(height);
 		int weight_option = Integer.parseInt(weight);
 		int percentBodyFat_option = Integer.parseInt(percentBodyFat);
 
-		System.out.println(height_option);
 
 		WeightRange w_range;
 		HeightRange h_range;
@@ -52,9 +48,10 @@ public class MatchingWantRecommendController_serve implements Controller {
 		p_range = recommendManager.calculatePercentBodyFatrange(percentBodyFat_option);
 
 		
-		int result = recommendManager.recommendExerciser(exerciser.getExerciserId(), h_range.getHeight1(), h_range.getHeight2(), w_range.getWeight1(), w_range.getWeight2(),
+		int result = recommendManager.recommendExerciser(exerciser.getExerciserId(), h_range.getHeight1(), h_range.getHeight2(), 
+				w_range.getWeight1(), w_range.getWeight2(),
 				p_range.getPercentBodyFat1(), p_range.getPercentBodyFat2());
-		System.out.println(result);
+
 		try {
 			if (result != 0)
 				return "redirect:/matching/wantRecommend/list";

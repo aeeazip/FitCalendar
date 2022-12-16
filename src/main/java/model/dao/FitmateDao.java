@@ -72,14 +72,12 @@ public class FitmateDao {
 	
 	public int sendMessage(int senderId, int receiverId, String content) { // sender ->  receiver로 메시지 전송
 		String query = "insert into message (msgid, content, senderid, receiverid) VALUES (MSGIDSEQ.nextval, ?, ?, ?)";
-		System.out.println("insert into message (content, senderid, receiverid) values " + content + ", " + senderId + ", " + receiverId);
 		
 		Object[] param = new Object[] { content, senderId, receiverId };
 		jdbcUtil.setSqlAndParameters(query, param);
 
 		try {
 			int result = jdbcUtil.executeUpdate(); // insert 문 실행
-			System.out.println(result);
 			return result; // insert 에 의해 반영된 레코드 수 반환
 		} catch (Exception e) {
 			jdbcUtil.rollback();

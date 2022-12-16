@@ -39,7 +39,6 @@ public class DeleteExerciserController implements Controller {
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('탈퇴 되었습니다.'); location.href='../main'; </script>");
 
-				System.out.println("탈퇴");
 				out.flush();
 
 				return "/main.jsp";

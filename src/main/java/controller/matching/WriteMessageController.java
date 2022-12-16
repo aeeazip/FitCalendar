@@ -38,7 +38,7 @@ public class WriteMessageController implements Controller{
 			request.setAttribute("senderId", senderId);
 			request.setAttribute("receiverId", receiverId);
 			request.setAttribute("nickname", nickname);
-			log.debug("RecordForm Request");
+	
 			return "/exerciser/fitmate/messageForm.jsp"; // messageForm으로 이동
 		}
 
@@ -48,15 +48,9 @@ public class WriteMessageController implements Controller{
 		try {	
 			Exerciser e = userManager.findExerciserById(receiverId);
 			request.setAttribute("fitmateId", e.getId());
-			System.out.println("46 라인 " + e.getId());
-			
-			// 1. sender -> receiver로 메시지 전송하기
-			System.out.println(senderId);
-			System.out.println(receiverId);
-			System.out.println(content);
 				
 			session.setAttribute("fitmateId", e.getId());
-			System.out.println("session으로 찍은 값 " + session.getAttribute("fitmateId"));
+	
 			fitmateManager.sendMessage(senderId, receiverId, content);
 			return "redirect:/matching/fitmate/message"; // 성공 시 사용자 리스트 화면으로 redirect
 

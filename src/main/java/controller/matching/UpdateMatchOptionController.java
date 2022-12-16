@@ -26,7 +26,6 @@ public class UpdateMatchOptionController implements Controller {
 
 		String userId = (String) session.getAttribute("id");
 
-		// 로그인한 사용자의 exerciser 객체
 		Exerciser exerciser = exManager.findExerciser(userId);
 
 		try {
@@ -34,18 +33,12 @@ public class UpdateMatchOptionController implements Controller {
 			request.setAttribute("nickname", exerciser.getNickname());
 			manager.optionChange(exerciser.getExerciserId(), 0, exerciser.getUseMatchSvc());
 
-			// alert창
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('매칭 서비스 종료 되었습니다.'); location.href='../main'; </script>");
-//
-//			out.flush();
-			return "redirect:/main"; // 성공 시, main 페이지로 forwarding
+			return "redirect:/main";
 		} catch (Exception e) {
 			request.setAttribute("checkFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("exerciserId", exerciser.getExerciserId());
-			return "redirect:/matching/option/setOption"; // 실패 시, 다시 maxMate설정 페이지로!(안넘어가게)
+			return "redirect:/matching/option/setOption"; 
 		}
 
 	}

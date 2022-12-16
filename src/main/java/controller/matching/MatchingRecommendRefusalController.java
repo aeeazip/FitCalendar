@@ -28,7 +28,6 @@ public class MatchingRecommendRefusalController implements Controller {
 
 		String fitMateId = (String)request.getParameter("fitmateId");
 		Exerciser fitmate = exManager.findExerciser(fitMateId);
-		System.out.println("refuse controller");
 
 		// matchingStatus 바꿔주기
 		matchingManager.matchingRefuse(exerciser.getExerciserId(), fitmate.getExerciserId());

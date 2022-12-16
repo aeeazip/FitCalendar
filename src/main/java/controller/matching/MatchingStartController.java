@@ -43,8 +43,6 @@ public class MatchingStartController implements Controller {
 			if (userId.equals(exerciser.getId())) {
 				
 				exerciser.setUseMatchSvc("T");
-				System.out.println(exerciser.getUseMatchSvc());
-				System.out.println(exerciser.getNickname());
 				matchingManager.createOption(exerciser.getExerciserId(), exerciser.getUseMatchSvc());
 				// createOption 성공
 

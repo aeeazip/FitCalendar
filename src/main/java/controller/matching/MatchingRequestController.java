@@ -25,10 +25,9 @@ public class MatchingRequestController implements Controller {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		Exerciser exerciser = exerciserManager.findExerciser(id);
-		System.out.println("MatchingRequestController");
+	
 		String fitMateId = (String)session.getAttribute("fitMateId");
-		
-		System.out.println(fitMateId);
+
 		Exerciser fitmate = exerciserManager.findExerciser(fitMateId);
 		
 		recommendManager.requestFitmate(exerciser.getExerciserId(), fitmate.getExerciserId());
@@ -36,3 +35,5 @@ public class MatchingRequestController implements Controller {
 		return "redirect:/matching/situation/list";
 	}
 }
+
+

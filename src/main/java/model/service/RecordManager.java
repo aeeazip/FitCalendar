@@ -2,13 +2,11 @@ package model.service;
 
 import java.util.List;
 import model.dao.RecordDao;
-import model.dao.mybatis.RecordDAO;
 import model.Record;
 
 public class RecordManager {
 	private static RecordManager recordMgr = new RecordManager();
 	private RecordDao recordDao;
-	private RecordDAO recordDao_m;
 	// private ExerciserDao exerciserDao;
 
 	private RecordManager() {
@@ -39,7 +37,7 @@ public class RecordManager {
 
 	public int insertRecord(String title, String creationDate, int totalTime, int category, String routine, String diet,
 			String photo, int shareOption, int exerciserId) {
-		return recordDao_m.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption,
+		return recordDao.insertRecord(title, creationDate, totalTime, category, routine, diet, photo, shareOption,
 				exerciserId);
 	}
 

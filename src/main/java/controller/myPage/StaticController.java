@@ -27,27 +27,19 @@ public class StaticController implements Controller {
 		// userId로 exerciser의 int id 값 얻어옴 -> 이거로 해당 exerciser의 통계 정보 가져옴
 		Exerciser exerciser = exerciserMgr.findExerciser(userId);
 		int exerciserId = exerciser.getExerciserId();
-		System.out.println("32행 : " + exerciserId);
 
 		// static 가져오기
 		CompareStatic compareStatic = staticMgr.calculateStatic(exerciserId);
-		System.out.println("36행 : " + compareStatic);
 
 		if (compareStatic == null)
 			request.setAttribute("error", "출석체크와 인바디 기록을 더 쌓아주세요 !");
 		else {
 
 			int weeklyCount = compareStatic.getWeeklyCount();
-			System.out.println(weeklyCount);
 			int MonthlyCount = compareStatic.getMonthlyCount();
-			System.out.println(MonthlyCount);
 			int ComparePercentFat = compareStatic.getComparePercentFat();
-			System.out.println(ComparePercentFat);
 			int CompareMuscle = compareStatic.getCompareMuscle();
-			System.out.println(CompareMuscle);
 			int CompareVisceralFat = compareStatic.getCompareVisceralFat();
-			System.out.println(CompareVisceralFat);
-
 			request.setAttribute("weeklyCount", weeklyCount);
 			request.setAttribute("MonthlyCount", MonthlyCount);
 			request.setAttribute("ComparePercentFat", ComparePercentFat);
