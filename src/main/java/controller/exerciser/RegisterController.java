@@ -19,7 +19,6 @@ public class RegisterController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(RegisterController.class);
 
 	private int exerciserid;
-//	private int inbodyid;
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -53,12 +52,9 @@ public class RegisterController implements Controller {
 			request.setAttribute("exception", e);
 			request.setAttribute("exerciser", exerciser);
 			System.out.println("ExistingUserException 예외 발생");
-			// redirect할 때 data 가지고 가는 거 구현하기
 			return "redirect:/exerciser/register";
 		}
 
-//		System.out.println(request.getParameter("height"));
-//		System.out.println(Integer.parseInt(request.getParameter("height")));
 		// 바로 생성한 exerciser 객체의 exerciserId를 저장 -> 해당 exerciserid에 inbody 정보 추가
 		int height = Integer.parseInt(request.getParameter("height"));
 		System.out.println(height);
@@ -73,9 +69,7 @@ public class RegisterController implements Controller {
 		String measureDate = request.getParameter("measuredate");
 		System.out.println(measureDate);
 
-//		System.out.println(height + weight + percentBodyFat + skeletalMM + visceralFat + measureDate);
 		Inbody inbody = new Inbody(height, weight, percentBodyFat, skeletalMM, visceralFat, measureDate, exerciserid);
-	
 
 		try {
 			InbodyManager mgr = InbodyManager.getInstance();
