@@ -15,19 +15,19 @@
 
 
 ## 테스트용 ID/PW
-### 주의사항 
+#### 주의사항 
   - 원하는 FitMate 정보 체크 시 (성별 : 여, 키 : 160-169, 몸무게 : 50-59, 체지방률 : 15-25, 원하는 운동 종목 : 헬스) 입력
   - FitMate 추천받기에 기입된 ID, PW로 로그인 -> FitMate 추천받기 -> 원하는 FitMate 정보 체크 -> FitMate 요청 보내기 or 재추천 받기 후 FitMate 요청 보내기
   - 요청 보낸 FitMate의 NICKNAME에 해당된 ID, PW로 로그인 -> 요청받은 FitMate -> 수락/거절
   - 아래 3개의 NICKNAME으로 FitMate 요청을 보냄
   - FitMate 요청 보내기, FitMate 수락/거절/메시지 기능 외 공통 기능은 모든 사용자에서 시연 가능
 
-### FitMate 추천받기
+#### FitMate 추천받기
   - ID : hhj1030
   - PW : 123
   - NICKNAME : 호정
   
-### FitMate 수락/거절
+#### FitMate 수락/거절
 - 1
   - ID : inuyang
   - PW : 0000
