@@ -26,15 +26,15 @@
   - NICKNAME : 호정
   
 ### FitMate 수락/거절
-#### 1
+- 1
   - ID : inuyang
   - PW : 0000
   - NICKNAME : 이누양
-#### 2
+- 2
   - ID : hh123
   - PW : 123
   - NICKNAME : 호호
-#### 3
+- 3
   - ID : hjhj
   - PW : 123
   - NICKNAME : 댕댕
