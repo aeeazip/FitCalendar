@@ -17,7 +17,7 @@
 - 포인트/랭킹 관리: 게시물 등록 시 포인트 지급, 추천/매칭 이용 시 포인트 차감, 포인트 기반 랭킹 부여
 - 출석/통계 관리: Daily 출석 체크(포인트 지급), Weekly/Monthly 운동 횟수 통계, 최근 인바디 기록 비교
 
-
+<br/>
 
 ## 기술 스택
 - Java, HTML, CSS, JavaScript
@@ -25,25 +25,23 @@
 - ERwin, SQL Developer
 - JDBC, MyBatis, maven 기반 MVC 구조
 
-
+<br/>
 
 ## 팀원
 |한호정 (팀장)|양혜지 (팀원)|오인우 (팀원)|정채원 (팀원)|
 |:------:|:---:|:------:|:---:|
 
-
+<br/>
 
 ## 최종보고서
-서비스 개요, 주요 기능 및 특징, 요구사항 분석(Use Case), 설계, 구현, 팀원별 업무 분담, 결론 및 소감
+서비스 개요, 주요 기능 및 특징, 요구사항 분석(Use Case), 설계, 구현, 팀원별 업무 분담, 결론 및 소감<br/>[FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
 
-[FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
-
-
+<br/>
 
 ## 발표 및 시연영상
 https://www.youtube.com/watch?v=WFc9vY_7LyY
 
-
+<br/>
 
 ## 테스트용 ID/PW
 #### 주의사항 
@@ -72,7 +70,7 @@ https://www.youtube.com/watch?v=WFc9vY_7LyY
   - PW : 123
   - NICKNAME : 댕댕
 
-
+<br/>
 
 ## Commit Message Convention
 > 커밋태그: 내용 #이슈번호  
