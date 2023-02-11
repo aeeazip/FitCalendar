@@ -2,10 +2,12 @@
 데이터베이스프로그래밍 02분반 8팀 팔색조 
 
 
+
 ## 서비스 소개
 - **FitCalendar** : 운동 기록 공유 및 운동 메이트(Fit-Mate) 매칭 서비스
 - 같이 운동하고 싶은 운동 메이트 혹은 배우고 싶은 운동 메이트를 매칭 받고 싶다면?
 - 나의 운동 기록을 남길 수 있고 타인의 운동 기록을 보며 동기 부여를 받고 정보 공유를 받을 수 있는 서비스
+
 
 
 ## 주요 기능
@@ -16,6 +18,7 @@
 - 출석/통계 관리: Daily 출석 체크(포인트 지급), Weekly/Monthly 운동 횟수 통계, 최근 인바디 기록 비교
 
 
+
 ## 기술 스택
 - Java, HTML, CSS, JavaScript
 - Eclipse, Oracle
@@ -23,9 +26,11 @@
 - JDBC, MyBatis, maven 기반 MVC 구조
 
 
+
 ## 팀원
 |한호정 (팀장)|양혜지 (팀원)|오인우 (팀원)|정채원 (팀원)|
 |:------:|:---:|:------:|:---:|
+
 
 
 ## 최종보고서
@@ -34,8 +39,10 @@
 [FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
 
 
+
 ## 발표 및 시연영상
 https://www.youtube.com/watch?v=WFc9vY_7LyY
+
 
 
 ## 테스트용 ID/PW
@@ -64,6 +71,7 @@ https://www.youtube.com/watch?v=WFc9vY_7LyY
   - ID : hjhj
   - PW : 123
   - NICKNAME : 댕댕
+
 
 
 ## Commit Message Convention
