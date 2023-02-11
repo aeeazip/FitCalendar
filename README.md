@@ -8,10 +8,33 @@
 - 나의 운동 기록을 남길 수 있고 타인의 운동 기록을 보며 동기 부여를 받고 정보 공유를 받을 수 있는 서비스
 
 
+## 주요 기능
+- 회원 관리: 회원가입, 회원탈퇴, 로그인, 로그아웃, 마이페이지
+- 게시글 관리: 게시물 등록/수정/삭제, 전체 게시물 조회, 나의 게시물 조회
+- 추천/매칭 관리: 다른 사용자 추천 및 매칭, 요천 상태 관리(수락/대기/거절), 사용자 간의 쪽지
+- 포인트/랭킹 관리: 게시물 등록 시 포인트 지급, 추천/매칭 이용 시 포인트 차감, 포인트 기반 랭킹 부여
+- 출석/통계 관리: Daily 출석 체크(포인트 지급), Weekly/Monthly 운동 횟수 통계, 최근 인바디 기록 비교
+
+
+## 기술 스택
+- Java, HTML, CSS, JavaScript
+- Eclipse, Oracle
+- ERwin, SQL Developer
+- JDBC, MyBatis, maven 기반 MVC 구조
+
+
 ## 팀원
 |한호정 (팀장)|양혜지 (팀원)|오인우 (팀원)|정채원 (팀원)|
 |:------:|:---:|:------:|:---:|
 
+
+#### 최종보고서
+서비스 개요, 주요 기능 및 특징, 요구사항 분석(Use Case), 설계, 구현, 팀원별 업무 분담, 결론 및 소감
+[FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
+
+
+#### 발표 및 시연영상
+https://www.youtube.com/watch?v=WFc9vY_7LyY
 
 
 ## 테스트용 ID/PW
@@ -40,13 +63,6 @@
   - ID : hjhj
   - PW : 123
   - NICKNAME : 댕댕
-
-#### 최종보고서
-- 서비스 개요, 주요 기능 및 특징, 요구사항 분석(Use Case), DB 설계, 구현, 팀원별 업무 분담, 결론 및 소감
-[FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
-
-#### 발표 및 시연영상
-https://www.youtube.com/watch?v=WFc9vY_7LyY
 
 
 ## Commit Message Convention
