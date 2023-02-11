@@ -28,12 +28,13 @@
 |:------:|:---:|:------:|:---:|
 
 
-#### 최종보고서
+## 최종보고서
 서비스 개요, 주요 기능 및 특징, 요구사항 분석(Use Case), 설계, 구현, 팀원별 업무 분담, 결론 및 소감
+
 [FitCalendar 최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
 
 
-#### 발표 및 시연영상
+## 발표 및 시연영상
 https://www.youtube.com/watch?v=WFc9vY_7LyY
 
 
