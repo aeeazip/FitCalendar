@@ -42,6 +42,10 @@
   - NICKNAME : 댕댕
 
 
+[(02-08)최종보고서.pdf](https://github.com/Fit-Calendar/FitCalendar/files/10712964/02-08.pdf)
+
+
+
 ## Commit Message Convention
 
 > 커밋태그: 내용 #이슈번호  
